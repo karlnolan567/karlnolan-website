@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karl Nolan Ltd | Enterprise Software Architecture & Agentic AI</title>
+    <meta name="description" content="Karl Nolan Ltd — hands-on enterprise architecture, cloud migration (GCP/Azure), agentic AI workflows, and production-grade web & mobile delivery from Limerick, Ireland.">
+    <link rel="canonical" href="https://karlnolan.ltd/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Karl Nolan Ltd | Enterprise Software Architecture & Agentic AI">
+    <meta property="og:description" content="Direct technical leadership: legacy modernization, cloud-native architecture, and secure agentic AI — delivered in code, not slide decks.">
+    <meta property="og:url" content="https://karlnolan.ltd/">
+    <meta property="og:locale" content="en_IE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Karl Nolan Ltd | Enterprise Software Architecture & Agentic AI">
+    <meta name="twitter:description" content="Direct technical leadership: legacy modernization, cloud-native architecture, and secure agentic AI.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23090a0f%22/><text x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2242%22 fill=%22%233b82f6%22>KN</text></svg>">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Karl Nolan Ltd",
+        "description": "Enterprise software architecture, cloud migration, and agentic AI consulting with hands-on delivery.",
+        "areaServed": "Worldwide",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Limerick",
+            "addressCountry": "IE"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Karl Nolan",
+            "jobTitle": "Principal Consultant & Solutions Architect"
+        },
+        "email": "karl@karlnolan.ltd",
+        "knowsAbout": ["Enterprise Architecture", "Cloud Migration", "Agentic AI", "DevOps", "Web and Mobile Applications"]
+    }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#090a0f',
+                            dark: '#0e111b',
+                            slate: '#1e2235',
+                            neonBlue: '#3b82f6',
+                            neonTeal: '#06b6d4',
+                            neonGreen: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090a0f; }
+        ::-webkit-scrollbar-thumb { background: #1e2235; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+        .animate-pulse-slow { animation: pulse-slow 8s infinite ease-in-out; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+        .glass-panel { background: rgba(14, 17, 27, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(59, 130, 246, 0.12); }
+        @supports not ((backdrop-filter: blur(1px))) {
+            .glass-panel { background: #0e111b; }
+        }
+        .glass-panel-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .glass-panel-hover:hover { border-color: rgba(6, 182, 212, 0.35); box-shadow: 0 15px 35px -10px rgba(6, 182, 212, 0.2); transform: translateY(-4px); }
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .skip-link:focus {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            z-index: 100;
+            width: auto;
+            height: auto;
+            padding: 0.75rem 1rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .animate-pulse-slow,
+            .motion-safe-ping { animation: none !important; }
+            .glass-panel-hover:hover { transform: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-neonBlue selection:text-white">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
+    <div class="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-brand-neonBlue/10 blur-[120px] animate-pulse-slow"></div>
+    <div class="absolute top-[40%] -right-[10%] w-[500px] h-[500px] rounded-full bg-brand-neonTeal/10 blur-[130px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-indigo-950/20 blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div>
+</div>
+
+<div class="relative z-10 flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 w-full glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded-lg">
+                <div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center shadow-lg shadow-brand-neonBlue/20" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-xl">KN</span>
+                </div>
+                <div>
+                    <p class="font-extrabold text-white text-lg tracking-tight leading-none">Karl Nolan Ltd</p>
+                    <span class="text-xs text-brand-neonTeal font-mono tracking-wider">ENTERPRISE SOLUTIONS</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider" aria-label="Primary">
+                <a href="#about" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">About</a>
+                <a href="#case-studies" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Case Studies</a>
+                <a href="#offerings" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Specializations</a>
+                <a href="#engagement" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">How We Work</a>
+                <a href="#contact" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 h-11 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg shadow-lg hover:shadow-brand-neonTeal/10 hover:brightness-110 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black">
+                    Initiate Contact
+                </a>
+                <button type="button" id="mobile-menu-btn" class="lg:hidden text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue p-2 rounded" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+                    <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-white/5 absolute top-20 left-0 w-full px-6 py-6 space-y-4" role="navigation" aria-label="Mobile">
+            <a href="#about" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">About</a>
+            <a href="#case-studies" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">Case Studies</a>
+            <a href="#offerings" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">Specializations</a>
+            <a href="#engagement" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">How We Work</a>
+            <a href="#contact" class="block w-full text-center py-2.5 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg">Initiate Contact</a>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <section class="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center py-12 sm:py-16 px-4 overflow-hidden" aria-labelledby="hero-heading">
+        <div class="max-w-4xl mx-auto w-full relative z-10">
+            <div class="space-y-8 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-neonBlue/10 border border-brand-neonBlue/20 text-brand-neonBlue text-xs font-mono tracking-wider uppercase mx-auto">
+                    <span class="w-2 h-2 rounded-full bg-brand-neonBlue motion-safe-ping animate-ping" aria-hidden="true"></span>
+                    Direct Hands-on Technical Leadership
+                </div>
+
+                <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    From Idea to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neonBlue via-brand-neonTeal to-brand-neonGreen">Production Enterprise Code</span>
+                </h1>
+
+                <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+                    Architecture, cloud migration, and agentic AI — delivered in code, not slide decks.
+                </p>
+
+                <blockquote class="max-w-xl mx-auto border-l-0 sm:border-l-2 border-brand-neonBlue sm:pl-6 py-2">
+                    <p class="text-slate-300 text-sm sm:text-base font-medium italic">
+                        "Clean Architecture: Do it right the first time, and it will be done right."
+                    </p>
+                </blockquote>
+
+                <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                    Need to scale a mission-critical web prototype, migrate legacy monolithic architectures, or build secure agentic AI pipelines? <strong class="text-white font-semibold">Karl Nolan Ltd</strong> provides elite technical execution, combining 26+ years of global leadership with hands-on, high-velocity output.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-sm font-semibold tracking-wider text-white rounded-xl shadow-xl shadow-brand-neonBlue/15 hover:shadow-brand-neonTeal/20 hover:brightness-110 hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                        <i class="fa-solid fa-bolt" aria-hidden="true"></i> Secure Prototype Deployment
+                    </a>
+                    <a href="#case-studies" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-brand-slate/40 border border-white/10 hover:border-brand-neonBlue/30 text-sm font-semibold tracking-wider text-slate-300 hover:text-white rounded-xl backdrop-blur-sm hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
+                        Explore Case Studies <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-lg mx-auto text-center border-t border-white/5">
+                    <div>
+                        <p class="text-2xl font-bold text-white font-mono">26+</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Years in Enterprise Delivery</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-brand-neonTeal font-mono">NDA</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">On Every Engagement</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-brand-neonGreen font-mono">DORA</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Metrics-Led Delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="relative group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-2xl blur opacity-35 group-hover:opacity-55 transition duration-1000 group-hover:duration-200" aria-hidden="true"></div>
+                        <div class="relative bg-brand-black p-6 rounded-2xl border border-white/10">
+                            <div class="relative w-full aspect-[4/3] bg-brand-dark rounded-xl mb-6 border border-brand-neonBlue/20 overflow-hidden">
+                                <img src="images/Karl%20Nolan.jpeg" alt="Karl Nolan, Principal Consultant" class="w-full h-full object-cover object-top" id="profile-photo" width="800" height="600" onload="document.getElementById('profile-photo-fallback').classList.add('hidden')" onerror="this.classList.add('hidden'); document.getElementById('profile-photo-fallback').classList.remove('hidden');">
+                                <div id="profile-photo-fallback" class="absolute inset-0 hidden flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-brand-slate to-brand-dark" aria-hidden="true">
+                                    <div class="h-24 w-24 rounded-full bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center text-3xl font-bold text-white font-mono shadow-lg">KN</div>
+                                </div>
+                            </div>
+                            <h2 class="text-2xl font-bold text-white">Karl Nolan</h2>
+                            <p class="text-brand-neonTeal font-mono text-sm mb-4">Principal Consultant & Solutions Architect</p>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                Directing global development teams of up to 45+ engineers, leading cloud migrations on GCP/Azure, and modernizing legacy monolithic structures for enterprise operations.
+                            </p>
+                            <a href="https://www.linkedin.com/in/karlnolan" id="linkedin-profile" class="inline-flex items-center gap-2 text-sm text-brand-neonBlue hover:text-brand-neonTeal transition mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i> Connect on LinkedIn
+                            </a>
+                            <div class="p-3.5 bg-brand-slate/30 border border-white/5 rounded-xl text-xs flex items-center gap-3">
+                                <i class="fa-solid fa-shield-halved text-brand-neonGreen text-lg" aria-hidden="true"></i>
+                                <span class="text-slate-400 leading-snug">Combining high-level strategic advisory with hands-on, high-velocity engineering output.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="text-brand-neonBlue font-mono text-xs uppercase tracking-wider block mb-2">// Active Engagement Strategy</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Direct Execution. High Velocity. Zero Advisory Middleware.</h2>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed">
+                        I do not operate as an abstract advisory agency that delivers lengthy, impractical slide decks. At <strong class="text-white">Karl Nolan Ltd</strong>, we deliver operational software. Whether stepping into an existing project architecture to implement mission-critical features, or architecting a cloud-ready microservices layout from scratch, I combine high-level architectural design with raw coding power.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue" aria-hidden="true">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">Managed 45+ Engineers</h3>
+                                <p class="text-xs text-slate-400 mt-1">Directing global enterprise development groups, driving scrum practices and performance.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonTeal/10 flex items-center justify-center text-brand-neonTeal" aria-hidden="true">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">DORA-Driven Delivery</h3>
+                                <p class="text-xs text-slate-400 mt-1">Accelerating deployment frequency, minimizing MTTR, and stabilizing production metrics.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonGreen/10 flex items-center justify-center text-brand-neonGreen" aria-hidden="true">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">Cloud-Native Transformations</h3>
+                                <p class="text-xs text-slate-400 mt-1">Engineering high-availability, microservices environments on Google Cloud Platform (GCP) and Azure.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue" aria-hidden="true">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">Protected & IP Safeguarded</h3>
+                                <p class="text-xs text-slate-400 mt-1">All consulting is governed strictly under mutually signed non-disclosure agreements to protect proprietary frameworks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-neonBlue font-mono text-xs uppercase tracking-wider block">// Anonymized Client Outcomes</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Case Studies</h2>
+                <p class="text-slate-400 font-light text-sm">Representative engagements under NDA. Client names and proprietary details are withheld; outcomes reflect measurable delivery impact.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
+                    <span class="text-xs font-mono text-brand-neonTeal uppercase tracking-wider mb-3">Financial Services • GCP</span>
+                    <h3 class="text-lg font-bold text-white mb-3">Monolith to Microservices Migration</h3>
+                    <dl class="space-y-3 text-sm flex-grow">
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
+                            <dd class="text-slate-400 mt-1">Legacy .NET monolith blocking release cadence and scaling on peak trading windows.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
+                            <dd class="text-slate-400 mt-1">Strangler-fig decomposition, event-driven boundaries, and phased cutover on GCP with zero-downtime releases.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
+                            <dd class="text-slate-300 mt-1">Deployment frequency increased from monthly to weekly; production incidents reduced within two quarters.</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
+                    <span class="text-xs font-mono text-brand-neonBlue uppercase tracking-wider mb-3">Global SaaS • Agentic AI</span>
+                    <h3 class="text-lg font-bold text-white mb-3">Engineering Pod Automation</h3>
+                    <dl class="space-y-3 text-sm flex-grow">
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
+                            <dd class="text-slate-400 mt-1">45-person engineering org needed faster PR throughput without sacrificing review quality or security gates.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
+                            <dd class="text-slate-400 mt-1">Context-engineered agent workflows, standardized prompts, and CI-integrated validation for boilerplate and test scaffolding.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
+                            <dd class="text-slate-300 mt-1">Meaningful reduction in cycle time for routine features; senior engineers refocused on architecture and complex defects.</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
+                    <span class="text-xs font-mono text-brand-neonGreen uppercase tracking-wider mb-3">Healthcare • Web & Mobile</span>
+                    <h3 class="text-lg font-bold text-white mb-3">Mission-Critical Platform Scale-Up</h3>
+                    <dl class="space-y-3 text-sm flex-grow">
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
+                            <dd class="text-slate-400 mt-1">High-traffic patient-facing web and mobile apps required hardened security, observability, and performance under regulatory constraints.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
+                            <dd class="text-slate-400 mt-1">Clean Architecture boundaries, TypeScript/React front ends, API hardening, and DORA-aligned pipeline improvements on Azure.</dd>
+                        </div>
+                        <div>
+                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
+                            <dd class="text-slate-300 mt-1">Stable peak-load performance; improved MTTR through structured logging, tracing, and runbook automation.</dd>
+                        </div>
+                    </dl>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="offerings" class="py-24 px-4 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-neonTeal font-mono text-xs uppercase tracking-wider block">// Core Enterprise Capability Catalog</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Specialized Technical Offerings</h2>
+                <p class="text-slate-400 font-light">Senior architectural consultation and high-velocity engineering across four core disciplines.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue border border-brand-neonBlue/20" aria-hidden="true">
+                            <i class="fa-solid fa-robot text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Agentic AI Workflows</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Deploying advanced context-engineered autonomous pods and terminal AI coding agents. Automating boilerplate refactoring, feature engineering, and robust pull-request validations.</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonBlue">Claude Code • GitHub Copilot • Autonomous Agents</span></div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neonTeal/10 flex items-center justify-center text-brand-neonTeal border border-brand-neonTeal/20" aria-hidden="true">
+                            <i class="fa-solid fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Enterprise Architecture</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Architecting the seamless transition of legacy monoliths into cloud-native microservice systems (GCP/Azure) with zero transaction downtime.</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonTeal">Microservices • Monolith Transition • Cloud-Native</span></div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neonGreen/10 flex items-center justify-center text-brand-neonGreen border border-brand-neonGreen/20" aria-hidden="true">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Web & Mobile Apps</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Engineering ultra-responsive web solutions and high-fidelity mobile application architectures designed to support scale, robust security thresholds, and performance.</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonGreen">TypeScript • React • Node.js • Multiplatform Mobile</span></div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue border border-brand-neonTeal/20" aria-hidden="true">
+                            <i class="fa-solid fa-gears text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">DevOps & Platform Engineering</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Building CI/CD pipelines, observability stacks, and infrastructure-as-code foundations that align teams with DORA metrics and reliable production operations.</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonTeal">CI/CD • IaC • Observability • SRE Practices</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="engagement" class="py-24 px-4 border-t border-white/5 bg-brand-dark/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-brand-neonGreen font-mono text-xs uppercase tracking-wider block">// Engagement Model</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">How We Work</h2>
+                <p class="text-slate-400 font-light text-sm">A straightforward path from first conversation to production delivery.</p>
+            </div>
+            <ol class="space-y-6">
+                <li class="flex gap-5 glass-panel p-6 rounded-xl">
+                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonBlue/20 text-brand-neonBlue font-mono font-bold flex items-center justify-center" aria-hidden="true">1</span>
+                    <div>
+                        <h3 class="text-white font-semibold">Discovery & NDA</h3>
+                        <p class="text-sm text-slate-400 mt-1">Brief call to understand system context, constraints, and timeline. Mutual NDA signed before any proprietary detail is shared.</p>
+                    </div>
+                </li>
+                <li class="flex gap-5 glass-panel p-6 rounded-xl">
+                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonTeal/20 text-brand-neonTeal font-mono font-bold flex items-center justify-center" aria-hidden="true">2</span>
+                    <div>
+                        <h3 class="text-white font-semibold">Architecture Sprint</h3>
+                        <p class="text-sm text-slate-400 mt-1">Targeted technical assessment and a concrete delivery plan — repositories, cloud targets, and measurable milestones, not abstract roadmaps.</p>
+                    </div>
+                </li>
+                <li class="flex gap-5 glass-panel p-6 rounded-xl">
+                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonGreen/20 text-brand-neonGreen font-mono font-bold flex items-center justify-center" aria-hidden="true">3</span>
+                    <div>
+                        <h3 class="text-white font-semibold">Hands-on Delivery</h3>
+                        <p class="text-sm text-slate-400 mt-1">Embedded execution: coding, reviews, pipeline work, and team enablement with transparent progress against agreed outcomes.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+                <span class="text-brand-neonGreen font-mono text-xs uppercase tracking-wider block">// Let's Connect</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Initiate Your Delivery Sprint</h2>
+                <p class="text-slate-400 font-light text-sm">Ready to build your next-gen web or mobile application, migrate legacy systems, or deploy automated AI pods? Get in touch today.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm">
+                <a href="mailto:karl@karlnolan.ltd" id="contact-email-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonBlue/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> karl@karlnolan.ltd
+                </a>
+                <a href="https://www.linkedin.com/in/karlnolan" id="contact-linkedin-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonTeal/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonTeal" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+            </div>
+
+            <div class="glass-panel border border-white/10 rounded-2xl p-8 sm:p-10 shadow-2xl relative">
+                <form id="contact-form" class="space-y-6" novalidate>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="contact-name" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Your Full Name</label>
+                            <input type="text" id="contact-name" name="name" required autocomplete="name" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="John Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="contact-email" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Business Email Address</label>
+                            <input type="email" id="contact-email" name="email" required autocomplete="email" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="john@enterprise.com">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="contact-message" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Project Brief / System Context</label>
+                        <textarea id="contact-message" name="message" rows="4" required class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="Legacy stack, cloud preference, timeline, team size…"></textarea>
+                    </div>
+                    <p id="form-status" class="text-sm text-brand-neonTeal hidden" role="status"></p>
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition shadow-lg hover:brightness-110 active:scale-95 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Dispatch Consulting Request
+                    </button>
+                    <p class="text-[11px] text-slate-500 leading-relaxed" id="privacy-notice">
+                        By submitting this form, you agree that Karl Nolan Ltd may use your details to respond to your enquiry. Data is sent via your email client and is not stored on this website. You may request deletion of correspondence at any time by emailing <a href="mailto:karl@karlnolan.ltd" class="text-brand-neonBlue hover:underline">karl@karlnolan.ltd</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="mt-auto bg-brand-black border-t border-white/5 py-12 px-4 text-xs">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <nav class="flex flex-wrap justify-center gap-6 text-slate-400 uppercase tracking-wider font-semibold" aria-label="Footer">
+                <a href="#about" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">About</a>
+                <a href="#case-studies" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Case Studies</a>
+                <a href="#offerings" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Specializations</a>
+                <a href="#engagement" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">How We Work</a>
+                <a href="#contact" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Contact</a>
+            </nav>
+            <div id="privacy" class="max-w-2xl mx-auto text-center text-slate-500 leading-relaxed">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-slate-600 mb-2">Privacy Notice</p>
+                <p>Karl Nolan Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data submitted through the form is handled via your email provider; retain only what you need for the conversation. For access or deletion requests, contact <a href="mailto:karl@karlnolan.ltd" class="text-brand-neonBlue hover:underline">karl@karlnolan.ltd</a>.</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center text-white text-xs font-bold" aria-hidden="true">KN</div>
+                    <div>
+                        <p class="text-white font-bold leading-none">Karl Nolan Ltd</p>
+                        <p class="text-[10px] text-slate-500 font-mono mt-1">Limerick, Ireland • International Consulting</p>
+                    </div>
+                </div>
+                <p class="text-slate-500 text-center md:text-right font-light">© 2026 Karl Nolan Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const SITE = {
+        contactEmail: 'karl@karlnolan.ltd',
+        linkedIn: 'https://www.linkedin.com/in/karlnolan',
+        canonicalUrl: 'https://karlnolan.ltd/'
+    };
+
+    document.getElementById('contact-email-link').href = 'mailto:' + SITE.contactEmail;
+    document.querySelectorAll('a[href="mailto:karl@karlnolan.ltd"]').forEach(el => { el.href = 'mailto:' + SITE.contactEmail; });
+    document.getElementById('linkedin-profile').href = SITE.linkedIn;
+    document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function setMenuOpen(open) {
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+        mobileMenuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars', !open);
+        icon.classList.toggle('fa-xmark', open);
+    }
+
+    mobileMenuBtn.addEventListener('click', () => {
+        setMenuOpen(mobileMenu.classList.contains('hidden'));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) setMenuOpen(false);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.classList.contains('hidden') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target)) {
+            setMenuOpen(false);
+        }
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        const status = document.getElementById('form-status');
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const subject = encodeURIComponent('Consulting enquiry from ' + name);
+        const body = encodeURIComponent(
+            'Name: ' + name + '\n' +
+            'Email: ' + email + '\n\n' +
+            'Project brief:\n' + message
+        );
+        window.location.href = 'mailto:' + SITE.contactEmail + '?subject=' + subject + '&body=' + body;
+
+        status.textContent = 'Your email client should open with your message pre-filled. If it did not, email ' + SITE.contactEmail + ' directly.';
+        status.classList.remove('hidden');
+    });
+</script>
+</body>
+</html>
