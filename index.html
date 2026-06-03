@@ -37,7 +37,7 @@
             "name": "Karl Nolan",
             "jobTitle": "Principal Consultant & Solutions Architect"
         },
-        "email": "karl@karlnolan.ltd",
+        "email": "karlnolan@gmail.com",
         "knowsAbout": ["Enterprise Architecture", "Cloud Migration", "Agentic AI", "DevOps", "Web and Mobile Applications"]
     }
     </script>
@@ -460,8 +460,8 @@
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm">
-                <a href="mailto:karl@karlnolan.ltd" id="contact-email-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonBlue/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> karl@karlnolan.ltd
+                <a href="mailto:karlnolan@gmail.com" id="contact-email-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonBlue/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> karlnolan@gmail.com
                 </a>
                 <a href="https://www.linkedin.com/in/karlnolan" id="contact-linkedin-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonTeal/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonTeal" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
@@ -489,7 +489,7 @@
                         <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Dispatch Consulting Request
                     </button>
                     <p class="text-[11px] text-slate-500 leading-relaxed" id="privacy-notice">
-                        By submitting this form, you agree that Karl Nolan Ltd may use your details to respond to your enquiry. Data is sent via your email client and is not stored on this website. You may request deletion of correspondence at any time by emailing <a href="mailto:karl@karlnolan.ltd" class="text-brand-neonBlue hover:underline">karl@karlnolan.ltd</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
+                        By submitting this form, you agree that Karl Nolan Ltd may use your details to respond to your enquiry. Data is sent via your email client and is not stored on this website. You may request deletion of correspondence at any time by emailing <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
                     </p>
                 </form>
             </div>
@@ -509,7 +509,7 @@
             </nav>
             <div id="privacy" class="max-w-2xl mx-auto text-center text-slate-500 leading-relaxed">
                 <p class="font-mono text-[10px] uppercase tracking-wider text-slate-600 mb-2">Privacy Notice</p>
-                <p>Karl Nolan Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data submitted through the form is handled via your email provider; retain only what you need for the conversation. For access or deletion requests, contact <a href="mailto:karl@karlnolan.ltd" class="text-brand-neonBlue hover:underline">karl@karlnolan.ltd</a>.</p>
+                <p>Karl Nolan Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data submitted through the form is handled via your email provider; retain only what you need for the conversation. For access or deletion requests, contact <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>.</p>
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-white/5">
                 <div class="flex items-center gap-3">
@@ -527,13 +527,16 @@
 
 <script>
     const SITE = {
-        contactEmail: 'karl@karlnolan.ltd',
+        contactEmail: 'karlnolan@gmail.com',
         linkedIn: 'https://www.linkedin.com/in/karlnolan',
         canonicalUrl: 'https://karlnolan.ltd/'
     };
 
     document.getElementById('contact-email-link').href = 'mailto:' + SITE.contactEmail;
-    document.querySelectorAll('a[href="mailto:karl@karlnolan.ltd"]').forEach(el => { el.href = 'mailto:' + SITE.contactEmail; });
+    document.querySelectorAll('a.contact-email').forEach(el => {
+        el.href = 'mailto:' + SITE.contactEmail;
+        el.textContent = SITE.contactEmail;
+    });
     document.getElementById('linkedin-profile').href = SITE.linkedIn;
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
 
