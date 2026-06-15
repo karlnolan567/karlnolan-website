@@ -1,3 +1,6 @@
 .DS_Store
 *.swp
 *~
+
+# Local working documents — never committed or deployed
+docs/

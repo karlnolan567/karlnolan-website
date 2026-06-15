@@ -1,6 +1,9 @@
-# Karl Nolan Ltd — Website
+# Bespoke AI Workflow Engineering Ltd — Website
 
-Static portfolio site for [Karl Nolan Ltd](https://karlnolan.ltd).
+Static portfolio site for **Bespoke AI Workflow Engineering Ltd** (Limerick, Ireland).
+
+Live preview: [http://178.104.254.165/](http://178.104.254.165/)  
+Planned domain: `ai-development.ie` (when registered)
 
 ## Local preview
 
@@ -10,15 +13,22 @@ python3 -m http.server 8765
 
 Open http://127.0.0.1:8765/
 
-## Deploy with GitHub Pages
+## Local docs (not in git)
 
-1. Create a new repository on GitHub (or use this repo).
-2. Ensure `index.html` is at the repository root.
-3. Go to **Settings → Pages** in your repository.
-4. Under **Build and deployment**, set the source to **Deploy from a branch** (usually `main`).
-5. Select the `/ (root)` folder and click **Save**. Your site will be live in less than a minute.
+The `docs/` folder is for local working files only (business case, CV drafts, outreach templates). It is listed in `.gitignore` and is **not** committed or deployed.
 
-The site URL will be `https://<username>.github.io/<repository-name>/` unless you configure a custom domain.
+## Deploy
+
+The site is static HTML at the repository root (`index.html`, `images/`). Deploy only those public assets — not `docs/`.
+
+### GitHub Pages
+
+1. Ensure `index.html` is at the repository root.
+2. Go to **Settings → Pages** → deploy from `main`, `/ (root)`.
+
+### VPS (nginx)
+
+Sync `index.html` and `images/` to the web root on the server.
 
 ## Customize
 
