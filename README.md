@@ -8,10 +8,24 @@ Planned domain: `ai-development.ie` (when registered)
 ## Local preview
 
 ```bash
+npm install
+npm run build:css
 python3 -m http.server 8765
 ```
 
 Open http://127.0.0.1:8765/
+
+After editing Tailwind classes in `index.html`, rebuild CSS:
+
+```bash
+npm run build:css
+```
+
+Or watch for changes during development:
+
+```bash
+npm run watch:css
+```
 
 ## Local docs (not in git)
 
@@ -19,7 +33,13 @@ The `docs/` folder is for local working files only (business case, CV drafts, ou
 
 ## Deploy
 
-The site is static HTML at the repository root (`index.html`, `images/`). Deploy only those public assets — not `docs/`.
+The site is static HTML at the repository root (`index.html`, `css/styles.css`, `images/`). Deploy only those public assets — not `docs/` or `node_modules/`.
+
+Rebuild CSS before deploying if you changed Tailwind classes:
+
+```bash
+npm run build:css
+```
 
 ### GitHub Pages
 
@@ -28,7 +48,11 @@ The site is static HTML at the repository root (`index.html`, `images/`). Deploy
 
 ### VPS (nginx)
 
-Sync `index.html` and `images/` to the web root on the server.
+```bash
+ssh root@178.104.254.165
+```
+
+Sync `index.html`, `css/styles.css`, and `images/` to the web root on the server.
 
 ## Customize
 

@@ -1,0 +1,11 @@
+{
+  "name": "bespoke-ai-website",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/styles.css -o ./css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/styles.css -o ./css/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
