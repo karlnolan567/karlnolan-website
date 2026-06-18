@@ -1,14 +1,17 @@
 Google Form + Sheet setup — Inbound Enquiries 2026
 ==================================================
 
-1. Google Drive
-   - Create folder: Lead Intake/
-   - Create spreadsheet: Inbound Enquiries 2026 (inside that folder)
+1. Google Drive (live)
+   - Spreadsheet: Inbound Enquiries 2026
+   - URL: https://docs.google.com/spreadsheets/d/1bGdMpUf8ATttFP2CL4lC3EJexmO3jW3dbHLqKc0S8jg/edit
+   - Spreadsheet ID (for n8n / API): 1bGdMpUf8ATttFP2CL4lC3EJexmO3jW3dbHLqKc0S8jg
+   - Response tab gid: 1457896581
 
-2. Google Form (forms.google.com)
+2. Google Form (live)
    - Title: Bespoke AI — Consulting Enquiry
    - Description: Structured intake for regulated-sector automation and architecture engagements.
-   - Link responses to: Inbound Enquiries 2026 spreadsheet
+   - Form URL: https://forms.gle/HCQSAhwR9JJpygxb9
+   - Linked to spreadsheet above
 
    Fields (required unless noted):
    - Full Name          (Short answer)
@@ -37,9 +40,10 @@ Google Form + Sheet setup — Inbound Enquiries 2026
        Function: onFormSubmit
        Event: From spreadsheet → On form submit
 
-5. Form URL (live)
-   - https://forms.gle/HCQSAhwR9JJpygxb9
-   - Wired in index.html SITE.googleFormUrl and lead-intake outreach snippets
+5. Live URLs
+   - Form:  https://forms.gle/HCQSAhwR9JJpygxb9
+   - Sheet: https://docs.google.com/spreadsheets/d/1bGdMpUf8ATttFP2CL4lC3EJexmO3jW3dbHLqKc0S8jg/edit
+   - Form wired in index.html SITE.googleFormUrl and lead-intake outreach snippets
 
 6. Test
    - Submit a test response

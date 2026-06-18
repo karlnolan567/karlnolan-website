@@ -3,12 +3,14 @@
  *
  * Install on the spreadsheet linked to your Google Form (not the form itself).
  *
+ * Live spreadsheet:
+ * https://docs.google.com/spreadsheets/d/1bGdMpUf8ATttFP2CL4lC3EJexmO3jW3dbHLqKc0S8jg/edit
+ * ID: 1bGdMpUf8ATttFP2CL4lC3EJexmO3jW3dbHLqKc0S8jg
+ *
  * Setup:
- * 1. Create spreadsheet "Inbound Enquiries 2026" in a Drive folder (e.g. Lead Intake/).
- * 2. Link your Google Form responses to that spreadsheet.
- * 3. Extensions → Apps Script → paste this file → Save.
- * 4. Run setupSheetHeaders once (authorize when prompted).
- * 5. Triggers → Add trigger → onFormSubmit → From spreadsheet → On form submit.
+ * 1. Open the spreadsheet → Extensions → Apps Script → paste this file → Save.
+ * 2. Run setupSheetHeaders once (authorize when prompted).
+ * 3. Triggers → Add trigger → onFormSubmit → From spreadsheet → On form submit.
  */
 
 var STATUS_COLUMN = 'Status';
