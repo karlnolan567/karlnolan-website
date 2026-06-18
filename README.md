@@ -32,6 +32,8 @@ Sync `index.html` and `images/` to the web root on the server.
 
 ## Customize
 
-Edit the `SITE` object at the bottom of `index.html` for contact email, LinkedIn URL, and canonical URL.
+Edit the `SITE` object at the bottom of `index.html` for contact email, LinkedIn URL, canonical URL, and `googleFormUrl` (your Google Form link).
+
+Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 
 Profile photo: `images/Karl Nolan.jpeg`

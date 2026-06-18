@@ -564,30 +564,27 @@
                 </a>
             </div>
 
-            <div class="glass-panel border border-white/10 rounded-2xl p-8 sm:p-10 shadow-2xl relative">
-                <form id="contact-form" class="space-y-6" novalidate>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label for="contact-name" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Your Full Name</label>
-                            <input type="text" id="contact-name" name="name" required autocomplete="name" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="John Doe">
-                        </div>
-                        <div class="space-y-2">
-                            <label for="contact-email" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Business Email Address</label>
-                            <input type="email" id="contact-email" name="email" required autocomplete="email" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="john@enterprise.com">
-                        </div>
+            <div class="glass-panel border border-white/10 rounded-2xl p-8 sm:p-10 shadow-2xl relative text-center">
+                <div class="max-w-lg mx-auto space-y-6">
+                    <div class="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-tr from-brand-neonBlue/20 to-brand-neonTeal/20 border border-white/10 text-brand-neonTeal" aria-hidden="true">
+                        <i class="fa-solid fa-clipboard-list text-xl"></i>
                     </div>
-                    <div class="space-y-2">
-                        <label for="contact-message" class="block text-xs font-mono uppercase tracking-wider text-slate-400">Project Brief / System Context</label>
-                        <textarea id="contact-message" name="message" rows="4" required class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-neonBlue transition" placeholder="Legacy stack, cloud preference, timeline, team size…"></textarea>
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-white">Structured Enquiry Form</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Share your context in a short, professional intake form — company details, automation goals, and the operational problems you want solved. Responses are routed directly for review.</p>
                     </div>
-                    <p id="form-status" class="text-sm text-brand-neonTeal hidden" role="status"></p>
-                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition shadow-lg hover:brightness-110 active:scale-95 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
-                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Dispatch Consulting Request
-                    </button>
+                    <ul class="text-left text-sm text-slate-400 space-y-2 max-w-md mx-auto">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Name, business email, company &amp; role</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Company size band</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Automation problems &amp; use case brief</span></li>
+                    </ul>
+                    <a id="contact-form-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition shadow-lg hover:brightness-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Submit Enquiry
+                    </a>
                     <p class="text-[12px] text-slate-500 leading-relaxed" id="privacy-notice">
-                        By submitting this form, you agree that Bespoke AI Workflow Engineering Ltd may use your details to respond to your enquiry. Data is sent via your email client and is not stored on this website. You may request deletion of correspondence at any time by emailing <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
+                        By submitting the enquiry form, you agree that Bespoke AI Workflow Engineering Ltd may use your details to respond to your enquiry. Responses are collected via Google Forms and stored in our Google Drive for enquiry handling and status tracking. You may request access or deletion at any time by emailing <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
                     </p>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -605,7 +602,7 @@
             </nav>
             <div id="privacy" class="max-w-2xl mx-auto text-center text-slate-500 leading-relaxed">
                 <p class="font-mono text-[11px] uppercase tracking-wider text-slate-600 mb-2">Privacy Notice</p>
-                <p>Bespoke AI Workflow Engineering Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data submitted through the form is handled via your email provider; retain only what you need for the conversation. For access or deletion requests, contact <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>.</p>
+                <p>Bespoke AI Workflow Engineering Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data is collected via Google Forms and stored in our Google account (Google Drive / Sheets) to respond, track enquiry status, and manage follow-up. We retain data only as long as needed for that purpose. For access or deletion requests, contact <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>.</p>
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-white/5">
                 <div class="flex items-center gap-3">
@@ -625,9 +622,11 @@
     const SITE = {
         contactEmail: 'karlnolan@gmail.com',
         linkedIn: 'https://www.linkedin.com/in/karlnolan',
-        canonicalUrl: 'http://178.104.254.165/'
+        canonicalUrl: 'http://178.104.254.165/',
+        googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9'
     };
 
+    document.getElementById('contact-form-link').href = SITE.googleFormUrl;
     document.getElementById('contact-email-link').href = 'mailto:' + SITE.contactEmail;
     document.querySelectorAll('a.contact-email').forEach(el => {
         el.href = 'mailto:' + SITE.contactEmail;
@@ -669,30 +668,6 @@
         }
     });
 
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        const message = form.message.value.trim();
-        const status = document.getElementById('form-status');
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        const subject = encodeURIComponent('Consulting enquiry from ' + name);
-        const body = encodeURIComponent(
-            'Name: ' + name + '\n' +
-            'Email: ' + email + '\n\n' +
-            'Project brief:\n' + message
-        );
-        window.location.href = 'mailto:' + SITE.contactEmail + '?subject=' + subject + '&body=' + body;
-
-        status.textContent = 'Your email client should open with your message pre-filled. If it did not, email ' + SITE.contactEmail + ' directly.';
-        status.classList.remove('hidden');
-    });
 </script>
 </body>
 </html>
