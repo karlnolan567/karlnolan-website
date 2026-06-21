@@ -8,24 +8,24 @@ Planned domain: `ai-development.ie` (when registered)
 ## Local preview
 
 ```bash
-npm install
-npm run build:css
 python3 -m http.server 8765
 ```
 
 Open http://127.0.0.1:8765/
 
-After editing Tailwind classes in `index.html`, rebuild CSS:
+Use a local HTTP server (not `file://`) so shared header/footer partials load correctly.
 
-```bash
-npm run build:css
-```
+## Styling
 
-Or watch for changes during development:
+The site uses hand-authored CSS in [`css/styles.css`](css/styles.css) with semantic class names and CSS custom properties (design tokens). No build step or npm required.
 
-```bash
-npm run watch:css
-```
+Shared layout (header, footer) lives in [`partials/`](partials/) and is injected by [`js/includes.js`](js/includes.js). Page-specific behaviour is in [`js/site.js`](js/site.js) and inline scripts at the bottom of each HTML page.
+
+To add a new page:
+
+1. Copy the shell from `index.html` or `workshop.html` (bg-effects, page-shell, include placeholders).
+2. Set `data-page` on `<body>` (`home` or `workshop` — or extend [`js/includes.js`](js/includes.js) for new page types).
+3. Add page content inside `<main>`.
 
 ## Local docs (not in git)
 
@@ -33,13 +33,9 @@ The `docs/` folder is for local working files only (business case, CV drafts, ou
 
 ## Deploy
 
-The site is static HTML at the repository root (`index.html`, `css/styles.css`, `images/`). Deploy only those public assets — not `docs/` or `node_modules/`.
+The site is static HTML at the repository root (`index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, `images/`). Deploy only those public assets — not `docs/` or `node_modules/`.
 
-Rebuild CSS before deploying if you changed Tailwind classes:
-
-```bash
-npm run build:css
-```
+Edit [`css/styles.css`](css/styles.css) directly before deploying if you changed styles.
 
 ### GitHub Pages
 
@@ -52,11 +48,11 @@ npm run build:css
 ssh root@178.104.254.165
 ```
 
-Sync `index.html`, `css/styles.css`, and `images/` to the web root on the server.
+Sync `index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, and `images/` to the web root on the server.
 
 ## Customize
 
-Edit the `SITE` object at the bottom of `index.html` for contact email, LinkedIn URL, canonical URL, and `googleFormUrl` (your Google Form link).
+Edit the `SITE` object in [`js/site-config.js`](js/site-config.js) for contact email, LinkedIn URL, canonical URL, and form links.
 
 Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 

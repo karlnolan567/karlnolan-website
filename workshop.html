@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,232 +18,145 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230f1a2b%22/><text x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2232%22 fill=%22%233b82f6%22>BAI</text></svg>">
 </head>
-<body class="bg-brand-black text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-neonBlue selection:text-white">
+<body data-page="workshop">
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute inset-0 bg-[radial-gradient(#5b8cbf_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.14]"></div>
-    <div class="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-brand-neonBlue/10 blur-[120px] animate-pulse-slow"></div>
-    <div class="absolute top-[40%] -right-[10%] w-[500px] h-[500px] rounded-full bg-brand-neonTeal/10 blur-[130px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-</div>
+<div class="bg-effects" aria-hidden="true"></div>
 
-<div class="relative z-10 flex flex-col min-h-screen">
+<div class="page-shell page-content">
 
-    <header class="sticky top-0 z-50 w-full glass-panel border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded-lg">
-                <div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center shadow-lg shadow-brand-neonBlue/20" aria-hidden="true">
-                    <span class="font-mono font-bold text-white text-sm">BAI</span>
-                </div>
-                <div class="min-w-0">
-                    <p class="font-extrabold text-white text-sm sm:text-base tracking-tight leading-tight truncate sm:whitespace-normal">Bespoke AI Workflow Engineering Ltd</p>
-                    <span class="text-xs text-brand-neonTeal font-mono tracking-wider">AGENTIC AI • REGULATED SECTORS</span>
-                </div>
-            </a>
-
-            <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider" aria-label="Primary">
-                <a href="index.html#about" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">About</a>
-                <a href="index.html#case-studies" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Case Studies</a>
-                <a href="index.html#offerings" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Specialisations</a>
-                <a href="index.html#engagement" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">How We Work</a>
-                <a href="workshop.html" class="text-brand-neonTeal focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1" aria-current="page">Workshop</a>
-                <a href="index.html#contact" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Contact</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <a href="#apply" class="hidden sm:inline-flex items-center justify-center px-5 h-11 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg shadow-lg hover:shadow-brand-neonTeal/10 hover:brightness-110 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black">
-                    Apply for a Seat
-                </a>
-                <button type="button" id="mobile-menu-btn" class="lg:hidden text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue p-2 rounded" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
-                    <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-white/5 absolute top-20 left-0 w-full px-6 py-6 space-y-4" role="navigation" aria-label="Mobile">
-            <a href="index.html#about" class="block text-slate-300 hover:text-white py-1">About</a>
-            <a href="index.html#case-studies" class="block text-slate-300 hover:text-white py-1">Case Studies</a>
-            <a href="index.html#offerings" class="block text-slate-300 hover:text-white py-1">Specialisations</a>
-            <a href="index.html#engagement" class="block text-slate-300 hover:text-white py-1">How We Work</a>
-            <a href="workshop.html" class="block text-brand-neonTeal py-1" aria-current="page">Workshop</a>
-            <a href="index.html#contact" class="block text-slate-300 hover:text-white py-1">Contact</a>
-            <a href="#apply" class="block w-full text-center py-2.5 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg">Apply for a Seat</a>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <main id="main-content">
 
-    <section class="relative py-16 sm:py-20 px-4" aria-labelledby="workshop-heading">
-        <div class="max-w-3xl mx-auto w-full relative z-10 space-y-6">
-            <span class="text-brand-neonBlue font-mono text-xs uppercase tracking-wider block">Cohort 1 · September–October 2026 · Dublin</span>
-            <h1 id="workshop-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Cross-Sector <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neonBlue via-brand-neonTeal to-brand-neonGreen">Agentic Impact</span> Workshop
+    <section class="section--compact" aria-labelledby="workshop-heading">
+        <div class="container-sm stack-lg">
+            <span class="text-mono-label text-mono-label--blue">Cohort 1 · September–October 2026 · Dublin</span>
+            <h1 id="workshop-heading" class="heading-hero">
+                Cross-Sector <span class="text-gradient">Agentic Impact</span> Workshop
             </h1>
-            <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+            <p class="text-lead">
                 Find one automatable bottleneck in half a day — with leaders from pharma, engineering, ops, and executive roles in the same room.
             </p>
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Not a webinar. Not an AI trends keynote. A facilitated working session where you map a real recurring task, discover how the same friction patterns show up across industries, and leave with a concrete <strong class="text-white">two-week pilot scope</strong> — even if you never hire us.
+            <p class="text-body-sm">
+                Not a webinar. Not an AI trends keynote. A facilitated working session where you map a real recurring task, discover how the same friction patterns show up across industries, and leave with a concrete <strong class="text-strong">two-week pilot scope</strong> — even if you never hire us.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                <a href="#apply" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-sm font-semibold tracking-wider text-white rounded-xl shadow-xl shadow-brand-neonBlue/15 hover:shadow-brand-neonTeal/20 hover:brightness-110 hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <div class="cta-row">
+                <a href="#apply" class="btn btn-primary btn-primary--lg">
                     <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i> Apply for a Seat
                 </a>
-                <a id="one-pager-link" href="workshop-one-pager.pdf" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-brand-slate/40 border border-white/10 hover:border-brand-neonBlue/30 text-sm font-semibold tracking-wider text-slate-300 hover:text-white rounded-xl backdrop-blur-sm hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue" download>
-                    <i class="fa-solid fa-file-pdf text-xs" aria-hidden="true"></i> Download One-Pager
+                <a id="one-pager-link" href="workshop-one-pager.pdf" class="btn btn-secondary" download>
+                    <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Download One-Pager
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="px-4 pb-12" aria-labelledby="cohort-glance">
-        <div class="max-w-3xl mx-auto">
-            <div class="glass-panel rounded-2xl p-6 sm:p-8">
-                <h2 id="cohort-glance" class="text-lg font-bold text-white mb-4">Cohort 1 — at a glance</h2>
-                <dl class="space-y-3 text-sm">
-                    <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-white/5 pb-3">
-                        <dt class="text-slate-500 font-mono text-xs uppercase shrink-0 sm:w-36">Format</dt>
-                        <dd class="text-slate-300">Hybrid — 7–8 in-person (Dublin) + up to 2 virtual observers</dd>
+    <section class="section--tight" aria-labelledby="cohort-glance">
+        <div class="container-sm">
+            <div class="glass-panel info-panel">
+                <h2 id="cohort-glance" class="heading-card">Cohort 1 — at a glance</h2>
+                <dl class="info-dl">
+                    <div class="info-dl-row">
+                        <dt>Format</dt>
+                        <dd>Hybrid — 7–8 in-person (Dublin) + up to 2 virtual observers</dd>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-white/5 pb-3">
-                        <dt class="text-slate-500 font-mono text-xs uppercase shrink-0 sm:w-36">Duration</dt>
-                        <dd class="text-slate-300">3.5–4 hours + optional networking</dd>
+                    <div class="info-dl-row">
+                        <dt>Duration</dt>
+                        <dd>3.5–4 hours + optional networking</dd>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-white/5 pb-3">
-                        <dt class="text-slate-500 font-mono text-xs uppercase shrink-0 sm:w-36">Seats</dt>
-                        <dd class="text-slate-300">8 in-person (curated; max 2 per organisation)</dd>
+                    <div class="info-dl-row">
+                        <dt>Seats</dt>
+                        <dd>8 in-person (curated; max 2 per organisation)</dd>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-white/5 pb-3">
-                        <dt class="text-slate-500 font-mono text-xs uppercase shrink-0 sm:w-36">Investment</dt>
-                        <dd class="text-white font-semibold">€49 early bird · €79 standard · €99 final seats</dd>
+                    <div class="info-dl-row">
+                        <dt>Investment</dt>
+                        <dd class="highlight">€49 early bird · €79 standard · €99 final seats</dd>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:gap-4">
-                        <dt class="text-slate-500 font-mono text-xs uppercase shrink-0 sm:w-36">Date</dt>
-                        <dd class="text-slate-300">September–October 2026 — date confirmed after curation closes</dd>
+                    <div class="info-dl-row">
+                        <dt>Date</dt>
+                        <dd>September–October 2026 — date confirmed after curation closes</dd>
                     </div>
                 </dl>
-                <p class="text-xs text-slate-500 mt-4 leading-relaxed">Payment link sent after your application is accepted. Seats are curated across sectors — application does not guarantee a place.</p>
+                <p class="text-xs text-muted info-panel-note">Payment link sent after your application is accepted. Seats are curated across sectors — application does not guarantee a place.</p>
             </div>
         </div>
     </section>
 
-    <section class="py-12 px-4 border-t border-white/5 bg-brand-dark/20" aria-labelledby="who-should-apply">
-        <div class="max-w-3xl mx-auto space-y-6">
-            <h2 id="who-should-apply" class="text-2xl font-extrabold text-white">Who should apply</h2>
-            <ul class="space-y-4 text-sm">
-                <li class="glass-panel p-4 rounded-xl"><strong class="text-white">Regulated</strong> <span class="text-slate-400">— QA, compliance, ops (pharma, medical device, GDP)</span></li>
-                <li class="glass-panel p-4 rounded-xl"><strong class="text-white">Engineering</strong> <span class="text-slate-400">— CTO, VP Eng, tech lead</span></li>
-                <li class="glass-panel p-4 rounded-xl"><strong class="text-white">Ops / finance</strong> <span class="text-slate-400">— analyst, controller, process owner</span></li>
-                <li class="glass-panel p-4 rounded-xl"><strong class="text-white">Executive</strong> <span class="text-slate-400">— innovation director, division head</span></li>
+    <section class="section--tight section--border-top section--alt-light" aria-labelledby="who-should-apply">
+        <div class="container-sm stack-lg">
+            <h2 id="who-should-apply" class="heading-subsection">Who should apply</h2>
+            <ul class="stack">
+                <li class="glass-panel card--flat"><strong class="text-white">Regulated</strong> <span class="text-muted">— QA, compliance, ops (pharma, medical device, GDP)</span></li>
+                <li class="glass-panel card--flat"><strong class="text-white">Engineering</strong> <span class="text-muted">— CTO, VP Eng, tech lead</span></li>
+                <li class="glass-panel card--flat"><strong class="text-white">Ops / finance</strong> <span class="text-muted">— analyst, controller, process owner</span></li>
+                <li class="glass-panel card--flat"><strong class="text-white">Executive</strong> <span class="text-muted">— innovation director, division head</span></li>
             </ul>
-            <p class="text-slate-400 text-sm">We curate a balanced mix across sectors. Application required — no open walk-ins for cohort 1.</p>
+            <p class="text-body-sm">We curate a balanced mix across sectors. Application required — no open walk-ins for cohort 1.</p>
         </div>
     </section>
 
-    <section class="py-12 px-4 border-t border-white/5" aria-labelledby="what-you-leave-with">
-        <div class="max-w-3xl mx-auto space-y-6">
-            <h2 id="what-you-leave-with" class="text-2xl font-extrabold text-white">What you'll leave with</h2>
-            <ul class="space-y-3 text-sm text-slate-300">
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Personal Automation Map — bottleneck, steps, delay point, micro-agent candidate</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Qualification scorecard — Green / Amber / Red with recommended next step</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Cross-sector pattern insights — queues, validation, shadow AI</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Optional complimentary 30-min Phase 1 scoping call (Green / Amber attendees)</span></li>
+    <section class="section--tight section--border-top" aria-labelledby="what-you-leave-with">
+        <div class="container-sm stack-lg">
+            <h2 id="what-you-leave-with" class="heading-subsection">What you'll leave with</h2>
+            <ul class="list-check">
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Personal Automation Map — bottleneck, steps, delay point, micro-agent candidate</span></li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Qualification scorecard — Green / Amber / Red with recommended next step</span></li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Cross-sector pattern insights — queues, validation, shadow AI</span></li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Optional complimentary 30-min Phase 1 scoping call (Green / Amber attendees)</span></li>
             </ul>
         </div>
     </section>
 
-    <section class="py-12 px-4 border-t border-white/5 bg-brand-dark/20" aria-labelledby="agenda">
-        <div class="max-w-3xl mx-auto space-y-6">
-            <h2 id="agenda" class="text-2xl font-extrabold text-white">Agenda (in-person core)</h2>
-            <ol class="space-y-3 text-sm text-slate-400 list-decimal list-inside">
-                <li><strong class="text-slate-200">Framing</strong> — vertical micro-agents vs horizontal co-pilots (30 min)</li>
-                <li><strong class="text-slate-200">Individual bottleneck mapping exercise</strong> (60 min)</li>
-                <li><strong class="text-slate-200">Cross-sector pattern panel</strong> (45 min)</li>
-                <li><strong class="text-slate-200">Scorecard + two-week pilot scope</strong> (45 min)</li>
-                <li><strong class="text-slate-200">Close + book scoping calls</strong> (30 min)</li>
+    <section class="section--tight section--border-top section--alt-light" aria-labelledby="agenda">
+        <div class="container-sm stack-lg">
+            <h2 id="agenda" class="heading-subsection">Agenda (in-person core)</h2>
+            <ol class="agenda-list">
+                <li><strong>Framing</strong> — vertical micro-agents vs horizontal co-pilots (30 min)</li>
+                <li><strong>Individual bottleneck mapping exercise</strong> (60 min)</li>
+                <li><strong>Cross-sector pattern panel</strong> (45 min)</li>
+                <li><strong>Scorecard + two-week pilot scope</strong> (45 min)</li>
+                <li><strong>Close + book scoping calls</strong> (30 min)</li>
             </ol>
         </div>
     </section>
 
-    <section id="apply" class="py-16 px-4 border-t border-white/5" aria-labelledby="apply-heading">
-        <div class="max-w-3xl mx-auto text-center space-y-6">
-            <span class="text-brand-neonTeal font-mono text-xs uppercase tracking-wider block">// Curated Application</span>
-            <h2 id="apply-heading" class="text-2xl sm:text-3xl font-extrabold text-white">Apply for Cohort 1</h2>
-            <p class="text-slate-400 text-sm max-w-xl mx-auto">Complete the short application form. You'll hear within 5 business days with an invitation to pay and confirm, a waitlist place, or a nurture note with case study links.</p>
-            <a id="workshop-apply-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition shadow-lg hover:brightness-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+    <section id="apply" class="section--compact section--border-top" aria-labelledby="apply-heading">
+        <div class="container-sm text-center stack-lg">
+            <span class="text-mono-label text-mono-label--teal">// Curated Application</span>
+            <h2 id="apply-heading" class="heading-subsection">Apply for Cohort 1</h2>
+            <p class="text-body-sm">Complete the short application form. You'll hear within 5 business days with an invitation to pay and confirm, a waitlist place, or a nurture note with case study links.</p>
+            <a id="workshop-apply-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-primary--block">
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Apply for a Seat
             </a>
-            <p class="text-xs text-slate-500">Prefer to discuss first? <a id="workshop-calendly-link" href="#" class="text-brand-neonBlue hover:underline">Book a 30-minute discovery call</a> or email <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>.</p>
+            <p class="text-xs text-muted">Prefer to discuss first? <a id="workshop-calendly-link" href="#" class="link-brand">Book a 30-minute discovery call</a> or email <a href="mailto:karlnolan@gmail.com" class="link-brand contact-email">karlnolan@gmail.com</a>.</p>
         </div>
     </section>
 
-    <section class="py-12 px-4 border-t border-white/5 bg-brand-dark/10">
-        <div class="max-w-3xl mx-auto text-sm text-slate-400 space-y-3">
+    <section class="section--tight section--border-top section--alt-faint">
+        <div class="container-sm stack text-body-sm">
             <p><strong class="text-white">Karl Nolan</strong> · Principal Consultant · 26 years enterprise architecture &amp; agentic AI workflows</p>
             <p>Case studies: predictive quality systems (12–18 month regulatory lead time) · GDP compliance automation with zero-API document intake</p>
-            <p><a href="index.html" class="text-brand-neonBlue hover:underline">← Back to main site</a></p>
+            <p><a href="index.html" class="link-brand">← Back to main site</a></p>
         </div>
     </section>
 
     </main>
 
-    <footer class="mt-auto bg-brand-black border-t border-white/5 py-12 px-4 text-xs">
-        <div class="max-w-7xl mx-auto space-y-8">
-            <nav class="flex flex-wrap justify-center gap-6 text-slate-400 uppercase tracking-wider font-semibold" aria-label="Footer">
-                <a href="index.html#about" class="hover:text-white transition">About</a>
-                <a href="index.html#case-studies" class="hover:text-white transition">Case Studies</a>
-                <a href="index.html#offerings" class="hover:text-white transition">Specialisations</a>
-                <a href="index.html#engagement" class="hover:text-white transition">How We Work</a>
-                <a href="workshop.html" class="text-brand-neonTeal">Workshop</a>
-                <a href="index.html#contact" class="hover:text-white transition">Contact</a>
-            </nav>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-white/5">
-                <div class="flex items-center gap-3">
-                    <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center text-white text-[10px] font-bold font-mono" aria-hidden="true">BAI</div>
-                    <div>
-                        <p class="text-white font-bold leading-tight text-sm sm:text-base">Bespoke AI Workflow Engineering Ltd</p>
-                        <p class="text-[11px] text-slate-500 font-mono mt-1">Limerick, Ireland · Regulated Sector Consulting</p>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-center md:text-right font-light">© 2026 Bespoke AI Workflow Engineering Ltd. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 </div>
 
 <script src="js/site-config.js"></script>
+<script src="js/includes.js"></script>
+<script src="js/site.js"></script>
 <script>
     document.getElementById('workshop-apply-link').href = SITE.workshopApplicationFormUrl;
     document.getElementById('workshop-calendly-link').href = SITE.calendlyUrl;
     document.getElementById('one-pager-link').href = SITE.workshopOnePagerPdf;
-    document.querySelectorAll('a.contact-email').forEach(el => {
+    document.querySelectorAll('a.contact-email').forEach(function (el) {
         el.href = 'mailto:' + SITE.contactEmail;
         el.textContent = SITE.contactEmail;
-    });
-
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    function setMenuOpen(open) {
-        mobileMenu.classList.toggle('hidden', !open);
-        mobileMenuBtn.setAttribute('aria-expanded', String(open));
-        mobileMenuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-        document.body.style.overflow = open ? 'hidden' : '';
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.toggle('fa-bars', !open);
-        icon.classList.toggle('fa-xmark', open);
-    }
-
-    mobileMenuBtn.addEventListener('click', () => {
-        setMenuOpen(mobileMenu.classList.contains('hidden'));
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => setMenuOpen(false));
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) setMenuOpen(false);
     });
 </script>
 </body>

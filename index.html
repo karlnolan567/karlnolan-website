@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,211 +45,156 @@
     }
     </script>
 </head>
-<body class="bg-brand-black text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-neonBlue selection:text-white">
+<body data-page="home">
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute inset-0 bg-[radial-gradient(#5b8cbf_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.14]"></div>
-    <div class="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-brand-neonBlue/10 blur-[120px] animate-pulse-slow"></div>
-    <div class="absolute top-[40%] -right-[10%] w-[500px] h-[500px] rounded-full bg-brand-neonTeal/10 blur-[130px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-    <div class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-indigo-900/20 blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div>
-</div>
+<div class="bg-effects" aria-hidden="true"></div>
 
-<div class="relative z-10 flex flex-col min-h-screen">
+<div class="page-shell page-content">
 
-    <header class="sticky top-0 z-50 w-full glass-panel border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded-lg">
-                <div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center shadow-lg shadow-brand-neonBlue/20" aria-hidden="true">
-                    <span class="font-mono font-bold text-white text-sm">BAI</span>
-                </div>
-                <div class="min-w-0">
-                    <p class="font-extrabold text-white text-sm sm:text-base tracking-tight leading-tight truncate sm:whitespace-normal">Bespoke AI Workflow Engineering Ltd</p>
-                    <span class="text-xs text-brand-neonTeal font-mono tracking-wider">AGENTIC AI • REGULATED SECTORS</span>
-                </div>
-            </a>
-
-            <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider" aria-label="Primary">
-                <a href="#about" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">About</a>
-                <a href="#case-studies" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Case Studies</a>
-                <a href="#offerings" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Specialisations</a>
-                <a href="#engagement" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">How We Work</a>
-                <a href="workshop.html" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Workshop</a>
-                <a href="#contact" class="text-slate-400 hover:text-white focus-visible:text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded px-1">Contact</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 h-11 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg shadow-lg hover:shadow-brand-neonTeal/10 hover:brightness-110 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black">
-                    Initiate Contact
-                </a>
-                <button type="button" id="mobile-menu-btn" class="lg:hidden text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue p-2 rounded" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
-                    <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-white/5 absolute top-20 left-0 w-full px-6 py-6 space-y-4" role="navigation" aria-label="Mobile">
-            <a href="#about" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">About</a>
-            <a href="#case-studies" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">Case Studies</a>
-            <a href="#offerings" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">Specialisations</a>
-            <a href="#engagement" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">How We Work</a>
-            <a href="workshop.html" class="block text-slate-300 hover:text-white py-1 focus:outline-none focus-visible:text-brand-neonTeal">Workshop</a>
-            <a href="#contact" class="block w-full text-center py-2.5 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg">Initiate Contact</a>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <main id="main-content">
 
-    <section class="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center py-12 sm:py-16 px-4 overflow-hidden" aria-labelledby="hero-heading">
-        <div class="max-w-4xl mx-auto w-full relative z-10">
-            <div class="space-y-8 text-center">
-                <div class="flex flex-wrap items-center justify-center gap-2">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-neonBlue/10 border border-brand-neonBlue/20 text-brand-neonBlue text-xs font-mono tracking-wider uppercase">
-                        <span class="w-2 h-2 rounded-full bg-brand-neonBlue motion-safe-ping animate-ping" aria-hidden="true"></span>
+    <section class="section--hero" aria-labelledby="hero-heading">
+        <div class="container-md">
+            <div class="hero-content">
+                <div class="badge-row">
+                    <div class="badge badge--blue">
+                        <span class="badge-dot" aria-hidden="true"></span>
                         Pharma
                     </div>
-                    <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-brand-neonTeal/10 border border-brand-neonTeal/20 text-brand-neonTeal text-xs font-mono tracking-wider uppercase">MedTech</div>
-                    <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-brand-neonGreen/10 border border-brand-neonGreen/20 text-brand-neonGreen text-xs font-mono tracking-wider uppercase">GDP Compliance</div>
-                    <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-400/25 text-violet-300 text-xs font-mono tracking-wider uppercase">ERP</div>
-                    <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/25 text-amber-300 text-xs font-mono tracking-wider uppercase">FinTech</div>
-                    <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/25 text-emerald-300 text-xs font-mono tracking-wider uppercase">Recycling</div>
+                    <div class="badge badge--teal">MedTech</div>
+                    <div class="badge badge--green">GDP Compliance</div>
+                    <div class="badge badge--violet">ERP</div>
+                    <div class="badge badge--amber">FinTech</div>
+                    <div class="badge badge--emerald">Recycling</div>
                 </div>
 
-                <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                    Vertical <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neonBlue via-brand-neonTeal to-brand-neonGreen">Agentic AI</span> for Regulated Enterprise
+                <h1 id="hero-heading" class="heading-hero">
+                    Vertical <span class="text-gradient">Agentic AI</span> for Regulated Enterprise
                 </h1>
 
-                <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+                <p class="text-lead">
                     Deterministic multi-agent pipelines, cloud-native architecture, and hands-on delivery — built for audit-ready, regulated environments.
                 </p>
 
-                <blockquote class="max-w-xl mx-auto border-l-0 sm:border-l-2 border-brand-neonBlue sm:pl-6 py-2">
-                    <p class="text-slate-300 text-sm sm:text-base font-medium italic">
-                        "Clean Architecture: Do it right the first time, and it will be done right."
-                    </p>
+                <blockquote class="blockquote">
+                    <p>"Clean Architecture: Do it right the first time, and it will be done right."</p>
                 </blockquote>
 
-                <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                    Need zero-API data ingestion, legacy modernisation, or secure agentic workflows in a regulated supply chain? <strong class="text-white font-semibold">Bespoke AI Workflow Engineering Ltd</strong> combines 26+ years of enterprise leadership with high-velocity, hands-on execution — no advisory middleware.
+                <p class="text-body">
+                    Need zero-API data ingestion, legacy modernisation, or secure agentic workflows in a regulated supply chain? <strong class="text-strong">Bespoke AI Workflow Engineering Ltd</strong> combines 26+ years of enterprise leadership with high-velocity, hands-on execution — no advisory middleware.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                    <a href="#contact" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-sm font-semibold tracking-wider text-white rounded-xl shadow-xl shadow-brand-neonBlue/15 hover:shadow-brand-neonTeal/20 hover:brightness-110 hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <div class="cta-row">
+                    <a href="#contact" class="btn btn-primary btn-primary--lg">
                         <i class="fa-solid fa-bolt" aria-hidden="true"></i> Start a Conversation
                     </a>
-                    <a href="#engagement" class="inline-flex items-center justify-center gap-2 px-8 h-14 bg-brand-slate/40 border border-white/10 hover:border-brand-neonBlue/30 text-sm font-semibold tracking-wider text-slate-300 hover:text-white rounded-xl backdrop-blur-sm hover:-translate-y-0.5 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
+                    <a href="#engagement" class="btn btn-secondary">
                         How We Work <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-lg mx-auto text-center border-t border-white/5">
+                <div class="stats-grid">
                     <div>
-                        <p class="text-2xl font-bold text-white font-mono">26+</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Years in Enterprise Delivery</p>
+                        <p class="stat-value">26+</p>
+                        <p class="stat-label">Years in Enterprise Delivery</p>
                     </div>
                     <div>
-                        <p class="text-2xl font-bold text-brand-neonTeal font-mono">NDA</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">On Every Engagement</p>
+                        <p class="stat-value stat-value--teal">NDA</p>
+                        <p class="stat-label">On Every Engagement</p>
                     </div>
                     <div>
-                        <p class="text-2xl font-bold text-brand-neonGreen font-mono">DORA</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Metrics-Led Delivery</p>
+                        <p class="stat-value stat-value--green">DORA</p>
+                        <p class="stat-label">Metrics-Led Delivery</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="border-y border-brand-neonBlue/20 bg-brand-neonBlue/5 px-4 py-4" aria-label="Workshop announcement">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div class="space-y-1">
-                <p class="text-xs font-mono uppercase tracking-wider text-brand-neonBlue">Cohort 1 · Dublin · Sep–Oct 2026</p>
-                <p class="text-sm text-slate-300"><strong class="text-white">Cross-Sector Agentic Impact Workshop</strong> — 8 curated in-person seats. Map one automatable bottleneck in half a day.</p>
+    <section class="announce-bar" aria-label="Workshop announcement">
+        <div class="announce-bar__inner">
+            <div class="stack">
+                <p class="text-mono-label text-mono-label--blue">Cohort 1 · Dublin · Sep–Oct 2026</p>
+                <p class="text-sm text-muted"><strong class="text-white">Cross-Sector Agentic Impact Workshop</strong> — 8 curated in-person seats. Map one automatable bottleneck in half a day.</p>
             </div>
-            <a href="workshop.html" class="inline-flex shrink-0 items-center justify-center gap-2 px-6 h-11 text-xs font-semibold uppercase tracking-widest text-white bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-lg shadow-lg hover:brightness-110 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
-                Apply Now <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
+            <a href="workshop.html" class="btn btn-primary btn-sm">
+                Apply Now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </section>
 
-    <section id="about" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/30">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="relative group">
-                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal rounded-2xl blur opacity-35 group-hover:opacity-55 transition duration-1000 group-hover:duration-200" aria-hidden="true"></div>
-                        <div class="relative bg-brand-dark p-6 rounded-2xl border border-white/10">
-                            <div class="relative w-full aspect-[4/3] bg-brand-dark rounded-xl mb-6 border border-brand-neonBlue/20 overflow-hidden">
-                                <img src="images/Karl%20Nolan.jpeg" alt="Karl Nolan, Principal Consultant" class="w-full h-full object-cover object-top" id="profile-photo" width="800" height="600" onload="document.getElementById('profile-photo-fallback').classList.add('hidden')" onerror="this.classList.add('hidden'); document.getElementById('profile-photo-fallback').classList.remove('hidden');">
-                                <div id="profile-photo-fallback" class="absolute inset-0 hidden flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-brand-slate to-brand-dark" aria-hidden="true">
-                                    <div class="h-24 w-24 rounded-full bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center text-2xl font-bold text-white font-mono shadow-lg">BAI</div>
-                                </div>
+    <section id="about" class="section section--border-top section--alt">
+        <div class="container">
+            <div class="about-grid">
+                <div class="profile-card-wrap">
+                    <div class="profile-card-glow" aria-hidden="true"></div>
+                    <div class="profile-card">
+                        <div class="profile-photo">
+                            <img src="images/Karl%20Nolan.jpeg" alt="Karl Nolan, Principal Consultant" id="profile-photo" width="800" height="600" onload="document.getElementById('profile-photo-fallback').classList.remove('is-visible')" onerror="this.classList.add('hidden'); document.getElementById('profile-photo-fallback').classList.add('is-visible');">
+                            <div id="profile-photo-fallback" class="profile-photo-fallback" aria-hidden="true">
+                                <div class="profile-avatar-fallback">BAI</div>
                             </div>
-                            <h2 class="text-2xl font-bold text-white">Karl Nolan</h2>
-                            <p class="text-brand-neonTeal font-mono text-sm mb-4">Principal Consultant & Solutions Architect</p>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                                Principal Consultant at Bespoke AI Workflow Engineering Ltd. Directing global teams of 45+ engineers, leading GCP/Azure migrations, and delivering agentic AI pipelines for regulated enterprise operations.
-                            </p>
-                            <ul class="text-slate-400 text-xs leading-relaxed mb-4 space-y-1.5">
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-graduation-cap text-brand-neonBlue mt-0.5" aria-hidden="true"></i><span>BSc Applied Computing (First Class Honours), SETU/WIT</span></li>
-                                <li class="flex items-start gap-2"><i class="fa-brands fa-google text-brand-neonTeal mt-0.5" aria-hidden="true"></i><span>Google Cloud Digital Leader Certification</span></li>
-                                <li class="flex items-start gap-2"><i class="fa-solid fa-award text-brand-neonGreen mt-0.5" aria-hidden="true"></i><span>Professional Academy Diploma in Leadership (Distinction), UCD</span></li>
-                            </ul>
-                            <a href="https://www.linkedin.com/in/karlnolan" id="linkedin-profile" class="inline-flex items-center gap-2 text-sm text-brand-neonBlue hover:text-brand-neonTeal transition mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue rounded" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i> Connect on LinkedIn
-                            </a>
-                            <div class="p-3.5 bg-brand-slate/30 border border-white/5 rounded-xl text-xs flex items-center gap-3">
-                                <i class="fa-solid fa-shield-halved text-brand-neonGreen text-lg" aria-hidden="true"></i>
-                                <span class="text-slate-400 leading-snug">Combining high-level strategic advisory with hands-on, high-velocity engineering output.</span>
-                            </div>
+                        </div>
+                        <h2 class="profile-name">Karl Nolan</h2>
+                        <p class="profile-role">Principal Consultant & Solutions Architect</p>
+                        <p class="text-body-sm">
+                            Principal Consultant at Bespoke AI Workflow Engineering Ltd. Directing global teams of 45+ engineers, leading GCP/Azure migrations, and delivering agentic AI pipelines for regulated enterprise operations.
+                        </p>
+                        <ul class="credential-list">
+                            <li><i class="fa-solid fa-graduation-cap icon-blue" aria-hidden="true"></i><span>BSc Applied Computing (First Class Honours), SETU/WIT</span></li>
+                            <li><i class="fa-brands fa-google icon-teal" aria-hidden="true"></i><span>Google Cloud Digital Leader Certification</span></li>
+                            <li><i class="fa-solid fa-award icon-green" aria-hidden="true"></i><span>Professional Academy Diploma in Leadership (Distinction), UCD</span></li>
+                        </ul>
+                        <a href="https://www.linkedin.com/in/karlnolan" id="linkedin-profile" class="linkedin-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+                        </a>
+                        <div class="info-callout">
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                            <span>Combining high-level strategic advisory with hands-on, high-velocity engineering output.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 space-y-8">
+                <div class="stack-xl">
                     <div>
-                        <span class="text-brand-neonBlue font-mono text-xs uppercase tracking-wider block mb-2">// Active Engagement Strategy</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Direct Execution. High Velocity. Zero Advisory Middleware.</h2>
+                        <span class="text-mono-label text-mono-label--blue">// Active Engagement Strategy</span>
+                        <h2 class="heading-section">Direct Execution. High Velocity. Zero Advisory Middleware.</h2>
                     </div>
-                    <p class="text-slate-400 font-light leading-relaxed">
-                        I do not operate as an abstract advisory agency that delivers lengthy, impractical slide decks. At <strong class="text-white">Bespoke AI Workflow Engineering Ltd</strong>, we deliver operational software — context-engineered agent pods, zero-API ingestion pipelines, and cloud-native architectures built for audit-ready regulated environments.
+                    <p class="text-body">
+                        I do not operate as an abstract advisory agency that delivers lengthy, impractical slide decks. At <strong class="text-strong">Bespoke AI Workflow Engineering Ltd</strong>, we deliver operational software — context-engineered agent pods, zero-API ingestion pipelines, and cloud-native architectures built for audit-ready regulated environments.
                     </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue" aria-hidden="true">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
+                    <div class="grid-2">
+                        <div class="feature-item">
+                            <div class="feature-icon feature-icon--blue" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
                             <div>
-                                <h3 class="text-white font-semibold text-sm">Managed 45+ Engineers</h3>
-                                <p class="text-xs text-slate-400 mt-1">Directing global enterprise development groups, driving scrum practices and performance.</p>
+                                <h3 class="feature-title">Managed 45+ Engineers</h3>
+                                <p class="feature-desc">Directing global enterprise development groups, driving scrum practices and performance.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonTeal/10 flex items-center justify-center text-brand-neonTeal" aria-hidden="true">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
+                        <div class="feature-item">
+                            <div class="feature-icon feature-icon--teal" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
                             <div>
-                                <h3 class="text-white font-semibold text-sm">DORA-Driven Delivery</h3>
-                                <p class="text-xs text-slate-400 mt-1">Accelerating deployment frequency, minimizing MTTR, and stabilizing production metrics.</p>
+                                <h3 class="feature-title">DORA-Driven Delivery</h3>
+                                <p class="feature-desc">Accelerating deployment frequency, minimizing MTTR, and stabilizing production metrics.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonGreen/10 flex items-center justify-center text-brand-neonGreen" aria-hidden="true">
-                                <i class="fa-solid fa-server"></i>
-                            </div>
+                        <div class="feature-item">
+                            <div class="feature-icon feature-icon--green" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
                             <div>
-                                <h3 class="text-white font-semibold text-sm">Cloud-Native Transformations</h3>
-                                <p class="text-xs text-slate-400 mt-1">Engineering high-availability, microservices environments on Google Cloud Platform (GCP) and Azure.</p>
+                                <h3 class="feature-title">Cloud-Native Transformations</h3>
+                                <p class="feature-desc">Engineering high-availability, microservices environments on Google Cloud Platform (GCP) and Azure.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue" aria-hidden="true">
-                                <i class="fa-solid fa-file-signature"></i>
-                            </div>
+                        <div class="feature-item">
+                            <div class="feature-icon feature-icon--blue" aria-hidden="true"><i class="fa-solid fa-file-signature"></i></div>
                             <div>
-                                <h3 class="text-white font-semibold text-sm">Protected & IP Safeguarded</h3>
-                                <p class="text-xs text-slate-400 mt-1">All consulting is governed strictly under mutually signed non-disclosure agreements to protect proprietary frameworks.</p>
+                                <h3 class="feature-title">Protected & IP Safeguarded</h3>
+                                <p class="feature-desc">All consulting is governed strictly under mutually signed non-disclosure agreements to protect proprietary frameworks.</p>
                             </div>
                         </div>
                     </div>
@@ -258,458 +203,299 @@
         </div>
     </section>
 
-    <section id="case-studies" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/20">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-brand-neonBlue font-mono text-xs uppercase tracking-wider block">// Anonymised Client Outcomes</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Case Studies</h2>
-                <p class="text-slate-400 font-light text-sm">Representative engagements under NDA. Client names and proprietary details are withheld; outcomes reflect measurable delivery impact.</p>
+    <section id="case-studies" class="section section--border-top section--alt-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="text-mono-label text-mono-label--blue">// Anonymised Client Outcomes</span>
+                <h2 class="heading-section">Case Studies</h2>
+                <p class="text-body-sm">Representative engagements under NDA. Client names and proprietary details are withheld; outcomes reflect measurable delivery impact.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonTeal uppercase tracking-wider mb-3">Financial Services • GCP</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Monolith to Microservices Migration</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Legacy .NET monolith blocking release cadence and scaling on peak trading windows.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Strangler-fig decomposition, event-driven boundaries, and phased cutover on GCP with zero-downtime releases.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Deployment frequency increased from monthly to weekly; production incidents reduced within two quarters.</dd>
-                        </div>
+            <div class="grid-3">
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--teal">Financial Services • GCP</span>
+                    <h3 class="card-title">Monolith to Microservices Migration</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Legacy .NET monolith blocking release cadence and scaling on peak trading windows.</dd></div>
+                        <div><dt>Approach</dt><dd>Strangler-fig decomposition, event-driven boundaries, and phased cutover on GCP with zero-downtime releases.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Deployment frequency increased from monthly to weekly; production incidents reduced within two quarters.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonBlue uppercase tracking-wider mb-3">Global SaaS • Agentic AI</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Engineering Pod Automation</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">45-person engineering org needed faster PR throughput without sacrificing review quality or security gates.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Context-engineered agent workflows, standardised prompts, and CI-integrated validation for boilerplate and test scaffolding.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Meaningful reduction in cycle time for routine features; senior engineers refocused on architecture and complex defects.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--blue">Global SaaS • Agentic AI</span>
+                    <h3 class="card-title">Engineering Pod Automation</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>45-person engineering org needed faster PR throughput without sacrificing review quality or security gates.</dd></div>
+                        <div><dt>Approach</dt><dd>Context-engineered agent workflows, standardised prompts, and CI-integrated validation for boilerplate and test scaffolding.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Meaningful reduction in cycle time for routine features; senior engineers refocused on architecture and complex defects.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonGreen uppercase tracking-wider mb-3">Pharma • Compliance • Agentic AI</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Regulated Supply Chain Verification</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Multi-tenant compliance platform needed automated GDP verification against public registries with no REST APIs and document-heavy regulatory portals.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Zero-API Playwright ingestion, multi-tenant relational schema, PDF document processing, and an agentic extraction pipeline with human-in-the-loop fallbacks for audit-visible reasoning.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Automated supplier verification at scale; deterministic validation states with full audit trails suitable for regulatory inspection.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--green">Pharma • Compliance • Agentic AI</span>
+                    <h3 class="card-title">Regulated Supply Chain Verification</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Multi-tenant compliance platform needed automated GDP verification against public registries with no REST APIs and document-heavy regulatory portals.</dd></div>
+                        <div><dt>Approach</dt><dd>Zero-API Playwright ingestion, multi-tenant relational schema, PDF document processing, and an agentic extraction pipeline with human-in-the-loop fallbacks for audit-visible reasoning.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Automated supplier verification at scale; deterministic validation states with full audit trails suitable for regulatory inspection.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonTeal uppercase tracking-wider mb-3">B2B • Outreach • Gmail</span>
-                    <h3 class="text-lg font-bold text-white mb-3">LinkedIn Lead Generation</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Regulated-sector consultancy needed repeatable outreach without manual copy-paste across lead lists and email channels.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Template-driven LinkedIn workflow exporting CSV leads, generating personalised emails, and integrating with Gmail for structured send and reply tracking.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Consistent, auditable outreach pipeline with per-prospect correspondence ready for review and dispatch.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--teal">B2B • Outreach • Gmail</span>
+                    <h3 class="card-title">LinkedIn Lead Generation</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Regulated-sector consultancy needed repeatable outreach without manual copy-paste across lead lists and email channels.</dd></div>
+                        <div><dt>Approach</dt><dd>Template-driven LinkedIn workflow exporting CSV leads, generating personalised emails, and integrating with Gmail for structured send and reply tracking.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Consistent, auditable outreach pipeline with per-prospect correspondence ready for review and dispatch.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonBlue uppercase tracking-wider mb-3">Platform • Hermes • Agentic AI</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Multi-Provider Agent Runtime</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Single-vendor AI tooling could not cover Codex, Copilot, Claude, and cloud-hosted models across client environments.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Hermes runtime agents for Codex, Copilot (ACP), Claude, Azure, Gemini, and Bedrock — plus delegated CLI skills (Claude Code, Codex, OpenCode) via an ACP adapter.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Unified orchestration layer swapping providers without rewriting downstream workflows.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--blue">Platform • Hermes • Agentic AI</span>
+                    <h3 class="card-title">Multi-Provider Agent Runtime</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Single-vendor AI tooling could not cover Codex, Copilot, Claude, and cloud-hosted models across client environments.</dd></div>
+                        <div><dt>Approach</dt><dd>Hermes runtime agents for Codex, Copilot (ACP), Claude, Azure, Gemini, and Bedrock — plus delegated CLI skills (Claude Code, Codex, OpenCode) via an ACP adapter.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Unified orchestration layer swapping providers without rewriting downstream workflows.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonGreen uppercase tracking-wider mb-3">Automation • n8n • Documents</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Workflow &amp; Document Pipelines</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Operational teams needed automated hand-offs between email, PDF attachments, and multiple third-party SaaS tools.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Self-hosted n8n flows with Gmail integration, PDF document processing and extraction, webhooks, and CRM/API connectors.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">End-to-end automation from inbox to structured data — reducing manual document handling and system switching.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--green">Automation • n8n • Documents</span>
+                    <h3 class="card-title">Workflow &amp; Document Pipelines</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Operational teams needed automated hand-offs between email, PDF attachments, and multiple third-party SaaS tools.</dd></div>
+                        <div><dt>Approach</dt><dd>Self-hosted n8n flows with Gmail integration, PDF document processing and extraction, webhooks, and CRM/API connectors.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">End-to-end automation from inbox to structured data — reducing manual document handling and system switching.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonTeal uppercase tracking-wider mb-3">Quality • Analytics • Web Platform</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Predictive Quality Intelligence</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Regulated operation needed to ingest quality data from disparate sources and surface systemic risk before inspection cycles.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Data conversion architecture, predictive logic engine, and a web-based reporting dashboard for operational visibility.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Earlier identification of operational instability — supporting proactive remediation rather than reactive discovery.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--teal">Quality • Analytics • Web Platform</span>
+                    <h3 class="card-title">Predictive Quality Intelligence</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Regulated operation needed to ingest quality data from disparate sources and surface systemic risk before inspection cycles.</dd></div>
+                        <div><dt>Approach</dt><dd>Data conversion architecture, predictive logic engine, and a web-based reporting dashboard for operational visibility.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Earlier identification of operational instability — supporting proactive remediation rather than reactive discovery.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonBlue uppercase tracking-wider mb-3">Finance • Documents • Automation</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Invoice &amp; Document Processing</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Finance teams spent significant time extracting data from invoices and unstructured attachments arriving via email.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Automated document ingestion, field extraction, validation rules, and structured hand-off into downstream finance workflows.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Reduced manual document handling and faster processing from receipt to structured record.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--blue">Finance • Documents • Automation</span>
+                    <h3 class="card-title">Invoice &amp; Document Processing</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Finance teams spent significant time extracting data from invoices and unstructured attachments arriving via email.</dd></div>
+                        <div><dt>Approach</dt><dd>Automated document ingestion, field extraction, validation rules, and structured hand-off into downstream finance workflows.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Reduced manual document handling and faster processing from receipt to structured record.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonGreen uppercase tracking-wider mb-3">Support • RAG • Gmail</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Intelligent Email &amp; Support Automation</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Support and operations teams faced high volumes of repetitive enquiries requiring context from internal knowledge sources.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Retrieval-augmented generation pipelines integrated with email workflows, routing all drafts through human review before dispatch.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Faster response drafting with audit-visible review gates — maintaining quality while reducing manual composition time.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--green">Support • RAG • Gmail</span>
+                    <h3 class="card-title">Intelligent Email &amp; Support Automation</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Support and operations teams faced high volumes of repetitive enquiries requiring context from internal knowledge sources.</dd></div>
+                        <div><dt>Approach</dt><dd>Retrieval-augmented generation pipelines integrated with email workflows, routing all drafts through human review before dispatch.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Faster response drafting with audit-visible review gates — maintaining quality while reducing manual composition time.</dd></div>
                     </dl>
                 </article>
 
-                <article class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col">
-                    <span class="text-xs font-mono text-brand-neonTeal uppercase tracking-wider mb-3">B2B • Intake • CRM</span>
-                    <h3 class="text-lg font-bold text-white mb-3">Structured Lead Intake &amp; Routing</h3>
-                    <dl class="space-y-3 text-sm flex-grow">
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Challenge</dt>
-                            <dd class="text-slate-400 mt-1">Inbound interest arrived through unstructured channels, delaying qualification and follow-up on high-value prospects.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-slate-500 font-mono text-xs uppercase">Approach</dt>
-                            <dd class="text-slate-400 mt-1">Branded intake forms, structured capture into a central ledger, and status tracking to drive downstream processing workflows.</dd>
-                        </div>
-                        <div>
-                            <dt class="text-brand-neonGreen font-mono text-xs uppercase">Outcome</dt>
-                            <dd class="text-slate-300 mt-1">Consistent enquiry data from first contact and faster hand-off from intake to review and response.</dd>
-                        </div>
+                <article class="glass-panel glass-panel-hover card">
+                    <span class="card-tag card-tag--teal">B2B • Intake • CRM</span>
+                    <h3 class="card-title">Structured Lead Intake &amp; Routing</h3>
+                    <dl class="card-dl">
+                        <div><dt>Challenge</dt><dd>Inbound interest arrived through unstructured channels, delaying qualification and follow-up on high-value prospects.</dd></div>
+                        <div><dt>Approach</dt><dd>Branded intake forms, structured capture into a central ledger, and status tracking to drive downstream processing workflows.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Consistent enquiry data from first contact and faster hand-off from intake to review and response.</dd></div>
                     </dl>
                 </article>
             </div>
         </div>
     </section>
 
-    <section id="offerings" class="py-24 px-4 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-brand-neonTeal font-mono text-xs uppercase tracking-wider block">// Core Enterprise Capability Catalog</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Specialised Technical Offerings</h2>
-                <p class="text-slate-400 font-light">Senior architectural consultation and high-velocity engineering across six core specialisations.</p>
+    <section id="offerings" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="text-mono-label text-mono-label--teal">// Core Enterprise Capability Catalog</span>
+                <h2 class="heading-section">Specialised Technical Offerings</h2>
+                <p class="text-body">Senior architectural consultation and high-velocity engineering across six core specialisations.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue border border-brand-neonBlue/20" aria-hidden="true">
-                            <i class="fa-solid fa-robot text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Agentic AI Workflows</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Context-engineered autonomous pods and terminal coding agents for regulated environments — Gemini and cloud-native stacks on GCP (Vertex AI) and Azure (Azure OpenAI, Copilot), PDF document processing, Gmail-integrated workflows, and locally hosted LLMs for data-sovereign deployments.</p>
+            <div class="grid-3">
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--blue" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
+                        <h3 class="heading-card">Agentic AI Workflows</h3>
+                        <p class="text-body-sm">Context-engineered autonomous pods and terminal coding agents for regulated environments — Gemini and cloud-native stacks on GCP (Vertex AI) and Azure (Azure OpenAI, Copilot), PDF document processing, Gmail-integrated workflows, and locally hosted LLMs for data-sovereign deployments.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonBlue leading-relaxed">Claude Code • Gemini • Vertex AI • Azure OpenAI • Hermes • OpenClaw • Gmail • PDF Processing • n8n • Ollama • RAG</span></div>
+                    <div class="offering-tags offering-tags--blue">Claude Code • Gemini • Vertex AI • Azure OpenAI • Hermes • OpenClaw • Gmail • PDF Processing • n8n • Ollama • RAG</div>
                 </div>
 
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonTeal/10 flex items-center justify-center text-brand-neonTeal border border-brand-neonTeal/20" aria-hidden="true">
-                            <i class="fa-solid fa-network-wired text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Enterprise Architecture & Modernisation</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Strangler-fig decomposition of legacy monoliths into cloud-native microservices on GCP and Azure — event-driven boundaries, OpenAPI contracts, and zero-downtime cutover.</p>
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--teal" aria-hidden="true"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3 class="heading-card">Enterprise Architecture & Modernisation</h3>
+                        <p class="text-body-sm">Strangler-fig decomposition of legacy monoliths into cloud-native microservices on GCP and Azure — event-driven boundaries, OpenAPI contracts, and zero-downtime cutover.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonTeal leading-relaxed">.NET/C# • Java/Spring Boot • Microservices • GCP (GKE, Cloud Run, Pub/Sub) • Azure (AKS, App Service, Service Bus) • OpenAPI</span></div>
+                    <div class="offering-tags offering-tags--teal">.NET/C# • Java/Spring Boot • Microservices • GCP (GKE, Cloud Run, Pub/Sub) • Azure (AKS, App Service, Service Bus) • OpenAPI</div>
                 </div>
 
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonGreen/10 flex items-center justify-center text-brand-neonGreen border border-brand-neonGreen/20" aria-hidden="true">
-                            <i class="fa-solid fa-mobile-screen-button text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Web & Mobile Applications</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Mission-critical web and mobile platforms — Clean Architecture boundaries, hardened APIs, and performance under regulatory and peak-load constraints.</p>
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--green" aria-hidden="true"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h3 class="heading-card">Web & Mobile Applications</h3>
+                        <p class="text-body-sm">Mission-critical web and mobile platforms — Clean Architecture boundaries, hardened APIs, and performance under regulatory and peak-load constraints.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonGreen leading-relaxed">TypeScript • React • Angular • Node.js • REST/GraphQL • Multi-Platform Mobile • PCI-Aware Design</span></div>
+                    <div class="offering-tags offering-tags--green">TypeScript • React • Angular • Node.js • REST/GraphQL • Multi-Platform Mobile • PCI-Aware Design</div>
                 </div>
 
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonBlue/10 flex items-center justify-center text-brand-neonBlue border border-brand-neonTeal/20" aria-hidden="true">
-                            <i class="fa-solid fa-database text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Data Mitigations & Predictive Quality</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Data conversion architectures, schema design, and predictive logic engines that surface operational instability before regulatory discovery — across SQL and NoSQL estates.</p>
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--blue" aria-hidden="true"><i class="fa-solid fa-database"></i></div>
+                        <h3 class="heading-card">Data Mitigations & Predictive Quality</h3>
+                        <p class="text-body-sm">Data conversion architectures, schema design, and predictive logic engines that surface operational instability before regulatory discovery — across SQL and NoSQL estates.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonTeal leading-relaxed">Snowflake • MongoDB • Oracle • MySQL/PostgreSQL • ETL • Schema Design • Predictive Analytics</span></div>
+                    <div class="offering-tags offering-tags--teal">Snowflake • MongoDB • Oracle • MySQL/PostgreSQL • ETL • Schema Design • Predictive Analytics</div>
                 </div>
 
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonGreen/10 flex items-center justify-center text-brand-neonGreen border border-brand-neonGreen/20" aria-hidden="true">
-                            <i class="fa-solid fa-scale-balanced text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Technical Governance & Optimisation</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Scrum mastery, product ownership, and DORA-driven delivery — PI planning, incident governance, on-call frameworks, and measurable cadence improvements for global teams.</p>
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--green" aria-hidden="true"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3 class="heading-card">Technical Governance & Optimisation</h3>
+                        <p class="text-body-sm">Scrum mastery, product ownership, and DORA-driven delivery — PI planning, incident governance, on-call frameworks, and measurable cadence improvements for global teams.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonGreen leading-relaxed">DORA Metrics • Scrum • PI Planning • FinOps • P1/P2 Triage • Code Review • 24/7 On-Call</span></div>
+                    <div class="offering-tags offering-tags--green">DORA Metrics • Scrum • PI Planning • FinOps • P1/P2 Triage • Code Review • 24/7 On-Call</div>
                 </div>
 
-                <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neonTeal/10 flex items-center justify-center text-brand-neonTeal border border-brand-neonBlue/20" aria-hidden="true">
-                            <i class="fa-solid fa-gears text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">DevOps, CI/CD & Observability</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Release trains, automated regression, infrastructure-as-code, and full-stack observability — stabilising production integrity and shortening mean time to recovery.</p>
+                <div class="glass-panel glass-panel-hover offering-card">
+                    <div class="stack">
+                        <div class="offering-icon offering-icon--teal" aria-hidden="true"><i class="fa-solid fa-gears"></i></div>
+                        <h3 class="heading-card">DevOps, CI/CD & Observability</h3>
+                        <p class="text-body-sm">Release trains, automated regression, infrastructure-as-code, and full-stack observability — stabilising production integrity and shortening mean time to recovery.</p>
                     </div>
-                    <div class="pt-6 border-t border-white/5 mt-6"><span class="text-xs font-mono text-brand-neonTeal leading-relaxed">Jenkins • GitLab • Azure DevOps • GCP Cloud Build • Datadog • Grafana • Docker • Terraform • SRE Practices</span></div>
+                    <div class="offering-tags offering-tags--teal">Jenkins • GitLab • Azure DevOps • GCP Cloud Build • Datadog • Grafana • Docker • Terraform • SRE Practices</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="engagement" class="py-24 px-4 border-t border-white/5 bg-brand-dark/30">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12 space-y-4">
-                <span class="text-brand-neonGreen font-mono text-xs uppercase tracking-wider block">// Trust Engine</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">How We Work</h2>
-                <p class="text-slate-400 font-light text-sm">A structured, low-friction path from discovery to confident automation — built for enterprise skepticism in regulated sectors.</p>
+    <section id="engagement" class="section section--border-top section--alt">
+        <div class="container-md">
+            <div class="section-header section-header--sm">
+                <span class="text-mono-label text-mono-label--green">// Trust Engine</span>
+                <h2 class="heading-section">How We Work</h2>
+                <p class="text-body-sm">A structured, low-friction path from discovery to confident automation — built for enterprise skepticism in regulated sectors.</p>
             </div>
-            <ol class="space-y-6">
-                <li class="flex gap-5 glass-panel p-6 rounded-xl">
-                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonBlue/20 text-brand-neonBlue font-mono font-bold flex items-center justify-center" aria-hidden="true">1</span>
+            <ol class="steps-list">
+                <li class="glass-panel step-item">
+                    <span class="step-number step-number--blue" aria-hidden="true">1</span>
                     <div>
-                        <h3 class="text-white font-semibold">Agentic Impact Workshop & Process Assessment</h3>
-                        <p class="text-sm text-slate-400 mt-1">Deep-dive with operational teams to map manual workflows and isolate high-value automation targets. Mutual NDA signed before any proprietary detail is shared.</p>
+                        <h3 class="step-title">Agentic Impact Workshop & Process Assessment</h3>
+                        <p class="step-desc">Deep-dive with operational teams to map manual workflows and isolate high-value automation targets. Mutual NDA signed before any proprietary detail is shared.</p>
                     </div>
                 </li>
-                <li class="flex gap-5 glass-panel p-6 rounded-xl">
-                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonTeal/20 text-brand-neonTeal font-mono font-bold flex items-center justify-center" aria-hidden="true">2</span>
+                <li class="glass-panel step-item">
+                    <span class="step-number step-number--teal" aria-hidden="true">2</span>
                     <div>
-                        <h3 class="text-white font-semibold">Micro-Agent Target Selection</h3>
-                        <p class="text-sm text-slate-400 mt-1">One discrete bottleneck — an invoice backlog, a parsing pipeline, or a PR validation grind — scoped and delivered as a working agentic pipeline in days, not months.</p>
+                        <h3 class="step-title">Micro-Agent Target Selection</h3>
+                        <p class="step-desc">One discrete bottleneck — an invoice backlog, a parsing pipeline, or a PR validation grind — scoped and delivered as a working agentic pipeline in days, not months.</p>
                     </div>
                 </li>
-                <li class="flex gap-5 glass-panel p-6 rounded-xl">
-                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-neonGreen/20 text-brand-neonGreen font-mono font-bold flex items-center justify-center" aria-hidden="true">3</span>
+                <li class="glass-panel step-item">
+                    <span class="step-number step-number--green" aria-hidden="true">3</span>
                     <div>
-                        <h3 class="text-white font-semibold">Human-in-the-Loop Phased Automation</h3>
-                        <p class="text-sm text-slate-400 mt-1">100% of outputs route through structured human evaluation first. Autonomous background execution scales only after strict confidence thresholds are met.</p>
+                        <h3 class="step-title">Human-in-the-Loop Phased Automation</h3>
+                        <p class="step-desc">100% of outputs route through structured human evaluation first. Autonomous background execution scales only after strict confidence thresholds are met.</p>
                     </div>
                 </li>
             </ol>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-4 border-t border-white/5 relative bg-brand-dark/10">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
-                <span class="text-brand-neonGreen font-mono text-xs uppercase tracking-wider block">// Let's Connect</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Initiate Your Delivery Sprint</h2>
-                <p class="text-slate-400 font-light text-sm">Ready to automate a regulated workflow, migrate legacy systems, or deploy agentic AI pods? Contact Karl Nolan, Principal Consultant.</p>
+    <section id="contact" class="section section--border-top section--alt-faint">
+        <div class="container-md">
+            <div class="section-header section-header--sm">
+                <span class="text-mono-label text-mono-label--green">// Let's Connect</span>
+                <h2 class="heading-section">Initiate Your Delivery Sprint</h2>
+                <p class="text-body-sm">Ready to automate a regulated workflow, migrate legacy systems, or deploy agentic AI pods? Contact Karl Nolan, Principal Consultant.</p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm">
-                <a href="mailto:karlnolan@gmail.com" id="contact-email-link" class="inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonBlue/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonBlue">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-envelope" aria-hidden="true"></i> karlnolan@gmail.com</span>
-                    <span class="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Principal Consultant</span>
+            <div class="contact-links">
+                <a href="mailto:karlnolan@gmail.com" id="contact-email-link" class="btn-outline btn-outline--blue">
+                    <span><i class="fa-solid fa-envelope" aria-hidden="true"></i> karlnolan@gmail.com</span>
+                    <span class="text-mono-label">Principal Consultant</span>
                 </a>
-                <a href="https://www.linkedin.com/in/karlnolan" id="contact-linkedin-link" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonTeal/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonTeal" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/karlnolan" id="contact-linkedin-link" class="btn-outline btn-outline--teal" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a id="contact-calendly-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-brand-slate/30 text-slate-300 hover:text-white hover:border-brand-neonGreen/30 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonGreen">
+                <a id="contact-calendly-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline btn-outline--green">
                     <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book Discovery Call
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-            <div class="glass-panel border border-white/10 rounded-2xl p-8 sm:p-10 shadow-2xl relative text-center">
-                <div class="max-w-lg mx-auto space-y-6">
-                    <div class="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-tr from-brand-neonBlue/20 to-brand-neonTeal/20 border border-white/10 text-brand-neonTeal" aria-hidden="true">
-                        <i class="fa-solid fa-clipboard-list text-xl"></i>
+            <div class="contact-grid">
+                <div class="glass-panel contact-card">
+                    <div class="stack-lg text-center">
+                        <div class="contact-card-icon contact-card-icon--blue" aria-hidden="true">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div class="stack">
+                            <h3 class="heading-card">Structured Enquiry Form</h3>
+                            <p class="text-body-sm">Share your context in a short, professional intake form — company details, automation goals, and the operational problems you want solved. Responses are routed directly for review.</p>
+                        </div>
+                        <ul class="checklist">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Name, business email, company &amp; role</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Company size band</span></li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Automation problems &amp; use case brief</span></li>
+                        </ul>
+                        <a id="contact-form-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-primary--block">
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Submit Enquiry
+                        </a>
+                        <p class="privacy-note">
+                            By submitting the enquiry form, you agree that Bespoke AI Workflow Engineering Ltd may use your details to respond to your enquiry. Responses are collected via Google Forms and stored in our Google Drive for enquiry handling and status tracking. You may request access or deletion at any time by emailing <a href="mailto:karlnolan@gmail.com" class="link-brand contact-email">karlnolan@gmail.com</a>. See <a href="#privacy" class="link-brand">privacy notice</a> below.
+                        </p>
                     </div>
-                    <div class="space-y-3">
-                        <h3 class="text-xl font-bold text-white">Structured Enquiry Form</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Share your context in a short, professional intake form — company details, automation goals, and the operational problems you want solved. Responses are routed directly for review.</p>
-                    </div>
-                    <ul class="text-left text-sm text-slate-400 space-y-2 max-w-md mx-auto">
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Name, business email, company &amp; role</span></li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Company size band</span></li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-neonGreen mt-0.5 shrink-0" aria-hidden="true"></i><span>Automation problems &amp; use case brief</span></li>
-                    </ul>
-                    <a id="contact-form-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-neonBlue to-brand-neonTeal text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition shadow-lg hover:brightness-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Submit Enquiry
-                    </a>
-                    <p class="text-[12px] text-slate-500 leading-relaxed" id="privacy-notice">
-                        By submitting the enquiry form, you agree that Bespoke AI Workflow Engineering Ltd may use your details to respond to your enquiry. Responses are collected via Google Forms and stored in our Google Drive for enquiry handling and status tracking. You may request access or deletion at any time by emailing <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>. See <a href="#privacy" class="text-brand-neonBlue hover:underline">privacy notice</a> below.
-                    </p>
                 </div>
-            </div>
 
-            <div class="glass-panel border border-white/10 rounded-2xl p-8 sm:p-10 shadow-2xl relative text-center">
-                <div class="max-w-lg mx-auto space-y-6">
-                    <div class="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-tr from-brand-neonGreen/20 to-brand-neonTeal/20 border border-white/10 text-brand-neonGreen" aria-hidden="true">
-                        <i class="fa-solid fa-calendar-days text-xl"></i>
+                <div class="glass-panel contact-card">
+                    <div class="stack-lg text-center">
+                        <div class="contact-card-icon contact-card-icon--green" aria-hidden="true">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <div class="stack">
+                            <h3 class="heading-card">30-Minute Discovery Call</h3>
+                            <p class="text-body-sm">Prefer a live conversation? Book a short discovery call to discuss your bottleneck, workshop fit, or a scoped engagement — no form required.</p>
+                        </div>
+                        <a id="contact-calendly-cta" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-primary--block">
+                            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book on Calendly
+                        </a>
                     </div>
-                    <div class="space-y-3">
-                        <h3 class="text-xl font-bold text-white">30-Minute Discovery Call</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Prefer a live conversation? Book a short discovery call to discuss your bottleneck, workshop fit, or a scoped engagement — no form required.</p>
-                    </div>
-                    <a id="contact-calendly-cta" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-brand-slate/40 border border-white/10 hover:border-brand-neonGreen/30 text-white font-extrabold text-xs rounded-xl tracking-widest uppercase transition hover:brightness-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-neonGreen">
-                        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book on Calendly
-                    </a>
                 </div>
-            </div>
             </div>
         </div>
     </section>
 
     </main>
 
-    <footer class="mt-auto bg-brand-black border-t border-white/5 py-12 px-4 text-xs">
-        <div class="max-w-7xl mx-auto space-y-8">
-            <nav class="flex flex-wrap justify-center gap-6 text-slate-400 uppercase tracking-wider font-semibold" aria-label="Footer">
-                <a href="#about" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">About</a>
-                <a href="#case-studies" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Case Studies</a>
-                <a href="#offerings" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Specialisations</a>
-                <a href="#engagement" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">How We Work</a>
-                <a href="workshop.html" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Workshop</a>
-                <a href="#contact" class="hover:text-white transition focus:outline-none focus-visible:text-brand-neonTeal">Contact</a>
-            </nav>
-            <div id="privacy" class="max-w-2xl mx-auto text-center text-slate-500 leading-relaxed">
-                <p class="font-mono text-[11px] uppercase tracking-wider text-slate-600 mb-2">Privacy Notice</p>
-                <p>Bespoke AI Workflow Engineering Ltd (Limerick, Ireland) processes contact enquiries solely to respond to business requests. We do not sell personal data. Enquiry data is collected via Google Forms and stored in our Google account (Google Drive / Sheets) to respond, track enquiry status, and manage follow-up. We retain data only as long as needed for that purpose. For access or deletion requests, contact <a href="mailto:karlnolan@gmail.com" class="text-brand-neonBlue hover:underline contact-email">karlnolan@gmail.com</a>.</p>
-            </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-white/5">
-                <div class="flex items-center gap-3">
-                    <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-neonTeal flex items-center justify-center text-white text-[10px] font-bold font-mono" aria-hidden="true">BAI</div>
-                    <div>
-                        <p class="text-white font-bold leading-tight text-sm sm:text-base">Bespoke AI Workflow Engineering Ltd</p>
-                        <p class="text-[11px] text-slate-500 font-mono mt-1">Limerick, Ireland • Regulated Sector Consulting</p>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-center md:text-right font-light">© 2026 Bespoke AI Workflow Engineering Ltd. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 </div>
 
 <script src="js/site-config.js"></script>
+<script src="js/includes.js"></script>
+<script src="js/site.js"></script>
 <script>
     document.getElementById('contact-form-link').href = SITE.googleFormUrl;
     document.getElementById('contact-email-link').href = 'mailto:' + SITE.contactEmail;
     document.getElementById('contact-calendly-link').href = SITE.calendlyUrl;
     document.getElementById('contact-calendly-cta').href = SITE.calendlyUrl;
-    document.querySelectorAll('a.contact-email').forEach(el => {
+    document.querySelectorAll('a.contact-email').forEach(function (el) {
         el.href = 'mailto:' + SITE.contactEmail;
         el.textContent = SITE.contactEmail;
     });
     document.getElementById('linkedin-profile').href = SITE.linkedIn;
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
-
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    function setMenuOpen(open) {
-        mobileMenu.classList.toggle('hidden', !open);
-        mobileMenuBtn.setAttribute('aria-expanded', String(open));
-        mobileMenuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-        document.body.style.overflow = open ? 'hidden' : '';
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.toggle('fa-bars', !open);
-        icon.classList.toggle('fa-xmark', open);
-    }
-
-    mobileMenuBtn.addEventListener('click', () => {
-        setMenuOpen(mobileMenu.classList.contains('hidden'));
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => setMenuOpen(false));
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) setMenuOpen(false);
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!mobileMenu.classList.contains('hidden') &&
-            !mobileMenu.contains(e.target) &&
-            !mobileMenuBtn.contains(e.target)) {
-            setMenuOpen(false);
-        }
-    });
-
 </script>
 </body>
 </html>
