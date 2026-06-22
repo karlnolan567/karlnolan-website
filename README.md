@@ -1,6 +1,6 @@
-# Bespoke AI Workflow Engineering Ltd — Website
+# Bespoke AI Engineering Limited — Website
 
-Static portfolio site for **Bespoke AI Workflow Engineering Ltd** (Limerick, Ireland).
+Static portfolio site for **Bespoke AI Engineering Limited** (Limerick, Ireland).
 
 Live preview: [http://178.104.254.165/](http://178.104.254.165/)  
 Planned domain: `ai-development.ie` (when registered)
@@ -53,6 +53,8 @@ Sync `index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, and `i
 ## Customize
 
 Edit the `SITE` object in [`js/site-config.js`](js/site-config.js) for contact email, LinkedIn URL, canonical URL, and form links.
+
+Discovery call requests use [FormSubmit](https://formsubmit.co/) (no backend). On the **first** submission, FormSubmit emails `contactEmail` an activation link — click it once so future requests are forwarded.
 
 Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 

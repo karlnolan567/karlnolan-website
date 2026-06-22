@@ -11,6 +11,23 @@
     return indexPrefix ? indexPrefix + hash : hash;
   }
 
+  function configureWorkshopVisibility() {
+    const announce = document.getElementById('workshop-announce');
+
+    if (SITE.showWorkshop) {
+      document.querySelectorAll('[data-nav="workshop"]').forEach(function (link) {
+        link.classList.remove('hidden');
+      });
+      if (announce) announce.classList.remove('hidden');
+      return;
+    }
+
+    document.querySelectorAll('[data-nav="workshop"]').forEach(function (link) {
+      link.classList.add('hidden');
+    });
+    if (announce) announce.classList.add('hidden');
+  }
+
   function configureNav() {
     document.querySelectorAll('[data-nav]').forEach(function (link) {
       const section = link.dataset.nav;
@@ -54,6 +71,7 @@
   ])
     .then(function () {
       configureNav();
+      configureWorkshopVisibility();
       document.documentElement.removeAttribute('data-includes-pending');
       document.dispatchEvent(new Event('includes-loaded'));
     })
