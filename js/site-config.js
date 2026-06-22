@@ -1,6 +1,6 @@
 const SITE = {
     contactEmail: 'karlnolancompany@gmail.com',
-    linkedIn: 'https://www.linkedin.com/in/karlnolan',
+    linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
     canonicalUrl: 'http://178.104.254.165/',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,
