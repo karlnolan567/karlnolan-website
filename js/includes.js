@@ -28,6 +28,31 @@
     if (announce) announce.classList.add('hidden');
   }
 
+  function reorderNavLinks(container) {
+    if (!container || !SITE.navOrder) return;
+
+    SITE.navOrder.forEach(function (section) {
+      const link = container.querySelector('[data-nav="' + section + '"]');
+      if (link) container.appendChild(link);
+    });
+  }
+
+  function configureNavOrder() {
+    const headerNav = document.querySelector('.nav');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const footerNav = document.querySelector('.footer-nav');
+
+    reorderNavLinks(headerNav);
+    if (mobileMenu) {
+      const cta = document.getElementById('mobile-menu-cta');
+      SITE.navOrder.forEach(function (section) {
+        const link = mobileMenu.querySelector('[data-nav="' + section + '"]');
+        if (link) mobileMenu.insertBefore(link, cta || null);
+      });
+    }
+    reorderNavLinks(footerNav);
+  }
+
   function configureNav() {
     document.querySelectorAll('[data-nav]').forEach(function (link) {
       const section = link.dataset.nav;
@@ -60,7 +85,8 @@
   async function loadPartial(id, url) {
     const el = document.getElementById(id);
     if (!el) return;
-    const res = await fetch(url);
+    const versionedUrl = url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + encodeURIComponent(SITE.partialVersion || '1');
+    const res = await fetch(versionedUrl, { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to load ' + url);
     el.innerHTML = await res.text();
   }
@@ -70,6 +96,7 @@
     loadPartial('site-footer', 'partials/footer.html'),
   ])
     .then(function () {
+      configureNavOrder();
       configureNav();
       configureWorkshopVisibility();
       document.documentElement.removeAttribute('data-includes-pending');
