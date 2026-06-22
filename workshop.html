@@ -130,7 +130,7 @@
             <a id="workshop-apply-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-primary--block">
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Apply for a Seat
             </a>
-            <p class="text-xs text-muted">Prefer to discuss first? <a href="index.html#discovery-call" class="link-brand">Book a 30-minute discovery call</a> or email <a href="mailto:karlnolancompany@gmail.com" class="link-brand contact-email">karlnolancompany@gmail.com</a>.</p>
+            <p class="text-xs text-muted">Prefer to discuss first? <a href="index.html#discovery-call" class="link-brand">Book a 30-minute discovery call</a> on the main site.</p>
         </div>
     </section>
 
@@ -147,16 +147,12 @@
     <div id="site-footer"></div>
 </div>
 
-<script src="js/site-config.js?v=20260622"></script>
-<script src="js/includes.js?v=20260622"></script>
+<script src="js/site-config.js?v=20260622b"></script>
+<script src="js/includes.js?v=20260622b"></script>
 <script src="js/site.js"></script>
 <script>
     document.getElementById('workshop-apply-link').href = SITE.workshopApplicationFormUrl;
     document.getElementById('one-pager-link').href = SITE.workshopOnePagerPdf;
-    document.querySelectorAll('a.contact-email').forEach(function (el) {
-        el.href = 'mailto:' + SITE.contactEmail;
-        el.textContent = SITE.contactEmail;
-    });
 </script>
 </body>
 </html>

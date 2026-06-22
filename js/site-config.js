@@ -6,6 +6,6 @@ const SITE = {
     showWorkshop: false,
     workshopApplicationFormUrl: 'https://forms.gle/APPLICATION_FORM_ID',
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260622',
+    partialVersion: '20260622b',
     navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'workshop', 'contact'],
 };

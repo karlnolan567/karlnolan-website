@@ -71,7 +71,7 @@
 
     const ctaConfig = isWorkshop
       ? { href: '#apply', text: 'Apply for a Seat' }
-      : { href: '#contact', text: 'Initiate Contact' };
+      : { href: '#discovery-call', text: 'Book a Call' };
 
     ['header-cta', 'mobile-menu-cta'].forEach(function (id) {
       const el = document.getElementById(id);

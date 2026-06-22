@@ -82,7 +82,7 @@ img {
 }
 
 .content-figure--engagement {
-  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .content-figure img {
@@ -915,6 +915,11 @@ main > section:not(.section--hero):not(.announce-bar) {
   margin-right: auto;
 }
 
+.hero-proof {
+  margin: 0;
+  letter-spacing: 0.08em;
+}
+
 .blockquote {
   max-width: 36rem;
   margin: 0 auto;
@@ -1713,6 +1718,20 @@ main > section:not(.section--hero):not(.announce-bar) {
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2.5rem;
+}
+
+.contact-single {
+  max-width: 36rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-secondary {
+  text-align: center;
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
 @media (min-width: 1024px) {
