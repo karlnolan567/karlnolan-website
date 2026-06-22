@@ -128,8 +128,11 @@ html[data-includes-pending] .page-content {
 }
 
 .glass-panel {
-  background: rgba(21, 34, 56, 0.94);
+  background: linear-gradient(145deg, rgba(28, 44, 68, 0.96) 0%, rgba(15, 26, 43, 0.92) 100%);
   border: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow:
+    0 4px 24px -6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .glass-panel-hover {
@@ -204,12 +207,15 @@ html[data-includes-pending] .page-content {
   contain: strict;
   background-color: var(--color-black);
   background-image:
-    radial-gradient(ellipse 55% 45% at 15% 15%, rgba(59, 130, 246, 0.14), transparent),
-    radial-gradient(ellipse 45% 40% at 85% 45%, rgba(6, 182, 212, 0.11), transparent),
-    radial-gradient(ellipse 50% 45% at 35% 95%, rgba(49, 46, 129, 0.18), transparent),
-    radial-gradient(#5b8cbf 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    radial-gradient(ellipse 80% 55% at 50% -5%, rgba(59, 130, 246, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 92% 18%, rgba(6, 182, 212, 0.1), transparent),
+    radial-gradient(ellipse 45% 35% at 8% 22%, rgba(59, 130, 246, 0.08), transparent),
+    radial-gradient(ellipse 55% 45% at 72% 88%, rgba(49, 46, 129, 0.16), transparent),
+    radial-gradient(ellipse 50% 40% at 18% 92%, rgba(6, 182, 212, 0.07), transparent),
+    linear-gradient(180deg, #121f33 0%, var(--color-black) 40%, #0a111c 100%),
+    radial-gradient(ellipse 100% 85% at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.5) 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .page-shell {
@@ -277,6 +283,14 @@ main > section:not(.section--hero):not(.announce-bar) {
   overflow: hidden;
 }
 
+.section--hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 55% at 50% 35%, rgba(59, 130, 246, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
 @media (min-width: 640px) {
   .section--hero {
     min-height: 70vh;
@@ -297,15 +311,18 @@ main > section:not(.section--hero):not(.announce-bar) {
 }
 
 .section--alt {
-  background: rgba(21, 34, 56, 0.3);
+  background: linear-gradient(180deg, rgba(21, 34, 56, 0.5) 0%, rgba(15, 26, 43, 0.28) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .section--alt-light {
-  background: rgba(21, 34, 56, 0.2);
+  background: linear-gradient(180deg, rgba(21, 34, 56, 0.35) 0%, rgba(15, 26, 43, 0.18) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .section--alt-faint {
-  background: rgba(21, 34, 56, 0.1);
+  background: linear-gradient(180deg, rgba(21, 34, 56, 0.22) 0%, rgba(15, 26, 43, 0.08) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 /* ==========================================================================
@@ -460,7 +477,8 @@ main > section:not(.section--hero):not(.announce-bar) {
   top: 0;
   z-index: 50;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.45);
   transition: all 0.3s;
 }
 
@@ -873,6 +891,8 @@ main > section:not(.section--hero):not(.announce-bar) {
    ========================================================================== */
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -1836,8 +1856,9 @@ main > section:not(.section--hero):not(.announce-bar) {
 
 .site-footer {
   margin-top: auto;
-  background: var(--color-black);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(15, 26, 43, 0.6) 0%, var(--color-black) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   padding: 3rem 1rem;
   font-size: 0.75rem;
 }
