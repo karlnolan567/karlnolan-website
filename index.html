@@ -372,6 +372,16 @@
         discoveryForm.hidden = true;
         document.getElementById('discovery-call-success').hidden = false;
     }
+
+    var preferredDateInput = discoveryForm.querySelector('input[name="preferred_date"]');
+    if (preferredDateInput) {
+        preferredDateInput.addEventListener('dblclick', function () {
+            if (typeof preferredDateInput.showPicker === 'function') {
+                preferredDateInput.showPicker();
+            }
+        });
+    }
+
     document.getElementById('linkedin-profile').href = SITE.linkedIn;
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
 </script>
