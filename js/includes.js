@@ -7,6 +7,7 @@
 
   function navHref(section) {
     if (section === 'workshop') return 'workshop.html';
+    if (section === 'assessment') return SITE.assessmentUrl;
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
