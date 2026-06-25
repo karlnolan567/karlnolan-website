@@ -8,7 +8,7 @@ Google Form + Sheet setup — Inbound Enquiries 2026
    - Response tab gid: 1457896581
 
 2. Google Form (live)
-   - Title: Bespoke AI — Consulting Enquiry
+   - Title: Bespoke Core AI Engineering Limited — Consulting Enquiry
    - Description: Structured intake for regulated-sector automation and architecture engagements.
    - Form URL: https://forms.gle/HCQSAhwR9JJpygxb9
    - Linked to spreadsheet above
@@ -30,7 +30,7 @@ Google Form + Sheet setup — Inbound Enquiries 2026
    - Header: dark image or colour #0f1a2b
    - Background: #152238 or #1f3049
    - Accent: #3b82f6 (primary), #06b6d4 (secondary)
-   - Upload Bespoke AI / site logo if available
+   - Upload Bespoke Core AI Engineering Limited / site logo if available
 
 4. Apps Script (on the spreadsheet)
    - Open Inbound Enquiries 2026 → Extensions → Apps Script
