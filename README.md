@@ -1,6 +1,6 @@
-# Bespoke AI Engineering Limited — Website
+# Bespoke Core AI Engineering Limited — Website
 
-Static portfolio site for **Bespoke AI Engineering Limited** (Limerick, Ireland).
+Static portfolio site for **Bespoke Core AI Engineering Limited** (Limerick, Ireland).
 
 Live preview: [http://178.104.254.165/](http://178.104.254.165/)  
 Planned domain: `ai-development.ie` (when registered)
