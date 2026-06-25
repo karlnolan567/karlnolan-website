@@ -49,3 +49,12 @@ Google Form + Sheet setup — Inbound Enquiries 2026
    - Submit a test response
    - Confirm row appears with Status = Pending
    - Confirm website Submit Enquiry button opens the form
+
+7. Workshop application forms (3 separate forms)
+   - Created via create-workshop-forms.gs (see WORKSHOP-FORMS-SETUP.txt)
+   - Response spreadsheet: https://docs.google.com/spreadsheets/d/1WMAZ8GV2mbb__Z_tzU7PEcu57BmoNUWIg_qESh8D_do/edit
+   - Spreadsheet ID: 1WMAZ8GV2mbb__Z_tzU7PEcu57BmoNUWIg_qESh8D_do
+   - Form URLs wired in js/site-config.js → workshopApplicationFormUrls:
+       Workshop 1 (foundations): https://docs.google.com/forms/d/e/1FAIpQLSfxOWUF7taVGa3elYl28JZpebJwUcFnpKG42qyZaRLhYbymIg/viewform
+       Workshop 2 (engineering):  https://docs.google.com/forms/d/e/1FAIpQLSfqQlawqCZfgIwJ653dPEME039aB303ZOzGn--tyxBqCZKJkQ/viewform
+       Workshop 3 (automation):   https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform

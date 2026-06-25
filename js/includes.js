@@ -1,12 +1,14 @@
 (function () {
   const page = document.body.dataset.page || 'home';
-  const isWorkshop = page === 'workshop';
-  const indexPrefix = isWorkshop ? 'index.html' : '';
+  const isWorkshopsHub = page === 'workshops';
+  const isWorkshopDetail = /^workshop-\d$/.test(page);
+  const isOffHome = isWorkshopsHub || isWorkshopDetail;
+  const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
 
   function navHref(section) {
-    if (section === 'workshop') return 'workshop.html';
+    if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'assessment') return SITE.assessmentUrl;
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
@@ -16,14 +18,14 @@
     const announce = document.getElementById('workshop-announce');
 
     if (SITE.showWorkshop) {
-      document.querySelectorAll('[data-nav="workshop"]').forEach(function (link) {
+      document.querySelectorAll('[data-nav="workshops"]').forEach(function (link) {
         link.classList.remove('hidden');
       });
       if (announce) announce.classList.remove('hidden');
       return;
     }
 
-    document.querySelectorAll('[data-nav="workshop"]').forEach(function (link) {
+    document.querySelectorAll('[data-nav="workshops"]').forEach(function (link) {
       link.classList.add('hidden');
     });
     if (announce) announce.classList.add('hidden');
@@ -59,7 +61,7 @@
       const section = link.dataset.nav;
       link.href = navHref(section);
 
-      if (section === 'workshop' && isWorkshop) {
+      if (section === 'workshops' && isOffHome) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
@@ -67,12 +69,17 @@
 
     const logoLink = document.getElementById('site-logo-link');
     if (logoLink) {
-      logoLink.href = isWorkshop ? 'index.html' : '#';
+      logoLink.href = isOffHome ? 'index.html' : '#';
     }
 
-    const ctaConfig = isWorkshop
-      ? { href: '#apply', text: 'Apply for a Seat' }
-      : { href: '#discovery-call', text: 'Book a Call' };
+    let ctaConfig;
+    if (isWorkshopDetail) {
+      ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
+    } else if (isWorkshopsHub) {
+      ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
+    } else {
+      ctaConfig = { href: '#discovery-call', text: 'Book a Call' };
+    }
 
     ['header-cta', 'mobile-menu-cta'].forEach(function (id) {
       const el = document.getElementById(id);

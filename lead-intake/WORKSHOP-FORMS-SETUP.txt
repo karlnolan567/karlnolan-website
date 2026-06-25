@@ -1,0 +1,159 @@
+Workshop Application Forms — Setup
+==================================
+
+Google Forms cannot be imported from a CSV or JSON file directly. The fastest
+way to create all three forms is the included Apps Script (one-click).
+
+OPTION A — Apps Script (recommended, ~2 minutes)
+------------------------------------------------
+
+1. Open https://script.google.com → New project
+
+2. Delete the default code. Paste the entire contents of:
+   lead-intake/create-workshop-forms.gs
+
+3. Save the project (name: "Create Workshop Forms")
+
+4. Select function createAllWorkshopForms from the dropdown → Run
+
+5. Authorize when prompted (Google will warn "unverified" — click Advanced →
+   Go to Create Workshop Forms → Allow). This only runs in your account.
+
+6. After it finishes, open View → Execution log (or Logs). You will see:
+   - A new spreadsheet: "Workshop Applications 2026" (all 3 forms linked)
+   - Three forms.gle URLs
+   - A ready-to-paste site-config.js snippet
+
+7. Copy the three URLs into js/site-config.js:
+
+   workshopApplicationFormUrls: {
+       foundations: 'https://forms.gle/XXXXXXXX',
+       engineering: 'https://forms.gle/YYYYYYYY',
+       automation:  'https://forms.gle/ZZZZZZZZ',
+   },
+
+8. Optional branding (each form → Customize theme):
+   - Header colour: #0f1a2b
+   - Background: #152238
+   - Accent: #3b82f6
+
+9. Test each form with a dummy submission. Confirm rows appear in the
+   spreadsheet (one tab per form).
+
+WARNING: Re-running createAllWorkshopForms creates duplicate forms. Only run
+once. To rebuild, delete the old forms in Google Drive first.
+
+
+OPTION B — Manual copy-paste (if Apps Script is blocked)
+--------------------------------------------------------
+
+Create three blank Google Forms and add the fields below. Link each to a tab
+in a shared spreadsheet "Workshop Applications 2026".
+
+
+FORM 1 — Workshop 1: AI Foundations
+Title: Bespoke Core AI Engineering Limited — Workshop 1 Application: AI Foundations
+Description: Apply for a seat in our half-day AI Foundations workshop (virtual or hybrid).
+
+  Full name                          Short answer, required
+  Email address                      Short answer, required, email validation
+  Company or organisation            Short answer, optional
+  Job role / title                   Short answer, required
+  What best describes you?           Multiple choice, required
+      • Small business owner
+      • Admin / office staff
+      • Non-technical manager
+      • Other
+  How would you rate your current AI experience?   Multiple choice, required
+      • Complete beginner — never used AI tools
+      • Tried ChatGPT a few times
+      • Use ChatGPT regularly but have no system
+      • Some experience with other AI tools
+  What do you most want to get from this workshop?   Paragraph, required
+  Preferred delivery format          Multiple choice, required
+      • Virtual only
+      • Hybrid (virtual + optional in-person in Dublin)
+      • Either works for me
+  How did you hear about us?         Dropdown, optional
+  Anything else we should know?       Paragraph, optional
+  Confirmations                      Checkboxes, required (both must be ticked)
+      • I understand seats are limited and applying does not guarantee a place
+      • I agree to be contacted about this application (required for GDPR)
+
+
+FORM 2 — Workshop 2: AI Engineering
+Title: Bespoke Core AI Engineering Limited — Workshop 2 Application: AI Engineering
+Description: Full-day hands-on — Claude Code, PR validation, test automation.
+
+  Full name                          Short answer, required
+  Business email                     Short answer, required, email validation
+  Company                            Short answer, required
+  Job title                          Short answer, required
+  What best describes your role?     Dropdown, required
+      • Software developer
+      • Tech lead / engineering manager
+      • CTO / VP Engineering
+      • Other technical role
+  Primary programming language(s)    Short answer, required
+  Do you currently use any AI coding tools?   Checkboxes, required
+      • GitHub Copilot
+      • Cursor
+      • Claude Code
+      • ChatGPT for coding
+      • None yet
+      • Other
+  What specific challenge do you want to solve?   Paragraph, required
+  Will you bring a laptop and a real repo?   Multiple choice, required
+      • Yes — I will come prepared
+      • I will prepare before the workshop
+      • I need advice on what to bring
+  Rough team size for rollout        Dropdown, required
+      • Just me / 2–5 / 6–15 / 16+ developers
+  Preferred delivery format          Multiple choice, required
+  How did you hear about us?         Dropdown, optional
+  Anything else we should know?      Paragraph, optional
+  Confirmations                      Checkboxes, required (same as Form 1)
+
+
+FORM 3 — Workshop 3: Agentic Workflow Automation
+Title: Bespoke Core AI Engineering Limited — Workshop 3 Application: Agentic Workflow Automation
+Description: Full-day working session — map a real workflow, leave with a pilot plan.
+
+  Full name                          Short answer, required
+  Business email                     Short answer, required, email validation
+  Company                            Short answer, required
+  Job title                          Short answer, required
+  Industry                           Dropdown, required
+      • Pharma / life sciences
+      • Medical devices
+      • Manufacturing / engineering
+      • Finance / professional services
+      • Other regulated industry
+      • Other
+  What best describes your role?     Dropdown, required
+      • Operations / process owner
+      • Finance / accounts
+      • Quality / compliance
+      • Engineering / IT
+      • Management / innovation lead
+      • Other
+  Describe one recurring task to automate   Paragraph, required
+  Hours per week on this task        Dropdown, required
+      • Less than 2 / 2–5 / 5–10 / 10+ / Not sure
+  Do you currently use AI for this work?   Multiple choice, required
+      • No — entirely manual
+      • ChatGPT ad hoc
+      • Some automation but not AI
+      • AI tools in production
+  Preferred delivery format          Multiple choice, required
+  How did you hear about us?         Dropdown, optional
+  Anything else we should know?      Paragraph, optional
+  Confirmations                      Checkboxes, required (same as Form 1)
+
+
+After setup
+-----------
+
+- Wire URLs in js/site-config.js (workshopApplicationFormUrls)
+- Submit a test application on each workshop page
+- Confirm workshop-1.html, workshop-2.html, workshop-3.html Apply buttons open the correct form
