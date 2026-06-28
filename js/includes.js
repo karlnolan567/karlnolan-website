@@ -2,13 +2,15 @@
   const page = document.body.dataset.page || 'home';
   const isWorkshopsHub = page === 'workshops';
   const isWorkshopDetail = /^workshop-\d$/.test(page);
-  const isOffHome = isWorkshopsHub || isWorkshopDetail;
+  const isWhatWeAutomate = page === 'what-we-automate';
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isWhatWeAutomate;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
 
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
+    if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
     if (section === 'assessment') return SITE.assessmentUrl;
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
@@ -61,7 +63,12 @@
       const section = link.dataset.nav;
       link.href = navHref(section);
 
-      if (section === 'workshops' && isOffHome) {
+      if (section === 'workshops' && isOffHome && isWorkshopsHub) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
+      if (section === 'what-we-automate' && isWhatWeAutomate) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
@@ -77,6 +84,8 @@
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
+    } else if (isWhatWeAutomate) {
+      ctaConfig = { href: 'index.html#discovery-call', text: 'Book a Call' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Book a Call' };
     }

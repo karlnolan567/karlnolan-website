@@ -11,7 +11,8 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260625b',
+    partialVersion: '20260628',
     assessmentUrl: 'https://178.104.254.165/assessment',
-    navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'assessment', 'contact'],
+    whatWeAutomateUrl: 'what-we-automate.html',
+    navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'what-we-automate', 'assessment', 'contact'],
 };
