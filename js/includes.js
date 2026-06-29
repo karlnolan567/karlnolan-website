@@ -58,6 +58,14 @@
     reorderNavLinks(footerNav);
   }
 
+  function configurePrivacy() {
+    const privacyLink = document.getElementById('privacy-email');
+    if (privacyLink && SITE.privacyEmail) {
+      privacyLink.href = 'mailto:' + SITE.privacyEmail;
+      privacyLink.textContent = SITE.privacyEmail;
+    }
+  }
+
   function configureNav() {
     document.querySelectorAll('[data-nav]').forEach(function (link) {
       const section = link.dataset.nav;
@@ -115,6 +123,7 @@
     .then(function () {
       configureNavOrder();
       configureNav();
+      configurePrivacy();
       configureWorkshopVisibility();
       document.documentElement.removeAttribute('data-includes-pending');
       document.dispatchEvent(new Event('includes-loaded'));
