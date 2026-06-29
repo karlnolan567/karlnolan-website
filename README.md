@@ -59,3 +59,18 @@ Discovery call requests use [FormSubmit](https://formsubmit.co/) (no backend). O
 Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 
 Profile photo: `images/Karl Nolan.jpeg`
+
+## Ask BCAI chatbot
+
+The **Ask BCAI** widget calls an n8n workflow (see [`n8n/SETUP.txt`](n8n/SETUP.txt)). Knowledge comes from markdown files in a Google Drive folder — not from the live site HTML.
+
+When site content changes, regenerate and re-upload to Drive:
+
+```bash
+python3 scripts/html_to_knowledge_md.py
+```
+
+Then upload everything in [`chatbot-knowledge/`](chatbot-knowledge/) to the Drive folder (`SITE.googleDriveKnowledgeFolderId` in [`js/site-config.js`](js/site-config.js)).
+
+Prefer **short summary files** in Drive (not full page copies) — the whole folder is injected into the LLM prompt and affects response speed.
+

@@ -1,0 +1,459 @@
+{
+  "name": "BCAI Website Chatbot (Ask BCAI)",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {
+          "allowedOrigins": "http://178.104.254.165,https://178.104.254.165",
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 400],
+      "webhookId": "bcai-website-chat"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bcai-warm-knowledge",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "w1a2b3c4-d5e6-7890-abcd-ef1234567890",
+      "name": "Warm knowledge cache",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 80],
+      "webhookId": "bcai-warm-knowledge"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const CACHE_TTL_MS = 10 * 60 * 1000;\nconst staticData = $getWorkflowStaticData('global');\nconst cachedAt = staticData.knowledgeCachedAt || 0;\nconst knowledge = staticData.knowledge || '';\nconst isFresh = Boolean(knowledge) && (Date.now() - cachedAt < CACHE_TTL_MS);\n\nreturn [{\n  json: {\n    fromCache: isFresh,\n  },\n}];"
+      },
+      "id": "w2b3c4d5-e6f7-8901-bcde-f12345678901",
+      "name": "Check warm cache",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 80]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "warm-cache-fresh",
+              "leftValue": "={{ $json.fromCache }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "w3c4d5e6-f7a8-9012-cdef-234567890123",
+      "name": "Warm cache fresh?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [440, 80]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{\n  json: {\n    ok: true,\n    warmed: false,\n    skipped: true,\n  },\n}];"
+      },
+      "id": "w4d5e6f7-a8b9-0123-def0-345678901234",
+      "name": "Format warm cache response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1320, 80]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const CACHE_TTL_MS = 10 * 60 * 1000;\nconst trigger = $input.first().json;\nconst staticData = $getWorkflowStaticData('global');\nconst cachedAt = staticData.knowledgeCachedAt || 0;\nconst knowledge = staticData.knowledge || '';\nconst isFresh = Boolean(knowledge) && (Date.now() - cachedAt < CACHE_TTL_MS);\n\nreturn [{\n  json: {\n    chatInput: trigger.chatInput,\n    sessionId: trigger.sessionId,\n    knowledge: isFresh ? knowledge : '',\n    fromCache: isFresh,\n  },\n}];"
+      },
+      "id": "g1h2i3j4-k5l6-7890-abcd-ef123456789a",
+      "name": "Check knowledge cache",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cache-hit-condition",
+              "leftValue": "={{ $json.fromCache }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "h2i3j4k5-l6m7-8901-bcde-f123456789ab",
+      "name": "Cache hit?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [440, 400]
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "operation": "search",
+        "searchMethod": "query",
+        "queryString": "'11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'",
+        "returnAll": true,
+        "filter": {
+          "whatToSearch": "files"
+        },
+        "options": {}
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "List knowledge files",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [660, 240],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "options": {}
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Download knowledge files",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [880, 240],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const parts = [];\n\nfor (const item of $input.all()) {\n  const name = item.json.name || item.json.fileName || 'document';\n  let text = '';\n  const binKey = item.binary ? Object.keys(item.binary)[0] : null;\n  if (binKey && item.binary[binKey]?.data) {\n    text = Buffer.from(item.binary[binKey].data, 'base64').toString('utf8');\n  }\n  if (text.trim()) {\n    parts.push(`### ${name}\\n${text.trim()}`);\n  }\n}\n\nconst knowledge = parts.join('\\n\\n---\\n\\n') || '(No knowledge files found in Drive folder.)';\n\nconst staticData = $getWorkflowStaticData('global');\nstaticData.knowledge = knowledge;\nstaticData.knowledgeCachedAt = Date.now();\n\nlet chatInput = '';\nlet sessionId = '';\nlet warmOnly = false;\n\ntry {\n  const meta = $('Check knowledge cache').first().json;\n  chatInput = meta.chatInput || '';\n  sessionId = meta.sessionId || '';\n} catch (error) {\n  warmOnly = true;\n}\n\nreturn [{\n  json: {\n    chatInput,\n    sessionId,\n    knowledge,\n    fromCache: false,\n    warmOnly,\n  },\n}];"
+      },
+      "id": "d4e5f6a7-b8c9-0123-def0-234567890123",
+      "name": "Build knowledge context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 240]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "warm-only-condition",
+              "leftValue": "={{ $json.warmOnly }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "w5e6f7a8-b9c0-1234-def0-456789012345",
+      "name": "Warm only?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1320, 240]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{\n  json: {\n    ok: true,\n    warmed: true,\n    skipped: false,\n  },\n}];"
+      },
+      "id": "w6f7a8b9-c0d1-2345-f012-567890123456",
+      "name": "Warm cache complete",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1540, 160]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { chatInput, knowledge = '' } = $input.first().json;\n\nconst systemMessage = [\n  'You are **Ask BCAI**, the website assistant for Bespoke Core AI Engineering Limited (Limerick, Ireland).',\n  '',\n  '## Rules',\n  '1. Answer **only** questions about Bespoke Core AI, its services, workshops, case studies, and content on http://178.104.254.165/',\n  '2. **Off-topic** (general trivia, other companies, unrelated help): reply exactly — \"That isn\\'t something I can help with here — I\\'m only able to answer questions about Bespoke Core AI and this website.\"',\n  '3. **Consulting / automation pilot pricing** (quotes, day rates, pilot cost, budget): do **not** invent numbers. Direct to http://178.104.254.165/#contact and mention free discovery call + single-workflow pilots.',\n  '4. **Workshop pricing**: you may quote published workshop prices from the knowledge base.',\n  '5. Be concise, professional, plain language. Use markdown links when citing URLs.',\n  '6. If unsure, say so and suggest booking a discovery call.',\n  '',\n  '## Knowledge base (from Google Drive)',\n  knowledge,\n].join('\\n');\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    openRouterBody: {\n      model: 'deepseek/deepseek-v4-flash',\n      temperature: 0.3,\n      messages: [\n        { role: 'system', content: systemMessage },\n        { role: 'user', content: chatInput },\n      ],\n    },\n  },\n}];"
+      },
+      "id": "i3j4k5l6-m7n8-9012-cdef-345678901234",
+      "name": "Prepare OpenRouter request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1540, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "HTTP-Referer",
+              "value": "http://178.104.254.165/"
+            },
+            {
+              "name": "X-OpenRouter-Title",
+              "value": "Ask BCAI"
+            },
+            {
+              "name": "X-Title",
+              "value": "Ask BCAI"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.openRouterBody }}",
+        "options": {}
+      },
+      "id": "j4k5l6m7-n8o9-0123-def0-456789012345",
+      "name": "Call Ask BCAI (OpenRouter)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1760, 400],
+      "credentials": {
+        "openRouterApi": {
+          "id": "REPLACE_OPENROUTER_CREDENTIAL_ID",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const FALLBACK = 'Sorry — I could not generate a reply right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#contact';\n\nreturn $input.all().map(item => {\n  const content = item.json.choices?.[0]?.message?.content ?? '';\n  const text = (typeof content === 'string' ? content : JSON.stringify(content)).trim();\n\n  return {\n    json: {\n      output: text || FALLBACK,\n    },\n  };\n});"
+      },
+      "id": "k5l6m7n8-o9p0-1234-ef01-567890123456",
+      "name": "Format chat response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1980, 400]
+    }
+  ],
+  "connections": {
+    "Warm knowledge cache": {
+      "main": [
+        [
+          {
+            "node": "Check warm cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check warm cache": {
+      "main": [
+        [
+          {
+            "node": "Warm cache fresh?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Warm cache fresh?": {
+      "main": [
+        [
+          {
+            "node": "Format warm cache response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "List knowledge files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Check knowledge cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check knowledge cache": {
+      "main": [
+        [
+          {
+            "node": "Cache hit?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cache hit?": {
+      "main": [
+        [
+          {
+            "node": "Prepare OpenRouter request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "List knowledge files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List knowledge files": {
+      "main": [
+        [
+          {
+            "node": "Download knowledge files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download knowledge files": {
+      "main": [
+        [
+          {
+            "node": "Build knowledge context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build knowledge context": {
+      "main": [
+        [
+          {
+            "node": "Warm only?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Warm only?": {
+      "main": [
+        [
+          {
+            "node": "Warm cache complete",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare OpenRouter request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Warm cache complete": {
+      "main": [
+        [
+          {
+            "node": "Format warm cache response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare OpenRouter request": {
+      "main": [
+        [
+          {
+            "node": "Call Ask BCAI (OpenRouter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Ask BCAI (OpenRouter)": {
+      "main": [
+        [
+          {
+            "node": "Format chat response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

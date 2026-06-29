@@ -66,6 +66,15 @@
     }
   }
 
+  function initChatbot() {
+    if (!SITE.chatWebhookUrl || SITE.chatWebhookUrl.indexOf('REPLACE_WITH_ID') !== -1) {
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'js/chatbot.js?v=' + encodeURIComponent(SITE.partialVersion || '1');
+    document.body.appendChild(script);
+  }
+
   function configureNav() {
     document.querySelectorAll('[data-nav]').forEach(function (link) {
       const section = link.dataset.nav;
@@ -125,6 +134,7 @@
       configureNav();
       configurePrivacy();
       configureWorkshopVisibility();
+      initChatbot();
       document.documentElement.removeAttribute('data-includes-pending');
       document.dispatchEvent(new Event('includes-loaded'));
     })

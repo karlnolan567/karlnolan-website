@@ -1,0 +1,262 @@
+BCAI Website Chatbot — n8n setup
+=================================
+
+Knowledge cache (10 minutes)
+----------------------------
+The workflow caches merged Drive knowledge in workflow static data for 10 minutes.
+
+Flow:
+  Chat Trigger → Check knowledge cache → Cache hit?
+    - YES → Prepare OpenRouter request → Call Ask BCAI → Format chat response
+    - NO  → List → Download → Build knowledge context → Warm only?
+              → NO  → Prepare OpenRouter request → …
+              → YES → (warm path only; should not happen on chat)
+
+  Warm knowledge cache webhook (panel open on website):
+    POST /webhook/bcai-warm-knowledge
+    → Check warm cache → Warm cache fresh?
+         YES → Format warm cache response { ok, skipped: true }
+         NO  → List → Download → Build → Warm only? → Warm cache complete → response
+
+Both triggers share the same 10-minute static cache and the same List/Download nodes.
+
+After you update markdown files in Drive, wait up to 10 minutes for the cache
+to refresh — or deactivate/reactivate the workflow to clear it immediately.
+
+To change TTL: edit **Check knowledge cache** node — CACHE_TTL_MS (default 600000).
+
+Note: use $input.first().json in Check knowledge cache (not $('When chat message received')).
+Do not "Execute step" on Check cache alone — run the full workflow from the chat panel,
+or execute from the Chat Trigger node so input is present.
+
+Google Drive — allow download for n8n (full checklist)
+------------------------------------------------------
+Do these in order. You need BOTH Google Cloud/API access AND the correct account in n8n.
+
+PART A — Google Cloud Console (one-time)
+1. Open https://console.cloud.google.com/
+2. Select the project used by your n8n Google OAuth app
+   (If unsure: n8n credential may use n8n's built-in OAuth or your own Client ID.)
+3. APIs & Services → Library → search **Google Drive API** → **Enable**
+4. APIs & Services → OAuth consent screen:
+   - User type: External (personal Gmail) or Internal (Workspace)
+   - Add scopes (if configuring custom OAuth client):
+       https://www.googleapis.com/auth/drive.readonly   (minimum for read/download)
+     or https://www.googleapis.com/auth/drive          (read + write)
+   - If app status is **Testing**: add your Gmail under **Test users**
+   - For production use later: **Publish app** (or stay Testing with test users listed)
+5. APIs & Services → Credentials:
+   - If self-hosted n8n uses custom OAuth: create **OAuth client ID** (Web application)
+   - Authorized redirect URI must match n8n (shown when creating Google credential in n8n)
+   - Copy Client ID + Client Secret into n8n Google Drive credential if prompted
+
+PART B — Google Drive folder (account + sharing)
+6. In https://drive.google.com open folder:
+   11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD
+7. Note which Google account owns it (profile icon — especially if URL shows /u/1/)
+8. Optional but helpful: Share folder with the SAME Gmail you will use in n8n
+   → Share → add that email → role **Viewer** (or Editor) → Send
+
+PART C — n8n credential (connect with folder owner account)
+9. n8n → **Credentials** → **Google Drive OAuth2 API**
+10. Either edit existing or **Create credential**
+11. Click **Sign in with Google** / **Reconnect**
+12. Sign in with the account that OWNS the knowledge folder (step 7)
+13. On Google's consent screen: allow **all** requested permissions (full Drive access)
+14. Credential should show connected / saved
+15. Open workflow → **List knowledge files** + **Download knowledge files**
+    → select this credential on BOTH nodes → **Save**
+
+PART D — n8n Download node settings
+16. **Download knowledge files** node:
+    Resource:    File
+    Operation:   Download
+    File:        By ID → {{ $json.id }}
+    Options:     leave EMPTY (no Google File Conversion for uploaded .md files)
+17. **Execute step** on one file (e.g. workshop-1-foundations.md)
+    → should return binary data, not 403
+18. If still 403 with By ID, try:
+    File: By URL → {{ $json.webViewLink }}
+
+PART E — Verify List only returns your knowledge files (~8 items)
+19. **List knowledge files** query:
+    '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+20. Return All: ON
+21. Re-run List — should not return 50 unrelated files
+
+PART F — If 403 persists
+22. Expand node error → **From Google Drive** — read the real message
+23. Delete n8n Google credential → recreate (repeat Part C with correct account)
+24. Revoke old access: https://myaccount.google.com/permissions → remove old n8n app → reconnect
+25. Upload .md as plain files (not “Open with Google Docs”); or use .txt if needed
+
+Google Drive — List knowledge files node
+----------------------------------------
+Do NOT use Custom API Call or Search File/Folder Name with an empty query.
+
+Configure manually (required — empty Search Query returns random Drive files):
+  Resource:     File/Folder
+  Operation:    Search
+  Search Method: Advanced Search          ← NOT "Search File/Folder Name"
+  Query String: 'FOLDER_ID_HERE' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+  What to search: Files
+  Return All:   ON
+
+Get FOLDER_ID_HERE from the folder URL in Drive:
+  https://drive.google.com/drive/folders/XXXXXXXX  → use XXXXXXXX
+
+Current knowledge folder name: chat_bot_repo (7 markdown files).
+Original folder ID was 11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD — use whichever folder you upload to.
+
+Expected output: ~7 items (website-home.md, bot-guardrails.md, etc.) — NOT 50 "Untitled" folders.
+
+If you see 50 "Untitled" items: your query is wrong or empty. Those are likely
+junk folders created when Download was set to Folder → Create. Delete them in Drive.
+
+Output: one item per markdown file (id, name, mimeType). Next node downloads each file by id.
+
+Google Drive — Download 403 Forbidden
+-------------------------------------
+List works but Download fails? Try in order:
+
+1. Same Google account as the folder
+   Your folder URL uses /u/1/ — that is a second Google login. Reconnect the n8n
+   Google Drive credential while signed in as the account that OWNS the folder.
+
+2. Reconnect credential with full Drive scope
+   Credentials → Google Drive → Reconnect → grant all requested permissions.
+
+3. Download node settings (match screenshot fixes)
+   Resource:   File
+   Operation:  Download
+   File:       By ID → {{ $json.id }}
+   Options:    leave empty (no Google File Conversion for plain .md uploads)
+
+4. If still 403, try File → By URL → {{ $json.webViewLink }}
+
+5. List returning 50 items (not ~8)?
+   Tighten Query String:
+   '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+
+6. Google Cloud Console: ensure Google Drive API is enabled for the OAuth project.
+
+Import workflow
+---------------
+IMPORTANT: Do NOT import on top of an existing chatbot workflow — each import
+adds another full copy on the canvas (you'll see 5, 6, 7… stacked chains with
+names like List knowledge files2, AI Agent1, etc.). Always start from a clean
+workflow (steps below).
+
+Clean import (use this every time)
+----------------------------------
+1. Open n8n: https://fridge-films-find-gloves.trycloudflare.com
+2. Open the messy chatbot workflow → toggle **Inactive**
+3. **Delete** that workflow entirely (⋯ menu → Delete), OR create a brand-new
+   empty workflow and use that instead
+4. Workflows → **Import from file** → `n8n/bcai-website-chatbot.workflow.json`
+5. You should see exactly **15 nodes** in **two** trigger chains sharing List/Download:
+   - **When chat message received** (chat)
+   - **Warm knowledge cache** (prefetch webhook)
+   Not multiple stacked copies of AI Agent / OpenRouter Chat Model
+6. Open each node with a credential warning and select your existing credentials:
+   - Google Drive OAuth2 (List + Download nodes)
+   - OpenRouter API (Call Ask BCAI node — same type as FAX workflow)
+7. **Save** → **Activate**
+
+If you already have 6 chains on one canvas
+------------------------------------------
+Do not try to delete nodes one-by-one — easy to miss orphans. Delete the whole
+workflow and re-import using "Clean import" above.
+
+Correct chain (only version to keep):
+  When chat message received
+    → Check knowledge cache → Cache hit?
+         YES → Prepare OpenRouter request → Call Ask BCAI (OpenRouter)
+               → Format chat response
+         NO  → List knowledge files → Download knowledge files
+               → Build knowledge context → Prepare OpenRouter request → …
+
+Delete any row that uses **AI Agent** or **OpenRouter Chat Model** (LangChain) —
+those are old versions without OpenRouter app headers.
+
+OpenRouter credential (if not already set)
+------------------------------------------
+- Credential type: **OpenRouter API** (not OpenAI API)
+- API Key: your OpenRouter key
+
+OpenRouter app attribution (Ask BCAI in dashboard)
+------------------------------------------------
+The **Call Ask BCAI (OpenRouter)** HTTP Request node sends the same headers as the
+FAX workflow (plus the current OpenRouter title header):
+  HTTP-Referer: http://178.104.254.165/
+  X-OpenRouter-Title: Ask BCAI
+  X-Title: Ask BCAI   (legacy alias; keep both)
+
+Usage should appear in OpenRouter under "Ask BCAI" (not lumped with FAX).
+
+OpenRouter Activity "App" column
+--------------------------------
+If you only see the URL (http://178.104.254.165/) and not "Ask BCAI":
+1. Open **Call Ask BCAI (OpenRouter)** in n8n and confirm all three headers above
+2. Save → deactivate → activate the workflow
+3. Send one new chat message (old rows keep the old label)
+4. Check https://openrouter.ai/apps?url=http://178.104.254.165/
+
+FAX uses https://ai-development.ie as Referer — that is a different app entry from
+the website chatbot (IP referer). Do not copy the FAX referer unless you want both
+under the same OpenRouter app URL.
+
+Chat Trigger configuration
+--------------------------
+1. Open **When chat message received**
+2. Confirm:
+   - Make Chat Publicly Available: ON
+   - Mode: **Embedded Chat**
+   - Allowed Origins (CORS): `http://178.104.254.165,https://178.104.254.165`
+   - Load Previous Session: **Off**
+   - Response Mode: **When Last Node Finishes**
+3. Copy the **Chat URL** shown on the node (ends with `/chat`)
+
+Website webhook URLs
+--------------------
+Configured in `js/site-config.js`:
+
+   chatWebhookUrl:    …/webhook/bcai-website-chat/chat
+   chatWarmCacheUrl:  …/webhook/bcai-warm-knowledge
+
+After import, open the **Warm knowledge cache** node and copy its **Production URL**
+if your tunnel path differs. The widget calls warm-cache once when the user opens
+the chat panel (silent; failures are ignored).
+
+Deploy `js/site-config.js` and `js/chatbot.js` to the VPS after changes.
+
+Activate workflow
+---------------
+- Toggle workflow **Active**
+- Test from the website: open chat → ask "What services do you offer?"
+
+Google Drive knowledge folder
+-----------------------------
+Folder ID: 11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD
+
+Regenerate markdown from the website (local):
+  python3 scripts/html_to_knowledge_md.py
+
+Upload `chatbot-knowledge/*.md` to the Drive folder after site content changes.
+
+Keep knowledge files **short** (summaries, not full page dumps) — the entire folder
+is sent to the LLM on each cache miss. Fewer/smaller files = faster replies.
+
+After updating Drive files: wait up to 10 minutes for cache refresh, or deactivate/
+reactivate the workflow to pick up changes immediately.
+
+Test prompts
+------------
+- "What pilots do you offer?" → should cite case studies / playbooks
+- "How much does automation cost?" → redirect to #contact
+- "What is Workshop 1 price?" → may quote €149–€249 tiers
+- "Who won the 2026 World Cup?" → off-topic refusal
+
+When domain / tunnel changes
+----------------------------
+Update only `SITE.chatWebhookUrl` in `js/site-config.js` and CORS origins on the Chat Trigger node.
