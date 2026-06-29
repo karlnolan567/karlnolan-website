@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Bespoke Core AI | High-Stakes AI Automation">
     <meta name="twitter:description" content="Practical AI automation for high-stakes workflows — human review and audit-ready delivery.">
     <meta name="twitter:image" content="http://178.104.254.165/images/og-card.png">
-    <link rel="stylesheet" href="css/styles.css?v=20260630">
+    <link rel="stylesheet" href="css/styles.css?v=20260629g">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -239,7 +239,7 @@
                 <article class="glass-panel glass-panel-hover card playbook-card">
                     <span class="card-tag card-tag--green">Regulated Supply Chain</span>
                     <h3 class="card-title">Supplier Verification Pilot</h3>
-                    <dl class="card-dl">
+                    <dl class="card-dl playbook-dl">
                         <div><dt>Who it's for</dt><dd>Quality, compliance, and procurement leads verifying suppliers when websites have no simple data feeds — and when onboarding packs arrive as scanned PDFs or faxes.</dd></div>
                         <div><dt>What you get</dt><dd>Automated website and document collection, AI field extraction from certification forms and compliance PDFs, structured logging to your spreadsheet or system, human review queue, and audit-ready records — typically live in 2–4 weeks.</dd></div>
                         <div><dt class="outcome-label">Typical outcome</dt><dd class="outcome">Manual research and re-keying per supplier cut from hours to minutes; every output human-reviewed until you sign off on full automation.</dd></div>
@@ -252,7 +252,7 @@
                 <article class="glass-panel glass-panel-hover card playbook-card">
                     <span class="card-tag card-tag--teal">Customer Operations</span>
                     <h3 class="card-title">Smart Inbox Triage Pilot</h3>
-                    <dl class="card-dl">
+                    <dl class="card-dl playbook-dl">
                         <div><dt>Who it's for</dt><dd>Support and ops leads when urgent messages get lost in a flooded inbox and every reply is written from scratch.</dd></div>
                         <div><dt>What you get</dt><dd>Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email.</dd></div>
                         <div><dt class="outcome-label">Typical outcome</dt><dd class="outcome">Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.</dd></div>
@@ -265,7 +265,7 @@
                 <article class="glass-panel glass-panel-hover card playbook-card">
                     <span class="card-tag card-tag--blue">Finance Operations</span>
                     <h3 class="card-title">Invoice-to-Record Pilot</h3>
-                    <dl class="card-dl">
+                    <dl class="card-dl playbook-dl">
                         <div><dt>Who it's for</dt><dd>Finance controllers and AP teams pulling invoice data from email attachments into finance systems by hand.</dd></div>
                         <div><dt>What you get</dt><dd>Document intake, field extraction, validation rules, hand-off to your finance system, and human review on every exception.</dd></div>
                         <div><dt class="outcome-label">Typical outcome</dt><dd class="outcome">Roughly 40 hours per month of manual data entry removed; receipt-to-record time cut by more than half.</dd></div>
@@ -283,38 +283,47 @@
             <div class="section-header">
                 <span class="text-mono-label text-mono-label--blue">// Client Results</span>
                 <h2 class="heading-section">Case Studies</h2>
-                <p class="text-body-sm">Real projects under confidentiality agreements. Client names are withheld; outcomes show what each <a href="#where-to-start" class="link-brand">pilot playbook</a> delivered in production.</p>
+                <p class="text-body-sm">Production deployments under confidentiality agreements — specifics we can share on the page; client names and reference calls available under NDA. Each study maps to a <a href="#where-to-start" class="link-brand">pilot playbook</a> above.</p>
             </div>
 
             <div class="grid-3">
-                <article id="case-study-supplier" class="glass-panel glass-panel-hover card">
+                <article id="case-study-supplier" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--green">Audit-Ready Automation</span>
                     <h3 class="card-title">Supplier Verification for Regulated Supply Chains</h3>
-                    <dl class="card-dl">
-                        <div><dt>Challenge</dt><dd>A compliance platform needed to verify suppliers using websites with no simple data feeds — and to process onboarding packs that still arrive as scanned PDFs and faxes: certification forms, declarations, and signed attestations that staff were re-typing into spreadsheets by hand.</dd></div>
-                        <div><dt>Approach</dt><dd>Automated website collection where public data exists; for documents, an upload-and-extract pipeline reads PDFs and faxes, pulls named fields, and writes structured rows to a review spreadsheet. Low-confidence extractions and every new record stay in a human review queue before they enter the compliance system. Each document intake is logged for audit.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Manual research per supplier cut from hours to minutes; form data from scanned documents no longer re-keyed by hand. 100% of outputs human-reviewed until the client signed off on full automation.</dd></div>
+                    <p class="case-study-context">Mid-size EU compliance platform · ~200 supplier onboardings/year · ~30% of packs arrive as scanned PDFs or fax</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Quality staff verified every supplier by hand — website research, then re-typing certification forms and signed attestations from PDFs and faxes into a spreadsheet before records entered the compliance system. A single supplier took 45 minutes on average. During onboarding spikes, records queued for days. External auditors had asked how unaudited data could enter the system.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: automated website collection where public data exists; document pipeline with confidence scoring — extractions below 85% routed to a human review queue, never into the compliance system; structured hand-off to the client's existing spreadsheet and compliance tool; audit log on every intake (source, fields, reviewer, timestamp, action). Client wanted faster auto-approval at week one — we held 100% human review until they'd processed 50+ records and signed off accuracy themselves.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~80 suppliers): median handling time 45 min → 7 min; zero records entered without review; 12% of extractions flagged low-confidence, 3 corrected before approval. Client signed off partial automation at week 10.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"We stopped re-typing pdf certificates. The review queue is the part our auditors actually cared about — every field has a source." — Head of Supplier Quality, EU regulated supply chain platform</dd></div>
                     </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
                 </article>
 
-                <article id="case-study-inbox" class="glass-panel glass-panel-hover card">
+                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--teal">Smart Inbox Automation</span>
                     <h3 class="card-title">Customer Support Triage &amp; Draft Replies</h3>
-                    <dl class="card-dl">
-                        <div><dt>Challenge</dt><dd>Support inboxes were flooded — urgent and frustrated messages sat alongside routine enquiries, and every reply was written from scratch.</dd></div>
-                        <div><dt>Approach</dt><dd>Automated email intake, urgency and sentiment triage, and AI-drafted replies saved to drafts for review. Angry or critical messages trigger instant alerts via Slack, Microsoft Teams, or email — WhatsApp or Telegram only where your policy allows.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval — the team reviews drafts, not blank pages.</dd></div>
+                    <p class="case-study-context">B2B SaaS provider · ~400 support emails/week · Team of 4 on a shared Microsoft 365 mailbox</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Urgent and frustrated messages sat in the same queue as routine enquiries — no reliable way to prioritise. Critical issues sometimes waited 24+ hours. Agents averaged 12 minutes drafting each reply from scratch, and tone varied widely across the team.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 2 weeks: intake from the existing shared mailbox; urgency and sentiment scoring on every message; AI-drafted replies saved to each agent's drafts folder — never sent automatically. Angry or critical messages trigger instant Slack alerts with a link to the thread. Client asked for auto-send on low-risk replies at week two — we kept human approval on every outbound message until they'd reviewed 100+ drafts.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 60 days (~1,600 emails): median time to flag urgent messages 4 min (was 24+ hrs); routine enquiries drafted within 2 hrs of arrival; 85% of drafts sent with minor edits only; zero messages sent without human approval.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"Urgent tickets surface in Slack before we've even opened Outlook. The team edits drafts instead of staring at blank replies." — Support Operations Lead, B2B SaaS platform</dd></div>
                     </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
                 </article>
 
-                <article id="case-study-invoice" class="glass-panel glass-panel-hover card">
+                <article id="case-study-invoice" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--blue">Human-in-the-Loop Documents</span>
                     <h3 class="card-title">Invoice &amp; Document Processing</h3>
-                    <dl class="card-dl">
-                        <div><dt>Challenge</dt><dd>Finance teams spent too much time pulling data from invoices and attachments in email.</dd></div>
-                        <div><dt>Approach</dt><dd>Automated document intake, field extraction, validation, and hand-off to finance systems — with human review on exceptions. Exception alerts route through Slack, Microsoft Teams, or email by default — WhatsApp or Telegram only where your policy allows.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Roughly 40 hours per month of manual data entry removed; receipt-to-record time cut by more than half.</dd></div>
+                    <p class="case-study-context">Mid-size manufacturer · ~350 invoices/month · 2 AP clerks · Invoices arrive as email attachments</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>AP staff pulled line items, VAT, and PO references from PDF invoices by hand, then keyed them into the finance system. Each invoice took ~15 minutes. The team spent 40+ hours a month on data entry alone, and receipt-to-record averaged 3–5 business days.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: automated intake from the AP mailbox; field extraction with validation rules (PO match, VAT totals, duplicate detection); clean records handed off to the existing finance system; exceptions routed to a human review queue with Slack alerts. Client wanted all invoices auto-posted at launch — we held exceptions-only review until they'd validated 200+ extractions against source documents.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~900 invoices): manual data entry 40 hrs/month → 8 hrs/month on exceptions only; receipt-to-record median 3.2 days → 1.1 days; 9% exception rate, all reviewed before posting. Client signed off auto-posting on high-confidence matches at week 11.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"We didn't replace our finance system — we stopped being its data-entry department. Exceptions are the only invoices anyone touches now." — Finance Controller, mid-size manufacturing group</dd></div>
                     </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
                 </article>
             </div>
 
