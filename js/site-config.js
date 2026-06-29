@@ -1,4 +1,5 @@
 const SITE = {
+    // Update canonicalUrl, contactEmail, and og:url tags across HTML when domain goes live.
     contactEmail: 'karlnolancompany@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
     canonicalUrl: 'http://178.104.254.165/',
@@ -11,8 +12,8 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260628b',
+    partialVersion: '20260629',
     assessmentUrl: 'https://178.104.254.165/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
-    navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'workshops', 'assessment', 'contact', 'what-we-automate'],
+    navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'what-we-automate', 'contact'],
 };
