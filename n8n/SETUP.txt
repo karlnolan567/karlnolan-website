@@ -37,10 +37,12 @@ Your local n8n already runs via **n8n-test-project** (not a second Docker stack)
      - curl warm cache:
          curl -sS -X POST http://localhost:5678/webhook/bcai-warm-knowledge \\
            -H 'Content-Type: application/json' -d '{}'
-     - curl chat:
+     - curl chat (non-streaming JSON check):
          curl -sS -X POST http://localhost:5678/webhook/bcai-website-chat/chat \\
            -H 'Content-Type: application/json' \\
            -d '{"action":"sendMessage","chatInput":"What services do you offer?","sessionId":"local-test"}'
+     - curl chat streaming latency (TTFB + first token):
+         ./scripts/test_chat_stream.sh
 
 8. Test with live website widget (optional):
      Temporarily set in `js/site-config.js`:

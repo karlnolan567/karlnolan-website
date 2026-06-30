@@ -306,24 +306,6 @@
     return pump();
   }
 
-  function shouldStreamResponse(res) {
-    if (!res.body || !res.body.getReader) {
-      return false;
-    }
-    if (isStreamingResponse(res)) {
-      return true;
-    }
-    var encoding = (res.headers.get('transfer-encoding') || '').toLowerCase();
-    return encoding.indexOf('chunked') !== -1;
-  }
-    var contentType = (res.headers.get('content-type') || '').toLowerCase();
-    return (
-      contentType.indexOf('text/event-stream') !== -1 ||
-      contentType.indexOf('application/x-ndjson') !== -1 ||
-      contentType.indexOf('application/stream+json') !== -1
-    );
-  }
-
   function extractReply(data) {
     if (!data) return '';
     if (typeof data === 'string') return data;
