@@ -1,0 +1,16 @@
+# Local n8n for Ask BCAI development
+
+Use the existing Docker stack (already on port **5678**):
+
+    cd ~/src/n8n-test-project
+    docker compose up -d
+
+Editor: http://localhost:5678
+
+The chatbot workflow is mirrored at:
+
+    ~/src/n8n-test-project/workflows/07-bcai-website-chatbot.json
+
+**Source of truth:** `web_site/n8n/bcai-website-chatbot.workflow.json`
+
+Full steps: see `SETUP.txt` → **Local development (Docker)**.

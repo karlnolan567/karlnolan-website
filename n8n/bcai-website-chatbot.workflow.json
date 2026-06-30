@@ -1,12 +1,14 @@
 {
+  "id": "bc7a1c20-4e5f-4a8b-9c3d-1100bcai0001",
   "name": "BCAI Website Chatbot (Ask BCAI)",
+  "active": false,
   "nodes": [
     {
       "parameters": {
         "public": true,
         "mode": "webhook",
         "options": {
-          "allowedOrigins": "http://178.104.254.165,https://178.104.254.165",
+          "allowedOrigins": "http://178.104.254.165,https://178.104.254.165,http://localhost,http://127.0.0.1,http://localhost:8080,http://localhost:5500",
           "responseMode": "lastNode"
         }
       },
@@ -14,7 +16,10 @@
       "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
-      "position": [0, 400],
+      "position": [
+        0,
+        400
+      ],
       "webhookId": "bcai-website-chat"
     },
     {
@@ -28,19 +33,24 @@
       "name": "Warm knowledge cache",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 80],
+      "position": [
+        0,
+        80
+      ],
       "webhookId": "bcai-warm-knowledge"
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
         "jsCode": "const CACHE_TTL_MS = 10 * 60 * 1000;\nconst staticData = $getWorkflowStaticData('global');\nconst cachedAt = staticData.knowledgeCachedAt || 0;\nconst knowledge = staticData.knowledge || '';\nconst isFresh = Boolean(knowledge) && (Date.now() - cachedAt < CACHE_TTL_MS);\n\nreturn [{\n  json: {\n    fromCache: isFresh,\n  },\n}];"
       },
       "id": "w2b3c4d5-e6f7-8901-bcde-f12345678901",
       "name": "Check warm cache",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [220, 80]
+      "position": [
+        224,
+        80
+      ]
     },
     {
       "parameters": {
@@ -70,29 +80,36 @@
       "name": "Warm cache fresh?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [440, 80]
+      "position": [
+        448,
+        80
+      ]
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
         "jsCode": "return [{\n  json: {\n    ok: true,\n    warmed: false,\n    skipped: true,\n  },\n}];"
       },
       "id": "w4d5e6f7-a8b9-0123-def0-345678901234",
       "name": "Format warm cache response",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1320, 80]
+      "position": [
+        1328,
+        80
+      ]
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
         "jsCode": "const CACHE_TTL_MS = 10 * 60 * 1000;\nconst trigger = $input.first().json;\nconst staticData = $getWorkflowStaticData('global');\nconst cachedAt = staticData.knowledgeCachedAt || 0;\nconst knowledge = staticData.knowledge || '';\nconst isFresh = Boolean(knowledge) && (Date.now() - cachedAt < CACHE_TTL_MS);\n\nreturn [{\n  json: {\n    chatInput: trigger.chatInput,\n    sessionId: trigger.sessionId,\n    knowledge: isFresh ? knowledge : '',\n    fromCache: isFresh,\n  },\n}];"
       },
       "id": "g1h2i3j4-k5l6-7890-abcd-ef123456789a",
       "name": "Check knowledge cache",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [220, 400]
+      "position": [
+        224,
+        400
+      ]
     },
     {
       "parameters": {
@@ -122,12 +139,14 @@
       "name": "Cache hit?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [440, 400]
+      "position": [
+        448,
+        400
+      ]
     },
     {
       "parameters": {
         "resource": "fileFolder",
-        "operation": "search",
         "searchMethod": "query",
         "queryString": "'11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'",
         "returnAll": true,
@@ -140,7 +159,10 @@
       "name": "List knowledge files",
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [660, 240],
+      "position": [
+        672,
+        240
+      ],
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "REPLACE_GOOGLE_DRIVE_CREDENTIAL_ID",
@@ -150,7 +172,6 @@
     },
     {
       "parameters": {
-        "resource": "file",
         "operation": "download",
         "fileId": {
           "__rl": true,
@@ -163,7 +184,10 @@
       "name": "Download knowledge files",
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [880, 240],
+      "position": [
+        880,
+        240
+      ],
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "REPLACE_GOOGLE_DRIVE_CREDENTIAL_ID",
@@ -173,14 +197,16 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
         "jsCode": "const parts = [];\n\nfor (const item of $input.all()) {\n  const name = item.json.name || item.json.fileName || 'document';\n  let text = '';\n  const binKey = item.binary ? Object.keys(item.binary)[0] : null;\n  if (binKey && item.binary[binKey]?.data) {\n    text = Buffer.from(item.binary[binKey].data, 'base64').toString('utf8');\n  }\n  if (text.trim()) {\n    parts.push(`### ${name}\\n${text.trim()}`);\n  }\n}\n\nconst knowledge = parts.join('\\n\\n---\\n\\n') || '(No knowledge files found in Drive folder.)';\n\nconst staticData = $getWorkflowStaticData('global');\nstaticData.knowledge = knowledge;\nstaticData.knowledgeCachedAt = Date.now();\n\nlet chatInput = '';\nlet sessionId = '';\nlet warmOnly = false;\n\ntry {\n  const meta = $('Check knowledge cache').first().json;\n  chatInput = meta.chatInput || '';\n  sessionId = meta.sessionId || '';\n} catch (error) {\n  warmOnly = true;\n}\n\nreturn [{\n  json: {\n    chatInput,\n    sessionId,\n    knowledge,\n    fromCache: false,\n    warmOnly,\n  },\n}];"
       },
       "id": "d4e5f6a7-b8c9-0123-def0-234567890123",
       "name": "Build knowledge context",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1100, 240]
+      "position": [
+        1104,
+        240
+      ]
     },
     {
       "parameters": {
@@ -210,29 +236,36 @@
       "name": "Warm only?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [1320, 240]
+      "position": [
+        1328,
+        240
+      ]
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
         "jsCode": "return [{\n  json: {\n    ok: true,\n    warmed: true,\n    skipped: false,\n  },\n}];"
       },
       "id": "w6f7a8b9-c0d1-2345-f012-567890123456",
       "name": "Warm cache complete",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1540, 160]
+      "position": [
+        1552,
+        160
+      ]
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
-        "jsCode": "const { chatInput, knowledge = '' } = $input.first().json;\n\nconst systemMessage = [\n  'You are **Ask BCAI**, the website assistant for Bespoke Core AI Engineering Limited (Limerick, Ireland).',\n  '',\n  '## Rules',\n  '1. Answer **only** questions about Bespoke Core AI, its services, workshops, case studies, and content on http://178.104.254.165/',\n  '2. **Off-topic** (general trivia, other companies, unrelated help): reply exactly — \"That isn\\'t something I can help with here — I\\'m only able to answer questions about Bespoke Core AI and this website.\"',\n  '3. **Consulting / automation pilot pricing** (quotes, day rates, pilot cost, budget): do **not** invent numbers. Direct to http://178.104.254.165/#contact and mention free discovery call + single-workflow pilots.',\n  '4. **Workshop pricing**: you may quote published workshop prices from the knowledge base.',\n  '5. Be concise, professional, plain language. Use markdown links when citing URLs.',\n  '6. If unsure, say so and suggest booking a discovery call.',\n  '',\n  '## Knowledge base (from Google Drive)',\n  knowledge,\n].join('\\n');\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    openRouterBody: {\n      model: 'deepseek/deepseek-v4-flash',\n      temperature: 0.3,\n      messages: [\n        { role: 'system', content: systemMessage },\n        { role: 'user', content: chatInput },\n      ],\n    },\n  },\n}];"
+        "jsCode": "const { chatInput, knowledge = '' } = $input.first().json;\n\nconst systemMessage = [\n  'You are **Ask BCAI**, the website assistant for Bespoke Core AI Engineering Limited (Limerick, Ireland).',\n  '',\n  '## Rules',\n  '1. Answer **only** questions about Bespoke Core AI, its services, workshops, case studies, and content on http://178.104.254.165/',\n  '2. **Off-topic** (general trivia, other companies, unrelated help): reply exactly \u2014 \"That isn\\'t something I can help with here \u2014 I\\'m only able to answer questions about Bespoke Core AI and this website.\"',\n  '3. **Consulting / automation pilot pricing** (quotes, day rates, pilot cost, budget): do **not** invent numbers. Direct to http://178.104.254.165/#contact and mention free discovery call + single-workflow pilots.',\n  '4. **Workshop pricing**: you may quote published workshop prices from the knowledge base.',\n  '5. Be concise, professional, plain language. Use markdown links when citing URLs.',\n  '6. If unsure, say so and suggest booking a discovery call.',\n  '',\n  '## Knowledge base (from Google Drive)',\n  knowledge,\n].join('\\n');\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    openRouterBody: {\n      model: 'deepseek/deepseek-v4-flash',\n      temperature: 0.3,\n      messages: [\n        { role: 'system', content: systemMessage },\n        { role: 'user', content: chatInput },\n      ],\n    },\n  },\n}];"
       },
       "id": "i3j4k5l6-m7n8-9012-cdef-345678901234",
       "name": "Prepare OpenRouter request",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1540, 400]
+      "position": [
+        1552,
+        400
+      ]
     },
     {
       "parameters": {
@@ -266,7 +299,10 @@
       "name": "Call Ask BCAI (OpenRouter)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1760, 400],
+      "position": [
+        1760,
+        400
+      ],
       "credentials": {
         "openRouterApi": {
           "id": "REPLACE_OPENROUTER_CREDENTIAL_ID",
@@ -276,14 +312,16 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
-        "jsCode": "const FALLBACK = 'Sorry — I could not generate a reply right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#contact';\n\nreturn $input.all().map(item => {\n  const content = item.json.choices?.[0]?.message?.content ?? '';\n  const text = (typeof content === 'string' ? content : JSON.stringify(content)).trim();\n\n  return {\n    json: {\n      output: text || FALLBACK,\n    },\n  };\n});"
+        "jsCode": "const FALLBACK = 'Sorry \u2014 I could not generate a reply right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#contact';\n\nreturn $input.all().map(item => {\n  const content = item.json.choices?.[0]?.message?.content ?? '';\n  const text = (typeof content === 'string' ? content : JSON.stringify(content)).trim();\n\n  return {\n    json: {\n      output: text || FALLBACK,\n    },\n  };\n});"
       },
       "id": "k5l6m7n8-o9p0-1234-ef01-567890123456",
       "name": "Format chat response",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1980, 400]
+      "position": [
+        1984,
+        400
+      ]
     }
   ],
   "connections": {
@@ -452,8 +490,37 @@
       ]
     }
   },
-  "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "activeVersionId": "c622b639-0933-4495-b951-f015f6cf998a",
+  "versionCounter": 6,
+  "sourceWorkflowId": null,
+  "shared": [
+    {
+      "updatedAt": "2026-06-30T10:04:32.459Z",
+      "createdAt": "2026-06-30T10:04:32.459Z",
+      "role": "workflow:owner",
+      "workflowId": "bc7a1c20-4e5f-4a8b-9c3d-1100bcai0001",
+      "projectId": "OQQo2OXcxb1yCgEE",
+      "project": {
+        "updatedAt": "2026-06-10T19:54:55.110Z",
+        "createdAt": "2026-06-10T19:42:50.775Z",
+        "id": "OQQo2OXcxb1yCgEE",
+        "name": "test test <test@test.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "e7080517-5f44-4fc0-ba46-81256539b08c"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version c622b639",
+    "description": ""
   }
 }

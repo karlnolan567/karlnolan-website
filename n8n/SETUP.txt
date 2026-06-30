@@ -1,6 +1,60 @@
 BCAI Website Chatbot — n8n setup
 =================================
 
+Local development (Docker) — start here
+---------------------------------------
+Develop and test workflows on local n8n, then export JSON to prod.
+
+Your local n8n already runs via **n8n-test-project** (not a second Docker stack).
+
+1. Start local stack (if not running):
+     cd ~/src/n8n-test-project
+     docker compose up -d
+
+2. Open editor: http://localhost:5678
+
+3. Workflow **BCAI Website Chatbot (Ask BCAI)** should appear after import.
+   If missing, import from repo:
+     docker cp ~/src/web_site/n8n/bcai-website-chatbot.workflow.json n8n:/tmp/w.json
+     docker exec n8n n8n import:workflow --input=/tmp/w.json
+   Or: Workflows → Import from file → `n8n/bcai-website-chatbot.workflow.json`
+   (Do not import on top of an existing copy — delete the old workflow first.)
+
+4. **Credentials** (same keys as prod; OAuth redirect URI differs for local):
+     - **OpenRouter API** → your OpenRouter key
+     - **Google Drive OAuth2** → sign in; add redirect URI in Google Cloud:
+       http://localhost:5678/rest/oauth2-credential/callback
+
+5. On **When chat message received** → Allowed Origins already includes localhost
+   in the repo JSON for local widget tests.
+
+6. **Save** → **Activate** → copy webhook URLs from nodes:
+     Chat:  http://localhost:5678/webhook/bcai-website-chat/chat
+     Warm:  http://localhost:5678/webhook/bcai-warm-knowledge
+
+7. Test in n8n (no website needed):
+     - Open workflow → **Chat** panel at bottom, or
+     - curl warm cache:
+         curl -sS -X POST http://localhost:5678/webhook/bcai-warm-knowledge \\
+           -H 'Content-Type: application/json' -d '{}'
+     - curl chat:
+         curl -sS -X POST http://localhost:5678/webhook/bcai-website-chat/chat \\
+           -H 'Content-Type: application/json' \\
+           -d '{"action":"sendMessage","chatInput":"What services do you offer?","sessionId":"local-test"}'
+
+8. Test with live website widget (optional):
+     Temporarily set in `js/site-config.js`:
+       chatWebhookUrl: 'http://localhost:5678/webhook/bcai-website-chat/chat'
+       chatWarmCacheUrl: 'http://localhost:5678/webhook/bcai-warm-knowledge'
+     Serve site locally: `python3 -m http.server 8080` from repo root.
+     Revert URLs before deploying to VPS.
+
+9. When happy → **Export** workflow from n8n → overwrite
+      `n8n/bcai-website-chatbot.workflow.json` → commit → **prod clean import**
+      (delete old prod workflow, import JSON, re-attach credentials, activate).
+
+Also mirrored at: `~/src/n8n-test-project/workflows/07-bcai-website-chatbot.json`
+
 Knowledge cache (10 minutes)
 ----------------------------
 The workflow caches merged Drive knowledge in workflow static data for 10 minutes.

@@ -64,6 +64,18 @@ Profile photo: `images/Karl Nolan.jpeg`
 
 The **Ask BCAI** widget calls an n8n workflow (see [`n8n/SETUP.txt`](n8n/SETUP.txt)). Knowledge comes from markdown files in a Google Drive folder — not from the live site HTML.
 
+### Local n8n (development)
+
+Workflow development and testing use the Docker stack in `~/src/n8n-test-project` (see also [`n8n/LOCAL-DEV.txt`](n8n/LOCAL-DEV.txt)).
+
+| | |
+|---|---|
+| **URL** | http://localhost:5678 |
+| **Email** | test@test.com |
+| **Password** | `@Passw0rd@` |
+
+Import or sync the workflow from [`n8n/bcai-website-chatbot.workflow.json`](n8n/bcai-website-chatbot.workflow.json). When happy, export from local n8n and promote to production (delete old prod workflow → clean import — see `n8n/SETUP.txt`).
+
 When site content changes, regenerate and re-upload to Drive:
 
 ```bash
