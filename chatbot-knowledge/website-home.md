@@ -16,7 +16,7 @@ For ops, finance, and compliance teams in regulated industries — practical AI 
 
 First engagements are scoped to a single workflow — no enterprise procurement required.
 
-[Book a 30-Minute Discovery Call](#discovery-call)
+[Book a Discovery Call](#)
 
 Cohorts opening · Sep–Dec 2026
 
@@ -163,12 +163,6 @@ Mid-size manufacturer · ~350 invoices/month · 2 AP clerks · Invoices arrive a
 
 Reference call available under NDA
 
-Ready to scope a pilot on a workflow like these?
-
-[Book a 30-Minute Discovery Call](#discovery-call)
-
-Free · NDA before sensitive details · You'll leave with a scoped pilot proposal
-
 // What We Do
 
 ## Our Service
@@ -197,23 +191,10 @@ A free 30-minute call to understand what's actually slowing you down. We'll conf
 
 - First engagements are single-workflow pilots — no enterprise procurement required
 
-Your name
+Pick an available slot — times are shown in GMT+1. You'll receive a calendar invite by email.
 
-Email
+[Book a Discovery Call](#)
 
-Company
-
-Preferred date
-
-Preferred time
-
-The above time is GMT+1.
-
-What would you like to discuss?
-
- Book Discovery Call
-                            
-
-Your details are relayed via FormSubmit for scheduling. We do not sell personal data. See [privacy notice](#privacy) below.
+Booking details are stored in Google Calendar and a confirmation is sent via Gmail. We do not sell personal data. See [privacy notice](#privacy) below.
 
 Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-69433b29/)

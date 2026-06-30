@@ -307,10 +307,127 @@ reactivate the workflow to pick up changes immediately.
 Test prompts
 ------------
 - "What pilots do you offer?" → should cite case studies / playbooks
-- "How much does automation cost?" → redirect to #contact
+- "How much does automation cost?" → redirect to #discovery-call
 - "What is Workshop 1 price?" → may quote €149–€249 tiers
 - "Who won the 2026 World Cup?" → off-topic refusal
 
 When domain / tunnel changes
 ----------------------------
-Update only `SITE.chatWebhookUrl` in `js/site-config.js` and CORS origins on the Chat Trigger node.
+Update `SITE.chatWebhookUrl`, `SITE.bookingUrl`, and CORS origins on the Chat Trigger node in `js/site-config.js`.
+
+
+BCAI Discovery Call Booking — n8n setup
+========================================
+
+Local development (Docker)
+--------------------------
+Uses the same **n8n-test-project** stack as the chatbot (http://localhost:5678).
+
+1. Start local stack (if not running):
+     cd ~/src/n8n-test-project
+     docker compose up -d
+
+2. **Clean import** (do not stack on an existing copy):
+     docker cp ~/src/web_site/n8n/bcai-discovery-booking.workflow.json n8n:/tmp/booking.json
+     docker exec n8n n8n import:workflow --input=/tmp/booking.json
+   Or: Workflows → Import from file → `n8n/bcai-discovery-booking.workflow.json`
+
+3. **Credentials** (attach on import):
+     - **Google Calendar OAuth2** — primary calendar on karlnolancompany@gmail.com
+     - **Gmail OAuth2** — same account (sends confirmation + BCC to business inbox)
+   Local OAuth redirect URI:
+     http://localhost:5678/rest/oauth2-credential/callback
+
+OpenRouter app attribution (BCAI Booking in dashboard)
+------------------------------------------------------
+**Call OpenRouter (Booking)** sends:
+  HTTP-Referer: http://178.104.254.165/booking   (unique app URL — must be a URL, not the title)
+  X-OpenRouter-Title: BCAI Booking
+  X-Title: BCAI Booking
+
+Do **not** put "BCAI Booking" in HTTP-Referer — that header must be your app's URL.
+The display name goes in **X-OpenRouter-Title** (and **X-Title**). We also send standard **Referer**.
+
+**Activity log vs app name:** The App column often shows the referer URL (e.g. http://178.104.254.165/booking)
+as the app identifier — that means attribution is working. The human-readable name "BCAI Booking" appears on
+your app analytics page: https://openrouter.ai/apps?url=http://178.104.254.165/booking
+
+When you have a domain, switch Referer to https://yourdomain.com/booking for a cleaner label.
+
+4. **Redirect to Site** node — success URL in `BOOKING_SUCCESS_URL` inside `scripts/build_booking_workflow.py`
+   (uses HTML + `window.location.replace()` so the browser GETs your static site — not POST)
+   Local:  http://localhost:8080/index.html?call-booked=1
+   Prod:   http://178.104.254.165/index.html?call-booked=1
+
+5. **Save** → **Activate**
+
+6. Test booking form (GET):
+     open http://localhost:5678/webhook/booking
+     — verify BCAI dark styling, company field, Dublin-time slots Mon–Fri 9:00–17:00
+
+7. Test full flow:
+     Serve site: `python3 -m http.server 8080` from repo root
+     Open http://localhost:8080/index.html#discovery-call → click CTA
+     Book a slot → calendar event created → confirmation email (with BCC) → redirect to site success state
+
+8. When happy → **Export** workflow → overwrite `n8n/bcai-discovery-booking.workflow.json` → prod clean import
+
+Website URLs (`js/site-config.js`)
+----------------------------------
+  bookingUrl:        …/webhook/booking          (GET form + POST submit)
+  bookingSuccessUrl: …/index.html?call-booked=1
+
+Availability tuning
+-------------------
+Edit **Calculate Available Slots** Code node:
+  - workingDays, startHour (9), startMinute (30), endHour (17), slotDuration (30)
+  - firstDayOffset (1), lookaheadDays (10) — no same-day booking; max 10 days ahead
+  - maxSlotsPerDay (4), lunchStartHour (13), lunchEndHour (14)
+  - TIMEZONE = 'Europe/Dublin'
+
+Confirmation email
+------------------
+**Send Confirmation Email** — BCC karlnolancompany@gmail.com (options.bccList).
+Append n8n Attribution is **off** (options.appendAttribution: false).
+Subject: {firstName} — discovery call confirmed for {date}
+
+Performance (booking POST)
+--------------------------
+After **Create Calendar Event**, two branches run in parallel:
+1. **Redirect to Site** — user returns to the website immediately (~1–2s)
+2. **Format Email Data** → OpenRouter → **Send Confirmation Email** — runs in background
+
+OpenRouter tuning (Prepare OpenRouter Request): one short paragraph, max_tokens 180,
+provider.sort latency, reasoning.effort none, 8s HTTP timeout with template fallback.
+
+Prod handoff
+------------
+1. Export from local n8n → commit `n8n/bcai-discovery-booking.workflow.json`
+2. Prod n8n: delete old booking workflow if any → clean import → re-attach credentials
+3. Update **Redirect to Site** URL to prod `bookingSuccessUrl`
+4. Activate; deploy `js/site-config.js` and `index.html` to VPS
+
+Also mirrored at: `~/src/n8n-test-project/workflows/` (copy after export if desired).
+
+Regenerate workflow JSON from repo script (after editing `scripts/build_booking_workflow.py`):
+  python3 scripts/build_booking_workflow.py
+
+Troubleshooting — blank booking page
+------------------------------------
+If GET /webhook/booking returns HTTP 200 with an empty white page:
+
+1. **Duplicate workflows** — only one "BCAI Discovery Call Booking" should be active.
+   Delete or archive extras in n8n (Workflows list). Webhook path conflicts deactivate registration.
+
+2. **Get Calendar Events outputs zero items** — when your calendar has no upcoming events,
+   n8n stops the chain unless **Always Output Data** is ON on that node.
+   The repo workflow sets `alwaysOutputData: true` and `onError: continueRegularOutput`.
+   Re-import `n8n/bcai-discovery-booking.workflow.json` if you edited nodes manually.
+
+3. **Workflow not published** — toggle Active in the editor, or:
+     docker exec n8n n8n publish:workflow --id=bcai-discovery-booking-001
+   Then restart n8n if webhooks still 404.
+
+4. **Credentials** — attach Google Calendar OAuth2 on Get Calendar Events + Create Calendar Event,
+   and Gmail OAuth2 on Send Confirmation Email after import.
+

@@ -54,7 +54,7 @@ Sync `index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, and `i
 
 Edit the `SITE` object in [`js/site-config.js`](js/site-config.js) for contact email, LinkedIn URL, canonical URL, and form links.
 
-Discovery call requests use [FormSubmit](https://formsubmit.co/) (no backend). On the **first** submission, FormSubmit emails `contactEmail` an activation link — click it once so future requests are forwarded.
+Discovery call bookings use an n8n workflow with **Google Calendar** and **Gmail** (see [`n8n/SETUP.txt`](n8n/SETUP.txt) → Discovery Call Booking). Configure `bookingUrl` and `bookingSuccessUrl` in [`js/site-config.js`](js/site-config.js).
 
 Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 

@@ -14,11 +14,31 @@
       @media(min-width:1024px){.site-header .nav{display:flex}.mobile-menu-btn{display:none}.mobile-menu{display:none!important}}
       .hidden{display:none!important}
       html[data-includes-pending] .page-content{visibility:hidden}
+      html[data-call-booked="1"] #discovery-call-cta{display:none!important}
+      html[data-call-booked="1"] #discovery-call-success{display:block!important}
+      html[data-call-booked="1"] #discovery-call .contact-card-lead{display:none!important}
+      html[data-call-booked="1"] .discovery-call-points{display:none!important}
+      html[data-call-booked="1"] #discovery-call .section-header{display:none!important}
       .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
     </style>
     <title>Bespoke Core AI | High-Stakes AI Automation</title>
     <meta name="description" content="Practical AI automation for high-stakes workflows — human review, audit-ready delivery, and systems you can trust. Based in Limerick, Ireland.">
     <link rel="canonical" href="http://178.104.254.165/">
+    <script>
+      if (new URLSearchParams(window.location.search).get('call-booked') === '1') {
+        document.documentElement.dataset.callBooked = '1';
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        document.addEventListener('DOMContentLoaded', function () {
+          var cta = document.getElementById('discovery-call-cta');
+          var ok = document.getElementById('discovery-call-success');
+          if (cta) cta.hidden = true;
+          if (ok) ok.hidden = false;
+        }, { once: true });
+      } else if (window.location.hash && window.location.hash !== '#') {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+      }
+    </script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bespoke Core AI | High-Stakes AI Automation">
     <meta property="og:description" content="We automate workflows you cannot afford to get wrong — with human review, clear records, and working software, not slide decks.">
@@ -29,7 +49,7 @@
     <meta name="twitter:title" content="Bespoke Core AI | High-Stakes AI Automation">
     <meta name="twitter:description" content="Practical AI automation for high-stakes workflows — human review and audit-ready delivery.">
     <meta name="twitter:image" content="http://178.104.254.165/images/og-card.png">
-    <link rel="stylesheet" href="css/styles.css?v=20260630c">
+    <link rel="stylesheet" href="css/styles.css?v=20260630h">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -91,8 +111,8 @@
                 <p class="text-body-sm text-muted container-sm" style="margin-left:auto;margin-right:auto">First engagements are scoped to a single workflow — no enterprise procurement required.</p>
 
                 <div class="cta-row">
-                    <a href="#discovery-call" class="btn btn-primary btn-primary--lg">
-                        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a 30-Minute Discovery Call
+                    <a href="#" data-booking-link class="btn btn-primary btn-primary--lg">
+                        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a Discovery Call
                     </a>
                 </div>
             </div>
@@ -326,20 +346,10 @@
                     <p class="case-study-reference text-muted">Reference call available under NDA</p>
                 </article>
             </div>
-
-            <div class="case-studies-cta stack-lg text-center">
-                <p class="text-body-sm text-muted">Ready to scope a pilot on a workflow like these?</p>
-                <div class="cta-row">
-                    <a href="#discovery-call" class="btn btn-primary btn-primary--lg">
-                        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a 30-Minute Discovery Call
-                    </a>
-                </div>
-                <p class="text-body-sm text-muted">Free · NDA before sensitive details · You'll leave with a scoped pilot proposal</p>
-            </div>
         </div>
     </section>
 
-    <section id="offerings" class="section section--border-top section--alt-light">
+    <section id="our-service" class="section section--border-top section--alt-light">
         <div class="container-md">
             <div class="section-header section-header--sm">
                 <span class="text-mono-label text-mono-label--teal">// What We Do</span>
@@ -349,8 +359,10 @@
 
             <div class="glass-panel glass-panel-hover offering-card">
                 <div class="stack">
-                    <div class="offering-icon offering-icon--blue" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
-                    <h3 class="heading-card">AI Workflow Automation</h3>
+                    <div class="card-lead">
+                        <div class="offering-icon offering-icon--blue" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
+                        <h3 class="heading-card">AI Workflow Automation</h3>
+                    </div>
                     <p class="text-body-sm">Automated workflows with human review built in — document processing, email pipelines, supplier verification, and audit-ready records. We plug into tools your team already uses — Slack, Microsoft Teams, and email by default; WhatsApp or Telegram only where your policy allows.</p>
                     <p class="text-body-sm"><a href="what-we-automate.html" class="link-brand">See what's possible <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
                 </div>
@@ -358,7 +370,7 @@
         </div>
     </section>
 
-    <section id="contact" class="section section--border-top section--alt-faint">
+    <section id="discovery-call" class="section section--border-top section--alt-faint">
         <div class="container-md">
             <div class="section-header section-header--sm">
                 <span class="text-mono-label text-mono-label--green">// Get in Touch</span>
@@ -373,53 +385,23 @@
                 </ul>
             </div>
 
-            <div id="discovery-call" class="contact-single">
+            <div class="contact-single">
                 <div class="glass-panel contact-card">
-                    <div class="stack-lg text-center">
-                        <div class="contact-card-icon contact-card-icon--green" aria-hidden="true">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-                        <div id="discovery-call-success" class="contact-form-success" hidden>
-                            <p class="text-body-sm"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Thanks — your request has been sent. Karl will confirm the time by email.</p>
-                        </div>
-                        <form id="discovery-call-form" class="contact-form" method="POST">
-                            <input type="hidden" name="_subject" value="Discovery call request — Bespoke Core AI Engineering Limited">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="text" name="_honey" class="contact-form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-                            <label class="contact-form-field">
-                                <span class="contact-form-label">Your name</span>
-                                <input type="text" name="name" required autocomplete="name">
-                            </label>
-                            <label class="contact-form-field">
-                                <span class="contact-form-label">Email</span>
-                                <input type="email" name="email" required autocomplete="email">
-                            </label>
-                            <label class="contact-form-field">
-                                <span class="contact-form-label">Company</span>
-                                <input type="text" name="company" required autocomplete="organization">
-                            </label>
-                            <div class="contact-form-row">
-                                <label class="contact-form-field">
-                                    <span class="contact-form-label">Preferred date</span>
-                                    <input type="date" name="preferred_date" required>
-                                </label>
-                                <label class="contact-form-field">
-                                    <span class="contact-form-label">Preferred time</span>
-                                    <input type="time" name="preferred_time" required>
-                                </label>
-                            </div>
-                            <p class="contact-form-hint">The above time is GMT+1.</p>
-                            <label class="contact-form-field">
-                                <span class="contact-form-label">What would you like to discuss?</span>
-                                <textarea name="message" rows="3" placeholder="Describe the workflow or problem you want to solve." required></textarea>
-                            </label>
-                            <button type="submit" class="btn btn-primary btn-primary--block">
-                                <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book Discovery Call
-                            </button>
-                        </form>
-                        <p class="privacy-note">Your details are relayed via FormSubmit for scheduling. We do not sell personal data. See <a href="#privacy" class="link-brand">privacy notice</a> below.</p>
+                    <div id="discovery-call-success" class="contact-form-success" hidden tabindex="-1">
+                        <p class="text-body-sm"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Your discovery call is booked — check your email for confirmation.</p>
                     </div>
+                    <div id="discovery-call-cta" class="contact-card-body">
+                        <div class="contact-card-lead">
+                            <div class="contact-card-icon contact-card-icon--green" aria-hidden="true">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <p class="text-body-sm text-muted contact-card-intro">Pick an available slot — times are shown in GMT+1. You'll receive a calendar invite by email.</p>
+                        </div>
+                        <a href="#" data-booking-link class="btn btn-primary btn-primary--block">
+                            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a Discovery Call
+                        </a>
+                    </div>
+                    <p class="privacy-note">Booking details are stored in Google Calendar and a confirmation is sent via Gmail. We do not sell personal data. See <a href="#privacy" class="link-brand">privacy notice</a> below.</p>
                 </div>
                 <p class="contact-secondary text-body-sm">
                     Prefer LinkedIn?
@@ -434,35 +416,10 @@
     <div id="site-footer"></div>
 </div>
 
-<script src="js/site-config.js?v=20260630g"></script>
-<script src="js/includes.js?v=20260629"></script>
-<script src="js/site.js"></script>
+<script src="js/site-config.js?v=20260630j"></script>
+<script src="js/includes.js?v=20260630k"></script>
+<script src="js/site.js?v=20260630p"></script>
 <script>
-    var discoveryForm = document.getElementById('discovery-call-form');
-    var returnUrl = new URL(window.location.href);
-    returnUrl.search = 'call-requested=1';
-    returnUrl.hash = 'discovery-call';
-    discoveryForm.action = 'https://formsubmit.co/' + encodeURIComponent(SITE.contactEmail);
-    var nextField = document.createElement('input');
-    nextField.type = 'hidden';
-    nextField.name = '_next';
-    nextField.value = returnUrl.href;
-    discoveryForm.appendChild(nextField);
-
-    if (new URLSearchParams(window.location.search).get('call-requested') === '1') {
-        discoveryForm.hidden = true;
-        document.getElementById('discovery-call-success').hidden = false;
-    }
-
-    var preferredDateInput = discoveryForm.querySelector('input[name="preferred_date"]');
-    if (preferredDateInput) {
-        preferredDateInput.addEventListener('dblclick', function () {
-            if (typeof preferredDateInput.showPicker === 'function') {
-                preferredDateInput.showPicker();
-            }
-        });
-    }
-
     document.getElementById('linkedin-profile').href = SITE.linkedIn;
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
 </script>

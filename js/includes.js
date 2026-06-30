@@ -8,6 +8,13 @@
 
   document.documentElement.setAttribute('data-includes-pending', '');
 
+function bookingHref() {
+  if (typeof SITE !== 'undefined' && SITE.bookingUrl) {
+    return SITE.bookingUrl;
+  }
+  return '#discovery-call';
+}
+
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
@@ -102,9 +109,9 @@
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
     } else if (isWhatWeAutomate) {
-      ctaConfig = { href: 'index.html#discovery-call', text: 'Book a Call' };
+      ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {
-      ctaConfig = { href: '#discovery-call', text: 'Book a Call' };
+      ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };
     }
 
     ['header-cta', 'mobile-menu-cta'].forEach(function (id) {

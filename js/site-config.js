@@ -19,10 +19,10 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260630g',
+    partialVersion: '20260630m',
     assessmentUrl: 'https://178.104.254.165/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
-    navOrder: ['engagement', 'about', 'case-studies', 'offerings', 'what-we-automate', 'contact'],
+    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'discovery-call'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
@@ -31,5 +31,11 @@ const SITE = {
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
         : 'https://fridge-films-find-gloves.trycloudflare.com/webhook/bcai-warm-knowledge',
     chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke Core AI and this website. What would you like to know?',
+    bookingUrl: isLocalPreview
+        ? 'http://localhost:5678/webhook/booking'
+        : 'https://fridge-films-find-gloves.trycloudflare.com/webhook/booking',
+    bookingSuccessUrl: isLocalPreview
+        ? 'http://localhost:8080/index.html?call-booked=1'
+        : 'http://178.104.254.165/index.html?call-booked=1',
     googleDriveKnowledgeFolderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',
 };

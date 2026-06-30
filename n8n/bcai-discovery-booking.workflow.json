@@ -1,0 +1,451 @@
+{
+  "id": "bcai-discovery-booking-001",
+  "name": "BCAI Discovery Call Booking",
+  "active": false,
+  "nodes": [
+    {
+      "id": "3124fd95-0fd3-4f81-98e9-86b5fb76400c",
+      "name": "Webhook - Submit Form",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -1088,
+        560
+      ],
+      "webhookId": "bcai-booking-submit",
+      "parameters": {
+        "path": "booking",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "1f9bede9-b36a-4ebf-9697-12c53d5a3146",
+      "name": "Webhook - Show Form",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -1088,
+        336
+      ],
+      "webhookId": "bcai-booking-form",
+      "parameters": {
+        "path": "booking",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "4b727001-37aa-42df-bb4c-98b75bbe3510",
+      "name": "Get Calendar Events",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        -864,
+        336
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": "primary",
+          "cachedResultName": "Primary"
+        },
+        "returnAll": true,
+        "options": {
+          "timeMin": "={{ $now.toISO() }}",
+          "timeMax": "={{ $now.plus({ days: 10 }).toISO() }}"
+        }
+      },
+      "typeVersion": 1.2,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BBYKuDvN5Ff3ROXH",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "id": "796ed038-04a1-479e-8ac8-f162b22319ad",
+      "name": "Calculate Available Slots",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -640,
+        336
+      ],
+      "alwaysOutputData": true,
+      "parameters": {
+        "jsCode": "// Europe/Dublin \u2014 Mon\u2013Fri 9:30\u201317:00, max 4/day, lunch 13:00\u201314:00 blocked\n// Book from tomorrow through 10 calendar days ahead (today excluded)\nconst TIMEZONE = 'Europe/Dublin';\nconst workingDays = [1, 2, 3, 4, 5];\nconst startHour = 9;\nconst startMinute = 30;\nconst endHour = 17;\nconst slotDuration = 30;\nconst maxSlotsPerDay = 4;\nconst lunchStartHour = 13;\nconst lunchEndHour = 14;\nconst firstDayOffset = 1;\nconst lookaheadDays = 10;\n\nfunction pad(n) {\n  return String(n).padStart(2, '0');\n}\n\nfunction isLunchSlot(hour, minute) {\n  const slotStartMin = hour * 60 + minute;\n  const slotEndMin = slotStartMin + slotDuration;\n  const lunchStartMin = lunchStartHour * 60;\n  const lunchEndMin = lunchEndHour * 60;\n  return slotStartMin < lunchEndMin && slotEndMin > lunchStartMin;\n}\n\nfunction getOffsetForZone(timeZone, date) {\n  const utcF = new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hour12: false });\n  const tzF = new Intl.DateTimeFormat('en-US', { timeZone, hour: '2-digit', minute: '2-digit', hour12: false });\n  const utcParts = Object.fromEntries(utcF.formatToParts(date).filter(p => p.type !== 'literal').map(p => [p.type, p.value]));\n  const tzParts = Object.fromEntries(tzF.formatToParts(date).filter(p => p.type !== 'literal').map(p => [p.type, p.value]));\n  const utcMin = (+utcParts.hour) * 60 + (+utcParts.minute);\n  const tzMin = (+tzParts.hour) * 60 + (+tzParts.minute);\n  let diff = tzMin - utcMin;\n  if (diff < -720) diff += 1440;\n  if (diff > 720) diff -= 1440;\n  const sign = diff >= 0 ? '+' : '-';\n  const abs = Math.abs(diff);\n  return `${sign}${pad(Math.floor(abs / 60))}:${pad(abs % 60)}`;\n}\n\nfunction dublinISO(year, month, day, hour, minute) {\n  const naive = `${year}-${pad(month)}-${pad(day)}T${pad(hour)}:${pad(minute)}:00`;\n  let guess = Date.parse(`${naive}Z`);\n  for (let i = 0; i < 4; i++) {\n    const formatted = new Intl.DateTimeFormat('sv-SE', {\n      timeZone: TIMEZONE,\n      year: 'numeric', month: '2-digit', day: '2-digit',\n      hour: '2-digit', minute: '2-digit', second: '2-digit',\n    }).format(new Date(guess));\n    const target = `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(minute)}:00`;\n    const diff = Date.parse(formatted.replace(' ', 'T') + 'Z') - Date.parse(target.replace(' ', 'T') + 'Z');\n    guess -= diff;\n  }\n  const offset = getOffsetForZone(TIMEZONE, new Date(guess));\n  return `${naive}${offset}`;\n}\n\nfunction pickDailySlots(daySlots, maxPerDay) {\n  const morning = daySlots.filter((s) => {\n    const hour = parseInt(s.value.split('T')[1].slice(0, 2), 10);\n    return hour < lunchStartHour;\n  });\n  const afternoon = daySlots.filter((s) => {\n    const hour = parseInt(s.value.split('T')[1].slice(0, 2), 10);\n    return hour >= lunchEndHour;\n  });\n\n  if (morning.length === 0 || afternoon.length === 0) {\n    return daySlots.slice(0, maxPerDay);\n  }\n\n  let morningTake = Math.floor(maxPerDay / 2);\n  let afternoonTake = maxPerDay - morningTake;\n  morningTake = Math.min(morningTake, morning.length);\n  afternoonTake = Math.min(afternoonTake, afternoon.length);\n\n  const used = new Set();\n  const selected = [];\n  for (const slot of [...morning.slice(0, morningTake), ...afternoon.slice(0, afternoonTake)]) {\n    selected.push(slot);\n    used.add(slot.value);\n  }\n\n  if (selected.length < maxPerDay) {\n    for (const slot of daySlots) {\n      if (used.has(slot.value)) continue;\n      selected.push(slot);\n      used.add(slot.value);\n      if (selected.length >= maxPerDay) break;\n    }\n  }\n\n  selected.sort((a, b) => new Date(a.value) - new Date(b.value));\n  return selected;\n}\n\nfunction getEventBounds(event) {\n  if (!event || !event.start) return null;\n\n  if (typeof event.start === 'string') {\n    if (!event.end) return null;\n    return { start: new Date(event.start), end: new Date(event.end) };\n  }\n\n  if (event.start.dateTime) {\n    return {\n      start: new Date(event.start.dateTime),\n      end: new Date(event.end.dateTime),\n    };\n  }\n\n  if (event.start.date) {\n    const endDate = event.end?.date || event.start.date;\n    return {\n      start: new Date(event.start.date + 'T00:00:00'),\n      end: new Date(endDate + 'T00:00:00'),\n    };\n  }\n\n  return null;\n}\n\nfunction slotsOverlap(slotStart, slotEnd, eventStart, eventEnd) {\n  return slotStart < eventEnd && slotEnd > eventStart;\n}\n\nconst now = new Date();\nconst inputItems = $input.all();\nconst existingEvents = [];\n\nif (inputItems.length > 0) {\n  for (const item of inputItems) {\n    const event = item.json;\n    if (!event || Object.keys(event).length === 0) continue;\n\n    const bounds = getEventBounds(event);\n    if (!bounds) continue;\n\n    const { start: eventStart, end: eventEnd } = bounds;\n    if (Number.isNaN(eventStart.getTime()) || Number.isNaN(eventEnd.getTime())) continue;\n\n    const windowEnd = new Date(now);\n    windowEnd.setDate(now.getDate() + lookaheadDays + 1);\n    if (eventStart < windowEnd && eventEnd > now) {\n      existingEvents.push({ start: eventStart, end: eventEnd });\n    }\n  }\n}\n\nconst slots = [];\n\nfor (let day = firstDayOffset; day <= lookaheadDays; day++) {\n  const currentDate = new Date(now);\n  currentDate.setDate(now.getDate() + day);\n  const year = currentDate.getFullYear();\n  const month = currentDate.getMonth() + 1;\n  const dayOfMonth = currentDate.getDate();\n  const dayOfWeek = currentDate.getDay();\n  if (!workingDays.includes(dayOfWeek)) continue;\n\n  const daySlots = [];\n\n  const dayStartMin = startHour * 60 + startMinute;\n  const dayEndMin = endHour * 60;\n\n  for (let t = dayStartMin; t < dayEndMin; t += slotDuration) {\n    const hour = Math.floor(t / 60);\n    const minute = t % 60;\n      if (isLunchSlot(hour, minute)) continue;\n\n      const slotStartString = dublinISO(year, month, dayOfMonth, hour, minute);\n      const slotStart = new Date(slotStartString);\n      const slotEnd = new Date(slotStart.getTime() + slotDuration * 60000);\n      if (slotStart <= now) continue;\n\n      let isAvailable = true;\n      for (const event of existingEvents) {\n        if (slotsOverlap(slotStart, slotEnd, event.start, event.end)) {\n          isAvailable = false;\n          break;\n        }\n      }\n\n      if (isAvailable) {\n        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\n        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n        const displayHour12 = hour % 12 || 12;\n        const ampm = hour >= 12 ? 'PM' : 'AM';\n        const label = `${weekdays[dayOfWeek]}, ${months[month - 1]} ${dayOfMonth}, ${year} at ${displayHour12}:${pad(minute)} ${ampm}`;\n        daySlots.push({ value: slotStartString, label });\n      }\n  }\n\n  const picked = pickDailySlots(daySlots, maxSlotsPerDay);\n  if (picked.length > 0) {\n    slots.push(...picked);\n  }\n}\n\nif (slots.length === 0) {\n  return [{ json: { noSlots: true } }];\n}\n\nreturn slots.map(slot => ({ json: slot }));\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "b9808377-3551-4192-9124-0b7d2f452586",
+      "name": "Build HTML Form",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -416,
+        336
+      ],
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst slots = items.map(item => item.json).filter(slot => slot && slot.value);\n\nfunction formatSlotTimeFromValue(value) {\n  const [, timePart] = value.split('T');\n  const [hour, minute] = timePart.split(':');\n  let h = parseInt(hour, 10);\n  const ampm = h >= 12 ? 'PM' : 'AM';\n  h = h % 12 || 12;\n  return `${h}:${minute} ${ampm}`;\n}\n\nconst slotsByDate = {};\nslots.forEach(slot => {\n  const [datePart] = slot.value.split('T');\n  if (!slotsByDate[datePart]) {\n    const displayDateObj = new Date(datePart + 'T00:00:00');\n    slotsByDate[datePart] = {\n      date: displayDateObj,\n      dateKey: datePart,\n      displayDate: displayDateObj.toLocaleDateString('en-IE', {\n        weekday: 'long',\n        month: 'long',\n        day: 'numeric',\n        year: 'numeric'\n      }),\n      slots: []\n    };\n  }\n  slotsByDate[datePart].slots.push({\n    value: slot.value,\n    time: formatSlotTimeFromValue(slot.value)\n  });\n});\n\nconst groupedSlots = Object.values(slotsByDate).sort((a, b) => a.date - b.date);\nconst slotsJson = JSON.stringify(groupedSlots);\n\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230f1a2b%22/><text x=%2250%22 y=%2244%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2218%22 fill=%22%233b82f6%22>BCAI</text><text x=%2250%22 y=%2272%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2216%22 fill=%22%2306b6d4%22>Eng</text></svg>\">\n    <title>Book a Discovery Call \u2014 Bespoke Core AI</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body {\n            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;\n            background: linear-gradient(180deg, #121f33 0%, #0f1a2b 50%, #0a111c 100%);\n            min-height: 100vh;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            padding: 20px;\n            color: #e8edf3;\n        }\n        .container {\n            background: linear-gradient(145deg, rgba(28, 44, 68, 0.96) 0%, rgba(15, 26, 43, 0.92) 100%);\n            border: 1px solid rgba(59, 130, 246, 0.15);\n            border-radius: 16px;\n            box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.4);\n            max-width: 700px;\n            width: 100%;\n            padding: 40px;\n        }\n        .label-mono {\n            font-family: ui-monospace, monospace;\n            font-size: 12px;\n            color: #10b981;\n            text-transform: uppercase;\n            letter-spacing: 0.05em;\n            text-align: center;\n            margin-bottom: 8px;\n        }\n        h1 {\n            color: #e8edf3;\n            text-align: center;\n            margin-bottom: 8px;\n            font-size: 28px;\n            font-weight: 700;\n        }\n        .subtitle {\n            text-align: center;\n            color: #b8c5d3;\n            margin-bottom: 30px;\n            font-size: 14px;\n        }\n        .date-navigator {\n            display: flex;\n            align-items: center;\n            justify-content: space-between;\n            margin-bottom: 12px;\n            padding: 15px;\n            background: rgba(15, 26, 43, 0.6);\n            border: 1px solid rgba(59, 130, 246, 0.1);\n            border-radius: 12px;\n        }\n        .nav-button {\n            background: #3b82f6;\n            color: white;\n            border: none;\n            width: 40px;\n            height: 40px;\n            border-radius: 50%;\n            cursor: pointer;\n            font-size: 20px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            transition: background 0.2s ease;\n        }\n        .nav-button:hover { background: #2563eb; }\n        .nav-button:disabled { background: #1f3049; color: #7d93a8; cursor: not-allowed; }\n        .current-date {\n            font-size: 17px;\n            font-weight: 600;\n            color: #10b981;\n            text-align: center;\n            flex: 1;\n        }\n        .slots-container { margin-bottom: 12px; }\n        .time-slots {\n            display: grid;\n            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));\n            gap: 10px;\n        }\n        .time-slot {\n            padding: 12px;\n            border: 1px solid rgba(59, 130, 246, 0.2);\n            border-radius: 10px;\n            background: rgba(15, 26, 43, 0.5);\n            color: #e8edf3;\n            cursor: pointer;\n            text-align: center;\n            font-size: 15px;\n            font-weight: 500;\n            transition: all 0.2s ease;\n        }\n        .time-slot:hover {\n            border-color: #10b981;\n            background: rgba(16, 185, 129, 0.1);\n        }\n        .time-slot.selected {\n            background: #10b981;\n            color: #0f1a2b;\n            border-color: #10b981;\n            font-weight: 600;\n        }\n        .no-slots-message {\n            text-align: center;\n            padding: 40px;\n            color: #94a8bc;\n            font-style: italic;\n        }\n        .selected-info {\n            background: rgba(16, 185, 129, 0.08);\n            padding: 12px 16px;\n            border-radius: 10px;\n            margin-bottom: 16px;\n            border-left: 4px solid #10b981;\n            display: none;\n            color: #b8c5d3;\n        }\n        .selected-info.visible { display: block; }\n        .selected-info strong { color: #10b981; }\n        .form-divider {\n            height: 1px;\n            background: rgba(59, 130, 246, 0.15);\n            margin: 16px 0;\n        }\n        .form-section-title {\n            font-size: 16px;\n            color: #3b82f6;\n            margin-bottom: 20px;\n            font-weight: 600;\n        }\n        .form-group { margin-bottom: 20px; }\n        label {\n            display: block;\n            margin-bottom: 8px;\n            color: #b8c5d3;\n            font-weight: 600;\n            font-size: 14px;\n        }\n        input[type=\"text\"], input[type=\"email\"], textarea {\n            width: 100%;\n            padding: 12px 15px;\n            border: 1px solid rgba(59, 130, 246, 0.2);\n            border-radius: 10px;\n            font-size: 15px;\n            background: rgba(15, 26, 43, 0.6);\n            color: #e8edf3;\n            font-family: inherit;\n        }\n        input:focus, textarea:focus {\n            outline: none;\n            border-color: #3b82f6;\n            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);\n        }\n        textarea { resize: vertical; min-height: 100px; }\n        .name-group {\n            display: grid;\n            grid-template-columns: 1fr 1fr;\n            gap: 15px;\n        }\n        button[type=\"submit\"] {\n            width: 100%;\n            padding: 15px;\n            background: linear-gradient(to right, #3b82f6, #06b6d4, #10b981);\n            color: white;\n            border: none;\n            border-radius: 10px;\n            font-size: 16px;\n            font-weight: 600;\n            cursor: pointer;\n            margin-top: 10px;\n        }\n        button[type=\"submit\"]:hover { opacity: 0.92; }\n        button[type=\"submit\"]:disabled { opacity: 0.4; cursor: not-allowed; }\n        button[type=\"submit\"].is-loading {\n            opacity: 0.85;\n            cursor: wait;\n            pointer-events: none;\n        }\n        .submit-spinner {\n            display: inline-block;\n            margin-right: 8px;\n            animation: hourglass-pulse 1s ease-in-out infinite;\n        }\n        @keyframes hourglass-pulse {\n            0%, 100% { opacity: 1; transform: scale(1); }\n            50% { opacity: 0.55; transform: scale(0.95); }\n        }\n        .form-loading input,\n        .form-loading textarea,\n        .form-loading .nav-button,\n        .form-loading .time-slot {\n            pointer-events: none;\n            opacity: 0.7;\n        }\n        .required { color: #f87171; }\n        .tz-note { text-align: center; font-size: 12px; color: #7d93a8; margin-top: 16px; }\n        @media (max-width: 600px) {\n            .container { padding: 30px 20px; }\n            .time-slots { grid-template-columns: repeat(2, 1fr); }\n            .name-group { grid-template-columns: 1fr; }\n            h1 { font-size: 24px; }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <p class=\"label-mono\">// Discovery Call</p>\n        <h1>Book a 30-Minute Discovery Call</h1>\n        <p class=\"subtitle\">Bespoke Core AI Engineering</p>\n        <form method=\"POST\" action=\"/webhook/booking\" id=\"bookingForm\">\n            <div class=\"date-navigator\">\n                <button type=\"button\" class=\"nav-button\" id=\"prevDay\">&#8249;</button>\n                <div class=\"current-date\" id=\"currentDate\"></div>\n                <button type=\"button\" class=\"nav-button\" id=\"nextDay\">&#8250;</button>\n            </div>\n            <div class=\"slots-container\">\n                <div class=\"time-slots\" id=\"timeSlotsContainer\"></div>\n            </div>\n            <input type=\"hidden\" name=\"timeslot\" id=\"selectedSlot\" required>\n            <div class=\"selected-info\" id=\"selectedInfo\">\n                <strong>Selected:</strong> <span id=\"selectedSlotDisplay\"></span>\n            </div>\n            <div class=\"form-divider\"></div>\n            <div class=\"form-section-title\">Your details</div>\n            <div class=\"name-group\">\n                <div class=\"form-group\">\n                    <label for=\"firstName\">First name <span class=\"required\">*</span></label>\n                    <input type=\"text\" id=\"firstName\" name=\"firstName\" required autocomplete=\"given-name\">\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"lastName\">Last name <span class=\"required\">*</span></label>\n                    <input type=\"text\" id=\"lastName\" name=\"lastName\" required autocomplete=\"family-name\">\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"email\">Email <span class=\"required\">*</span></label>\n                <input type=\"email\" id=\"email\" name=\"email\" required autocomplete=\"email\">\n            </div>\n            <div class=\"form-group\">\n                <label for=\"company\">Company <span class=\"required\">*</span></label>\n                <input type=\"text\" id=\"company\" name=\"company\" required autocomplete=\"organization\">\n            </div>\n            <div class=\"form-group\">\n                <label for=\"message\">What would you like to discuss?</label>\n                <textarea id=\"message\" name=\"message\" placeholder=\"Describe the workflow or problem you want to solve.\"></textarea>\n            </div>\n            <button type=\"submit\" id=\"submitButton\">Confirm booking</button>\n        </form>\n        <p class=\"tz-note\">All times shown in GMT+1.</p>\n    </div>\n    <script>\n        const slotsByDate = ${slotsJson};\n        let currentDayIndex = 0;\n        let selectedSlotElement = null;\n        const prevButton = document.getElementById('prevDay');\n        const nextButton = document.getElementById('nextDay');\n        const currentDateDisplay = document.getElementById('currentDate');\n        const timeSlotsContainer = document.getElementById('timeSlotsContainer');\n        const selectedSlotInput = document.getElementById('selectedSlot');\n        const selectedSlotDisplay = document.getElementById('selectedSlotDisplay');\n        const selectedInfo = document.getElementById('selectedInfo');\n        const submitButton = document.getElementById('submitButton');\n\n        function renderDay(index) {\n            currentDayIndex = index;\n            prevButton.disabled = index === 0;\n            nextButton.disabled = index === slotsByDate.length - 1;\n            const dayData = slotsByDate[index];\n            currentDateDisplay.textContent = dayData.displayDate;\n            timeSlotsContainer.innerHTML = '';\n            if (dayData.slots.length > 0) {\n                dayData.slots.forEach(slot => {\n                    const timeSlot = document.createElement('div');\n                    timeSlot.className = 'time-slot';\n                    timeSlot.textContent = slot.time;\n                    timeSlot.dataset.value = slot.value;\n                    timeSlot.dataset.label = dayData.displayDate + ' at ' + slot.time;\n                    timeSlot.addEventListener('click', function() {\n                        if (selectedSlotElement) selectedSlotElement.classList.remove('selected');\n                        this.classList.add('selected');\n                        selectedSlotElement = this;\n                        selectedSlotInput.value = this.dataset.value;\n                        selectedSlotDisplay.textContent = this.dataset.label;\n                        selectedInfo.classList.add('visible');\n                        submitButton.disabled = false;\n                    });\n                    timeSlotsContainer.appendChild(timeSlot);\n                });\n            } else {\n                timeSlotsContainer.innerHTML = '<div class=\"no-slots-message\">No available slots for this day</div>';\n            }\n        }\n\n        prevButton.addEventListener('click', () => { if (currentDayIndex > 0) renderDay(currentDayIndex - 1); });\n        nextButton.addEventListener('click', () => { if (currentDayIndex < slotsByDate.length - 1) renderDay(currentDayIndex + 1); });\n\n        function setSubmitLoading(loading) {\n            const form = document.getElementById('bookingForm');\n            if (loading) {\n                submitButton.disabled = true;\n                submitButton.classList.add('is-loading');\n                submitButton.setAttribute('aria-busy', 'true');\n                submitButton.innerHTML = '<span class=\"submit-spinner\" aria-hidden=\"true\">&#8987;</span> Processing your booking\\u2026';\n                form.classList.add('form-loading');\n            }\n        }\n\n        document.getElementById('bookingForm').addEventListener('submit', function(e) {\n            if (!selectedSlotInput.value) {\n                e.preventDefault();\n                alert('Please select a time slot first');\n                return;\n            }\n            setSubmitLoading(true);\n        });\n        if (slotsByDate.length > 0) {\n            renderDay(0);\n            submitButton.disabled = true;\n        } else {\n            currentDateDisplay.textContent = 'No available dates';\n            timeSlotsContainer.innerHTML = '<div class=\"no-slots-message\">No available slots in the next 10 days</div>';\n            prevButton.disabled = true;\n            nextButton.disabled = true;\n            submitButton.disabled = true;\n        }\n    </script>\n</body>\n</html>`;\n\nreturn [{ json: { html } }];\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "6c9e11ac-bda2-4e73-abf7-4b3d43d5e802",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        -208,
+        336
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{$json.html}}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "997c252a-ea1c-455b-8afe-392225b73d70",
+      "name": "Calculate End Time",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -880,
+        560
+      ],
+      "parameters": {
+        "jsCode": "const webhookData = $input.first().json.body;\nconst startTime = webhookData.timeslot;\n\nconst match = startTime.match(/^(.+T)(\\d{2}):(\\d{2}):(\\d{2})([+-]\\d{2}:\\d{2})$/);\nif (!match) {\n  throw new Error('Invalid time format: ' + startTime);\n}\n\nconst [_, prefix, hours, minutes, seconds, timezone] = match;\nconst totalMinutes = parseInt(hours, 10) * 60 + parseInt(minutes, 10) + 30;\nconst newHours = Math.floor(totalMinutes / 60);\nconst newMinutes = totalMinutes % 60;\nconst endTime = `${prefix}${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}:${seconds}${timezone}`;\n\nreturn [{\n  json: {\n    body: {\n      ...webhookData,\n      startTime,\n      endTime\n    }\n  }\n}];\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "e0130056-a309-4a1f-bf22-7dc192bd2fce",
+      "name": "Create Calendar Event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        -656,
+        560
+      ],
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": "primary",
+          "cachedResultName": "Primary"
+        },
+        "start": "={{ $json.body.timeslot }}",
+        "end": "={{ $json.body.endTime }}",
+        "additionalFields": {
+          "summary": "=Discovery call \u2014 {{ $json.body.firstName }} {{ $json.body.lastName }} ({{ $json.body.company }})",
+          "description": "=Name: {{ $json.body.firstName }} {{ $json.body.lastName }}\nCompany: {{ $json.body.company }}\nEmail: {{ $json.body.email }}\n\nMessage: {{ $json.body.message || 'No message provided' }}"
+        }
+      },
+      "typeVersion": 1.2,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BBYKuDvN5Ff3ROXH",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "id": "f296c75f-87bb-4463-8504-56534c918486",
+      "name": "Format Email Data",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -432,
+        672
+      ],
+      "parameters": {
+        "jsCode": "const eventData = $input.first().json;\nconst webhookData = $('Webhook - Submit Form').first().json.body;\n\nconst startDate = new Date(eventData.start.dateTime);\nconst endDate = new Date(eventData.end.dateTime);\n\nconst formattedDate = startDate.toLocaleDateString('en-IE', {\n  timeZone: 'Europe/Dublin',\n  weekday: 'long',\n  year: 'numeric',\n  month: 'long',\n  day: 'numeric'\n});\n\nconst timeOpts = { timeZone: 'Europe/Dublin', hour: '2-digit', minute: '2-digit', hour12: true };\nconst formattedTime = startDate.toLocaleTimeString('en-IE', timeOpts) + ' - ' + endDate.toLocaleTimeString('en-IE', timeOpts);\n\nreturn [{\n  json: {\n    ...eventData,\n    formattedDate,\n    formattedTime,\n    firstName: webhookData.firstName,\n    lastName: webhookData.lastName,\n    email: webhookData.email,\n    company: webhookData.company || 'Not provided',\n    message: webhookData.message || 'No message provided'\n  }\n}];\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Prepare OpenRouter Request",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -320,
+        560
+      ],
+      "parameters": {
+        "jsCode": "const booking = $input.first().json;\n\nconst systemMessage = `You are Karl Nolan (Bespoke Core AI, Limerick). Write ONE short plain-text paragraph (first person) for a discovery-call confirmation email.\nThank them by first name, mention their company, and if their message is specific briefly reflect it; if vague or empty stay general \u2014 do not invent pain points.\nProfessional, warm, not salesy. No URLs, links, dates/times, sign-off, or pricing. Max 80 words.`;\n\nconst userMessage = `First name: ${booking.firstName}\nCompany: ${booking.company}\nMessage: ${booking.message}`;\n\nreturn [{\n  json: {\n    ...booking,\n    openRouterBody: {\n      model: 'deepseek/deepseek-v4-flash',\n      temperature: 0.3,\n      max_tokens: 180,\n      reasoning: { effort: 'none' },\n      provider: {\n        sort: 'latency',\n        preferred_max_latency: { p90: 4 },\n      },\n      messages: [\n        { role: 'system', content: systemMessage },\n        { role: 'user', content: userMessage },\n      ],\n    },\n  },\n}];\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Call OpenRouter (Booking)",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -208,
+        560
+      ],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Referer",
+              "value": "http://178.104.254.165/booking"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "http://178.104.254.165/booking"
+            },
+            {
+              "name": "X-OpenRouter-Title",
+              "value": "BCAI Booking"
+            },
+            {
+              "name": "X-Title",
+              "value": "BCAI Booking"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.openRouterBody }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "typeVersion": 4.2,
+      "credentials": {
+        "openRouterApi": {
+          "id": "hX4d03wqKExj2fbW",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Compose Confirmation Email",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -96,
+        560
+      ],
+      "parameters": {
+        "jsCode": "const booking = $('Prepare OpenRouter Request').first().json;\nconst openRouterResponse = $input.first().json;\n\nconst FALLBACK = `Thank you for booking a free 30-minute discovery call. I look forward to learning more about ${booking.company} and hearing what's slowing your team down on our call.`;\n\nlet personalNote = '';\nconst aiContent = openRouterResponse.choices?.[0]?.message?.content;\nif (typeof aiContent === 'string' && aiContent.trim()) {\n  personalNote = aiContent.trim();\n} else {\n  personalNote = FALLBACK;\n}\n\nfunction sanitizeNote(text) {\n  return String(text)\n    .replace(/https?:\\/\\/\\S+/gi, '')\n    .replace(/\\bBefore (?:we talk|our call)[^.]*\\./gi, '')\n    .replace(/\\bfree to (?:glance|explore|review)[^.]*\\./gi, '')\n    .replace(/  +/g, ' ')\n    .replace(/\\n(3,)/g, '\\n\\n')\n    .trim();\n}\n\npersonalNote = sanitizeNote(personalNote) || FALLBACK;\n\nfunction esc(s) {\n  return String(s)\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;')\n    .replace(/\"/g, '&quot;');\n}\n\nconst noteHtml = personalNote\n  .split(/\\n\\n+/)\n  .map(p => `<p style=\"margin:0 0 16px;color:#333;\">${esc(p).replace(/\\n/g, '<br>')}</p>`)\n  .join('');\n\nconst emailHtml = `<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }\n        .container { max-width: 600px; margin: 0 auto; background: #ffffff; }\n        .header { background: #0f1a2b; color: #e8edf3; padding: 32px 30px; text-align: center; border-bottom: 4px solid #10b981; }\n        .header h1 { margin: 0; font-size: 24px; }\n        .header p { margin: 8px 0 0; color: #b8c5d3; font-size: 14px; }\n        .content { padding: 32px 30px; background: #f4f6f9; }\n        .details { background: white; padding: 24px; border-radius: 8px; margin: 20px 0; border: 1px solid #e2e8f0; }\n        .detail-row { padding: 10px 0; border-bottom: 1px solid #eee; display: flex; }\n        .detail-row:last-child { border-bottom: none; }\n        .label { font-weight: bold; color: #3b82f6; min-width: 120px; }\n        .value { flex: 1; color: #333; }\n        .button-container { text-align: center; margin: 28px 0; }\n        .button { display: inline-block; padding: 14px 32px; background: #10b981; color: white !important; text-decoration: none; border-radius: 8px; font-weight: 600; }\n        .links-box { background: #fff; padding: 18px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #3b82f6; font-size: 14px; }\n        .footer { text-align: center; color: #999; font-size: 12px; padding: 24px; background: #eef1f5; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>Discovery call confirmed</h1>\n            <p>Bespoke Core AI Engineering</p>\n        </div>\n        <div class=\"content\">\n            <p style=\"margin:0 0 16px;\">Dear ${esc(booking.firstName)} ${esc(booking.lastName)},</p>\n            ${noteHtml}\n            <div class=\"details\">\n                <div class=\"detail-row\"><span class=\"label\">Date</span><span class=\"value\">${esc(booking.formattedDate)}</span></div>\n                <div class=\"detail-row\"><span class=\"label\">Time</span><span class=\"value\">${esc(booking.formattedTime)} (Ireland)</span></div>\n                <div class=\"detail-row\"><span class=\"label\">Duration</span><span class=\"value\">30 minutes</span></div>\n                <div class=\"detail-row\"><span class=\"label\">Company</span><span class=\"value\">${esc(booking.company)}</span></div>\n            </div>\n            <div class=\"links-box\">\n                <p style=\"margin:0;\"><strong>Before our call:</strong><br>\n                <a href=\"http://178.104.254.165\" style=\"color:#3b82f6;\">Visit our website</a> \u00b7\n                <a href=\"http://178.104.254.165/what-we-automate.html\" style=\"color:#3b82f6;\">See what we automate</a></p>\n            </div>\n            <div class=\"button-container\"><a href=\"${esc(booking.htmlLink)}\" class=\"button\">Add to Google Calendar</a></div>\n            <p style=\"margin:24px 0 0;color:#333;\">Kind regards,<br><strong>Karl Nolan</strong><br><span style=\"color:#666;font-size:14px;\">Principal Consultant, Bespoke Core AI Engineering</span></p>\n            <p style=\"margin-top:24px;padding:16px;background:#fff;border-radius:8px;font-size:14px;\"><strong>Need to reschedule?</strong><br>Reply to this email.</p>\n        </div>\n        <div class=\"footer\"><p>Automated confirmation from Bespoke Core AI Engineering, Limerick, Ireland.</p></div>\n    </div>\n</body>\n</html>`;\n\nreturn [{\n  json: {\n    ...booking,\n    emailHtml,\n  },\n}];\n"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "7887c143-437b-49b1-bc52-09d0cc02e42b",
+      "name": "Send Confirmation Email",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        16,
+        560
+      ],
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "={{ $json.firstName }} \u2014 discovery call confirmed for {{ $json.formattedDate }}",
+        "message": "={{ $json.emailHtml }}",
+        "options": {
+          "bccList": "karlnolancompany@gmail.com",
+          "appendAttribution": false
+        }
+      },
+      "typeVersion": 2.1,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "zEXx7CxGsbxi3lSr",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "id": "a94a2cdc-0ad0-480d-8e58-5352f2416756",
+      "name": "Redirect to Site",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        -432,
+        448
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230f1a2b%22/><text x=%2250%22 y=%2244%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2218%22 fill=%22%233b82f6%22>BCAI</text><text x=%2250%22 y=%2272%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-weight=%22700%22 font-size=%2216%22 fill=%22%2306b6d4%22>Eng</text></svg>\">\n    <title>Booking confirmed</title>\n    <meta http-equiv=\"refresh\" content=\"0;url=http://178.104.254.165/index.html?call-booked=1\">\n    <script>window.location.replace(\"http://178.104.254.165/index.html?call-booked=1\");</script>\n</head>\n<body>\n    <p>Booking confirmed \u2014 redirecting you back to the site\u2026</p>\n</body>\n</html>",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "1085bf5c-a45a-4bf9-ade3-dd76aab87cf5",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1056,
+        -80
+      ],
+      "parameters": {
+        "width": 900,
+        "height": 380,
+        "content": "## BCAI Discovery Call Booking\n\n**GET** `/webhook/booking` \u2014 booking form with live slots\n**POST** `/webhook/booking` \u2014 create event \u2192 redirect immediately \u2192 AI email in background\n\n### Performance\n- **Redirect to Site** runs right after calendar create (user is not blocked by OpenRouter)\n- OpenRouter: `max_tokens: 180`, `provider.sort: latency`, `reasoning.effort: none`, 8s HTTP timeout + fallback text\n\n### Setup\n1. Google Calendar OAuth2 + Gmail OAuth2 (karlnolancompany@gmail.com)\n2. Availability: Mon\u2013Fri 9:30\u201317:00 Europe/Dublin, max 4 slots/day, lunch 13:00\u201314:00 blocked \u2014 **Calculate Available Slots**\n3. **Redirect to Site** \u2014 HTML page with `window.location.replace()` to `http://178.104.254.165/index.html?call-booked=1` (avoids POST\u2192302 replay to static site)\n4. BCC on confirmation: `karlnolancompany@gmail.com`\n5. **OpenRouter** \u2014 `deepseek/deepseek-v4-flash` personalises the email body (`BCAI Booking` app headers)\n\n### Local test\nhttp://localhost:5678/webhook/booking"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Webhook - Show Form": {
+      "main": [
+        [
+          {
+            "node": "Get Calendar Events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Calendar Events": {
+      "main": [
+        [
+          {
+            "node": "Calculate Available Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate Available Slots": {
+      "main": [
+        [
+          {
+            "node": "Build HTML Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build HTML Form": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Submit Form": {
+      "main": [
+        [
+          {
+            "node": "Calculate End Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate End Time": {
+      "main": [
+        [
+          {
+            "node": "Create Calendar Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Calendar Event": {
+      "main": [
+        [
+          {
+            "node": "Redirect to Site",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Format Email Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Email Data": {
+      "main": [
+        [
+          {
+            "node": "Prepare OpenRouter Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare OpenRouter Request": {
+      "main": [
+        [
+          {
+            "node": "Call OpenRouter (Booking)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call OpenRouter (Booking)": {
+      "main": [
+        [
+          {
+            "node": "Compose Confirmation Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compose Confirmation Email": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

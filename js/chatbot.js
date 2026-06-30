@@ -268,7 +268,7 @@
         thinking.remove();
         appendMessage(
           'assistant',
-          'Sorry — I could not reach the assistant right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#contact'
+          'Sorry — I could not reach the assistant right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#discovery-call'
         );
       })
       .finally(function () {

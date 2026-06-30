@@ -90,6 +90,6 @@ We also build these workflows. Most clients start with document, inbox, or compl
 
 On a free 30-minute discovery call, we'll find one bottleneck worth automating first — no production access or sensitive data required upfront.
 
-[Book a Discovery Call](index.html#discovery-call)
+[Book a Discovery Call](#)
 
 [← Back to main site](index.html)

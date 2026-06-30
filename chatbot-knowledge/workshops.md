@@ -68,7 +68,7 @@ Automate real business workflows. Full-day working session for ops, finance, and
 
 - **Leave with a plan** — toolkit map, dev playbook, or automation pilot plan depending on track
 
-Prefer to discuss first? [Book a 30-minute discovery call](index.html#discovery-call) on the main site.
+Prefer to discuss first? [Book a discovery call](#) on the main site.
 
 **Karl Nolan** · Principal Consultant · 26 years architecting and building software and AI workflows
 
