@@ -9,13 +9,13 @@
         "mode": "webhook",
         "options": {
           "allowedOrigins": "http://178.104.254.165,https://178.104.254.165,http://localhost,http://127.0.0.1,http://localhost:8080,http://localhost:5500",
-          "responseMode": "lastNode"
+          "responseMode": "streaming"
         }
       },
       "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
       "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
+      "typeVersion": 1.3,
       "position": [
         0,
         400
@@ -256,10 +256,10 @@
     },
     {
       "parameters": {
-        "jsCode": "const { chatInput, knowledge = '' } = $input.first().json;\n\nconst systemMessage = [\n  'You are **Ask BCAI**, the website assistant for Bespoke Core AI Engineering Limited (Limerick, Ireland).',\n  '',\n  '## Rules',\n  '1. Answer **only** questions about Bespoke Core AI, its services, workshops, case studies, and content on http://178.104.254.165/',\n  '2. **Off-topic** (general trivia, other companies, unrelated help): reply exactly \u2014 \"That isn\\'t something I can help with here \u2014 I\\'m only able to answer questions about Bespoke Core AI and this website.\"',\n  '3. **Consulting / automation pilot pricing** (quotes, day rates, pilot cost, budget): do **not** invent numbers. Direct to http://178.104.254.165/#discovery-call and mention free discovery call + single-workflow pilots.',\n  '4. **Workshop pricing**: you may quote published workshop prices from the knowledge base.',\n  '5. Be concise, professional, plain language. Use markdown links when citing URLs.',\n  '6. If unsure, say so and suggest booking a discovery call.',\n  '7. **Page anchors**: process/how we work \u2192 #engagement; about \u2192 #about; pilots \u2192 #where-to-start; case studies \u2192 #case-studies; services \u2192 #our-service; book a call/pricing \u2192 #discovery-call. Do **not** use #discovery-call for process questions.',\n  '',\n  '## Knowledge base (from Google Drive)',\n  knowledge,\n].join('\\n');\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    openRouterBody: {\n      model: 'deepseek/deepseek-v4-flash',\n      temperature: 0.3,\n      messages: [\n        { role: 'system', content: systemMessage },\n        { role: 'user', content: chatInput },\n      ],\n    },\n  },\n}];"
+        "jsCode": "const { chatInput, knowledge = '' } = $input.first().json;\n\nconst systemMessage = [\n  'You are **Ask BCAI**, the website assistant for Bespoke Core AI Engineering Limited (Limerick, Ireland).',\n  '',\n  '## Rules',\n  '1. Answer **only** questions about Bespoke Core AI, its services, workshops, case studies, and content on http://178.104.254.165/',\n  '2. **Off-topic** (general trivia, other companies, unrelated help): reply exactly \u2014 \"That isn\\'t something I can help with here \u2014 I\\'m only able to answer questions about Bespoke Core AI and this website.\"',\n  '3. **Consulting / automation pilot pricing** (quotes, day rates, pilot cost, budget): do **not** invent numbers. Direct to http://178.104.254.165/#discovery-call and mention free discovery call + single-workflow pilots.',\n  '4. **Workshop pricing**: you may quote published workshop prices from the knowledge base.',\n  '5. Be concise, professional, plain language. Use markdown links when citing URLs.',\n  '6. If unsure, say so and suggest booking a discovery call.',\n  '7. **Page anchors**: process/how we work \u2192 #engagement; about \u2192 #about; pilots \u2192 #where-to-start; case studies \u2192 #case-studies; services \u2192 #our-service; book a call/pricing \u2192 #discovery-call. Do **not** use #discovery-call for process questions.',\n  '',\n  '## Knowledge base (from Google Drive)',\n  knowledge,\n].join('\\n');\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    systemMessage,\n  },\n}];"
       },
       "id": "i3j4k5l6-m7n8-9012-cdef-345678901234",
-      "name": "Prepare OpenRouter request",
+      "name": "Prepare Ask BCAI context",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
@@ -269,39 +269,35 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://openrouter.ai/api/v1/chat/completions",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "openRouterApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "HTTP-Referer",
-              "value": "http://178.104.254.165/"
-            },
-            {
-              "name": "X-OpenRouter-Title",
-              "value": "Ask BCAI"
-            },
-            {
-              "name": "X-Title",
-              "value": "Ask BCAI"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $json.openRouterBody }}",
-        "options": {}
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "={{ $json.systemMessage }}"
+        }
       },
       "id": "j4k5l6m7-n8o9-0123-def0-456789012345",
-      "name": "Call Ask BCAI (OpenRouter)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "name": "Ask BCAI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
       "position": [
         1760,
         400
+      ]
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-v4-flash",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "k5l6m7n8-o9p0-1234-ef01-567890123456",
+      "name": "OpenRouter Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        608
       ],
       "credentials": {
         "openRouterApi": {
@@ -309,19 +305,6 @@
           "name": "OpenRouter account"
         }
       }
-    },
-    {
-      "parameters": {
-        "jsCode": "const FALLBACK = 'Sorry \u2014 I could not generate a reply right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#discovery-call';\n\nreturn $input.all().map(item => {\n  const content = item.json.choices?.[0]?.message?.content ?? '';\n  const text = (typeof content === 'string' ? content : JSON.stringify(content)).trim();\n\n  return {\n    json: {\n      output: text || FALLBACK,\n    },\n  };\n});"
-      },
-      "id": "k5l6m7n8-o9p0-1234-ef01-567890123456",
-      "name": "Format chat response",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1984,
-        400
-      ]
     }
   ],
   "connections": {
@@ -391,7 +374,7 @@
       "main": [
         [
           {
-            "node": "Prepare OpenRouter request",
+            "node": "Prepare Ask BCAI context",
             "type": "main",
             "index": 0
           }
@@ -449,7 +432,7 @@
         ],
         [
           {
-            "node": "Prepare OpenRouter request",
+            "node": "Prepare Ask BCAI context",
             "type": "main",
             "index": 0
           }
@@ -467,23 +450,23 @@
         ]
       ]
     },
-    "Prepare OpenRouter request": {
+    "Prepare Ask BCAI context": {
       "main": [
         [
           {
-            "node": "Call Ask BCAI (OpenRouter)",
+            "node": "Ask BCAI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Call Ask BCAI (OpenRouter)": {
-      "main": [
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
         [
           {
-            "node": "Format chat response",
-            "type": "main",
+            "node": "Ask BCAI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]

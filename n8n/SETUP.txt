@@ -60,10 +60,10 @@ Knowledge cache (10 minutes)
 The workflow caches merged Drive knowledge in workflow static data for 10 minutes.
 
 Flow:
-  Chat Trigger → Check knowledge cache → Cache hit?
-    - YES → Prepare OpenRouter request → Call Ask BCAI → Format chat response
+  Chat Trigger (streaming) → Check knowledge cache → Cache hit?
+    - YES → Prepare Ask BCAI context → Ask BCAI Agent (+ OpenRouter Chat Model)
     - NO  → List → Download → Build knowledge context → Warm only?
-              → NO  → Prepare OpenRouter request → …
+              → NO  → Prepare Ask BCAI context → Ask BCAI Agent → …
               → YES → (warm path only; should not happen on chat)
 
   Warm knowledge cache webhook (panel open on website):
@@ -209,12 +209,12 @@ Clean import (use this every time)
    empty workflow and use that instead
 4. Workflows → **Import from file** → `n8n/bcai-website-chatbot.workflow.json`
 5. You should see exactly **15 nodes** in **two** trigger chains sharing List/Download:
-   - **When chat message received** (chat)
+   - **When chat message received** (chat, Response Mode: **Streaming response**)
    - **Warm knowledge cache** (prefetch webhook)
    Not multiple stacked copies of AI Agent / OpenRouter Chat Model
 6. Open each node with a credential warning and select your existing credentials:
    - Google Drive OAuth2 (List + Download nodes)
-   - OpenRouter API (Call Ask BCAI node — same type as FAX workflow)
+   - OpenRouter API (OpenRouter Chat Model sub-node)
 7. **Save** → **Activate**
 
 If you already have 6 chains on one canvas
@@ -223,15 +223,17 @@ Do not try to delete nodes one-by-one — easy to miss orphans. Delete the whole
 workflow and re-import using "Clean import" above.
 
 Correct chain (only version to keep):
-  When chat message received
+  When chat message received (streaming)
     → Check knowledge cache → Cache hit?
-         YES → Prepare OpenRouter request → Call Ask BCAI (OpenRouter)
-               → Format chat response
+         YES → Prepare Ask BCAI context → Ask BCAI Agent
          NO  → List knowledge files → Download knowledge files
-               → Build knowledge context → Prepare OpenRouter request → …
+               → Build knowledge context → Prepare Ask BCAI context → …
 
-Delete any row that uses **AI Agent** or **OpenRouter Chat Model** (LangChain) —
-those are old versions without OpenRouter app headers.
+The **OpenRouter Chat Model** sub-node connects to **Ask BCAI Agent** via the
+language-model input (not the main flow).
+
+Delete any row that uses a standalone **Call Ask BCAI (OpenRouter)** HTTP Request
+or **Format chat response** code node — those are the old non-streaming path.
 
 OpenRouter credential (if not already set)
 ------------------------------------------
@@ -239,19 +241,16 @@ OpenRouter credential (if not already set)
 - API Key: your OpenRouter key
 
 OpenRouter app attribution (Ask BCAI in dashboard)
-------------------------------------------------
-The **Call Ask BCAI (OpenRouter)** HTTP Request node sends the same headers as the
-FAX workflow (plus the current OpenRouter title header):
-  HTTP-Referer: http://178.104.254.165/
-  X-OpenRouter-Title: Ask BCAI
-  X-Title: Ask BCAI   (legacy alias; keep both)
-
-Usage should appear in OpenRouter under "Ask BCAI" (not lumped with FAX).
+----------------------------------------------------
+The **OpenRouter Chat Model** sub-node uses the OpenRouter API credential. App
+attribution in the OpenRouter dashboard depends on your n8n/OpenRouter integration.
+If usage appears without the "Ask BCAI" label, check OpenRouter activity after
+deploying and re-activate the workflow if needed.
 
 OpenRouter Activity "App" column
 --------------------------------
 If you only see the URL (http://178.104.254.165/) and not "Ask BCAI":
-1. Open **Call Ask BCAI (OpenRouter)** in n8n and confirm all three headers above
+1. Open **OpenRouter Chat Model** in n8n and confirm credentials are linked
 2. Save → deactivate → activate the workflow
 3. Send one new chat message (old rows keep the old label)
 4. Check https://openrouter.ai/apps?url=http://178.104.254.165/
@@ -265,10 +264,10 @@ Chat Trigger configuration
 1. Open **When chat message received**
 2. Confirm:
    - Make Chat Publicly Available: ON
-   - Mode: **Embedded Chat**
+   - Mode: **Embedded Chat** (webhook mode in JSON)
    - Allowed Origins (CORS): `http://178.104.254.165,https://178.104.254.165`
    - Load Previous Session: **Off**
-   - Response Mode: **When Last Node Finishes**
+   - Response Mode: **Streaming response**
 3. Copy the **Chat URL** shown on the node (ends with `/chat`)
 
 Website webhook URLs

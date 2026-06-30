@@ -184,6 +184,144 @@
     bubble.innerHTML = role === 'assistant' ? markdownToHtml(text) : formatPlainMessage(text);
     messagesEl.appendChild(bubble);
     messagesEl.scrollTop = messagesEl.scrollHeight;
+    return bubble;
+  }
+
+  function createStreamingBubble() {
+    var bubble = document.createElement('div');
+    bubble.className = 'chatbot__message chatbot__message--assistant chatbot__message--streaming';
+    bubble.setAttribute('aria-busy', 'true');
+    messagesEl.appendChild(bubble);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return bubble;
+  }
+
+  function parseStreamLine(line) {
+    var trimmed = String(line).trim();
+    if (!trimmed || trimmed === '[DONE]') {
+      return null;
+    }
+    if (trimmed.indexOf('data:') === 0) {
+      trimmed = trimmed.slice(5).trim();
+    }
+    if (!trimmed) {
+      return null;
+    }
+    try {
+      return JSON.parse(trimmed);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function extractStreamContent(chunk) {
+    if (!chunk || typeof chunk !== 'object') {
+      return '';
+    }
+    if (chunk.type === 'item' && chunk.content != null) {
+      return String(chunk.content);
+    }
+    if (chunk.type === 'webhook-response') {
+      if (typeof chunk.content === 'string') {
+        return chunk.content;
+      }
+      if (chunk.content && chunk.content.output) {
+        return String(chunk.content.output);
+      }
+    }
+    return '';
+  }
+
+  function extractReplyFromRaw(text) {
+    var trimmed = String(text || '').trim();
+    if (!trimmed) {
+      return '';
+    }
+    try {
+      return extractReply(JSON.parse(trimmed));
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function readStreamingResponse(res, callbacks) {
+    if (!res.body || !res.body.getReader) {
+      throw new Error('Streaming not supported');
+    }
+
+    var reader = res.body.getReader();
+    var decoder = new TextDecoder();
+    var buffer = '';
+    var rawText = '';
+    var fullText = '';
+
+    function processBuffer(isFinal) {
+      var parts = buffer.split('\n');
+      buffer = isFinal ? '' : (parts.pop() || '');
+
+      for (var i = 0; i < parts.length; i++) {
+        var chunk = parseStreamLine(parts[i]);
+        if (!chunk) {
+          continue;
+        }
+        var piece = extractStreamContent(chunk);
+        if (piece) {
+          fullText += piece;
+          if (callbacks.onChunk) {
+            callbacks.onChunk(fullText, piece);
+          }
+        }
+      }
+    }
+
+    function pump() {
+      return reader.read().then(function (result) {
+        if (result.done) {
+          if (buffer.trim()) {
+            processBuffer(true);
+          }
+          if (!fullText.trim()) {
+            fullText = extractReplyFromRaw(rawText);
+            if (fullText && callbacks.onChunk) {
+              callbacks.onChunk(fullText, fullText);
+            }
+          }
+          if (!fullText.trim()) {
+            throw new Error('Empty response');
+          }
+          if (callbacks.onDone) {
+            callbacks.onDone(fullText);
+          }
+          return fullText;
+        }
+
+        var decoded = decoder.decode(result.value, { stream: true });
+        rawText += decoded;
+        buffer += decoded;
+        processBuffer(false);
+        return pump();
+      });
+    }
+
+    return pump();
+  }
+
+  function shouldStreamResponse(res) {
+    if (!res.body || !res.body.getReader) {
+      return false;
+    }
+    if (isStreamingResponse(res)) {
+      return true;
+    }
+    var encoding = (res.headers.get('transfer-encoding') || '').toLowerCase();
+    return encoding.indexOf('chunked') !== -1;
+  }
+    var contentType = (res.headers.get('content-type') || '').toLowerCase();
+    return (
+      contentType.indexOf('text/event-stream') !== -1 ||
+      contentType.indexOf('application/x-ndjson') !== -1 ||
+      contentType.indexOf('application/stream+json') !== -1
+    );
   }
 
   function extractReply(data) {
@@ -204,10 +342,15 @@
     return '';
   }
 
-  function sendMessage(text) {
+  function sendMessage(text, callbacks) {
+    callbacks = callbacks || {};
+
     return fetch(SITE.chatWebhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'text/event-stream, application/json',
+      },
       body: JSON.stringify({
         action: 'sendMessage',
         chatInput: text,
@@ -217,13 +360,24 @@
       if (!res.ok) {
         throw new Error('Chat request failed (' + res.status + ')');
       }
-      return res.json();
-    }).then(function (data) {
-      var reply = extractReply(data);
-      if (!reply) {
-        throw new Error('Empty response');
+
+      if (res.body && res.body.getReader) {
+        return readStreamingResponse(res, callbacks);
       }
-      return reply;
+
+      return res.json().then(function (data) {
+        var reply = extractReply(data);
+        if (!reply) {
+          throw new Error('Empty response');
+        }
+        if (callbacks.onChunk) {
+          callbacks.onChunk(reply, reply);
+        }
+        if (callbacks.onDone) {
+          callbacks.onDone(reply);
+        }
+        return reply;
+      });
     });
   }
 
@@ -259,13 +413,34 @@
     messagesEl.appendChild(thinking);
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
-    sendMessage(text)
-      .then(function (reply) {
-        thinking.remove();
-        appendMessage('assistant', reply);
-      })
+    var streamBubble = null;
+
+    sendMessage(text, {
+      onChunk: function (fullText) {
+        if (!streamBubble) {
+          thinking.remove();
+          streamBubble = createStreamingBubble();
+        }
+        streamBubble.textContent = fullText;
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      },
+      onDone: function (fullText) {
+        if (!streamBubble) {
+          thinking.remove();
+          streamBubble = createStreamingBubble();
+        }
+        streamBubble.classList.remove('chatbot__message--streaming');
+        streamBubble.removeAttribute('aria-busy');
+        streamBubble.innerHTML = markdownToHtml(fullText);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      },
+    })
       .catch(function () {
-        thinking.remove();
+        if (streamBubble) {
+          streamBubble.remove();
+        } else {
+          thinking.remove();
+        }
         appendMessage(
           'assistant',
           'Sorry — I could not reach the assistant right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#discovery-call'

@@ -2550,6 +2550,24 @@ html[data-call-booked="1"] #discovery-call .contact-card-lead {
   font-style: italic;
 }
 
+.chatbot__message--streaming::after {
+  content: '';
+  display: inline-block;
+  width: 0.35em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: text-bottom;
+  background: currentColor;
+  opacity: 0.55;
+  animation: chatbot-cursor-blink 1s step-end infinite;
+}
+
+@keyframes chatbot-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .chatbot__link {
   color: var(--color-neon-teal);
   text-decoration: underline;
