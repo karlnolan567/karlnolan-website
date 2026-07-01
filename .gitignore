@@ -2,6 +2,7 @@
 *.swp
 *~
 node_modules/
+.env
 
 # Local working documents — never committed or deployed
 docs/

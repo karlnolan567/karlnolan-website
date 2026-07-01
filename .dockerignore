@@ -1,0 +1,10 @@
+.git
+.gitignore
+docs/
+n8n/
+lead-intake/
+chatbot-knowledge/
+scripts/
+*.md
+.env
+.DS_Store

@@ -2,7 +2,8 @@
 
 Static portfolio site for **Bespoke Core AI Engineering Limited** (Limerick, Ireland).
 
-Live preview: [http://178.104.254.165/](http://178.104.254.165/)  
+Live site: [http://135.181.39.41/](http://135.181.39.41/) (Docker on new VPS)  
+Legacy VPS: [http://178.104.254.165/](http://178.104.254.165/) (until DNS cutover)  
 Planned domain: `ai-development.ie` (when registered)
 
 ## Local preview
@@ -31,24 +32,59 @@ To add a new page:
 
 The `docs/` folder is for local working files only (business case, CV drafts, outreach templates). It is listed in `.gitignore` and is **not** committed or deployed.
 
-## Deploy
+## Deploy (Docker — VPS `135.181.39.41`)
 
-The site is static HTML at the repository root (`index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, `images/`). Deploy only those public assets — not `docs/` or `node_modules/`.
+The site runs in Docker: Caddy edge proxy + static site container. Production URLs are set via `.env` (see [`.env.example`](.env.example)); the entrypoint renders [`js/site-config.js`](js/site-config.js) from [`js/site-config.template.js`](js/site-config.template.js) at container start.
 
-Edit [`css/styles.css`](css/styles.css) directly before deploying if you changed styles.
+**Phase 1:** website only. Chatbot and booking still call n8n on the old VPS (trycloudflare tunnel) until n8n is migrated (Phase 2).
+
+### First-time setup on VPS
+
+```bash
+ssh root@135.181.39.41
+
+# Install Docker (if needed)
+curl -fsSL https://get.docker.com | sh
+
+# Clone and configure
+git clone <your-repo-url> /opt/web_site
+cd /opt/web_site
+cp .env.example .env
+
+# Build and start
+docker compose up -d --build
+```
+
+Open http://135.181.39.41/ and verify pages, header/footer partials, CSS, and images load.
+
+### Update after changes
+
+```bash
+cd /opt/web_site
+git pull
+docker compose up -d --build
+```
+
+To change webhook or canonical URLs without rebuilding, edit `.env` and run `docker compose up -d` (entrypoint re-renders `site-config.js`).
+
+### Smoke test checklist
+
+- [ ] Home page loads at `http://135.181.39.41/`
+- [ ] Header/footer partials render
+- [ ] Workshop and sub-pages work
+- [ ] Chat widget / booking — may fail CORS until Phase 2 (n8n on same VPS)
+
+### DNS cutover (when domain is ready)
+
+1. Point A record to `135.181.39.41`
+2. Add domain block to [`docker/Caddyfile`](docker/Caddyfile) for automatic HTTPS
+3. Update `.env` to `https://yourdomain.ie/...`
+4. Update hardcoded canonical/og tags in HTML (separate pass)
 
 ### GitHub Pages
 
 1. Ensure `index.html` is at the repository root.
 2. Go to **Settings → Pages** → deploy from `main`, `/ (root)`.
-
-### VPS (nginx)
-
-```bash
-ssh root@178.104.254.165
-```
-
-Sync `index.html`, `workshop.html`, `css/styles.css`, `js/`, `partials/`, and `images/` to the web root on the server.
 
 ## Customize
 
