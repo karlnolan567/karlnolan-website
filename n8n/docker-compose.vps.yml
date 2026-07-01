@@ -1,0 +1,50 @@
+# Production n8n on VPS — use with /opt/n8n on the server.
+# Joins bcai-net so Caddy (web_site stack) can reverse_proxy /webhook/* to n8n:5678.
+# No cloudflared — webhooks via Caddy on :80; editor on :5678 (basic auth).
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    expose:
+      - "5678"
+    networks:
+      - bcai-net
+    environment:
+      - N8N_HOST=${N8N_PUBLIC_HOST}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
+      - N8N_SECURE_COOKIE=false
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - N8N_PUBLIC_HOST=${N8N_PUBLIC_HOST}
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-http://${N8N_PUBLIC_HOST}:5678/}
+      - N8N_EMAIL_SETTINGS__APPEND_N8N_ATTRIBUTION=false
+      - GENERIC_TIMEZONE=Europe/Dublin
+      - TZ=Europe/Dublin
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_LICENSE_ACTIVATION_KEY=${N8N_LICENSE_ACTIVATION_KEY:-}
+      - N8N_TRUST_PROXY_HEADER=true
+      - N8N_PROXY_HOPS=1
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - MANAGER_TELEGRAM_CHAT_ID=${MANAGER_TELEGRAM_CHAT_ID:-}
+      - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID:-}
+      - MANAGER_EMAIL=${MANAGER_EMAIL:-}
+      - SUPPORT_EMAIL=${SUPPORT_EMAIL:-}
+      - NODE_FUNCTION_ALLOW_BUILTIN=fs,crypto
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./local-files:/files
+      - ./workflows:/import:ro
+
+networks:
+  bcai-net:
+    external: true
+
+volumes:
+  n8n_data:
