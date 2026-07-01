@@ -94,6 +94,26 @@
     return escapeHtml(text).replace(/\n/g, '<br>');
   }
 
+  function friendlyLinkLabel(url) {
+    var hash = url.indexOf('#') !== -1 ? url.slice(url.indexOf('#')) : '';
+    var labels = {
+      '#discovery-call': 'Book a call',
+      '#our-service': 'Services',
+      '#engagement': 'How we work',
+      '#about': 'About',
+      '#where-to-start': 'Where to start',
+      '#case-studies': 'Case studies',
+      '#privacy': 'Privacy notice',
+    };
+    if (hash && labels[hash]) {
+      return labels[hash];
+    }
+    if (url.indexOf('linkedin.com/in/karl-nolan') !== -1) {
+      return 'LinkedIn';
+    }
+    return null;
+  }
+
   function inlineMarkdown(text) {
     var s = text;
     s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
@@ -102,7 +122,8 @@
     s = s.replace(/__([^_]+)__/g, '<strong>$1</strong>');
     s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     s = s.replace(/(^|[\s(])((https?:\/\/[^\s<]+))/g, function (_, pre, url) {
-      return pre + '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="chatbot__link">' + url + '</a>';
+      var label = friendlyLinkLabel(url) || url;
+      return pre + '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="chatbot__link">' + label + '</a>';
     });
     return s;
   }
@@ -425,7 +446,7 @@
         }
         appendMessage(
           'assistant',
-          'Sorry — I could not reach the assistant right now. Please try again shortly, or book a discovery call at http://178.104.254.165/#discovery-call'
+          'Sorry — I could not reach the assistant right now. Please try again shortly, or [book a discovery call](http://178.104.254.165/#discovery-call).'
         );
       })
       .finally(function () {

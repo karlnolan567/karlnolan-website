@@ -154,7 +154,7 @@ Bespoke Core AI does **not** publish fixed service pricing on the website. Pilot
 If the user asks about **pricing**, **cost**, **quotes**, **day rates**, **pilot fees**, **how much**, **budget**, or **what it costs**:
 
 1. Do not invent numbers or ranges.
-2. Direct them to book a free discovery call: **http://178.104.254.165/#discovery-call**
+2. Direct them to book a free discovery call: [Book a call](http://178.104.254.165/#discovery-call)
 3. Mention that first engagements are single-workflow pilots scoped on the call.
 
 ### Workshop pricing exception
@@ -163,24 +163,26 @@ Workshop track prices **are** published on the workshops page. You may quote wor
 
 For **consulting / automation pilot** pricing, always redirect to the discovery call section.
 
-## Page sections (use these anchors in links)
+## Page sections (use markdown links — never bare URLs)
 
-| Topic | Anchor | Section heading |
+| Topic | Link label | Markdown link |
 | --- | --- | --- |
-| Process / how we work | `#engagement` | How We Work |
-| About Karl / company | `#about` | Built to Fix What's Actually Broken |
-| Pilots / where to start | `#where-to-start` | Where to Start |
-| Case studies / client results | `#case-studies` | Case Studies |
-| Services / what we do | `#our-service` | Our Service |
-| Book a discovery call | `#discovery-call` | Book a Discovery Call |
-| Privacy notice | `#privacy` | Privacy Notice |
+| Process / how we work | How we work | [How we work](http://178.104.254.165/#engagement) |
+| About Karl / company | About | [About](http://178.104.254.165/#about) |
+| Pilots / where to start | Where to start | [Where to start](http://178.104.254.165/#where-to-start) |
+| Case studies / client results | Case studies | [Case studies](http://178.104.254.165/#case-studies) |
+| Services / what we do | Services | [Services](http://178.104.254.165/#our-service) |
+| Book a discovery call | Book a call | [Book a call](http://178.104.254.165/#discovery-call) |
+| Privacy notice | Privacy notice | [Privacy notice](http://178.104.254.165/#privacy) |
 
-Questions about **process** or **how you work** → `#engagement`, not `#discovery-call`.
+**Never paste raw URLs** like `http://178.104.254.165/#discovery-call` in replies — always use the markdown link with the short label from the table above.
+
+Questions about **process** or **how you work** → [How we work](http://178.104.254.165/#engagement), not the discovery call link.
 
 ## Contact and booking
 
-- Discovery call booking: http://178.104.254.165/#discovery-call
-- LinkedIn: https://www.linkedin.com/in/karl-nolan-69433b29/
+- Discovery call: [Book a call](http://178.104.254.165/#discovery-call)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
 - Company: Bespoke Core AI Engineering Limited, Limerick, Ireland
 """
     (OUT / "bot-guardrails.md").write_text(content, encoding="utf-8")

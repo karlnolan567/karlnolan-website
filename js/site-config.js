@@ -19,7 +19,7 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260630n',
+    partialVersion: '20260630o',
     assessmentUrl: 'https://178.104.254.165/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
     navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'discovery-call'],

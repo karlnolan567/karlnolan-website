@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" aria-hidden="true">
+  <defs>
+    <linearGradient id="calGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <circle cx="44" cy="44" r="40" fill="rgba(16,185,129,0.12)"/>
+  <rect x="18" y="24" width="52" height="44" rx="10" fill="rgba(15,26,43,0.35)" stroke="url(#calGrad)" stroke-width="2.5"/>
+  <rect x="18" y="24" width="52" height="14" rx="10" fill="url(#calGrad)"/>
+  <circle cx="30" cy="31" r="2.5" fill="#0f1a2b" opacity="0.35"/>
+  <circle cx="58" cy="31" r="2.5" fill="#0f1a2b" opacity="0.35"/>
+  <rect x="28" y="46" width="8" height="8" rx="2" fill="rgba(16,185,129,0.35)"/>
+  <rect x="40" y="46" width="8" height="8" rx="2" fill="rgba(16,185,129,0.35)"/>
+  <rect x="52" y="46" width="8" height="8" rx="2" fill="rgba(6,182,212,0.45)"/>
+  <circle cx="62" cy="58" r="18" fill="url(#checkGrad)"/>
+  <path d="M54 58l6 6 14-14" fill="none" stroke="#0f1a2b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 18l3 6M76 14l-4 5M70 72l5 3" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="14" cy="62" r="2" fill="#fbbf24"/>
+  <circle cx="74" cy="28" r="2.5" fill="#34d399"/>
+</svg>
