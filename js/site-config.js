@@ -9,7 +9,7 @@ const SITE = {
     contactEmail: 'karlnolancompany@gmail.com',
     privacyEmail: 'privacy@ai-development.ie',
     linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
-    canonicalUrl: 'http://178.104.254.165/',
+    canonicalUrl: 'http://135.181.39.41/',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,
     workshopHubUrl: 'workshops.html',
@@ -20,22 +20,22 @@ const SITE = {
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
     partialVersion: '20260630o',
-    assessmentUrl: 'https://178.104.254.165/assessment',
+    assessmentUrl: 'http://135.181.39.41/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
     navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'discovery-call'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
-        : 'https://fridge-films-find-gloves.trycloudflare.com/webhook/bcai-website-chat/chat',
+        : 'http://135.181.39.41/webhook/bcai-website-chat/chat',
     chatWarmCacheUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
-        : 'https://fridge-films-find-gloves.trycloudflare.com/webhook/bcai-warm-knowledge',
+        : 'http://135.181.39.41/webhook/bcai-warm-knowledge',
     chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke Core AI and this website. What would you like to know?',
     bookingUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/booking'
-        : 'https://fridge-films-find-gloves.trycloudflare.com/webhook/booking',
+        : 'http://135.181.39.41/webhook/booking',
     bookingSuccessUrl: isLocalPreview
         ? 'http://localhost:8080/index.html?call-booked=1'
-        : 'http://178.104.254.165/index.html?call-booked=1',
+        : 'http://135.181.39.41/index.html?call-booked=1',
     googleDriveKnowledgeFolderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',
 };

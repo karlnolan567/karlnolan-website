@@ -2,8 +2,8 @@
 
 Static portfolio site for **Bespoke Core AI Engineering Limited** (Limerick, Ireland).
 
-Live site: [http://135.181.39.41/](http://135.181.39.41/) (Docker on new VPS)  
-Legacy VPS: [http://178.104.254.165/](http://178.104.254.165/) (until DNS cutover)  
+Live site: [http://135.181.39.41/](http://135.181.39.41/)  
+n8n editor: [http://135.181.39.41:5678/](http://135.181.39.41:5678/)  
 Planned domain: `ai-development.ie` (when registered)
 
 ## Local preview
@@ -34,9 +34,7 @@ The `docs/` folder is for local working files only (business case, CV drafts, ou
 
 ## Deploy (Docker — VPS `135.181.39.41`)
 
-The site runs in Docker: Caddy edge proxy + static site container. Production URLs are set via `.env` (see [`.env.example`](.env.example)); the entrypoint renders [`js/site-config.js`](js/site-config.js) from [`js/site-config.template.js`](js/site-config.template.js) at container start.
-
-**Phase 1:** website only. Chatbot and booking still call n8n on the old VPS (trycloudflare tunnel) until n8n is migrated (Phase 2).
+The site runs in Docker: Caddy edge proxy + static site container. Production URLs are set via `.env` (see [`.env.example`](.env.example)); the entrypoint renders [`js/site-config.js`](js/site-config.js) from [`js/site-config.template.js`](js/site-config.template.js) at container start. n8n runs separately at `/opt/n8n` on the same host; Caddy proxies `/webhook/*` to it.
 
 ### First-time setup on VPS
 
@@ -72,7 +70,7 @@ To change webhook or canonical URLs without rebuilding, edit `.env` and run `doc
 - [ ] Home page loads at `http://135.181.39.41/`
 - [ ] Header/footer partials render
 - [ ] Workshop and sub-pages work
-- [ ] Chat widget / booking — may fail CORS until Phase 2 (n8n on same VPS)
+- [ ] Chat widget and booking webhooks respond
 
 ### DNS cutover (when domain is ready)
 

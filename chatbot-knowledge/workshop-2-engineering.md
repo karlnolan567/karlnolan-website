@@ -1,6 +1,6 @@
 ---
 title: Workshop 2 — AI Engineering
-source: http://178.104.254.165/workshop-2.html
+source: http://135.181.39.41/workshop-2.html
 scope: website-knowledge
 ---
 
