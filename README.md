@@ -74,6 +74,14 @@ To change webhook or canonical URLs without rebuilding, edit `.env` and run `doc
 
 ### DNS cutover (when domain is ready)
 
+Run the interactive go-live wizard from the repo root (domain registration, DNS, Let's Encrypt, `.env`, Caddy, HTML tags, n8n, deploy, and smoke tests):
+
+```bash
+./scripts/go-live-domain-ssl.sh
+```
+
+See [`scripts/go-live-domain-ssl.sh`](scripts/go-live-domain-ssl.sh) for the full step-by-step procedure. Manual checklist:
+
 1. Point A record to `135.181.39.41`
 2. Add domain block to [`docker/Caddyfile`](docker/Caddyfile) for automatic HTTPS
 3. Update `.env` to `https://yourdomain.ie/...`
