@@ -9,7 +9,7 @@ const SITE = {
     contactEmail: 'karlnolancompany@gmail.com',
     privacyEmail: 'privacy@ai-development.ie',
     linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
-    canonicalUrl: 'http://135.181.39.41/',
+    canonicalUrl: 'https://135.181.39.41/',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,
     workshopHubUrl: 'workshops.html',
@@ -19,23 +19,23 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260630o',
-    assessmentUrl: 'http://135.181.39.41/assessment',
+    partialVersion: '20260701a',
+    assessmentUrl: 'https://135.181.39.41/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
-    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'discovery-call'],
+    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'assessment', 'discovery-call'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
-        : 'http://135.181.39.41/webhook/bcai-website-chat/chat',
+        : 'https://135.181.39.41/webhook/bcai-website-chat/chat',
     chatWarmCacheUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
-        : 'http://135.181.39.41/webhook/bcai-warm-knowledge',
+        : 'https://135.181.39.41/webhook/bcai-warm-knowledge',
     chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke Core AI and this website. What would you like to know?',
     bookingUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/booking'
-        : 'http://135.181.39.41/webhook/booking',
+        : 'https://135.181.39.41/webhook/booking',
     bookingSuccessUrl: isLocalPreview
         ? 'http://localhost:8080/index.html?call-booked=1'
-        : 'http://135.181.39.41/index.html?call-booked=1',
+        : 'https://135.181.39.41/index.html?call-booked=1',
     googleDriveKnowledgeFolderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',
 };

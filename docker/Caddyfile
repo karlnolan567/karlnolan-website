@@ -1,10 +1,53 @@
-:80 {
+(common_n8n) {
 	handle /webhook/* {
 		reverse_proxy n8n:5678
 	}
 	handle /rest/oauth2-credential/* {
 		reverse_proxy n8n:5678
 	}
+}
+
+(ai_ivr) {
+	handle /webhooks/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /api/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /admin/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /static/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /dev/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /health {
+		reverse_proxy ai_ivr:8000
+	}
+	handle /assessment {
+		rewrite * /
+		reverse_proxy ai_ivr:8000
+	}
+}
+
+# HTTP: keep webhook POST endpoints reachable without TLS redirect (Retell/n8n).
+:80 {
+	import common_n8n
+	handle /webhooks/* {
+		reverse_proxy ai_ivr:8000
+	}
+	handle {
+		redir https://{host}{uri} permanent
+	}
+}
+
+# HTTPS: full site + assessment (WebRTC requires secure context).
+:443 {
+	tls /etc/caddy/ssl/cert.pem /etc/caddy/ssl/key.pem
+	import common_n8n
+	import ai_ivr
 	handle {
 		reverse_proxy site:8080
 	}

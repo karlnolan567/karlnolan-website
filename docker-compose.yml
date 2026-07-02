@@ -6,6 +6,7 @@ services:
       - "443:443"
     volumes:
       - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./docker/ssl:/etc/caddy/ssl:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:

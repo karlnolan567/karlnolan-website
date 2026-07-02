@@ -4,5 +4,10 @@
 node_modules/
 .env
 
+# TLS certs (generated on VPS)
+docker/ssl/
+
 # Local working documents — never committed or deployed
-docs/
+docs/*
+!docs/agents/
+!docs/agents/**
