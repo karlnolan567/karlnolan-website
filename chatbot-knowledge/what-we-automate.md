@@ -50,6 +50,36 @@ These three areas map directly to our [client case studies](index.html#case-stud
 
 - **Seamless HR & Hiring Loops:** When someone applies for a job, the system screens their CV, logs details, and alerts the team on Slack, Microsoft Teams, or email.
 
+// Built-In on Every Workflow
+
+## Guardrails Before Anything Goes Live
+
+Whether we automate documents, inboxes, or compliance data, the same safety layer applies — scoped to your policy, not bolted on after the fact.
+
+### Sensitive Data & PII
+
+- **Detect & classify:** Names, IDs, financial account numbers, health or other regulated fields flagged before they move downstream.
+
+- **Redact or mask:** Full values kept out of logs, notifications, and third-party tools unless you explicitly allow them.
+
+- **Need-to-know routing:** Only the fields and destinations your policy permits — nothing copied to extra systems by default.
+
+### Human Review & Confidence Gates
+
+- **Nothing posts unchecked:** Low-confidence extractions and validation failures route to a review queue — never straight into production.
+
+- **Gradual auto-approval:** Automation scales only after your team has signed off accuracy on real records.
+
+- **Privacy assessments:** We align scope with your PIA/DPIA or internal data-handling rules before production access.
+
+### Audit Trail & Access Control
+
+- **Trace every action:** Source document, extracted fields, reviewer, timestamp, and approve/reject — ready for audit questions.
+
+- **Role-based access:** Who can view, edit, approve, or export — matched to your team structure.
+
+- **Retention & deletion:** How long data is kept and when it is purged, configured to your policy.
+
 // Additional Workflows
 
 ## Lighter-Touch Automations
