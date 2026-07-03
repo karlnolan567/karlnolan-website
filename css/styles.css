@@ -337,8 +337,28 @@ main > section:not(.section--hero):not(.announce-bar) {
   padding: 4rem 1rem;
 }
 
+.section--compact.section--pb-tight {
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .section--compact.section--pb-tight {
+    padding-bottom: 1.5rem;
+  }
+}
+
 .section--tight {
   padding: 3rem 1rem;
+}
+
+.section--tight.section--pt-tight {
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .section--tight.section--pt-tight {
+    padding-top: 2rem;
+  }
 }
 
 .section--border-top {
