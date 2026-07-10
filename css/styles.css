@@ -552,7 +552,7 @@ section[id] {
   transition: all 0.3s;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1279px) {
   .site-header .nav {
     display: none !important;
   }
@@ -587,12 +587,12 @@ section[id] {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .site-header__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: 2rem;
+    column-gap: 2.5rem;
     padding: 0 2rem;
   }
 }
@@ -680,7 +680,12 @@ section[id] {
 @media (min-width: 640px) {
   .site-logo__name {
     font-size: 1rem;
-    white-space: normal;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-logo__name {
+    white-space: nowrap;
   }
 }
 
@@ -697,42 +702,37 @@ section[id] {
 .nav {
   display: none;
   align-items: center;
-  gap: 2rem;
-  font-size: 0.75rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .nav {
     display: flex;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 1536px) {
   .nav {
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1439px) {
-  .site-logo__text {
-    max-width: 11rem;
-  }
-
-  .site-logo__name {
-    font-size: 0.8125rem;
-    line-height: 1.2;
+    gap: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
   }
 }
 
 .nav-link {
   color: var(--color-text-dim);
   transition: color 0.2s;
-  padding: 0 0.25rem;
+  padding: 0 0.125rem;
   border-radius: var(--radius-sm);
+  white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -775,7 +775,7 @@ section[id] {
   outline-offset: 2px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .mobile-menu-btn {
     display: none;
   }
@@ -803,7 +803,7 @@ section[id] {
   display: block;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .mobile-menu {
     display: none !important;
   }

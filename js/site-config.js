@@ -19,10 +19,10 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260701a',
+    partialVersion: '20260710a',
     assessmentUrl: 'https://135.181.39.41/assessment',
     whatWeAutomateUrl: 'what-we-automate.html',
-    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'assessment', 'discovery-call'],
+    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'assessment'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
