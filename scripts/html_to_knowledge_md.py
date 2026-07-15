@@ -119,7 +119,7 @@ def front_matter(title: str, source: str) -> str:
     return (
         f"---\n"
         f"title: {title}\n"
-        f"source: http://135.181.39.41/{source}\n"
+        f"source: https://www.bespoke-ai.ie/{source}\n"
         f"scope: website-knowledge\n"
         f"---\n\n"
         f"# {title}\n\n"
@@ -137,7 +137,7 @@ scope: bot-policy
 
 ## Scope
 
-This assistant answers questions **only** about Bespoke Core AI Engineering Limited, its services, workshops, case studies, and content on http://135.181.39.41/
+This assistant answers questions **only** about Bespoke Core AI Engineering Limited, its services, workshops, case studies, and content on https://www.bespoke-ai.ie/
 
 ## Off-topic questions
 
@@ -154,7 +154,7 @@ Bespoke Core AI does **not** publish fixed service pricing on the website. Pilot
 If the user asks about **pricing**, **cost**, **quotes**, **day rates**, **pilot fees**, **how much**, **budget**, or **what it costs**:
 
 1. Do not invent numbers or ranges.
-2. Direct them to book a free discovery call: [Book a call](http://135.181.39.41/#discovery-call)
+2. Direct them to book a free discovery call: [Book a call](https://www.bespoke-ai.ie/#discovery-call)
 3. Mention that first engagements are single-workflow pilots scoped on the call.
 
 ### Workshop pricing exception
@@ -167,21 +167,21 @@ For **consulting / automation pilot** pricing, always redirect to the discovery 
 
 | Topic | Link label | Markdown link |
 | --- | --- | --- |
-| Process / how we work | How we work | [How we work](http://135.181.39.41/#engagement) |
-| About Karl / company | About | [About](http://135.181.39.41/#about) |
-| Pilots / where to start | Where to start | [Where to start](http://135.181.39.41/#where-to-start) |
-| Case studies / client results | Case studies | [Case studies](http://135.181.39.41/#case-studies) |
-| Services / what we do | Services | [Services](http://135.181.39.41/#our-service) |
-| Book a discovery call | Book a call | [Book a call](http://135.181.39.41/#discovery-call) |
-| Privacy notice | Privacy notice | [Privacy notice](http://135.181.39.41/#privacy) |
+| Process / how we work | How we work | [How we work](https://www.bespoke-ai.ie/#engagement) |
+| About Karl / company | About | [About](https://www.bespoke-ai.ie/#about) |
+| Pilots / where to start | Where to start | [Where to start](https://www.bespoke-ai.ie/#where-to-start) |
+| Case studies / client results | Case studies | [Case studies](https://www.bespoke-ai.ie/#case-studies) |
+| Services / what we do | Services | [Services](https://www.bespoke-ai.ie/#our-service) |
+| Book a discovery call | Book a call | [Book a call](https://www.bespoke-ai.ie/#discovery-call) |
+| Privacy notice | Privacy notice | [Privacy notice](https://www.bespoke-ai.ie/#privacy) |
 
-**Never paste raw URLs** like `http://135.181.39.41/#discovery-call` in replies — always use the markdown link with the short label from the table above.
+**Never paste raw URLs** like `https://www.bespoke-ai.ie/#discovery-call` in replies — always use the markdown link with the short label from the table above.
 
-Questions about **process** or **how you work** → [How we work](http://135.181.39.41/#engagement), not the discovery call link.
+Questions about **process** or **how you work** → [How we work](https://www.bespoke-ai.ie/#engagement), not the discovery call link.
 
 ## Contact and booking
 
-- Discovery call: [Book a call](http://135.181.39.41/#discovery-call)
+- Discovery call: [Book a call](https://www.bespoke-ai.ie/#discovery-call)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
 - Company: Bespoke Core AI Engineering Limited, Limerick, Ireland
 """

@@ -3,9 +3,9 @@
 import json
 from pathlib import Path
 
-BOOKING_SUCCESS_URL = "http://135.181.39.41/index.html?call-booked=1"
+BOOKING_SUCCESS_URL = "https://www.bespoke-ai.ie/index.html?call-booked=1"
 BCC_EMAIL = "karlnolancompany@gmail.com"
-SITE_BASE_URL = "http://135.181.39.41"
+SITE_BASE_URL = "https://www.bespoke-ai.ie"
 WHAT_WE_AUTOMATE_URL = f"{SITE_BASE_URL}/what-we-automate.html"
 OPENROUTER_MODEL = "deepseek/deepseek-v4-flash"  # DeepSeek V4 Flash
 OPENROUTER_APP_TITLE = "BCAI Booking"

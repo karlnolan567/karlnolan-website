@@ -1,6 +1,6 @@
 ---
 title: Workshops
-source: http://135.181.39.41/workshops.html
+source: https://www.bespoke-ai.ie/workshops.html
 scope: website-knowledge
 ---
 

@@ -446,7 +446,7 @@
         }
         appendMessage(
           'assistant',
-          'Sorry — I could not reach the assistant right now. Please try again shortly, or [book a discovery call](http://135.181.39.41/#discovery-call).'
+          'Sorry — I could not reach the assistant right now. Please try again shortly, or [book a discovery call](https://www.bespoke-ai.ie/#discovery-call).'
         );
       })
       .finally(function () {

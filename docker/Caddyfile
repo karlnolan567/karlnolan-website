@@ -43,9 +43,10 @@
 	}
 }
 
-# HTTPS: full site + assessment (WebRTC requires secure context).
-:443 {
-	tls /etc/caddy/ssl/cert.pem /etc/caddy/ssl/key.pem
+# HTTPS: Let's Encrypt via Caddy (automatic once DNS is live).
+bespoke-ai.ie, www.bespoke-ai.ie {
+	tls karlnolancompany@gmail.com
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	import common_n8n
 	import ai_ivr
 	handle {

@@ -1,6 +1,6 @@
 ---
 title: Workshop 1 — AI Foundations
-source: http://135.181.39.41/workshop-1.html
+source: https://www.bespoke-ai.ie/workshop-1.html
 scope: website-knowledge
 ---
 

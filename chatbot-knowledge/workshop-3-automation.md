@@ -1,6 +1,6 @@
 ---
 title: Workshop 3 — Agentic Workflow Automation
-source: http://135.181.39.41/workshop-3.html
+source: https://www.bespoke-ai.ie/workshop-3.html
 scope: website-knowledge
 ---
 

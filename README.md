@@ -2,9 +2,8 @@
 
 Static portfolio site for **Bespoke Core AI Engineering Limited** (Limerick, Ireland).
 
-Live site: [http://135.181.39.41/](http://135.181.39.41/)  
-n8n editor: [http://135.181.39.41:5678/](http://135.181.39.41:5678/)  
-Planned domain: `ai-development.ie` (when registered)
+Live site: [https://www.bespoke-ai.ie/](https://www.bespoke-ai.ie/)  
+n8n editor: [http://135.181.39.41:5678/](http://135.181.39.41:5678/) (SSH/basic auth; not on public HTTPS yet)
 
 ## Local preview
 
@@ -53,7 +52,7 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
-Open http://135.181.39.41/ and verify pages, header/footer partials, CSS, and images load.
+Open https://www.bespoke-ai.ie/ and verify pages, header/footer partials, CSS, and images load.
 
 ### Update after changes
 
@@ -67,7 +66,7 @@ To change webhook or canonical URLs without rebuilding, edit `.env` and run `doc
 
 ### Smoke test checklist
 
-- [ ] Home page loads at `http://135.181.39.41/`
+- [ ] Home page loads at `https://www.bespoke-ai.ie/`
 - [ ] Header/footer partials render
 - [ ] Workshop and sub-pages work
 - [ ] Chat widget and booking webhooks respond

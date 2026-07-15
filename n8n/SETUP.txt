@@ -251,11 +251,11 @@ deploying and re-activate the workflow if needed.
 
 OpenRouter Activity "App" column
 --------------------------------
-If you only see the URL (http://135.181.39.41/) and not "Ask BCAI":
+If you only see the URL (https://www.bespoke-ai.ie/) and not "Ask BCAI":
 1. Open **OpenRouter Chat Model** in n8n and confirm credentials are linked
 2. Save → deactivate → activate the workflow
 3. Send one new chat message (old rows keep the old label)
-4. Check https://openrouter.ai/apps?url=http://135.181.39.41/
+4. Check https://openrouter.ai/apps?url=https://www.bespoke-ai.ie/
 
 FAX uses https://ai-development.ie as Referer — that is a different app entry from
 the website chatbot (IP referer). Do not copy the FAX referer unless you want both
@@ -267,7 +267,7 @@ Chat Trigger configuration
 2. Confirm:
    - Make Chat Publicly Available: ON
    - Mode: **Embedded Chat** (webhook mode in JSON)
-   - Allowed Origins (CORS): `http://135.181.39.41,https://135.181.39.41`
+   - Allowed Origins (CORS): `https://www.bespoke-ai.ie,https://www.bespoke-ai.ie`
    - Load Previous Session: **Off**
    - Response Mode: **Streaming response**
 3. Copy the **Chat URL** shown on the node (ends with `/chat`)
@@ -342,23 +342,23 @@ Uses the same **n8n-test-project** stack as the chatbot (http://localhost:5678).
 OpenRouter app attribution (BCAI Booking in dashboard)
 ------------------------------------------------------
 **Call OpenRouter (Booking)** sends:
-  HTTP-Referer: http://135.181.39.41/booking   (unique app URL — must be a URL, not the title)
+  HTTP-Referer: https://www.bespoke-ai.ie/booking   (unique app URL — must be a URL, not the title)
   X-OpenRouter-Title: BCAI Booking
   X-Title: BCAI Booking
 
 Do **not** put "BCAI Booking" in HTTP-Referer — that header must be your app's URL.
 The display name goes in **X-OpenRouter-Title** (and **X-Title**). We also send standard **Referer**.
 
-**Activity log vs app name:** The App column often shows the referer URL (e.g. http://135.181.39.41/booking)
+**Activity log vs app name:** The App column often shows the referer URL (e.g. https://www.bespoke-ai.ie/booking)
 as the app identifier — that means attribution is working. The human-readable name "BCAI Booking" appears on
-your app analytics page: https://openrouter.ai/apps?url=http://135.181.39.41/booking
+your app analytics page: https://openrouter.ai/apps?url=https://www.bespoke-ai.ie/booking
 
 When you have a domain, switch Referer to https://yourdomain.com/booking for a cleaner label.
 
 4. **Redirect to Site** node — success URL in `BOOKING_SUCCESS_URL` inside `scripts/build_booking_workflow.py`
    (uses HTML + `window.location.replace()` so the browser GETs your static site — not POST)
    Local:  http://localhost:8080/index.html?call-booked=1
-   Prod:   http://135.181.39.41/index.html?call-booked=1
+   Prod:   https://www.bespoke-ai.ie/index.html?call-booked=1
 
 5. **Save** → **Activate**
 
