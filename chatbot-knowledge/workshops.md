@@ -70,6 +70,6 @@ Automate real business workflows. Full-day working session for ops, finance, and
 
 Prefer to discuss first? [Book a discovery call](#) on the main site.
 
-**Karl Nolan** · Principal Consultant · 26 years architecting and building software and AI workflows
+**Karl Nolan** · Principal Consultant · 27 years architecting and building software and AI workflows
 
 [← Back to main site](index.html)

@@ -73,7 +73,7 @@ Complete the short application form. You'll hear within 5 business days with an 
 [Apply for a Seat](#)
 New to AI? Start with [Workshop 1: AI Foundations](workshop-1.html). Need business automation? See [Workshop 3](workshop-3.html).
 
-**Karl Nolan** · Principal Consultant · 26 years architecting and building software and AI workflows
+**Karl Nolan** · Principal Consultant · 27 years architecting and building software and AI workflows
 
 Case studies: PR validation pipelines · legacy system modernisation · regulated-industry delivery
 

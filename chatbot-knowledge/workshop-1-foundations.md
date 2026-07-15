@@ -70,6 +70,6 @@ Complete the short application form. You'll hear within 5 business days with an 
 [Apply for a Seat](#)
 Looking for something more advanced? See [Workshop 2: AI Engineering](workshop-2.html) or [Workshop 3: Workflow Automation](workshop-3.html).
 
-**Karl Nolan** · Principal Consultant · 26 years architecting and building software and AI workflows
+**Karl Nolan** · Principal Consultant · 27 years architecting and building software and AI workflows
 
 [← All workshops](workshops.html) · [Main site](index.html)

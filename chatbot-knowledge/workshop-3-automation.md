@@ -77,7 +77,7 @@ Complete the short application form. You'll hear within 5 business days with an 
 [Apply for a Seat](#)
 New to AI? See [Workshop 1](workshop-1.html). Developer-focused? See [Workshop 2: AI Engineering](workshop-2.html).
 
-**Karl Nolan** · Principal Consultant · 26 years architecting and building software and AI workflows
+**Karl Nolan** · Principal Consultant · 27 years architecting and building software and AI workflows
 
 Case studies: quality reporting systems for regulated industries · supplier compliance automation · invoice and document processing
 

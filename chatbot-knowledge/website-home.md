@@ -12,7 +12,7 @@ scope: website-knowledge
 
 For ops, finance, and compliance teams in regulated industries — practical AI with audit-ready workflows. Straight talk: we'll tell you what's worth automating, and what isn't. [See what's possible](what-we-automate.html).
 
-26+ years delivering software in regulated environments
+27+ years delivering software in regulated environments
 
 First engagements are scoped to a single workflow — no enterprise procurement required.
 
