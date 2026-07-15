@@ -52,7 +52,7 @@ Principal Consultant & Solutions Architect
 
 [Connect on LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
 
-Over 26 years, I've managed global engineering teams, modernised legacy systems, and led cloud-native migrations on Google Cloud and Microsoft Azure.
+Over 27 years, I've managed global engineering teams, modernised legacy systems, and led cloud-native migrations on Google Cloud and Microsoft Azure.
 
 No BS — I'm not here to sell AI for the sake of it. I want to understand what's actually hurting your team day to day, and fix it with integrity. If automation isn't the right answer, I'll tell you straight. If it is, I'll build it myself and stay until it works.
 
