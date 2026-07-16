@@ -1,6 +1,6 @@
-# Bespoke Core AI Engineering Limited — Website
+# Bespoke AI — Website
 
-Static portfolio site for **Bespoke Core AI Engineering Limited** (Limerick, Ireland).
+Static portfolio site for **Bespoke AI** (Bespoke Core AI Engineering Limited, Limerick, Ireland).
 
 Live site: [https://www.bespoke-ai.ie/](https://www.bespoke-ai.ie/)  
 n8n editor: [http://135.181.39.41:5678/](http://135.181.39.41:5678/) (SSH/basic auth; not on public HTTPS yet)
@@ -112,7 +112,7 @@ Workflow development and testing use the Docker stack in `~/src/n8n-test-project
 | | |
 |---|---|
 | **URL** | http://localhost:5678 |
-| **Email** | test@test.com |
+| **Email** | karlnolan@bespoke-ai.ie |
 | **Password** | `@Passw0rd@` |
 
 Import or sync the workflow from [`n8n/bcai-website-chatbot.workflow.json`](n8n/bcai-website-chatbot.workflow.json). When happy, export from local n8n and promote to production (delete old prod workflow → clean import — see `n8n/SETUP.txt`).

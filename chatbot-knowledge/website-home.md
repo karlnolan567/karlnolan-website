@@ -1,10 +1,10 @@
 ---
-title: Bespoke Core AI — Home Page
+title: Bespoke AI — Home Page
 source: https://www.bespoke-ai.ie/index.html
 scope: website-knowledge
 ---
 
-# Bespoke Core AI — Home Page
+# Bespoke AI — Home Page
 
 > Auto-generated from `index.html` for the website chatbot knowledge base.
 

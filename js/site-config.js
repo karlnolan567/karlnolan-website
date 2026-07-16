@@ -4,7 +4,7 @@ const isLocalPreview =
 
 const SITE = {
     // Update canonicalUrl, contactEmail, privacyEmail, and og:url tags across HTML when domain goes live.
-    brandName: 'Bespoke Core AI',
+    brandName: 'Bespoke AI',
     legalName: 'Bespoke Core AI Engineering Limited',
     contactEmail: 'karlnolancompany@gmail.com',
     privacyEmail: 'privacy@ai-development.ie',
@@ -30,7 +30,7 @@ const SITE = {
     chatWarmCacheUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
         : 'https://www.bespoke-ai.ie/webhook/bcai-warm-knowledge',
-    chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke Core AI and this website. What would you like to know?',
+    chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke AI and this website. What would you like to know?',
     bookingUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/booking'
         : 'https://www.bespoke-ai.ie/webhook/booking',

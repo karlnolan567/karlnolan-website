@@ -75,7 +75,7 @@
     if (open) {
       warmKnowledgeCache();
       if (!greeted) {
-        appendMessage('assistant', SITE.chatGreeting || 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke Core AI and this website. What would you like to know?');
+        appendMessage('assistant', SITE.chatGreeting || 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke AI and this website. What would you like to know?');
         greeted = true;
       }
       input.focus();

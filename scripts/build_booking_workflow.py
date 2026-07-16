@@ -354,7 +354,7 @@ const html = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     __SITE_FAVICON__
-    <title>Book a Discovery Call — Bespoke Core AI</title>
+    <title>Book a Discovery Call — Bespoke AI</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -565,7 +565,7 @@ const html = `<!DOCTYPE html>
     <div class="container">
         <p class="label-mono">// Discovery Call</p>
         <h1>Book a 30-Minute Discovery Call</h1>
-        <p class="subtitle">Bespoke Core AI Engineering</p>
+        <p class="subtitle">Bespoke AI</p>
         <form method="POST" action="/webhook/booking" id="bookingForm">
             <div class="date-navigator">
                 <button type="button" class="nav-button" id="prevDay">&#8249;</button>
@@ -691,7 +691,7 @@ return [{ json: { html } }];
 
 PREPARE_OPENROUTER_JS = f"""const booking = $input.first().json;
 
-const systemMessage = `You are Karl Nolan (Bespoke Core AI, Limerick). Write ONE short plain-text paragraph (first person) for a discovery-call confirmation email.
+const systemMessage = `You are Karl Nolan (Bespoke AI, Limerick). Write ONE short plain-text paragraph (first person) for a discovery-call confirmation email.
 Thank them by first name, mention their company, and if their message is specific briefly reflect it; if vague or empty stay general — do not invent pain points.
 Professional, warm, not salesy. No URLs, links, dates/times, sign-off, or pricing. Max 80 words.`;
 
@@ -783,7 +783,7 @@ const emailHtml = `<!DOCTYPE html>
     <div class="container">
         <div class="header">
             <h1>Discovery call confirmed</h1>
-            <p>Bespoke Core AI Engineering</p>
+            <p>Bespoke AI</p>
         </div>
         <div class="content">
             <p style="margin:0 0 16px;">Dear ${{esc(booking.firstName)}} ${{esc(booking.lastName)}},</p>
@@ -800,7 +800,7 @@ const emailHtml = `<!DOCTYPE html>
                 <a href="{WHAT_WE_AUTOMATE_URL}" style="color:#3b82f6;">See what we automate</a></p>
             </div>
             <div class="button-container"><a href="${{esc(booking.htmlLink)}}" class="button">Add to Google Calendar</a></div>
-            <p style="margin:24px 0 0;color:#333;">Kind regards,<br><strong>Karl Nolan</strong><br><span style="color:#666;font-size:14px;">Principal Consultant, Bespoke Core AI Engineering</span></p>
+            <p style="margin:24px 0 0;color:#333;">Kind regards,<br><strong>Karl Nolan</strong><br><span style="color:#666;font-size:14px;">Principal Consultant, Bespoke AI</span></p>
             <p style="margin-top:24px;padding:16px;background:#fff;border-radius:8px;font-size:14px;"><strong>Need to reschedule?</strong><br>Reply to this email.</p>
         </div>
         <div class="footer"><p>Automated confirmation from Bespoke Core AI Engineering, Limerick, Ireland.</p></div>
