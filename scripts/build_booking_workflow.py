@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 BOOKING_SUCCESS_URL = "https://www.bespoke-ai.ie/index.html?call-booked=1"
-BCC_EMAIL = "karlnolancompany@gmail.com"
+BCC_EMAIL = "karlnolan@bespoke-ai.ie"
 SITE_BASE_URL = "https://www.bespoke-ai.ie"
 WHAT_WE_AUTOMATE_URL = f"{SITE_BASE_URL}/what-we-automate.html"
 OPENROUTER_MODEL = "deepseek/deepseek-v4-flash"  # DeepSeek V4 Flash
@@ -38,10 +38,10 @@ SUCCESS_REDIRECT_HTML = f"""<!DOCTYPE html>
 </html>"""
 # Local n8n credential refs (~/src/n8n-test-project) — re-attach on prod import
 LOCAL_GOOGLE_CALENDAR_CREDS = {
-    "googleCalendarOAuth2Api": {"id": "BBYKuDvN5Ff3ROXH", "name": "Google Calendar account"}
+    "googleCalendarOAuth2Api": {"id": "RjSkWI5k3uhhuZcR", "name": "Google Calendar account"}
 }
 LOCAL_GMAIL_CREDS = {
-    "gmailOAuth2": {"id": "zEXx7CxGsbxi3lSr", "name": "Gmail account"}
+    "gmailOAuth2": {"id": "HtT0jRInWWw1B0Gn", "name": "Gmail account"}
 }
 LOCAL_OPENROUTER_CREDS = {
     "openRouterApi": {"id": "hX4d03wqKExj2fbW", "name": "OpenRouter account"}
@@ -1046,7 +1046,7 @@ workflow = {
 - OpenRouter: `max_tokens: 180`, `provider.sort: latency`, `reasoning.effort: none`, 8s HTTP timeout + fallback text
 
 ### Setup
-1. Google Calendar OAuth2 + Gmail OAuth2 (karlnolancompany@gmail.com)
+1. Google Calendar OAuth2 + Gmail OAuth2 (karlnolan@bespoke-ai.ie)
 2. Availability: Mon–Fri 9:30–17:00 Europe/Dublin, max 4 slots/day, lunch 13:00–14:00 blocked — **Calculate Available Slots**
 3. **Redirect to Site** — HTML page with `window.location.replace()` to `{BOOKING_SUCCESS_URL}` (avoids POST→302 replay to static site)
 4. BCC on confirmation: `{BCC_EMAIL}`

@@ -5,7 +5,7 @@ Credential:        Google Drive account
 Resource:          File/Folder
 Operation:         Search
 Search Method:     Advanced Search
-Query String:      '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+Query String:      '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
 What to search:    Files
 Return All:        ON
 

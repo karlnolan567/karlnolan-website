@@ -108,16 +108,16 @@ PART A — Google Cloud Console (one-time)
 
 PART B — Google Drive folder (account + sharing)
 6. In https://drive.google.com open folder:
-   11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD
+   1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2
 7. Note which Google account owns it (profile icon — especially if URL shows /u/1/)
-8. Optional but helpful: Share folder with the SAME Gmail you will use in n8n
+8. Optional but helpful: Share folder with the SAME Workspace account you will use in n8n
    → Share → add that email → role **Viewer** (or Editor) → Send
 
 PART C — n8n credential (connect with folder owner account)
 9. n8n → **Credentials** → **Google Drive OAuth2 API**
 10. Either edit existing or **Create credential**
 11. Click **Sign in with Google** / **Reconnect**
-12. Sign in with the account that OWNS the knowledge folder (step 7)
+12. Sign in with Workspace `karlnolan@bespoke-ai.ie` (must own the knowledge folder)
 13. On Google's consent screen: allow **all** requested permissions (full Drive access)
 14. Credential should show connected / saved
 15. Open workflow → **List knowledge files** + **Download knowledge files**
@@ -136,7 +136,7 @@ PART D — n8n Download node settings
 
 PART E — Verify List only returns your knowledge files (~8 items)
 19. **List knowledge files** query:
-    '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+    '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
 20. Return All: ON
 21. Re-run List — should not return 50 unrelated files
 
@@ -162,7 +162,7 @@ Get FOLDER_ID_HERE from the folder URL in Drive:
   https://drive.google.com/drive/folders/XXXXXXXX  → use XXXXXXXX
 
 Current knowledge folder name: chat_bot_repo (7 markdown files).
-Original folder ID was 11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD — use whichever folder you upload to.
+Original folder ID was 1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2 — use whichever folder you upload to.
 
 Expected output: ~7 items (website-home.md, bot-guardrails.md, etc.) — NOT 50 "Untitled" folders.
 
@@ -192,7 +192,7 @@ List works but Download fails? Try in order:
 
 5. List returning 50 items (not ~8)?
    Tighten Query String:
-   '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
+   '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'
 
 6. Google Cloud Console: ensure Google Drive API is enabled for the OAuth project.
 
@@ -292,7 +292,9 @@ Activate workflow
 
 Google Drive knowledge folder
 -----------------------------
-Folder ID: 11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD
+Folder name: BCAI chatbot knowledge
+Folder ID: 1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2
+Owner / OAuth identity: karlnolan@bespoke-ai.ie (Google Workspace)
 
 Regenerate markdown from the website (local):
   python3 scripts/html_to_knowledge_md.py
@@ -334,8 +336,8 @@ Uses the same **n8n-test-project** stack as the chatbot (http://localhost:5678).
    Or: Workflows → Import from file → `n8n/bcai-discovery-booking.workflow.json`
 
 3. **Credentials** (attach on import):
-     - **Google Calendar OAuth2** — primary calendar on karlnolancompany@gmail.com
-     - **Gmail OAuth2** — same account (sends confirmation + BCC to business inbox)
+     - **Google Calendar OAuth2** — primary calendar on Workspace `karlnolan@bespoke-ai.ie`
+     - **Gmail OAuth2** — same Workspace account (sends confirmation + BCC to business inbox)
    Local OAuth redirect URI:
      http://localhost:5678/rest/oauth2-credential/callback
 
@@ -388,7 +390,7 @@ Edit **Calculate Available Slots** Code node:
 
 Confirmation email
 ------------------
-**Send Confirmation Email** — BCC karlnolancompany@gmail.com (options.bccList).
+**Send Confirmation Email** — BCC `karlnolan@bespoke-ai.ie` (options.bccList).
 Append n8n Attribution is **off** (options.appendAttribution: false).
 Subject: {firstName} — discovery call confirmed for {date}
 

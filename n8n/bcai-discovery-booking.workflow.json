@@ -1,7 +1,7 @@
 {
   "id": "bcai-discovery-booking-001",
   "name": "BCAI Discovery Call Booking",
-  "active": true,
+  "active": false,
   "nodes": [
     {
       "id": "3124fd95-0fd3-4f81-98e9-86b5fb76400c",
@@ -63,7 +63,7 @@
       "typeVersion": 1.2,
       "credentials": {
         "googleCalendarOAuth2Api": {
-          "id": "BBYKuDvN5Ff3ROXH",
+          "id": "RjSkWI5k3uhhuZcR",
           "name": "Google Calendar account"
         }
       }
@@ -157,7 +157,7 @@
       "typeVersion": 1.2,
       "credentials": {
         "googleCalendarOAuth2Api": {
-          "id": "BBYKuDvN5Ff3ROXH",
+          "id": "RjSkWI5k3uhhuZcR",
           "name": "Google Calendar account"
         }
       }
@@ -264,14 +264,14 @@
         "subject": "={{ $json.firstName }} \u2014 discovery call confirmed for {{ $json.formattedDate }}",
         "message": "={{ $json.emailHtml }}",
         "options": {
-          "bccList": "karlnolancompany@gmail.com",
+          "bccList": "karlnolan@bespoke-ai.ie",
           "appendAttribution": false
         }
       },
       "typeVersion": 2.1,
       "credentials": {
         "gmailOAuth2": {
-          "id": "zEXx7CxGsbxi3lSr",
+          "id": "HtT0jRInWWw1B0Gn",
           "name": "Gmail account"
         }
       }
@@ -311,7 +311,7 @@
       "parameters": {
         "width": 900,
         "height": 380,
-        "content": "## BCAI Discovery Call Booking\n\n**GET** `/webhook/booking` \u2014 booking form with live slots\n**POST** `/webhook/booking` \u2014 create event \u2192 redirect immediately \u2192 AI email in background\n\n### Performance\n- **Redirect to Site** runs right after calendar create (user is not blocked by OpenRouter)\n- OpenRouter: `max_tokens: 180`, `provider.sort: latency`, `reasoning.effort: none`, 8s HTTP timeout + fallback text\n\n### Setup\n1. Google Calendar OAuth2 + Gmail OAuth2 (karlnolancompany@gmail.com)\n2. Availability: Mon\u2013Fri 9:30\u201317:00 Europe/Dublin, max 4 slots/day, lunch 13:00\u201314:00 blocked \u2014 **Calculate Available Slots**\n3. **Redirect to Site** \u2014 HTML page with `window.location.replace()` to `https://www.bespoke-ai.ie/index.html?call-booked=1` (avoids POST\u2192302 replay to static site)\n4. BCC on confirmation: `karlnolancompany@gmail.com`\n5. **OpenRouter** \u2014 `deepseek/deepseek-v4-flash` personalises the email body (`BCAI Booking` app headers)\n\n### Local test\nhttp://localhost:5678/webhook/booking"
+        "content": "## BCAI Discovery Call Booking\n\n**GET** `/webhook/booking` \u2014 booking form with live slots\n**POST** `/webhook/booking` \u2014 create event \u2192 redirect immediately \u2192 AI email in background\n\n### Performance\n- **Redirect to Site** runs right after calendar create (user is not blocked by OpenRouter)\n- OpenRouter: `max_tokens: 180`, `provider.sort: latency`, `reasoning.effort: none`, 8s HTTP timeout + fallback text\n\n### Setup\n1. Google Calendar OAuth2 + Gmail OAuth2 (karlnolan@bespoke-ai.ie)\n2. Availability: Mon\u2013Fri 9:30\u201317:00 Europe/Dublin, max 4 slots/day, lunch 13:00\u201314:00 blocked \u2014 **Calculate Available Slots**\n3. **Redirect to Site** \u2014 HTML page with `window.location.replace()` to `https://www.bespoke-ai.ie/index.html?call-booked=1` (avoids POST\u2192302 replay to static site)\n4. BCC on confirmation: `karlnolan@bespoke-ai.ie`\n5. **OpenRouter** \u2014 `deepseek/deepseek-v4-flash` personalises the email body (`BCAI Booking` app headers)\n\n### Local test\nhttp://localhost:5678/webhook/booking"
       },
       "typeVersion": 1
     }

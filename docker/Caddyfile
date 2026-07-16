@@ -53,3 +53,11 @@ bespoke-ai.ie, www.bespoke-ai.ie {
 		reverse_proxy site:8080
 	}
 }
+
+# n8n editor UI (Google OAuth needs HTTPS on a domain, not http://IP:5678).
+# Webhooks stay on www.bespoke-ai.ie via common_n8n above.
+n8n.bespoke-ai.ie {
+	tls karlnolancompany@gmail.com
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	reverse_proxy n8n:5678
+}

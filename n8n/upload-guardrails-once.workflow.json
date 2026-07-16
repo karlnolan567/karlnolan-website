@@ -19,7 +19,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst content = fs.readFileSync('/files/bot-guardrails.md', 'utf8');\nreturn [{\n  json: {\n    fileName: 'bot-guardrails.md',\n    folderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',\n  },\n  binary: {\n    data: {\n      data: Buffer.from(content, 'utf8').toString('base64'),\n      mimeType: 'text/markdown',\n      fileName: 'bot-guardrails.md',\n    },\n  },\n}];"
+        "jsCode": "const fs = require('fs');\nconst content = fs.readFileSync('/files/bot-guardrails.md', 'utf8');\nreturn [{\n  json: {\n    fileName: 'bot-guardrails.md',\n    folderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',\n  },\n  binary: {\n    data: {\n      data: Buffer.from(content, 'utf8').toString('base64'),\n      mimeType: 'text/markdown',\n      fileName: 'bot-guardrails.md',\n    },\n  },\n}];"
       },
       "id": "b2222222-2222-2222-2222-222222222222",
       "name": "Read guardrails file",
@@ -31,7 +31,7 @@
       "parameters": {
         "resource": "fileFolder",
         "searchMethod": "query",
-        "queryString": "'11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'",
+        "queryString": "'1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'",
         "returnAll": true,
         "filter": {
           "whatToSearch": "files"
@@ -45,14 +45,14 @@
       "position": [440, 0],
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "NyMIOHIxKeQSCou0",
+          "id": "KbzM5hZU4oKmNbdt",
           "name": "Google Drive account"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "const files = $input.all().map((item) => item.json);\nconst source = $('Read guardrails file').first();\nconst target = files.find((file) => file.name === 'bot-guardrails.md');\n\nif (!target) {\n  return [{\n    json: {\n      action: 'upload',\n      folderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',\n      fileName: 'bot-guardrails.md',\n      existingFiles: files.map((file) => file.name),\n    },\n    binary: source.binary,\n  }];\n}\n\nreturn [{\n  json: {\n    action: 'update',\n    id: target.id,\n    fileName: target.name,\n  },\n  binary: source.binary,\n}];"
+        "jsCode": "const files = $input.all().map((item) => item.json);\nconst source = $('Read guardrails file').first();\nconst target = files.find((file) => file.name === 'bot-guardrails.md');\n\nif (!target) {\n  return [{\n    json: {\n      action: 'upload',\n      folderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',\n      fileName: 'bot-guardrails.md',\n      existingFiles: files.map((file) => file.name),\n    },\n    binary: source.binary,\n  }];\n}\n\nreturn [{\n  json: {\n    action: 'update',\n    id: target.id,\n    fileName: target.name,\n  },\n  binary: source.binary,\n}];"
       },
       "id": "c5555555-5555-5555-5555-555555555555",
       "name": "Choose upload or update",
@@ -109,7 +109,7 @@
       "position": [1100, -80],
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "NyMIOHIxKeQSCou0",
+          "id": "KbzM5hZU4oKmNbdt",
           "name": "Google Drive account"
         }
       }
@@ -134,7 +134,7 @@
       "position": [1100, 80],
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "NyMIOHIxKeQSCou0",
+          "id": "KbzM5hZU4oKmNbdt",
           "name": "Google Drive account"
         }
       }

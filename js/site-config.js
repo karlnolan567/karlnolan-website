@@ -6,7 +6,7 @@ const SITE = {
     // Update canonicalUrl, contactEmail, privacyEmail, and og:url tags across HTML when domain goes live.
     brandName: 'Bespoke AI',
     legalName: 'Bespoke Core AI Engineering Limited',
-    contactEmail: 'karlnolancompany@gmail.com',
+    contactEmail: 'karlnolan@bespoke-ai.ie',
     privacyEmail: 'privacy@ai-development.ie',
     linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
     canonicalUrl: 'https://www.bespoke-ai.ie/',
@@ -30,12 +30,12 @@ const SITE = {
     chatWarmCacheUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
         : 'https://www.bespoke-ai.ie/webhook/bcai-warm-knowledge',
-    chatGreeting: 'Hi — I\'m Ask BCAI. I can answer questions about Bespoke AI and this website. What would you like to know?',
+    chatGreeting: 'Hi — I\'m Ask BCAI (Bespoke Core AI Engineering). I can answer questions about Bespoke AI and this website. What would you like to know?',
     bookingUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/booking'
         : 'https://www.bespoke-ai.ie/webhook/booking',
     bookingSuccessUrl: isLocalPreview
         ? 'http://localhost:8080/index.html?call-booked=1'
         : 'https://www.bespoke-ai.ie/index.html?call-booked=1',
-    googleDriveKnowledgeFolderId: '11K4jmUI8SZMqNJbhrwnBU63x9tE8EkmD',
+    googleDriveKnowledgeFolderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',
 };
