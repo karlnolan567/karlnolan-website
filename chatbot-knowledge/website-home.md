@@ -171,7 +171,7 @@ Start with a Workflow Assessment when you need to know what to fix — or go str
 
 ### Workflow Assessment
 
-Find where to improve first — ranked findings, build-vs-buy advice, and one ready-to-start pilot brief. From €750/day; assessment only.
+For local hotels and small businesses — find what to fix first across calls, bookings, and front-desk work. From €750/day; assessment only.
 
 [Explore the assessment](workflow-assessment.html)
 
