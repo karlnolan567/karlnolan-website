@@ -3,7 +3,8 @@
   const isWorkshopsHub = page === 'workshops';
   const isWorkshopDetail = /^workshop-\d$/.test(page);
   const isWhatWeAutomate = page === 'what-we-automate';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isWhatWeAutomate;
+  const isWorkflowAssessment = page === 'workflow-assessment';
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isWhatWeAutomate || isWorkflowAssessment;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -18,7 +19,7 @@ function bookingHref() {
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
-    if (section === 'assessment') return SITE.assessmentUrl;
+    if (section === 'assessment') return SITE.workflowAssessmentUrl || 'workflow-assessment.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -96,6 +97,11 @@ function bookingHref() {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
+
+      if (section === 'assessment' && isWorkflowAssessment) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
     });
 
     const logoLink = document.getElementById('site-logo-link');
@@ -108,7 +114,7 @@ function bookingHref() {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
-    } else if (isWhatWeAutomate) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment) {
       ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };

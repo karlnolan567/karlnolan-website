@@ -701,13 +701,14 @@ section[id] {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  gap: 1.5rem;
+  gap: 1.25rem;
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   flex-shrink: 1;
   min-width: 0;
+  overflow: visible;
 }
 
 @media (min-width: 1280px) {
@@ -739,6 +740,7 @@ section[id] {
   padding: 0 0.125rem;
   border-radius: var(--radius-sm);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-link:hover,

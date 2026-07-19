@@ -167,7 +167,13 @@ Reference call available under NDA
 
 ## Our Service
 
-Hands-on AI workflow automation — scoped to one bottleneck first, built for teams that need proof before they trust AI.
+Start with a Workflow Assessment when you need to know what to fix — or go straight to hands-on automation when the bottleneck is already clear.
+
+### Workflow Assessment
+
+Find where to improve first — ranked findings, build-vs-buy advice, and one ready-to-start pilot brief. From €750/day; assessment only.
+
+[Explore the assessment](workflow-assessment.html)
 
 ### AI Workflow Automation
 

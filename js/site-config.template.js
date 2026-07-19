@@ -19,8 +19,9 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260701a',
+    partialVersion: '20260719a',
     assessmentUrl: '${ASSESSMENT_URL}',
+    workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
     navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'assessment'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
