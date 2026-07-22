@@ -224,8 +224,8 @@ DOMAIN="${DOMAIN:-ai-development.ie}"
 DOMAIN="${DOMAIN#https://}"
 DOMAIN="${DOMAIN#http://}"
 DOMAIN="${DOMAIN%/}"
-ask ACME_EMAIL "Email for Let's Encrypt expiry notices (e.g. karlnolancompany@gmail.com):"
-ACME_EMAIL="${ACME_EMAIL:-karlnolancompany@gmail.com}"
+ask ACME_EMAIL "Email for Let's Encrypt expiry notices (e.g. karlnolan@bespoke-ai.ie):"
+ACME_EMAIL="${ACME_EMAIL:-karlnolan@bespoke-ai.ie}"
 pause "Domain registered or already in your account?"
 
 # ── 3. DNS A record ────────────────────────────────────────────────────────

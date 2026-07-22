@@ -1396,6 +1396,10 @@ section[id] {
   margin: 0 0 0.625rem;
 }
 
+.profile-focus-heading--spaced {
+  margin-top: 1.25rem;
+}
+
 .profile-focus-list {
   list-style: none;
   padding: 0;
@@ -1414,6 +1418,14 @@ section[id] {
 }
 
 .profile-identity .linkedin-link {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.profile-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 0;
 }

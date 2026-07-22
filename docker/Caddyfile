@@ -43,9 +43,23 @@
 	}
 }
 
+# Shared HTTPS access log (JSON). Count visitors later with:
+#   jq -r 'select(.request.host=="www.bespoke-ai.ie") | .request.remote_ip' docker/logs/access.log | sort -u | wc -l
+(access_log) {
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 50mb
+			roll_keep 14
+			roll_keep_for 336h
+		}
+		format json
+	}
+}
+
 # HTTPS: Let's Encrypt via Caddy (automatic once DNS is live).
 bespoke-ai.ie, www.bespoke-ai.ie {
-	tls karlnolancompany@gmail.com
+	import access_log
+	tls karlnolan@bespoke-ai.ie
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	import common_n8n
 	import ai_ivr
@@ -57,7 +71,8 @@ bespoke-ai.ie, www.bespoke-ai.ie {
 # n8n editor UI (Google OAuth needs HTTPS on a domain, not http://IP:5678).
 # Webhooks stay on www.bespoke-ai.ie via common_n8n above.
 n8n.bespoke-ai.ie {
-	tls karlnolancompany@gmail.com
+	import access_log
+	tls karlnolan@bespoke-ai.ie
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	reverse_proxy n8n:5678
 }

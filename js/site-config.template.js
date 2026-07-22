@@ -7,7 +7,7 @@ const SITE = {
     brandName: 'Bespoke AI',
     legalName: 'Bespoke Core AI Engineering Limited',
     contactEmail: 'karlnolan@bespoke-ai.ie',
-    privacyEmail: 'privacy@ai-development.ie',
+    privacyEmail: 'info@bespoke-ai.ie',
     linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
     canonicalUrl: '${CANONICAL_URL}',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
@@ -19,11 +19,11 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260719a',
+    partialVersion: '20260722c',
     assessmentUrl: '${ASSESSMENT_URL}',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
-    navOrder: ['engagement', 'about', 'case-studies', 'our-service', 'what-we-automate', 'assessment'],
+    navOrder: ['engagement', 'about', 'where-to-start', 'ai-engineering', 'case-studies', 'what-we-automate'],
     // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'

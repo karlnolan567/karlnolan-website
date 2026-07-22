@@ -8,47 +8,47 @@ scope: website-knowledge
 
 > Auto-generated from `what-we-automate.html` for the website chatbot knowledge base.
 
-// For Business Owners & Teams
+// Fixed-Scope Automation Pilots
 
 # What We Can Automate for Your Business
 
-Everyday language, not jargon. Pick one bottleneck on a discovery call and we'll scope a pilot around it — first engagements are single-workflow pilots, no enterprise procurement required.
+Everyday language, not jargon. The three pilots below are common starting points — pick a bottleneck on a discovery call (or bring your own) and we go live in 2–4 weeks, no enterprise procurement required.
 
-// Core Workflows
+// Core Pilots
 
-## Where Most Clients Start
+## Fixed-Scope Pilot Playbooks
 
-These three areas map directly to our [client case studies](index.html#case-studies) — document processing, inbox triage, and compliance data collection.
+These three fixed-scope pilots map to our [client case studies](index.html#case-studies) and the [Where to Start](index.html#where-to-start) playbooks — examples, not a closed menu.
 
-### Digital Document Operations
+### Smart Inbox & Customer Issue Triage
 
-- **Hands-Free Document Entry:** Drop an invoice, receipt, or PDF contract into a folder, and the system automatically types the data into your finance system.
+- **Ingest & score:** Automatically take in emails or support tickets, score urgency and sentiment, and surface critical messages first.
 
-- **Instant Contract Creation:** Automatically generate custom invoices, quotes, or contracts with client data the moment a deal closes.
+- **Context pull:** Pull relevant account or booking data so drafts are grounded in what you already know about the customer.
 
-- **Hands-Free Signature Chasing:** Send agreements to DocuSign and have the system nudge clients until they sign, then kick off onboarding.
+- **Draft for approval:** Write precise replies into draft folders or queues for a two-second human approve — nothing sends automatically.
 
-- **Exception Routing:** Validation failures alert your team via Slack, Microsoft Teams, or email — WhatsApp or Telegram only where your policy allows. Nothing posts without human review.
+- **Exception alerts:** Angry or high-risk threads trigger Slack, Teams, or email alerts with a link to the thread.
 
-### Intelligent Email & Inbox Managers
+### Invoice-to-Record Automation
 
-- **Auto-Sorting & Priority Flagging:** AI reads incoming emails, tags them by urgency or topic, and flags angry or critical clients immediately.
+- **Ingest PDFs & CSVs:** Drop invoices into a mailbox or folder — the pipeline extracts line-item data without re-keying.
 
-- **Instant AI Draft Replies:** Draft polite, accurate responses to common inquiries and save them in your drafts folder for a quick review.
+- **Validate before post:** PO match, VAT totals, and duplicate detection catch bad records before they hit finance software.
 
-- **Copy-Paste Free Sales Leads:** Pull names, phone numbers, and budgets straight out of loose email text and drop them cleanly into your CRM.
+- **Clean hand-off:** Feed structured records directly to your ERP or accounting system.
 
-- **Automated Task Extraction:** Convert casual email requests from clients directly into calendar bookings or project tasks.
+- **Typical outcome:** Roughly 40 hours/month of manual entry removed; exceptions stay in a human review queue.
 
-### Compliance Data & Spreadsheet Assistants
+### Supplier & Compliance Verification
 
-- **Supplier & Vendor Verification:** Automated website collection and PDF/fax field extraction for regulated supply chains — structured rows to your spreadsheet or system, with human review for audit trails.
+- **Document collection:** Automate gathering of certificates, forms, and public supplier data where feeds do not exist.
 
-- **Spreadsheet Apps:** Non-technical staff can run complex business tasks simply by updating a row in a Google Sheet.
+- **Field extraction:** Pull structured fields from compliance PDFs and scanned packs with confidence scoring.
 
-- **Market & Finance Trackers:** Pull price updates or trends from the web and log them into a dashboard while alerting you to major shifts.
+- **Exception queue:** Missing or low-confidence data routes to human review — never straight into the compliance system.
 
-- **Seamless HR & Hiring Loops:** When someone applies for a job, the system screens their CV, logs details, and alerts the team on Slack, Microsoft Teams, or email.
+- **Audit trail:** Every intake logs source, fields, reviewer, timestamp, and action.
 
 // Built-In on Every Workflow
 
@@ -80,45 +80,39 @@ Whether we automate documents, inboxes, or compliance data, the same safety laye
 
 - **Retention & deletion:** How long data is kept and when it is purged, configured to your policy.
 
-// Additional Workflows
+// Also Possible
 
 ## Lighter-Touch Automations
 
-We also build these workflows. Most clients start with document, inbox, or compliance automation above — but if one of these solves your bottleneck, we can scope a pilot around it.
+Secondary to the three pilots above. If one of these is clearly your bottleneck, we can still scope a fixed-scope pilot around it.
 
 ### Smart Customer Chatbots
 
-- **Text, Voice & Image Support:** Customers can reach you via web chat, email, or approved team channels. WhatsApp or Telegram only where your policy permits consumer messaging apps.
+- **Text & channel support:** Web chat, email, or approved team channels. WhatsApp or Telegram only where your policy permits.
 
-- **24/7 Knowledge Base:** The bot securely reads your internal company files and answers customer queries accurately without making things up.
+- **Grounded answers:** The bot reads your internal knowledge and answers without inventing facts.
 
-- **Live Booking & Search:** Check product availability or appointment slots live on your system without complex setups.
+- **Human handoff:** Routine chats stay automated; frustrated or specialist cases alert a person immediately.
 
-- **Smart Human Handoff:** The AI handles routine chats but instantly alerts a human if a customer gets frustrated or needs specialist help.
+### Content & Social Machinery
 
-### Content & Social Media Machinery
+- **Repurpose once:** Turn a long video, podcast, or post into a week's worth of short drafts for human edit.
 
-- **Recycle One Post Into Many:** Turn a single long video, podcast, or blog post into a week's worth of short social posts and threads.
+- **Outline & draft loops:** Keyword to structured outline or script — final voice stays with your team.
 
-- **Continuous Drafting Loops:** Turn a basic keyword or idea into a structured article outline or script, ready for your final human touch.
+- **SEO helpers:** Generate tags and descriptions ready for review before publish.
 
-- **Automated Image Creation:** Design matched featured images or social thumbnails the moment a new article goes live.
+### Lead Capture & Enrichment
 
-- **SEO Tag Generation:** Automatically generate website tags and search descriptions so your content ranks well on Google.
+- **Zero-delay alerts:** New ad or form leads notify sales the moment they arrive.
 
-### Digital Marketing & Lead Capture
+- **Enrichment:** Company and role context from an email before the first call.
 
-- **Zero-Delay Lead Alerts:** Capture ad leads from Facebook or LinkedIn the second they submit a form and instantly text your sales team.
-
-- **Smart Lead Enrichment:** Look up a new lead's company size, website, and job title using just their email address before you call them.
-
-- **Behavior-Triggered Nurturing:** If a prospective client looks at your pricing page, the system sends them a relevant follow-up email.
-
-- **All-in-One Marketing Reports:** Pull daily ad spend and click numbers from multiple platforms into a single spreadsheet report.
+- **Triggered follow-up:** Behaviour-based nurture drafts for human approval — not auto-spam.
 
 ## Start With What Hurts Most
 
-On a free 30-minute discovery call, we'll find one bottleneck worth automating first — no production access or sensitive data required upfront.
+On a free 30-minute discovery call, we'll find one bottleneck worth a fixed-scope pilot — no production access or sensitive data required upfront.
 
 [Book a Discovery Call](#)
 

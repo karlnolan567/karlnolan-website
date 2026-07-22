@@ -11,3 +11,6 @@ docker/ssl/
 docs/*
 !docs/agents/
 !docs/agents/**
+# Caddy access logs (runtime)
+docker/logs/*
+!docker/logs/.gitkeep

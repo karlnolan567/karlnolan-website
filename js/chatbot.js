@@ -98,7 +98,7 @@
     var hash = url.indexOf('#') !== -1 ? url.slice(url.indexOf('#')) : '';
     var labels = {
       '#discovery-call': 'Book a call',
-      '#our-service': 'Services',
+      '#ai-engineering': 'Engineering',
       '#engagement': 'How we work',
       '#about': 'About',
       '#where-to-start': 'Where to start',

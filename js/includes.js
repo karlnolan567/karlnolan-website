@@ -19,7 +19,6 @@ function bookingHref() {
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
-    if (section === 'assessment') return SITE.workflowAssessmentUrl || 'workflow-assessment.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -94,11 +93,6 @@ function bookingHref() {
       }
 
       if (section === 'what-we-automate' && isWhatWeAutomate) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'assessment' && isWorkflowAssessment) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }

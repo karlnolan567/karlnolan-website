@@ -8,13 +8,13 @@ scope: website-knowledge
 
 > Auto-generated from `index.html` for the website chatbot knowledge base.
 
-# AI Automation for Workflows You Cannot Afford to Get Wrong
+# Eliminate Manual Operational Bottlenecks
 
-For ops, finance, and compliance teams in regulated industries — practical AI with audit-ready workflows. Straight talk: we'll tell you what's worth automating, and what isn't. [See what's possible](what-we-automate.html).
+Custom, audit-ready AI workflows that plug into the systems you already use. The AI handles the heavy lifting — reading, drafting, extracting — so your team reviews and approves. Straight talk: we'll tell you what's worth automating, and what isn't. [See what's possible](what-we-automate.html).
 
-27+ years delivering software in regulated environments
+27+ years delivering software · human-in-the-loop until you trust it
 
-First engagements are scoped to a single workflow — no enterprise procurement required.
+Start with a fixed-scope pilot on one workflow — live in 2–4 weeks, no enterprise procurement required.
 
 [Book a Discovery Call](#)
 
@@ -28,13 +28,13 @@ Cohorts opening · Sep–Dec 2026
 
 ## How We Work
 
-A clear path from first conversation to confident automation — no sales theatre, just an honest look at what's slowing you down.
+Discovery → fixed-scope pilot → human review, then scale. No sales theatre — an honest look at what's slowing you down.
 
-- 1  Free Discovery Call A straight conversation about your bottlenecks and pain points — not a pitch deck. We sign a confidentiality agreement before you share anything sensitive.
+- 1  Free Discovery Call / Bottleneck Audit A 30-minute review of your worst manual bottleneck — not a pitch deck. We sign a confidentiality agreement before you share anything sensitive.
 
-- 2  Start With What Hurts Most We scope one bottleneck — invoices, parsing, or checks — and deliver a working pipeline in days, not months. [See some samples of what's possible](what-we-automate.html).
+- 2  Fixed-Scope Pilot We scope one high-impact workflow and go live in 2–4 weeks — no enterprise procurement cycle. [See some samples of what's possible](what-we-automate.html).
 
-- 3  Human Review, Then Scale Every output is checked by a person first. Automation scales only when you are confident — see our [client results](#case-studies).
+- 3  Human Review, Then Scale 100% human validation until confidence is proven — then expand the workflow or move to an ongoing retainer. See our [client results](#case-studies).
 
 [image: Workflow automation approach: find the bottleneck, automate with human validation, scale when confident.]
 
@@ -51,6 +51,7 @@ We pair architectural clarity with hands-on delivery — because your problems d
 Principal Consultant & Solutions Architect
 
 [Connect on LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
+[karlnolan@bespoke-ai.ie](mailto:karlnolan@bespoke-ai.ie)
 
 Over 27 years, I've managed global engineering teams, modernised legacy systems, and led cloud-native migrations on Google Cloud and Microsoft Azure.
 
@@ -78,15 +79,15 @@ Your pain points come first — my job is to understand them honestly, recommend
 
 Workflows we built and run on our own business — same human-review discipline we deliver for clients.
 
-**Automated phone discovery** — an AI assistant asks callers about workflow pain points in plain language and drafts a report on what to automate first. Every report is human-reviewed before it goes out.
+**Ask BCAI** — the site chatbot answers visitor questions from our owned knowledge base. Content is human-curated; the assistant stays on-topic and does not invent pricing or off-brief claims.
 
-**Proposal PDF generation** — structured briefs become branded, versioned one-pagers without manual layout — proposal turnaround in minutes, not hours.
+**Discovery-call booking** — calendar booking and email confirmation run through automation so scheduling does not turn into manual back-and-forth. You still get a real conversation, not a bot pitch.
 
-// Start Here
+// Fixed-Scope Pilots
 
 ## Where to Start
 
-Three fixed-scope pilots most clients begin with — pick the bottleneck that sounds like yours. We'll scope one workflow on a discovery call; no enterprise procurement required.
+Three fixed-scope pilot playbooks — pick the bottleneck that sounds like yours, or bring your own. We'll scope one workflow on a discovery call; go live in 2–4 weeks, no enterprise procurement required.
 
 Regulated Supply Chain
 
@@ -117,6 +118,32 @@ Finance Operations
 - **Typical outcome:** Roughly 40 hours per month of manual data entry removed; receipt-to-record time cut by more than half.
 
 [See case study](#case-study-invoice)
+
+// Deeper Engagements
+
+## AI Engineering & Custom Pipelines
+
+When a fixed-scope pilot is not enough — hands-on architectural work integrated into your existing cloud (GCP/Azure) and comms stack (Slack/Teams).
+
+Document Intelligence
+
+### Document Processing with Confidence Scoring
+
+Complex extractions where low-confidence fields automatically route to human review queues — never straight into production systems.
+
+Dev Automation
+
+### Agentic PR & Code Review Pipelines
+
+Automated development pipelines that validate pull request structure, code style, and test coverage before human engineers open the diff.
+
+Ops Visibility
+
+### Operational Reporting Dashboards
+
+Unify siloed legacy data into real-time dashboards so you spot operational failures before formal audits.
+
+Prefer a low-friction entry? Start with a [fixed-scope pilot](#where-to-start). Engineering engagements fit when the bottleneck and trust model are already clear.
 
 // Client Results
 
@@ -163,29 +190,11 @@ Mid-size manufacturer · ~350 invoices/month · 2 AP clerks · Invoices arrive a
 
 Reference call available under NDA
 
-// What We Do
-
-## Our Service
-
-Start with a Workflow Assessment when you need to know what to fix — or go straight to hands-on automation when the bottleneck is already clear.
-
-### Workflow Assessment
-
-For local hotels and small businesses — find what to fix first across calls, bookings, and front-desk work. From €750/day; assessment only.
-
-[Explore the assessment](workflow-assessment.html)
-
-### AI Workflow Automation
-
-Automated workflows with human review built in — document processing, email pipelines, supplier verification, and audit-ready records. We plug into tools your team already uses — Slack, Microsoft Teams, and email by default; WhatsApp or Telegram only where your policy allows.
-
-[See what's possible](what-we-automate.html)
-
 // Get in Touch
 
 ## Book a Discovery Call
 
-A free 30-minute call to understand what's actually slowing you down. We'll confirm by email and sign a confidentiality agreement before you share anything sensitive.
+A free 30-minute bottleneck audit. We'll confirm by email and sign a confidentiality agreement before you share anything sensitive.
 
 - No pitch deck — just an honest conversation about your pain points
 
@@ -195,7 +204,7 @@ A free 30-minute call to understand what's actually slowing you down. We'll conf
 
 - You leave with a scoped pilot proposal for one workflow
 
-- First engagements are single-workflow pilots — no enterprise procurement required
+- First engagements are single-workflow pilots — live in 2–4 weeks, no enterprise procurement required
 
 Pick an available slot — times are shown in GMT+1. You'll receive a calendar invite by email.
 
