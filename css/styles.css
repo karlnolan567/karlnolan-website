@@ -2057,6 +2057,10 @@ section[id] {
   margin: 0;
 }
 
+.contact-secondary .fa-linkedin {
+  margin-right: 0.25rem;
+}
+
 @media (min-width: 1024px) {
   .contact-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -185,7 +185,7 @@ Questions about **process** or **how you work** → [How we work](https://www.be
 ## Contact and booking
 
 - Discovery call: [Book a call](https://www.bespoke-ai.ie/#discovery-call)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)
 - Company: Bespoke Core AI Engineering Limited, Limerick, Ireland
 """
     (OUT / "bot-guardrails.md").write_text(content, encoding="utf-8")

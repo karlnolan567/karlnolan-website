@@ -8,7 +8,7 @@ const SITE = {
     legalName: 'Bespoke Core AI Engineering Limited',
     contactEmail: 'info@bespoke-ai.ie',
     privacyEmail: 'info@bespoke-ai.ie',
-    linkedIn: 'https://www.linkedin.com/in/karl-nolan-69433b29/',
+    linkedIn: 'https://www.linkedin.com/in/karl-nolan-bespoke-ai/',
     canonicalUrl: 'https://www.bespoke-ai.ie/',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,

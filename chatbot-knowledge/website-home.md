@@ -50,7 +50,7 @@ We pair architectural clarity with hands-on delivery — because your problems d
 
 Principal Consultant & Solutions Architect
 
-[Connect on LinkedIn](https://www.linkedin.com/in/karl-nolan-69433b29/)
+[Connect on LinkedIn](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)
 [karlnolan@bespoke-ai.ie](mailto:karlnolan@bespoke-ai.ie)
 
 Over 27 years, I've managed global engineering teams, modernised legacy systems, and led cloud-native migrations on Google Cloud and Microsoft Azure.
@@ -212,4 +212,4 @@ Pick an available slot — times are shown in GMT+1. You'll receive a calendar i
 
 Booking details are stored in Google Calendar and a confirmation is sent via Gmail. We do not sell personal data. See [privacy notice](#privacy) below.
 
-Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-69433b29/)
+Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)
