@@ -5,7 +5,10 @@
   const isAgenticWorkshop = page === 'agentic-impact-workshop';
   const isWhatWeAutomate = page === 'what-we-automate';
   const isWorkflowAssessment = page === 'workflow-assessment';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment;
+  const isScoping = page === 'scoping';
+  const isAbout = page === 'about';
+  const isAiEngineering = page === 'ai-engineering';
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -21,6 +24,9 @@ function bookingHref() {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'workshop') return 'agentic-impact-workshop.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
+    if (section === 'scoping') return SITE.scopingUrl || 'scoping.html';
+    if (section === 'about') return SITE.aboutUrl || 'about.html';
+    if (section === 'ai-engineering') return SITE.aiEngineeringUrl || 'ai-engineering.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -103,6 +109,21 @@ function bookingHref() {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
+
+      if (section === 'scoping' && isScoping) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
+      if (section === 'about' && isAbout) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
+      if (section === 'ai-engineering' && isAiEngineering) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
     });
 
     const logoLink = document.getElementById('site-logo-link');
@@ -117,7 +138,7 @@ function bookingHref() {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering) {
       ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };
