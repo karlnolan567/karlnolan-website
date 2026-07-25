@@ -2,9 +2,10 @@
   const page = document.body.dataset.page || 'home';
   const isWorkshopsHub = page === 'workshops';
   const isWorkshopDetail = /^workshop-\d$/.test(page);
+  const isAgenticWorkshop = page === 'agentic-impact-workshop';
   const isWhatWeAutomate = page === 'what-we-automate';
   const isWorkflowAssessment = page === 'workflow-assessment';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isWhatWeAutomate || isWorkflowAssessment;
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -18,6 +19,7 @@ function bookingHref() {
 
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
+    if (section === 'workshop') return 'agentic-impact-workshop.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
@@ -92,6 +94,11 @@ function bookingHref() {
         link.setAttribute('aria-current', 'page');
       }
 
+      if (section === 'workshop' && isAgenticWorkshop) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
       if (section === 'what-we-automate' && isWhatWeAutomate) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
@@ -104,7 +111,9 @@ function bookingHref() {
     }
 
     let ctaConfig;
-    if (isWorkshopDetail) {
+    if (isAgenticWorkshop) {
+      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Workshop%20application%20%E2%80%94%20Cohort%201', text: 'Apply for a Seat' };
+    } else if (isWorkshopDetail) {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
