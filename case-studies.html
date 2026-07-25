@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body{margin:0;background-color:#0f1a2b;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
+      img{max-width:100%;height:auto;display:block}
+      a{color:inherit;text-decoration:none}
+      .site-header .nav{display:none}
+      .mobile-menu{display:none}
+      .mobile-menu--open{display:block}
+      .mobile-menu-btn{display:block}
+      @media(min-width:1280px){.site-header .nav{display:flex}.mobile-menu-btn{display:none}.mobile-menu{display:none!important}}
+      .hidden{display:none!important}
+      html[data-includes-pending] .page-content{visibility:hidden}
+      .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
+    </style>
+    <title>Case Studies | Bespoke AI Engineering</title>
+    <meta name="description" content="Client results under NDA: supplier verification, support inbox triage, and invoice document processing — governed automation with human review.">
+    <link rel="canonical" href="https://www.bespoke-ai.ie/case-studies.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Case Studies | Bespoke AI Engineering">
+    <meta property="og:description" content="Production deployments under confidentiality — pattern map across document pipeline and request triage.">
+    <meta property="og:url" content="https://www.bespoke-ai.ie/case-studies.html">
+    <meta property="og:image" content="https://www.bespoke-ai.ie/images/og-card.png">
+    <link rel="stylesheet" href="css/styles.css?v=20260725j">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20260710j">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20260710j">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20260710j">
+</head>
+<body data-page="case-studies">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="bg-effects" aria-hidden="true"></div>
+
+<div class="page-shell page-content">
+
+    <div id="site-header"></div>
+
+    <main id="main-content">
+
+    <section class="section--compact section--pb-tight" aria-labelledby="cases-heading">
+        <div class="container-md stack-lg text-center">
+            <span class="text-mono-label text-mono-label--blue">// Client Results</span>
+            <h1 id="cases-heading" class="heading-hero">
+                Case <span class="text-gradient">Studies</span>
+            </h1>
+            <p class="text-lead container-sm" style="margin-left:auto;margin-right:auto">
+                Production deployments under confidentiality agreements — specifics we can share on the page; client names and reference calls available under NDA.
+            </p>
+        </div>
+    </section>
+
+    <section id="case-studies" class="section section--border-top section--alt-light">
+        <div class="container">
+            <p class="text-body-sm" style="margin-bottom:1.5rem;text-align:center">
+                Pattern map: <strong>document pipeline</strong> (supplier verification, invoice processing) · <strong>request triage</strong> (support inbox) · knowledge-in-chat examples on discovery.
+                Each study maps to a <a href="index.html#where-to-start" class="link-brand">Where to Start</a> playbook.
+            </p>
+
+            <div class="grid-3">
+                <article id="case-study-supplier" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--green">Audit-Ready Automation</span>
+                    <h2 class="card-title">Supplier Verification for Regulated Supply Chains</h2>
+                    <p class="case-study-context">Mid-size EU compliance platform · ~200 supplier onboardings/year · ~30% of packs arrive as scanned PDFs or fax</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Quality staff verified every supplier by hand — website research, then re-typing certification forms and signed attestations from PDFs and faxes into a spreadsheet before records entered the compliance system. A single supplier took 45 minutes on average. During onboarding spikes, records queued for days. External auditors had asked how unaudited data could enter the system.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: automated website collection where public data exists; document pipeline with confidence scoring — extractions below 85% routed to a human review queue, never into the compliance system; structured hand-off to the client's existing spreadsheet and compliance tool; audit log on every intake (source, fields, reviewer, timestamp, action). Client wanted faster auto-approval at week one — we held 100% human review until they'd processed 50+ records and signed off accuracy themselves.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~80 suppliers): median handling time 45 min → 7 min; zero records entered without review; 12% of extractions flagged low-confidence, 3 corrected before approval. Client signed off partial automation at week 10.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"We stopped re-typing pdf certificates. The review queue is the part our auditors actually cared about — every field has a source." — Head of Supplier Quality, EU regulated supply chain platform</dd></div>
+                    </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
+                </article>
+
+                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Smart Inbox Automation</span>
+                    <h2 class="card-title">Customer Support Triage &amp; Draft Replies</h2>
+                    <p class="case-study-context">B2B SaaS provider · ~400 support emails/week · Team of 4 on a shared Microsoft 365 mailbox</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Urgent and frustrated messages sat in the same queue as routine enquiries — no reliable way to prioritise. Critical issues sometimes waited 24+ hours. Agents averaged 12 minutes drafting each reply from scratch, and tone varied widely across the team.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 2 weeks: intake from the existing shared mailbox; urgency and sentiment scoring on every message; AI-drafted replies saved to each agent's drafts folder — never sent automatically. Angry or critical messages trigger instant Slack alerts with a link to the thread. Client asked for auto-send on low-risk replies at week two — we kept human approval on every outbound message until they'd reviewed 100+ drafts.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 60 days (~1,600 emails): median time to flag urgent messages 4 min (was 24+ hrs); routine enquiries drafted within 2 hrs of arrival; 85% of drafts sent with minor edits only; zero messages sent without human approval.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"Urgent tickets surface in Slack before we've even opened Outlook. The team edits drafts instead of staring at blank replies." — Support Operations Lead, B2B SaaS platform</dd></div>
+                    </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
+                </article>
+
+                <article id="case-study-invoice" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Human-in-the-Loop Documents</span>
+                    <h2 class="card-title">Invoice &amp; Document Processing</h2>
+                    <p class="case-study-context">Mid-size manufacturer · ~350 invoices/month · 2 AP clerks · Invoices arrive as email attachments</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>AP staff pulled line items, VAT, and PO references from PDF invoices by hand, then keyed them into the finance system. Each invoice took ~15 minutes. The team spent 40+ hours a month on data entry alone, and receipt-to-record averaged 3–5 business days.</dd></div>
+                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: automated intake from the AP mailbox; field extraction with validation rules (PO match, VAT totals, duplicate detection); clean records handed off to the existing finance system; exceptions routed to a human review queue with Slack alerts. Client wanted all invoices auto-posted at launch — we held exceptions-only review until they'd validated 200+ extractions against source documents.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~900 invoices): manual data entry 40 hrs/month → 8 hrs/month on exceptions only; receipt-to-record median 3.2 days → 1.1 days; 9% exception rate, all reviewed before posting. Client signed off auto-posting on high-confidence matches at week 11.</dd></div>
+                        <div><dt>Client</dt><dd class="case-study-quote">"We didn't replace our finance system — we stopped being its data-entry department. Exceptions are the only invoices anyone touches now." — Finance Controller, mid-size manufacturing group</dd></div>
+                    </dl>
+                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
+                </article>
+            </div>
+
+            <div class="cta-row" style="margin-top:2rem;justify-content:center;">
+                <a href="index.html#where-to-start" class="btn btn-secondary">Where to start</a>
+                <a href="index.html#discovery-call" class="btn btn-primary btn-primary--lg">Book a Discovery Call</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <div id="site-footer"></div>
+</div>
+
+<script src="js/site-config.js?v=20260725j"></script>
+<script src="js/includes.js?v=20260725j"></script>
+<script src="js/site.js?v=20260630p"></script>
+</body>
+</html>

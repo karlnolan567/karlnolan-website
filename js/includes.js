@@ -8,7 +8,8 @@
   const isScoping = page === 'scoping';
   const isAbout = page === 'about';
   const isAiEngineering = page === 'ai-engineering';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering;
+  const isCaseStudies = page === 'case-studies';
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -27,6 +28,7 @@ function bookingHref() {
     if (section === 'scoping') return SITE.scopingUrl || 'scoping.html';
     if (section === 'about') return SITE.aboutUrl || 'about.html';
     if (section === 'ai-engineering') return SITE.aiEngineeringUrl || 'ai-engineering.html';
+    if (section === 'case-studies') return SITE.caseStudiesUrl || 'case-studies.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -124,6 +126,11 @@ function bookingHref() {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
+
+      if (section === 'case-studies' && isCaseStudies) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
     });
 
     const logoLink = document.getElementById('site-logo-link');
@@ -138,7 +145,7 @@ function bookingHref() {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies) {
       ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };

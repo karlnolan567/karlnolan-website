@@ -4,7 +4,7 @@ RUN apk add --no-cache gettext
 
 WORKDIR /srv
 
-COPY index.html scoping.html about.html ai-engineering.html agentic-impact-workshop.html workshop*.html workshops.html what-we-automate.html workshop-one-pager.html workflow-assessment.html ./
+COPY index.html scoping.html about.html ai-engineering.html case-studies.html agentic-impact-workshop.html workshop*.html workshops.html what-we-automate.html workshop-one-pager.html workflow-assessment.html ./
 COPY workshop-one-pager.pdf ./
 COPY css/ css/
 COPY js/ js/
