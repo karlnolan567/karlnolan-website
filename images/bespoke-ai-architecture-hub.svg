@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="arch-title arch-desc">
+  <title id="arch-title">How a Bespoke AI workflow runs</title>
+  <desc id="arch-desc">Inputs from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.</desc>
+
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #0f1a2b; }
+      .panel { fill: #152238; stroke: #1f3049; stroke-width: 1.5; }
+      .panel-hub { fill: #152238; stroke: #3b82f6; stroke-width: 1.75; }
+      .panel-review { fill: rgba(6, 182, 212, 0.12); stroke: #06b6d4; stroke-width: 1.75; }
+      .chip { fill: #1f3049; stroke: #2a3f5c; stroke-width: 1; }
+      .step { fill: #1a2a40; stroke: #2a3f5c; stroke-width: 1; }
+      .col-label { fill: #06b6d4; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; }
+      .heading { fill: #e8edf3; font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700; }
+      .subhead { fill: #b8c5d3; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 400; }
+      .item { fill: #e8edf3; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; }
+      .item-sm { fill: #b8c5d3; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-weight: 400; }
+      .box-title { fill: #e8edf3; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+      .mono { fill: #94a8bc; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.04em; }
+      .arrow { stroke: #3b82f6; stroke-width: 1.75; fill: none; }
+      .arrow-teal { stroke: #06b6d4; stroke-width: 1.75; fill: none; }
+      .arrow-label { fill: #7d93a8; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-weight: 500; }
+      .icon-bg { fill: #1f3049; }
+      .icon-stroke { fill: none; stroke: #06b6d4; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-stroke-blue { fill: none; stroke: #3b82f6; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-fill { fill: #06b6d4; }
+      .num { fill: #0f1a2b; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-weight: 700; }
+    ]]></style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowhead-teal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#06b6d4"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="600" rx="16"/>
+
+  <!-- Header -->
+  <text class="heading" x="600" y="42" text-anchor="middle">How a Bespoke AI workflow runs</text>
+  <text class="subhead" x="600" y="66" text-anchor="middle">Any channel in -> governed AI -> human approve -> any channel out</text>
+
+  <!-- ========== INPUTS ========== -->
+  <text class="col-label" x="40" y="108">INPUTS</text>
+  <g transform="translate(24, 120)">
+    <!-- Scheduled -->
+    <rect class="chip" width="214" height="56" rx="8"/>
+    <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+    <g transform="translate(20, 20)" class="icon-stroke">
+      <rect x="1" y="2" width="14" height="12" rx="1"/>
+      <path d="M4 1v2M12 1v2M1 6h14"/>
+    </g>
+    <text class="item" x="56" y="28">Scheduled tasks</text>
+    <text class="item-sm" x="56" y="44">Events &amp; triggers</text>
+
+    <!-- Copilot -->
+    <g transform="translate(0, 68)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <circle cx="28" cy="28" r="6" class="icon-stroke-blue"/>
+      <path d="M22 28h12M28 22v12" class="icon-stroke-blue"/>
+      <text class="item" x="56" y="28">Microsoft Copilot</text>
+      <text class="item-sm" x="56" y="44">Agent request</text>
+    </g>
+
+    <!-- Chat apps -->
+    <g transform="translate(0, 136)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <path d="M10 18h12a2 2 0 012 2v6a2 2 0 01-2 2h-6l-4 3v-3h-2a2 2 0 01-2-2v-6a2 2 0 012-2z" class="icon-stroke" transform="translate(8,4)"/>
+      <text class="item" x="56" y="28">Chat apps</text>
+      <text class="item-sm" x="56" y="44">Slack, Teams, etc.</text>
+    </g>
+
+    <!-- Phone / SMS -->
+    <g transform="translate(0, 204)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <rect x="22" y="18" width="12" height="20" rx="2" class="icon-stroke"/>
+      <circle cx="28" cy="34" r="1" class="icon-fill"/>
+      <text class="item" x="56" y="28">Phone / SMS</text>
+      <text class="item-sm" x="56" y="44">Voice &amp; text data</text>
+    </g>
+
+    <!-- PDF / Image -->
+    <g transform="translate(0, 272)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <path d="M20 18h10l4 4v14H20V18z" class="icon-stroke"/>
+      <path d="M30 18v4h4" class="icon-stroke"/>
+      <text class="item" x="56" y="28">PDF / image</text>
+      <text class="item-sm" x="56" y="44">Documents &amp; media</text>
+    </g>
+  </g>
+
+  <!-- Input arrows: fan-in to one hub entry -->
+  <line class="arrow" x1="246" y1="148" x2="264" y2="148"/>
+  <line class="arrow" x1="246" y1="216" x2="264" y2="216"/>
+  <line class="arrow" x1="246" y1="284" x2="264" y2="284"/>
+  <line class="arrow" x1="246" y1="352" x2="264" y2="352"/>
+  <line class="arrow" x1="246" y1="420" x2="264" y2="420"/>
+  <line class="arrow" x1="264" y1="148" x2="264" y2="420"/>
+  <line class="arrow" x1="264" y1="320" x2="286" y2="320" marker-end="url(#arrowhead)"/>
+
+  <!-- ========== HUB ========== -->
+  <text class="col-label" x="300" y="108">WORKFLOW HUB</text>
+  <rect class="panel-hub" x="288" y="120" width="500" height="400" rx="14"/>
+
+  <!-- API / MCP -->
+  <g transform="translate(308, 221)">
+    <text class="mono" x="0" y="12">CONNECTORS</text>
+    <rect class="panel" y="24" width="180" height="150" rx="10"/>
+    <circle cx="90" cy="72" r="20" fill="#1f3049" stroke="#3b82f6" stroke-width="2"/>
+    <text class="box-title" x="90" y="76" text-anchor="middle" font-size="11">API</text>
+    <text class="box-title" x="90" y="112" text-anchor="middle">API / MCP</text>
+    <text class="item-sm" x="90" y="136" text-anchor="middle">CRM, DB, tools, context</text>
+    <text class="item-sm" x="90" y="154" text-anchor="middle">Service defs &amp; metadata</text>
+  </g>
+
+  <!-- Arrow API/MCP to LLM -->
+  <line class="arrow" x1="500" y1="320" x2="528" y2="320" marker-end="url(#arrowhead)"/>
+
+  <!-- LLM workflow -->
+  <g transform="translate(536, 140)">
+    <text class="mono" x="0" y="12">LLM ANALYSIS</text>
+    <g transform="translate(0, 24)">
+      <rect class="step" width="230" height="36" rx="6"/>
+      <circle cx="18" cy="18" r="10" fill="#3b82f6"/>
+      <text class="num" x="18" y="22" text-anchor="middle">1</text>
+      <text class="item" x="38" y="22">Query understanding</text>
+    </g>
+    <g transform="translate(0, 72)">
+      <rect class="step" width="230" height="36" rx="6"/>
+      <circle cx="18" cy="18" r="10" fill="#3b82f6"/>
+      <text class="num" x="18" y="22" text-anchor="middle">2</text>
+      <text class="item" x="38" y="22">Sentiment analysis</text>
+    </g>
+    <g transform="translate(0, 120)">
+      <rect class="step" width="230" height="36" rx="6"/>
+      <circle cx="18" cy="18" r="10" fill="#3b82f6"/>
+      <text class="num" x="18" y="22" text-anchor="middle">3</text>
+      <text class="item" x="38" y="22">Knowledge retrieval</text>
+    </g>
+    <g transform="translate(0, 168)">
+      <rect class="step" width="230" height="36" rx="6"/>
+      <circle cx="18" cy="18" r="10" fill="#3b82f6"/>
+      <text class="num" x="18" y="22" text-anchor="middle">4</text>
+      <text class="item" x="38" y="22">Response generation</text>
+    </g>
+    <g transform="translate(0, 216)">
+      <rect class="step" width="230" height="36" rx="6"/>
+      <circle cx="18" cy="18" r="10" fill="#3b82f6"/>
+      <text class="num" x="18" y="22" text-anchor="middle">5</text>
+      <text class="item" x="38" y="22">Document processing</text>
+    </g>
+  </g>
+
+  <!-- Arrow LLM Analysis to RAG -->
+  <line class="arrow" x1="651" y1="396" x2="651" y2="420" marker-end="url(#arrowhead)"/>
+
+  <!-- Knowledge -->
+  <g transform="translate(536, 430)">
+    <text class="mono" x="0" y="12">RESOURCES / RAG</text>
+    <rect class="step" y="24" width="100" height="36" rx="6"/>
+    <text class="item" x="50" y="46" text-anchor="middle" font-size="12">Vector DB</text>
+    <rect class="step" x="112" y="24" width="118" height="36" rx="6"/>
+    <text class="item" x="171" y="46" text-anchor="middle" font-size="12">Knowledge base</text>
+  </g>
+
+  <!-- Hub -> review -->
+  <line class="arrow-teal" x1="788" y1="320" x2="808" y2="320" marker-end="url(#arrowhead-teal)"/>
+
+  <!-- ========== HUMAN REVIEW (vertical gate) ========== -->
+  <text class="col-label" x="820" y="108">REVIEW</text>
+  <g transform="translate(812, 120)">
+    <rect class="panel-review" width="100" height="400" rx="12"/>
+    <circle cx="50" cy="36" r="16" fill="#06b6d4"/>
+    <path d="M43 36l5 5 10-11" fill="none" stroke="#0f1a2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="box-title" x="50" y="230" text-anchor="middle" transform="rotate(-90 50 230)">Human review / approve</text>
+    <text class="item-sm" x="50" y="360" text-anchor="middle">Sign off</text>
+    <text class="item-sm" x="50" y="376" text-anchor="middle">first</text>
+  </g>
+
+  <!-- Review -> outputs -->
+  <line class="arrow-teal" x1="912" y1="148" x2="968" y2="148" marker-end="url(#arrowhead-teal)"/>
+  <line class="arrow-teal" x1="912" y1="216" x2="968" y2="216" marker-end="url(#arrowhead-teal)"/>
+  <line class="arrow-teal" x1="912" y1="284" x2="968" y2="284" marker-end="url(#arrowhead-teal)"/>
+  <line class="arrow-teal" x1="912" y1="352" x2="968" y2="352" marker-end="url(#arrowhead-teal)"/>
+  <line class="arrow-teal" x1="912" y1="420" x2="968" y2="420" marker-end="url(#arrowhead-teal)"/>
+  <text class="arrow-label" x="940" y="500" text-anchor="middle">Approve &amp; deliver</text>
+
+  <!-- ========== OUTPUTS ========== -->
+  <text class="col-label" x="980" y="108">OUTPUTS</text>
+  <g transform="translate(976, 120)">
+    <rect class="chip" width="214" height="56" rx="8"/>
+    <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+    <path d="M18 22h12M18 28h8M22 18v16" class="icon-stroke"/>
+    <text class="item" x="56" y="28">MS Teams</text>
+    <text class="item-sm" x="56" y="44">Message or card</text>
+
+    <g transform="translate(0, 68)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <rect x="18" y="20" width="16" height="12" rx="1" class="icon-stroke"/>
+      <path d="M18 22l8 6 8-6" class="icon-stroke"/>
+      <text class="item" x="56" y="28">Email</text>
+      <text class="item-sm" x="56" y="44">Send message</text>
+    </g>
+
+    <g transform="translate(0, 136)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <path d="M18 30l4-10 4 6 2-3 4 7H18z" class="icon-stroke"/>
+      <text class="item" x="56" y="28">Telegram</text>
+      <text class="item-sm" x="56" y="44">Send response</text>
+    </g>
+
+    <g transform="translate(0, 204)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <rect x="18" y="18" width="16" height="20" rx="1" class="icon-stroke"/>
+      <path d="M22 24h8M22 28h8M22 32h5" class="icon-stroke"/>
+      <text class="item" x="56" y="28">Google Workspace</text>
+      <text class="item-sm" x="56" y="44">Docs, Sheets, Drive</text>
+    </g>
+
+    <g transform="translate(0, 272)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <rect x="18" y="18" width="16" height="20" rx="1" class="icon-stroke-blue"/>
+      <path d="M22 24h8M22 28h8M22 32h5" class="icon-stroke-blue"/>
+      <text class="item" x="56" y="28">Microsoft Office</text>
+      <text class="item-sm" x="56" y="44">Word, Excel, PPT</text>
+    </g>
+  </g>
+
+  <!-- Footer note -->
+  <text class="item-sm" x="600" y="560" text-anchor="middle">Channels shown are examples - we wire the ones your team already uses</text>
+</svg>
