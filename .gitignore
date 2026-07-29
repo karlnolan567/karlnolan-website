@@ -4,6 +4,9 @@
 node_modules/
 .env
 
+# Local-only GenAI chat embed URL + key (see js/site-config.local.js.example)
+js/site-config.local.js
+
 # TLS certs (generated on VPS)
 docker/ssl/
 

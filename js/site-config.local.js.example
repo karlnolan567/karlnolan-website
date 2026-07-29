@@ -1,0 +1,6 @@
+// Copy to site-config.local.js (gitignored) for local GenAI embed testing.
+// On localhost, a non-empty chatEmbedUrl replaces the n8n Ask BCAI widget.
+Object.assign(SITE, {
+  chatEmbedUrl:
+    'https://genai-app-bespokeaiassistant-1-1785325027030-793778137823.us-central1.run.app/?key=YOUR_KEY_HERE',
+});

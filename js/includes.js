@@ -83,13 +83,40 @@ function bookingHref() {
     }
   }
 
-  function initChatbot() {
+  function isLocalPreviewHost() {
+    return /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+  }
+
+  function loadScript(src, onDone) {
+    const script = document.createElement('script');
+    script.src = src;
+    if (onDone) {
+      script.onload = onDone;
+      script.onerror = onDone;
+    }
+    document.body.appendChild(script);
+  }
+
+  function startChatWidget() {
+    const version = encodeURIComponent(SITE.partialVersion || '1');
+    // GenAI iframe is local-preview only, even if chatEmbedUrl is somehow set.
+    if (isLocalPreviewHost() && SITE.chatEmbedUrl) {
+      loadScript('js/chat-embed.js?v=' + version);
+      return;
+    }
     if (!SITE.chatWebhookUrl || SITE.chatWebhookUrl.indexOf('REPLACE_WITH_ID') !== -1) {
       return;
     }
-    const script = document.createElement('script');
-    script.src = 'js/chatbot.js?v=' + encodeURIComponent(SITE.partialVersion || '1');
-    document.body.appendChild(script);
+    loadScript('js/chatbot.js?v=' + version);
+  }
+
+  function initChatbot() {
+    if (!isLocalPreviewHost()) {
+      startChatWidget();
+      return;
+    }
+    // Optional gitignored override: sets SITE.chatEmbedUrl for GenAI iframe testing.
+    loadScript('js/site-config.local.js?v=' + encodeURIComponent(SITE.partialVersion || '1'), startChatWidget);
   }
 
   function configureNav() {
