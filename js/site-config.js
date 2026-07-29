@@ -29,7 +29,7 @@ const SITE = {
     caseStudiesUrl: 'case-studies.html',
     navOrder: ['offer', 'engagement', 'scoping', 'where-to-start', 'about', 'ai-engineering', 'workshop'],
     // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
-    chatEmbedUrl: 'https://genai-app-bespokeaiassistant-1-1785325027030-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
+    chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
         : 'https://www.bespoke-ai.ie/webhook/bcai-website-chat/chat',
