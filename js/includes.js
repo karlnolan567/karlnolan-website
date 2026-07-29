@@ -99,8 +99,7 @@ function bookingHref() {
 
   function startChatWidget() {
     const version = encodeURIComponent(SITE.partialVersion || '1');
-    // GenAI iframe is local-preview only, even if chatEmbedUrl is somehow set.
-    if (isLocalPreviewHost() && SITE.chatEmbedUrl) {
+    if (SITE.chatEmbedUrl) {
       loadScript('js/chat-embed.js?v=' + version);
       return;
     }
@@ -115,7 +114,7 @@ function bookingHref() {
       startChatWidget();
       return;
     }
-    // Optional gitignored override: sets SITE.chatEmbedUrl for GenAI iframe testing.
+    // Optional gitignored override can change SITE.chatEmbedUrl for local experiments.
     loadScript('js/site-config.local.js?v=' + encodeURIComponent(SITE.partialVersion || '1'), startChatWidget);
   }
 

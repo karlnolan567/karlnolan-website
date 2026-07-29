@@ -15,15 +15,11 @@ Open http://127.0.0.1:8765/
 
 Use a local HTTP server (not `file://`) so shared header/footer partials load correctly.
 
-### Local GenAI chat embed (optional)
+### Chat widget (GenAI embed)
 
-On localhost, you can replace the n8n Ask BCAI widget with the GenAI Cloud Run assistant iframe:
+The site loads the GenAI Cloud Run assistant in an iframe when `SITE.chatEmbedUrl` is set (see [`js/site-config.js`](js/site-config.js) / `CHAT_EMBED_URL` in [`.env.example`](.env.example)). Clear that value to fall back to the n8n Ask BCAI widget.
 
-1. `cp js/site-config.local.js.example js/site-config.local.js`
-2. Put the real embed URL (including `?key=…`) in `chatEmbedUrl`
-3. Reload the local preview — a neutral chat button opens the GenAI UI in an iframe
-
-`js/site-config.local.js` is gitignored so the key never lands in the repo. Production keeps the n8n Ask BCAI widget until you deliberately cut over.
+Optional local override: `cp js/site-config.local.js.example js/site-config.local.js` (gitignored) to point localhost at a different embed URL without editing the committed config.
 
 ## Styling
 

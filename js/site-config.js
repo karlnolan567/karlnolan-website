@@ -28,9 +28,8 @@ const SITE = {
     aiEngineeringUrl: 'ai-engineering.html',
     caseStudiesUrl: 'case-studies.html',
     navOrder: ['offer', 'engagement', 'scoping', 'where-to-start', 'about', 'ai-engineering', 'workshop'],
-    // Prod URLs — used on VPS. On localhost, chat points at local n8n (see below).
-    // Optional GenAI iframe embed: set via gitignored js/site-config.local.js on localhost only.
-    chatEmbedUrl: '',
+    // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
+    chatEmbedUrl: 'https://genai-app-bespokeaiassistant-1-1785325027030-793778137823.us-central1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
     chatWebhookUrl: isLocalPreview
         ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
         : 'https://www.bespoke-ai.ie/webhook/bcai-website-chat/chat',
