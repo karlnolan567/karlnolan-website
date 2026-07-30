@@ -8,17 +8,17 @@ scope: website-knowledge
 
 > Auto-generated from `what-we-automate.html` for the website chatbot knowledge base.
 
-// Fixed-Scope Automation Pilots
+// Automation Pilots
 
 # What We Can Automate for Your Business
 
-Everyday language, not jargon. The three pilots below are common starting points — pick a bottleneck on a discovery call (or bring your own) and we go live in 2–4 weeks, no enterprise procurement required.
+Everyday language, not jargon. The examples below are common starting points — pick a bottleneck on a discovery call (or bring your own) and we go live in 2–4 weeks, no enterprise procurement required.
 
-// Core Pilots
+// Examples
 
-## Fixed-Scope Pilot Playbooks
+## Example Pilot Playbooks
 
-These three fixed-scope pilots map to our [client case studies](index.html#case-studies) and the [Where to Start](index.html#where-to-start) playbooks — examples, not a closed menu.
+A few patterns that map to our [client case studies](case-studies.html) and the [Where to Start](index.html#where-to-start) playbooks — suggestions only. Every engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 
@@ -49,6 +49,16 @@ These three fixed-scope pilots map to our [client case studies](index.html#case-
 - **Exception queue:** Missing or low-confidence data routes to human review — never straight into the compliance system.
 
 - **Audit trail:** Every intake logs source, fields, reviewer, timestamp, and action.
+
+// Architecture
+
+## How a Bespoke AI Workflow Runs
+
+Any channel in → governed AI → human approve → any channel out. We wire the inputs and outputs your team already uses — schedulers, Copilot, chat, voice, documents, and the tools you deliver into.
+
+[image: Architecture diagram: inputs from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.]
+
+Every workflow includes a human review gate before anything is delivered — then scale when your team is confident.
 
 // Built-In on Every Workflow
 
@@ -82,33 +92,97 @@ Whether we automate documents, inboxes, or compliance data, the same safety laye
 
 // Also Possible
 
-## Lighter-Touch Automations
+## The Number of Possibilities Is Endless
 
-Secondary to the three pilots above. If one of these is clearly your bottleneck, we can still scope a fixed-scope pilot around it.
+Here are other patterns teams often automate. Your bottleneck may look different; on a discovery call we pick what fits and scope a fixed-scope pilot around it. The same human-review and guardrails apply.
 
-### Smart Customer Chatbots
+### Finance & expenses
 
-- **Text & channel support:** Web chat, email, or approved team channels. WhatsApp or Telegram only where your policy permits.
+- Expense & receipt OCR to finance systems
 
-- **Grounded answers:** The bot reads your internal knowledge and answers without inventing facts.
+- Statement-to-receipt reconciliation
 
-- **Human handoff:** Routine chats stay automated; frustrated or specialist cases alert a person immediately.
+- Budget & spend threshold alerts
 
-### Content & Social Machinery
+- Executive KPI digests
 
-- **Repurpose once:** Turn a long video, podcast, or post into a week's worth of short drafts for human edit.
+### Inbox, support & voice
 
-- **Outline & draft loops:** Keyword to structured outline or script — final voice stays with your team.
+- Email classification & intent routing
 
-- **SEO helpers:** Generate tags and descriptions ready for review before publish.
+- Draft replies for human approval
 
-### Lead Capture & Enrichment
+- Document-aware support chatbots
 
-- **Zero-delay alerts:** New ad or form leads notify sales the moment they arrive.
+- Multi-channel FAQ & order-status bots
 
-- **Enrichment:** Company and role context from an email before the first call.
+- AI voice booking agents
 
-- **Triggered follow-up:** Behaviour-based nurture drafts for human approval — not auto-spam.
+- SMS confirmations & follow-ups
+
+### Scheduling & reminders
+
+- Pre-appointment reminder sequences
+
+- Calendar booking from forms or chat
+
+### Data sync & background jobs
+
+- Polling APIs & databases for pending work
+
+- Media / asset generation pipeline hand-offs
+
+### Commerce & supply chain
+
+- Cross-platform catalog & inventory sync
+
+- Abandoned cart recovery sequences
+
+- Reorder triggers & draft purchase orders
+
+- Vendor onboarding document collection
+
+- Shipment milestone tracking & delay alerts
+
+### Content, marketing & leads
+
+- Short-form content & social draft pipelines
+
+- Social & review monitoring alerts
+
+- Lead capture, enrichment & follow-up drafts
+
+- Webinar & event lifecycle sequences
+
+- Post-purchase review request prompts
+
+### Compliance, legal & identity
+
+- Access provisioning & deprovisioning
+
+- Privacy / data-subject request workflows
+
+- Audit trail logging
+
+- NDA & contract template generation
+
+- Contract renewal tracking
+
+### Ops, IT & monitoring
+
+- Uptime & incident alert routing
+
+- Suspicious link triage summaries
+
+- Price & listing change monitoring
+
+- IT asset & warranty refresh tracking
+
+- Visitor registration & host alerts
+
+- Training & certification reminders
+
+- Stale knowledge-base review nudges
 
 ## Start With What Hurts Most
 

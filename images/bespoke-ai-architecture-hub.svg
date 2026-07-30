@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="arch-title arch-desc">
   <title id="arch-title">How a Bespoke AI workflow runs</title>
-  <desc id="arch-desc">Inputs from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.</desc>
+  <desc id="arch-desc">Inputs and triggers from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.</desc>
 
   <defs>
     <style type="text/css"><![CDATA[
@@ -41,8 +41,8 @@
   <text class="heading" x="600" y="42" text-anchor="middle">How a Bespoke AI workflow runs</text>
   <text class="subhead" x="600" y="66" text-anchor="middle">Any channel in -> governed AI -> human approve -> any channel out</text>
 
-  <!-- ========== INPUTS ========== -->
-  <text class="col-label" x="40" y="108">INPUTS</text>
+  <!-- ========== INPUTS / TRIGGERS ========== -->
+  <text class="col-label" x="40" y="108" letter-spacing="0.05em">INPUTS / TRIGGERS</text>
   <g transform="translate(24, 120)">
     <!-- Scheduled -->
     <rect class="chip" width="214" height="56" rx="8"/>
