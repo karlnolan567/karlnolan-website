@@ -10,6 +10,7 @@ COPY css/ css/
 COPY js/ js/
 COPY partials/ partials/
 COPY images/ images/
+COPY demos/ demos/
 COPY docker/site-Caddyfile /etc/caddy/Caddyfile
 COPY docker/entrypoint.sh /entrypoint.sh
 
