@@ -23,7 +23,12 @@
   const chatClose = document.getElementById("chat-close");
   const chatPanel = document.getElementById("chat-panel");
   const micBtn = document.getElementById("mic-btn");
+  const heroMicBtn = document.getElementById("hero-mic-btn");
   const openChatCta = document.getElementById("open-chat-cta");
+  const heroSearchForm = document.getElementById("hero-search-form");
+  const heroSearchInput = document.getElementById("hero-search-input");
+  const heroSearchSubmit = document.getElementById("hero-search-submit");
+  const heroStartAgainBtn = document.getElementById("hero-start-again");
   const nearMeToggle = document.getElementById("near-me-toggle");
 
   const PAGE_SIZE = 10;
@@ -56,6 +61,8 @@
   let recognition = null;
   let listening = false;
   let speechGotFinal = false;
+  let speechTargetInput = messageInput;
+  let speechUseChat = true;
 
   function newSessionId() {
     return (
@@ -77,9 +84,6 @@
     chatPanel.hidden = !open;
     chatToggle.setAttribute("aria-expanded", String(open));
     chatToggle.setAttribute("aria-label", open ? "Close chat" : "Open chat");
-    if (openChatCta) {
-      openChatCta.hidden = open;
-    }
     if (open) {
       messageInput.focus();
     }
@@ -106,22 +110,53 @@
     currentOffset = 0;
     totalMatched = 0;
     resultsPager.hidden = true;
-    const marketLabel = marketMode === "rent" ? "rentals" : "properties for sale";
-    resultsHeading.textContent = `Ask the assistant to find ${marketLabel}`;
-    resultsSubhead.textContent =
-      "Results appear here — outside the chat bubble.";
+    const marketLabel = marketMode === "rent" ? "rentals" : "homes for sale";
+    resultsHeading.textContent = "Ready when you are";
+    resultsSubhead.textContent = `Matching ${marketLabel} will appear in this list.`;
+    const starters =
+      marketMode === "sale"
+        ? [
+            { label: "Under €300k", prompt: "properties under 300k" },
+            { label: "Castletroy", prompt: "3 bed Castletroy" },
+            { label: "Near UL", prompt: "homes near UL with parking" },
+          ]
+        : [
+            { label: "City 2-bed", prompt: "2 bed apartments in Limerick City" },
+            { label: "Under €1,500", prompt: "rentals under 1500" },
+            { label: "Dooradoyle", prompt: "2 bed Dooradoyle" },
+          ];
     results.innerHTML = `
       <div class="listings-empty">
+        <div class="listings-empty__visual" aria-hidden="true">
+          <span class="listings-empty__house"></span>
+          <span class="listings-empty__house listings-empty__house--mid"></span>
+          <span class="listings-empty__house"></span>
+        </div>
         <h3>No search yet</h3>
         <p class="muted">
-          ${
-            marketMode === "sale"
-              ? "Open the assistant and try “properties under 300k”, or speak your search with the mic."
-              : "Open the assistant and try “2 bed apartments in Limerick City”."
-          }
+          Tap a starter or type in the search bar above — results show up here like a Daft results list.
         </p>
+        <div class="listings-empty__prompts">
+          ${starters
+            .map(
+              (s) => `
+            <button type="button" class="listings-empty__prompt" data-empty-prompt="${s.prompt}">
+              <span class="listings-empty__prompt-label">${s.label}</span>
+              <span class="listings-empty__prompt-text">${s.prompt}</span>
+            </button>`
+            )
+            .join("")}
+        </div>
       </div>
     `;
+    results.querySelectorAll("[data-empty-prompt]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = btn.getAttribute("data-empty-prompt") || "";
+        if (!text || busy) return;
+        if (heroSearchInput) heroSearchInput.value = text;
+        void submitPrompt(text, { useChat: false });
+      });
+    });
   }
 
   function formatPrice(card) {
@@ -361,6 +396,7 @@
     setNearMe(false);
     messages.innerHTML = "";
     messageInput.value = "";
+    if (heroSearchInput) heroSearchInput.value = "";
     showResultsEmpty();
     try {
       await fetch(apiUrl("/session/reset"), {
@@ -377,6 +413,9 @@
     if (keepChatOpen) {
       setChatOpen(true);
       messageInput.focus();
+    } else {
+      setChatOpen(false);
+      if (heroSearchInput) heroSearchInput.focus();
     }
   }
 
@@ -452,28 +491,44 @@
     return true;
   }
 
-  async function submitPrompt(text) {
+  async function submitPrompt(text, { useChat = true } = {}) {
     if (busy) return;
     stopListening();
     busy = true;
     syncMicEnabled();
     const sendBtn = chatForm.querySelector("button[type='submit']");
     sendBtn.disabled = true;
-    messageInput.value = "";
-    if (!chatOpen) setChatOpen(true);
+    if (heroSearchSubmit) heroSearchSubmit.disabled = true;
+    if (useChat) {
+      messageInput.value = "";
+      if (!chatOpen) setChatOpen(true);
+      if (heroSearchInput) heroSearchInput.value = text;
+    } else if (heroSearchInput) {
+      heroSearchInput.value = text;
+    }
     let searchOk = false;
     try {
-      searchOk = (await sendMessage(text, { offset: 0 })) === true;
+      searchOk =
+        (await sendMessage(text, { offset: 0, quiet: !useChat })) === true;
     } catch (err) {
-      addBubble("bot", `Request failed: ${err}`);
+      if (useChat) {
+        addBubble("bot", `Request failed: ${err}`);
+      } else {
+        resultsHeading.textContent = "Search failed";
+        resultsSubhead.textContent = String(err);
+      }
     } finally {
       busy = false;
       sendBtn.disabled = false;
+      if (heroSearchSubmit) heroSearchSubmit.disabled = false;
       syncMicEnabled();
       updatePager(
         Math.min(PAGE_SIZE, Math.max(0, totalMatched - currentOffset))
       );
-      if (searchOk && isCompactChatViewport()) {
+      if (!useChat) {
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (heroSearchInput) heroSearchInput.focus();
+      } else if (searchOk && isCompactChatViewport()) {
         setChatOpen(false);
         results.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
@@ -509,7 +564,8 @@
     chatEmbed.hidden = false;
     gateError.hidden = true;
     showResultsEmpty();
-    setChatOpen(true);
+    setChatOpen(false);
+    if (heroSearchInput) heroSearchInput.focus();
   }
 
   gateForm.addEventListener("submit", (event) => {
@@ -527,6 +583,14 @@
   if (openChatCta) {
     openChatCta.addEventListener("click", () => setChatOpen(true));
   }
+  if (heroSearchForm && heroSearchInput) {
+    heroSearchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = heroSearchInput.value.trim();
+      if (!text || busy) return;
+      void submitPrompt(text, { useChat: false });
+    });
+  }
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && chatOpen) setChatOpen(false);
   });
@@ -535,6 +599,12 @@
     if (busy) return;
     void resetSession();
   });
+  if (heroStartAgainBtn) {
+    heroStartAgainBtn.addEventListener("click", () => {
+      if (busy) return;
+      void resetSession({ keepChatOpen: false });
+    });
+  }
 
   modeSale.addEventListener("click", () => {
     if (busy || marketMode === "sale") return;
@@ -566,14 +636,20 @@
 
   function setListening(on) {
     listening = on;
-    if (!micBtn) return;
-    micBtn.classList.toggle("composer__mic--listening", on);
-    micBtn.setAttribute("aria-pressed", String(on));
-    micBtn.setAttribute(
-      "aria-label",
-      on ? "Stop listening" : "Speak your search"
-    );
-    micBtn.title = on ? "Stop listening" : "Speak your search";
+    const buttons = [
+      { btn: micBtn, listeningClass: "composer__mic--listening" },
+      { btn: heroMicBtn, listeningClass: "search-panel__mic--listening" },
+    ];
+    for (const { btn, listeningClass } of buttons) {
+      if (!btn) continue;
+      btn.classList.toggle(listeningClass, on);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute(
+        "aria-label",
+        on ? "Stop listening" : "Speak your search"
+      );
+      btn.title = on ? "Stop listening" : "Speak your search";
+    }
   }
 
   function stopListening() {
@@ -588,14 +664,36 @@
   }
 
   function syncMicEnabled() {
-    if (!micBtn || !SpeechRecognition) return;
-    micBtn.disabled = busy;
+    if (!SpeechRecognition) return;
+    for (const btn of [micBtn, heroMicBtn]) {
+      if (btn) btn.disabled = busy;
+    }
+  }
+
+  function bindMicButton(btn, { targetInput, useChat }) {
+    if (!btn || !recognition) return;
+    btn.addEventListener("click", () => {
+      if (busy) return;
+      if (listening) {
+        stopListening();
+        return;
+      }
+      speechTargetInput = targetInput;
+      speechUseChat = useChat;
+      try {
+        recognition.start();
+      } catch (_err) {
+        /* already started */
+      }
+    });
   }
 
   function setupSpeech() {
-    if (!micBtn) return;
+    const hasMicUi = Boolean(micBtn || heroMicBtn);
+    if (!hasMicUi) return;
     if (!SpeechRecognition) {
-      micBtn.hidden = true;
+      if (micBtn) micBtn.hidden = true;
+      if (heroMicBtn) heroMicBtn.hidden = true;
       return;
     }
 
@@ -617,44 +715,43 @@
         if (event.results[i].isFinal) finalText += piece;
         else interim += piece;
       }
+      const target = speechTargetInput || messageInput;
+      if (!target) return;
       if (finalText.trim()) {
         speechGotFinal = true;
-        messageInput.value = finalText.trim();
+        target.value = finalText.trim();
       } else if (interim.trim()) {
-        messageInput.value = interim.trim();
+        target.value = interim.trim();
       }
     });
 
     recognition.addEventListener("error", (event) => {
       setListening(false);
       if (event.error === "not-allowed") {
-        addBubble(
-          "bot",
-          "Microphone permission is blocked. Allow the mic in the browser, or type your search."
-        );
+        const notice =
+          "Microphone permission is blocked. Allow the mic in the browser, or type your search.";
+        if (speechUseChat) {
+          addBubble("bot", notice);
+        } else if (resultsSubhead) {
+          resultsSubhead.textContent = notice;
+        }
       }
     });
 
     recognition.addEventListener("end", () => {
-      const text = messageInput.value.trim();
+      const target = speechTargetInput || messageInput;
+      const text = target ? target.value.trim() : "";
       const shouldSend = speechGotFinal && Boolean(text) && !busy;
       setListening(false);
       if (shouldSend) {
-        void submitPrompt(text);
+        void submitPrompt(text, { useChat: speechUseChat });
       }
     });
 
-    micBtn.addEventListener("click", () => {
-      if (busy) return;
-      if (listening) {
-        stopListening();
-        return;
-      }
-      try {
-        recognition.start();
-      } catch (_err) {
-        /* already started */
-      }
+    bindMicButton(micBtn, { targetInput: messageInput, useChat: true });
+    bindMicButton(heroMicBtn, {
+      targetInput: heroSearchInput,
+      useChat: false,
     });
   }
 

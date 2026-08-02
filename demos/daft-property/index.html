@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -35,27 +35,89 @@
     </div>
 
     <main id="app" class="app" hidden>
-      <header class="site-header">
-        <div class="site-header__inner">
-          <div class="site-header__copy">
-            <p class="brand brand--hero">Bespoke AI</p>
-            <h1 class="site-header__title">Limerick property search</h1>
-            <p class="disclaimer">
-              Concept demo using a sample of public Daft listing data — not affiliated with
-              Distilled/Daft. Index may be stale. Search in plain English via the assistant.
+      <header class="daft-top">
+        <div class="daft-top__inner">
+          <div class="daft-top__brand-row">
+            <p class="brand brand--mark">
+              <span class="brand__mark-dot" aria-hidden="true"></span>
+              Bespoke AI
             </p>
+            <span class="daft-top__demo-pill">Concept demo</span>
           </div>
-          <button type="button" class="btn-secondary" id="open-chat-cta">
-            Open assistant
-          </button>
+          <p class="daft-top__disclaimer">
+            Sample public Daft listing data for Limerick — not affiliated with Distilled/Daft.
+            Index may be stale.
+          </p>
         </div>
       </header>
 
+      <section class="hero hero--daft" aria-label="Property search">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="hero__tabs" aria-hidden="true">
+            <span class="hero__tab hero__tab--active">Buy</span>
+            <span class="hero__tab">Rent</span>
+            <span class="hero__tab">Share</span>
+          </div>
+          <h1 class="hero__title">Find your way home</h1>
+          <p class="hero__lede">
+            Search Limerick in plain English — matching ads appear below, with deep links to Daft.
+          </p>
+
+          <form class="search-panel" id="hero-search-form">
+            <div class="search-panel__row">
+              <div class="search-panel__field">
+                <span class="search-panel__label">Where</span>
+                <span class="search-panel__value">Limerick</span>
+              </div>
+              <div class="search-panel__field search-panel__field--grow search-panel__field--input">
+                <span class="search-panel__label">Describe what you want</span>
+                <div class="search-panel__input-row">
+                  <input
+                    id="hero-search-input"
+                    class="search-panel__input"
+                    type="search"
+                    name="q"
+                    placeholder="e.g. 3 bed Castletroy under 450k"
+                    autocomplete="off"
+                    required
+                  />
+                  <button
+                    type="button"
+                    id="hero-mic-btn"
+                    class="search-panel__mic"
+                    aria-label="Speak your search"
+                    aria-pressed="false"
+                    title="Speak your search"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path
+                        fill="currentColor"
+                        d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <button type="submit" class="btn-cta" id="hero-search-submit">
+                Search
+              </button>
+              <button type="button" class="btn-secondary btn-secondary--hero" id="hero-start-again">
+                Start again
+              </button>
+            </div>
+            <p class="search-panel__hint">
+              Type or tap the mic to search — chat bubble is optional for follow-ups.
+            </p>
+          </form>
+        </div>
+      </section>
+
       <section class="listings-shell">
         <div class="listings-toolbar">
-          <h2 id="results-heading" class="listings-heading">Ask the assistant to find properties</h2>
+          <h2 id="results-heading" class="listings-heading">Matching properties</h2>
           <p id="results-subhead" class="listings-subhead muted">
-            Results appear here — outside the chat bubble.
+            Your search results will appear here.
           </p>
         </div>
         <div class="listings" id="results" aria-live="polite"></div>
@@ -67,7 +129,6 @@
       </section>
     </main>
 
-    <!-- Floating chat bubble (bespoke-ai.ie pattern) -->
     <div id="chat-embed" class="chat-embed" hidden>
       <button
         type="button"
