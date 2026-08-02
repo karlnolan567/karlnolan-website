@@ -66,6 +66,10 @@
     return `${String(cfg.apiBaseUrl || "").replace(/\/$/, "")}${path}`;
   }
 
+  function isCompactChatViewport() {
+    return window.matchMedia("(max-width: 700px)").matches;
+  }
+
   function setChatOpen(open) {
     chatOpen = open;
     chatPanel.hidden = !open;
@@ -402,7 +406,7 @@
       const errText = await response.text();
       if (botBubble) botBubble.textContent = `Error ${response.status}: ${errText}`;
       else addBubble("bot", `Error ${response.status}: ${errText}`);
-      return;
+      return false;
     }
 
     const reader = response.body.getReader();
@@ -436,6 +440,7 @@
         }
       }
     }
+    return true;
   }
 
   async function submitPrompt(text) {
@@ -447,8 +452,9 @@
     sendBtn.disabled = true;
     messageInput.value = "";
     if (!chatOpen) setChatOpen(true);
+    let searchOk = false;
     try {
-      await sendMessage(text, { offset: 0 });
+      searchOk = (await sendMessage(text, { offset: 0 })) === true;
     } catch (err) {
       addBubble("bot", `Request failed: ${err}`);
     } finally {
@@ -458,7 +464,12 @@
       updatePager(
         Math.min(PAGE_SIZE, Math.max(0, totalMatched - currentOffset))
       );
-      messageInput.focus();
+      if (searchOk && isCompactChatViewport()) {
+        setChatOpen(false);
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        messageInput.focus();
+      }
     }
   }
 
