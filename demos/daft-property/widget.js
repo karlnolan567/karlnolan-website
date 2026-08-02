@@ -590,6 +590,11 @@
       if (!text || busy) return;
       void submitPrompt(text, { useChat: false });
     });
+    // Native type=search clear (X) fires "search" with an empty value — treat as Start again.
+    heroSearchInput.addEventListener("search", () => {
+      if (busy || heroSearchInput.value.trim() !== "") return;
+      void resetSession({ keepChatOpen: false });
+    });
   }
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && chatOpen) setChatOpen(false);
