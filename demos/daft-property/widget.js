@@ -25,7 +25,6 @@
   const micBtn = document.getElementById("mic-btn");
   const openChatCta = document.getElementById("open-chat-cta");
   const nearMeToggle = document.getElementById("near-me-toggle");
-  const nearMeHint = document.querySelector(".near-me__hint");
 
   const PAGE_SIZE = 10;
   const SpeechRecognition =
@@ -147,11 +146,6 @@
     nearMeOn = Boolean(on);
     if (!nearMeToggle) return;
     nearMeToggle.setAttribute("aria-pressed", String(nearMeOn));
-    if (nearMeHint) {
-      nearMeHint.textContent = nearMeOn
-        ? "On (preview only — location not used yet)"
-        : "Demo preview — not active yet";
-    }
   }
 
   function setMarketMode(mode) {

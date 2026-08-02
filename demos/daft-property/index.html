@@ -107,26 +107,25 @@
         <div id="messages" class="messages"></div>
 
         <div class="composer-block">
-          <div class="market-toggle market-toggle--chat" role="group" aria-label="Search market">
-            <button type="button" class="market-toggle__btn" id="mode-sale" aria-pressed="true">
-              For sale
-            </button>
-            <button type="button" class="market-toggle__btn" id="mode-rent" aria-pressed="false">
-              Rentals
-            </button>
-          </div>
-          <div class="near-me" role="group" aria-label="Near me">
+          <div class="composer-toggles" role="group" aria-label="Search options">
+            <div class="market-toggle market-toggle--chat" role="group" aria-label="Search market">
+              <button type="button" class="market-toggle__btn" id="mode-sale" aria-pressed="true">
+                For sale
+              </button>
+              <button type="button" class="market-toggle__btn" id="mode-rent" aria-pressed="false">
+                Rentals
+              </button>
+            </div>
             <button
               type="button"
               class="near-me__btn"
               id="near-me-toggle"
               aria-pressed="false"
-              title="Coming soon in a later version"
+              title="Near me — demo preview, not active yet"
             >
               <span class="near-me__dot" aria-hidden="true"></span>
               Near me
             </button>
-            <span class="near-me__hint muted">Demo preview — not active yet</span>
           </div>
           <p class="suggestions-label">Suggested searches</p>
           <div id="suggestions" class="suggestions" role="list"></div>
