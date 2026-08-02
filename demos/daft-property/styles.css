@@ -346,6 +346,57 @@ input {
   box-shadow: none;
 }
 
+.near-me {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: -0.15rem 0 0.75rem;
+  flex-wrap: wrap;
+}
+
+.near-me__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #152238;
+  color: #cbd5e1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.near-me__btn:hover {
+  border-color: #2dd4bf;
+  color: #e2e8f0;
+}
+
+.near-me__btn[aria-pressed="true"] {
+  background: #1d4e4a;
+  border-color: #2dd4bf;
+  color: #ecfdf8;
+}
+
+.near-me__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #64748b;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.near-me__btn[aria-pressed="true"] .near-me__dot {
+  background: #5eead4;
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.25);
+}
+
+.near-me__hint {
+  font-size: 0.72rem;
+  color: #7b889c;
+}
+
 .results-pager {
   display: flex;
   align-items: center;
@@ -909,6 +960,20 @@ input {
     padding: 0.28rem 0.5rem;
     font-size: 0.75rem;
     font-weight: 600;
+  }
+
+  .near-me {
+    margin: -0.05rem 0 0.45rem;
+    gap: 0.4rem;
+  }
+
+  .near-me__btn {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .near-me__hint {
+    font-size: 0.65rem;
   }
 
   .suggestions-label,

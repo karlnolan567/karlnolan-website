@@ -24,6 +24,8 @@
   const chatPanel = document.getElementById("chat-panel");
   const micBtn = document.getElementById("mic-btn");
   const openChatCta = document.getElementById("open-chat-cta");
+  const nearMeToggle = document.getElementById("near-me-toggle");
+  const nearMeHint = document.querySelector(".near-me__hint");
 
   const PAGE_SIZE = 10;
   const SpeechRecognition =
@@ -48,6 +50,7 @@
   let busy = false;
   let chatOpen = false;
   let marketMode = "sale"; // default: for sale only
+  let nearMeOn = false; // UI-only preview for Distilled; no geolocation yet
   let lastQuery = "";
   let currentOffset = 0;
   let totalMatched = 0;
@@ -138,6 +141,17 @@
     pagePrev.disabled = currentOffset <= 0 || busy;
     pageNext.disabled = end >= totalMatched || busy;
     resultsPager.hidden = totalMatched <= PAGE_SIZE;
+  }
+
+  function setNearMe(on) {
+    nearMeOn = Boolean(on);
+    if (!nearMeToggle) return;
+    nearMeToggle.setAttribute("aria-pressed", String(nearMeOn));
+    if (nearMeHint) {
+      nearMeHint.textContent = nearMeOn
+        ? "On (preview only — location not used yet)"
+        : "Demo preview — not active yet";
+    }
   }
 
   function setMarketMode(mode) {
@@ -350,6 +364,7 @@
     lastQuery = "";
     currentOffset = 0;
     totalMatched = 0;
+    setNearMe(false);
     messages.innerHTML = "";
     messageInput.value = "";
     showResultsEmpty();
@@ -535,6 +550,11 @@
     if (busy || marketMode === "rent") return;
     setMarketMode("rent");
   });
+  if (nearMeToggle) {
+    nearMeToggle.addEventListener("click", () => {
+      setNearMe(!nearMeOn);
+    });
+  }
 
   pagePrev.addEventListener("click", () => {
     void goToPage(Math.max(0, currentOffset - PAGE_SIZE));
