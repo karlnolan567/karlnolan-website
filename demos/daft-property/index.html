@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>Property search demo — Bespoke AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,15 +20,23 @@
         <p class="brand brand--hero">Bespoke AI</p>
         <h1 class="gate-card__title">Property search</h1>
         <p class="gate-card__lede">
-          A conversational demo over Limerick sale and to-let stock. Enter the password to
+          A conversational demo over Limerick sale and to-let stock. Enter the access code to
           continue.
         </p>
         <label class="field">
-          <span class="field__label">Demo password</span>
-          <input id="password" type="password" autocomplete="current-password" required />
+          <span class="field__label">Access code</span>
+          <input
+            id="access-code"
+            name="access-code"
+            type="text"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            required
+          />
         </label>
         <button type="submit" class="btn-primary btn-primary--block">Enter demo</button>
-        <p id="gate-error" class="error" hidden>Incorrect password.</p>
+        <p id="gate-error" class="error" hidden>Incorrect access code.</p>
         <p class="gate-card__footnote muted">
           Concept demo — sample public listing data, not affiliated with Distilled/Daft.
         </p>

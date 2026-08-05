@@ -570,8 +570,8 @@
 
   gateForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const password = document.getElementById("password").value;
-    if (password === cfg.pagePassword) {
+    const accessCode = document.getElementById("access-code").value;
+    if (accessCode === cfg.pagePassword) {
       unlockDemo();
     } else {
       gateError.hidden = false;

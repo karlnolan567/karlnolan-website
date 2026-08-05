@@ -6,6 +6,7 @@ WORKDIR /srv
 
 COPY index.html scoping.html about.html ai-engineering.html case-studies.html agentic-impact-workshop.html workshop*.html workshops.html what-we-automate.html workshop-one-pager.html workflow-assessment.html ./
 COPY workshop-one-pager.pdf ./
+COPY robots.txt ./
 COPY css/ css/
 COPY js/ js/
 COPY partials/ partials/
