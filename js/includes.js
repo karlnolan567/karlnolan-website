@@ -87,6 +87,24 @@ function bookingHref() {
     return /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
   }
 
+  function initGoogleAnalytics() {
+    var id = SITE.gaMeasurementId;
+    if (!id || isLocalPreviewHost()) {
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', id);
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(script);
+  }
+
   function loadScript(src, onDone) {
     const script = document.createElement('script');
     script.src = src;
@@ -204,6 +222,7 @@ function bookingHref() {
       configureNav();
       configurePrivacy();
       configureWorkshopVisibility();
+      initGoogleAnalytics();
       initChatbot();
       document.documentElement.removeAttribute('data-includes-pending');
       document.dispatchEvent(new Event('includes-loaded'));
