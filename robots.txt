@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /demos/
+
+Sitemap: https://www.bespoke-ai.ie/sitemap.xml
