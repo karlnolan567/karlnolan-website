@@ -18,8 +18,12 @@ const SITE = {
         engineering: 'https://docs.google.com/forms/d/e/1FAIpQLSfqQlawqCZfgIwJ653dPEME039aB303ZOzGn--tyxBqCZKJkQ/viewform',
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
+    fundamentalsFormUrls: {
+        individual: 'https://script.google.com/macros/s/AKfycbx5kGVXtXeZhnn8aU6oYf43b9bVokCuwpLkr_CsBvUqiaWk6seCN3VwpN09jRHs2Pb0/exec',
+        group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
+    },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260805a',
+    partialVersion: '20260808a',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -27,7 +31,8 @@ const SITE = {
     aboutUrl: 'about.html',
     aiEngineeringUrl: 'ai-engineering.html',
     caseStudiesUrl: 'case-studies.html',
-    navOrder: ['offer', 'engagement', 'scoping', 'where-to-start', 'about', 'ai-engineering', 'workshop'],
+    trainingUrl: 'training.html',
+    navOrder: ['offer', 'engagement', 'scoping', 'where-to-start', 'about', 'ai-engineering', 'training'],
     // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
     chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
     chatWebhookUrl: isLocalPreview

@@ -3,13 +3,14 @@
   const isWorkshopsHub = page === 'workshops';
   const isWorkshopDetail = /^workshop-\d$/.test(page);
   const isAgenticWorkshop = page === 'agentic-impact-workshop';
+  const isTraining = page === 'training';
   const isWhatWeAutomate = page === 'what-we-automate';
   const isWorkflowAssessment = page === 'workflow-assessment';
   const isScoping = page === 'scoping';
   const isAbout = page === 'about';
   const isAiEngineering = page === 'ai-engineering';
   const isCaseStudies = page === 'case-studies';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies;
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -24,6 +25,7 @@ function bookingHref() {
   function navHref(section) {
     if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
     if (section === 'workshop') return 'agentic-impact-workshop.html';
+    if (section === 'training') return SITE.trainingUrl || 'training.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
     if (section === 'scoping') return SITE.scopingUrl || 'scoping.html';
     if (section === 'about') return SITE.aboutUrl || 'about.html';
@@ -151,6 +153,11 @@ function bookingHref() {
         link.setAttribute('aria-current', 'page');
       }
 
+      if (section === 'training' && isTraining) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
       if (section === 'what-we-automate' && isWhatWeAutomate) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
@@ -189,6 +196,8 @@ function bookingHref() {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
+    } else if (isTraining) {
+      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
     } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies) {
       ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {

@@ -646,7 +646,7 @@ section[id] {
   /* Size brand column by the title; wrap tagline so it cannot collide with nav */
   .site-header .footer-brand__text {
     width: fit-content;
-    max-width: 9.75rem;
+    max-width: 11.5rem;
   }
 
   .site-header .footer-brand__title {
