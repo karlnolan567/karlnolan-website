@@ -109,15 +109,15 @@ Customer Operations
 
 [See case study](#case-study-inbox)
 
-Finance Operations
+Sales Operations
 
-### Invoice-to-Record Pilot
+### PO → Sales Order Pilot
 
-- **Who it's for:** Finance controllers and AP teams pulling invoice data from email attachments into finance systems by hand.
-- **What you get:** Document intake, field extraction, validation rules, hand-off to your finance system, and human review on every exception.
-- **Typical outcome:** Roughly 40 hours per month of manual data entry removed; receipt-to-record time cut by more than half.
+- **Who it's for:** Sales ops and order-desk leads re-keying purchase orders from email into the ERP when buyers use nicknames, aliases, and messy line items.
+- **What you get:** Multi-channel PO intake (email with PDF/Word attachments), AI extraction, AI-assisted matching of customer, SKU, and pricing against your live catalogs (including aliases and nicknames), exception flags for price/SKU/duplicates, side-by-side approver console, and clean writeback only after human approval.
+- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval — optional auto-approve only for fully matched orders.
 
-[See case study](#case-study-invoice)
+[See case study](#case-study-po-so)
 
 // Deeper Engagements
 
@@ -177,16 +177,16 @@ B2B SaaS provider · ~400 support emails/week · Team of 4 on a shared Microsoft
 
 Reference call available under NDA
 
-Human-in-the-Loop Documents
+Sales Order Automation
 
-### Invoice & Document Processing
+### Purchase Order to Sales Order
 
-Mid-size manufacturer · ~350 invoices/month · 2 AP clerks · Invoices arrive as email attachments
+Mid-size distributor · ~120 POs/week · shared order inbox · PDF/Word attachments
 
-- **Challenge:** AP staff pulled line items, VAT, and PO references from PDF invoices by hand, then keyed them into the finance system. Each invoice took ~15 minutes. The team spent 40+ hours a month on data entry alone, and receipt-to-record averaged 3–5 business days.
-- **Approach:** One scoped workflow, live in 3 weeks: automated intake from the AP mailbox; field extraction with validation rules (PO match, VAT totals, duplicate detection); clean records handed off to the existing finance system; exceptions routed to a human review queue with Slack alerts. Client wanted all invoices auto-posted at launch — we held exceptions-only review until they'd validated 200+ extractions against source documents.
-- **Outcome:** First 90 days (~900 invoices): manual data entry 40 hrs/month → 8 hrs/month on exceptions only; receipt-to-record median 3.2 days → 1.1 days; 9% exception rate, all reviewed before posting. Client signed off auto-posting on high-confidence matches at week 11.
-- **Client:** "We didn't replace our finance system — we stopped being its data-entry department. Exceptions are the only invoices anyone touches now." — Finance Controller, mid-size manufacturing group
+- **Challenge:** Order desk staff re-typed every inbound purchase order into the ERP by hand. Buyers used regional shorthand and nicknames ("MEC", "2.5mm T&E") that did not match master SKUs, so wrong products and prices slipped through. Price mismatches and duplicate PO numbers were caught late — or not at all. There was no reliable review gate before rows hit the system of record.
+- **Approach:** One scoped workflow, live in 3 weeks: intake from the shared order mailbox (PDF/Word attachments); AI extraction of PO number, buyer, ship-to, line items, quantities, and prices — with explicit gaps when the document is unclear, never silent guessing; AI-assisted resolution of customer, SKU, and pricing against live master catalogs (alias and nickname matching included); discrepancy flags (price mismatch, unknown SKU, duplicate PO, missing ship-to); side-by-side approver console with the original document next to the digital draft; Correct applies verified master prices to known SKUs only; clarification emails drafted in-console and never auto-sent. Intake channels notify only — an Approver must click Approve before writeback. Client wanted auto-approve at launch — we held 100% human gate until they'd processed 100+ orders and signed off.
+- **Outcome:** First 90 days (~1,400 POs): median handling time 18 min → 4 min for clean matches; 14% routed to Needs Review (price/SKU exceptions), all resolved before sync; zero unapproved rows written to the ledger; client enabled optional auto-approve for 100% matched POs at week 11.
+- **Client:** "We stopped typing POs into the ERP and started resolving exceptions. Alias matching alone paid for the project — 'MEC' finally lands on the right customer every time." — Sales Operations Lead, mid-size distribution group
 
 Reference call available under NDA
 

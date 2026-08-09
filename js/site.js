@@ -254,5 +254,54 @@ function initMobileMenu() {
   });
 }
 
+function initImageLightbox() {
+  const triggers = document.querySelectorAll('[data-lightbox]');
+  if (!triggers.length) return;
+
+  let dialog = document.getElementById('image-lightbox');
+  if (!dialog) {
+    dialog = document.createElement('dialog');
+    dialog.id = 'image-lightbox';
+    dialog.className = 'image-lightbox';
+    dialog.innerHTML =
+      '<div class="image-lightbox__panel">' +
+      '<button type="button" class="image-lightbox__close" aria-label="Close full-size image">&times;</button>' +
+      '<img class="image-lightbox__img" alt="">' +
+      '</div>';
+    document.body.appendChild(dialog);
+  }
+
+  const img = dialog.querySelector('.image-lightbox__img');
+  const closeBtn = dialog.querySelector('.image-lightbox__close');
+
+  function closeLightbox() {
+    if (dialog.open) dialog.close();
+  }
+
+  triggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = trigger.getAttribute('href');
+      if (!href || !img) return;
+      const thumb = trigger.querySelector('img');
+      img.src = href;
+      img.alt = (thumb && thumb.getAttribute('alt')) || 'Full-size image';
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        window.open(href, '_blank', 'noopener');
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  dialog.addEventListener('click', function (e) {
+    if (e.target === dialog) closeLightbox();
+  });
+}
+
 document.addEventListener('includes-loaded', initMobileMenu);
+document.addEventListener('DOMContentLoaded', initImageLightbox);
+if (document.readyState !== 'loading') initImageLightbox();
 initHashNavigation();
