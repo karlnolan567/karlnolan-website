@@ -8,7 +8,7 @@ scope: website-knowledge
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
-# Unblock manual work with governed AI workflows — in the cloud, in your Microsoft or Google workplace, or on your web pages.
+# Eliminate manual bottlenecks with governed AI workflows — in the cloud, in your Microsoft or Google workplace, or on your web pages.
 
 For ops and IT leaders, and founders cutting admin work — without ungoverned ChatGPT or demo-only AI agencies.
 
