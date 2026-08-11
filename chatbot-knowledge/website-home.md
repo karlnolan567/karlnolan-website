@@ -10,9 +10,9 @@ scope: website-knowledge
 
 # Eliminate manual bottlenecks with governed AI workflows — in the cloud, in your Microsoft or Google workplace, or on your web pages.
 
-For ops and IT leaders, and founders cutting admin work — without ungoverned ChatGPT or demo-only AI agencies.
+For ops and IT leaders, and founders who need to cut admin work, save time and money — without losing control of data or delivery.
 
-We pick one high-friction workflow, tie it to a cost, margin, or hours metric, and build governed automation where work already happens — Teams or Google Chat, SharePoint or Drive, or your web pages. Autonomous and scheduled processes run on a cadence you choose. Straight talk: we'll tell you what's worth automating, and what isn't.
+We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric, and build governed automation where the work needs to run. Autonomous and scheduled processes run on a cadence you choose. Straight talk: we'll tell you what's worth automating, and what isn't.
 
 27+ years delivering software · human-in-the-loop until you trust it
 
