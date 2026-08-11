@@ -16,7 +16,7 @@ We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric,
 
 27+ years delivering software · human-in-the-loop until you trust it
 
-Free discovery call → paid project scoping → a build quote sized to the integration → light monthly support.
+Free discovery call → paid project scoping → a build quote sized to the integration → optional light monthly support.
 
 [Book a Discovery Call](#) · [Paid scoping](scoping.html)
 
