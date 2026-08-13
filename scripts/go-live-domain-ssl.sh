@@ -254,11 +254,10 @@ stage "Configure site .env URLs" 3
 say "Production URLs for the static site container (rendered into js/site-config.js at start)."
 BASE_URL="https://${DOMAIN}"
 write_env CANONICAL_URL "${BASE_URL}/"
-write_env BOOKING_SUCCESS_URL "${BASE_URL}/index.html?call-booked=1"
 write_env ASSESSMENT_URL "${BASE_URL}/assessment"
 write_env CHAT_WEBHOOK_URL "${BASE_URL}/webhook/bcai-website-chat/chat"
 write_env CHAT_WARM_CACHE_URL "${BASE_URL}/webhook/bcai-warm-knowledge"
-write_env BOOKING_URL "${BASE_URL}/webhook/booking"
+write_env BOOKING_URL "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UKPIrCb8p6jWtnEqzB2RUlMEF8nMcT4fkRaG9LA0je9CCptn8WCIaq_LRsQNTNYFjYaTIApYL"
 note "Committed .env is gitignored — you'll copy this file to the VPS in the deploy stage."
 
 # ── 6. Caddyfile — Let's Encrypt ───────────────────────────────────────────
@@ -373,10 +372,9 @@ stage "n8n — workflow URLs (manual in editor)" 8
 say "Workflow JSON in git still references the IP — update live workflows in n8n after deploy."
 open_url "http://${VPS_IP}:5678"
 step "BCAI Website Chatbot → Chat Trigger → Allowed Origins: add https://${DOMAIN}"
-step "Discovery Call Booking → Redirect to Site node: success URL → ${BASE_URL}/index.html?call-booked=1"
-step "Discovery Call Booking → OpenRouter HTTP-Referer headers → ${BASE_URL}/booking"
-step "Re-activate workflows after saving."
-note "Later: export workflows back to n8n/*.workflow.json and commit."
+step "Discovery Call Booking (n8n) — optional: deactivate if unused; the live site books via Google Calendar appointments, not /webhook/booking"
+step "Re-activate chatbot workflow after saving CORS."
+note "n8n booking workflow JSON in git is left in place; the website no longer links to it."
 pause "Workflow URLs updated in n8n (or scheduled right after deploy)?"
 
 # ── 10. Deploy to VPS ──────────────────────────────────────────────────────

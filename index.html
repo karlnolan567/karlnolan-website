@@ -14,27 +14,13 @@
       @media(min-width:1280px){.site-header .nav{display:flex}.mobile-menu-btn{display:none}.mobile-menu{display:none!important}}
       .hidden{display:none!important}
       html[data-includes-pending] .page-content{visibility:hidden}
-      html[data-call-booked="1"] #discovery-call-cta{display:none!important}
-      html[data-call-booked="1"] #discovery-call-success{display:block!important}
-      html[data-call-booked="1"] #discovery-call .contact-card-lead{display:none!important}
-      html[data-call-booked="1"] .discovery-call-points{display:none!important}
-      html[data-call-booked="1"] #discovery-call .section-header{display:none!important}
       .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
     </style>
     <title>Bespoke AI Engineering | Agents &amp; Automation</title>
     <meta name="description" content="AI agents and automation for Microsoft 365 / Azure and Google Workspace / GCP — plus embeddable AI search on your web pages. Paid scoping, integration-shaped build quotes, light monthly support.">
     <link rel="canonical" href="https://www.bespoke-ai.ie/">
     <script>
-      if (new URLSearchParams(window.location.search).get('call-booked') === '1') {
-        document.documentElement.dataset.callBooked = '1';
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        document.addEventListener('DOMContentLoaded', function () {
-          var cta = document.getElementById('discovery-call-cta');
-          var ok = document.getElementById('discovery-call-success');
-          if (cta) cta.hidden = true;
-          if (ok) ok.hidden = false;
-        }, { once: true });
-      } else if (window.location.hash && window.location.hash !== '#') {
+      if (window.location.hash && window.location.hash !== '#') {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
       }
@@ -49,7 +35,7 @@
     <meta name="twitter:title" content="Bespoke AI Engineering | Agents &amp; Automation">
     <meta name="twitter:description" content="Workplace agents for Microsoft and Google — plus embeddable AI search and analysis on client web pages.">
     <meta name="twitter:image" content="https://www.bespoke-ai.ie/images/og-card.png">
-    <link rel="stylesheet" href="css/styles.css?v=20260808a">
+    <link rel="stylesheet" href="css/styles.css?v=20260813c">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -257,27 +243,9 @@
                 </li>
                 <li class="glass-panel step-item">
                     <span class="step-number step-number--teal" aria-hidden="true">2</span>
-                    <div class="step-item__body">
+                    <div>
                         <h3 class="step-title">Priced to the integration</h3>
-                        <p class="step-desc">Build effort depends on how deep we connect into your tools. Simple wiring stays lean; complex estate or compliance work runs longer. Scoping produces a clear quote; we do not publish a one-size build price.</p>
-                        <p class="text-mono-label text-mono-label--teal" style="margin-top:1.25rem;">What shapes the quote</p>
-                        <div class="grid-3 step-path-grid">
-                            <article class="glass-panel card">
-                                <h3 class="card-title">Behind the scenes</h3>
-                                <p class="text-body-sm">Smallest useful slice — one pattern; API / sheet / SharePoint or Drive data plane; no chat bot. Includes autonomous and scheduled jobs when the work can run without someone watching.</p>
-                                <p class="text-mono-label text-mono-label--teal" style="margin-top:0.75rem;">Typical path: connected automation · scheduled AI · or custom web app in existing pages</p>
-                            </article>
-                            <article class="glass-panel card">
-                                <h3 class="card-title">Workplace front door</h3>
-                                <p class="text-body-sm">Same automation, with Teams or Google Chat where that is where work already happens.</p>
-                                <p class="text-mono-label text-mono-label--teal" style="margin-top:0.75rem;">Typical path: automation + Teams or Google Chat</p>
-                            </article>
-                            <article class="glass-panel card">
-                                <h3 class="card-title">Native estate tools</h3>
-                                <p class="text-body-sm">Microsoft or Google’s own tools when your licence or compliance requires it, or a richer custom build when that isn’t needed. Deeper estate work usually means more scoped days.</p>
-                                <p class="text-mono-label text-mono-label--teal" style="margin-top:0.75rem;">Typical path: native workplace tools · or fuller custom build</p>
-                            </article>
-                        </div>
+                        <p class="step-desc">Build effort depends on how deep we connect into your tools. If we only connect a couple of tools, the build stays small. If we have to work deep inside your Microsoft/Google systems — or meet strict compliance rules — it takes longer. Scoping produces a clear quote; we do not publish a one-size build price. Full detail on what shapes the quote: <a href="scoping.html" class="link-brand">paid scoping</a>.</p>
                     </div>
                 </li>
                 <li class="glass-panel step-item">
@@ -350,7 +318,7 @@
                 </article>
             </div>
 
-            <p class="text-body-sm text-muted" style="margin-top:1.5rem;text-align:center">
+            <p class="text-body-sm text-muted" style="margin-top:1.25rem;margin-bottom:0;text-align:center">
                 Client results → <a href="case-studies.html" class="link-brand">Case studies</a>
                 · Need something deeper? <a href="ai-engineering.html" class="link-brand">AI Engineering &amp; Custom Pipelines</a>
             </p>
@@ -365,35 +333,35 @@
                 <p class="text-body-sm">A free 30-minute <strong>qualification</strong> chat — not the paid project scoping step. We confirm fit, then propose scoping if a build makes sense. Confidentiality agreement before you share anything sensitive.</p>
                 <ul class="text-body-sm discovery-call-points">
                     <li>No pitch deck — an honest conversation about your pain points</li>
-                    <li>If AI isn't the right fix, we'll tell you straight</li>
+                    <li>If AI isn’t the right fix, we’ll tell you straight</li>
                     <li>No production access or sensitive data required upfront</li>
-                    <li>Next paid step (when it makes sense): <a href="scoping.html" class="link-brand">project scoping</a> — <strong>€900</strong> for one day. Complex workplace or multi-system scoping may take longer; we’ll say so before you commit. Credited toward the build if you proceed within 30 days</li>
-                    <li>
-                        Then we quote the build from what the integration actually needs — effort can be small or large depending on connectors, workplace front door, native tools, and how much custom work is required
-                    </li>
-                    <li>After go-live: light monthly maintenance from <strong>€250/mo</strong> (monitoring and limited support)</li>
+                    <li>If it’s a fit, next steps are <a href="scoping.html" class="link-brand">paid scoping</a>, a build quote, and optional light support — pricing is on those pages, not this call</li>
                 </ul>
             </div>
 
             <div class="contact-single">
                 <div class="glass-panel contact-card">
-                    <div id="discovery-call-success" class="contact-form-success contact-form-success--booked" hidden tabindex="-1">
-                        <img src="images/booking-success.svg" class="contact-form-success__art" width="72" height="72" alt="">
-                        <p class="contact-form-success__title">Success!</p>
-                        <p class="contact-form-success__message text-body-sm">Your discovery call is booked — check your email for confirmation.</p>
-                    </div>
                     <div id="discovery-call-cta" class="contact-card-body">
                         <div class="contact-card-lead">
                             <div class="contact-card-icon contact-card-icon--green" aria-hidden="true">
                                 <i class="fa-solid fa-calendar-days"></i>
                             </div>
-                            <p class="text-body-sm text-muted contact-card-intro">Pick an available slot — times are shown in GMT+1. You'll receive a calendar invite by email.</p>
+                            <p class="text-body-sm text-muted contact-card-intro">Pick an available slot below. You’ll receive a calendar invite by email from Google Calendar.</p>
                         </div>
-                        <a href="#" data-booking-link class="btn btn-primary btn-primary--block">
-                            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a Discovery Call
-                        </a>
+                        <div class="booking-embed">
+                            <iframe
+                                id="discovery-booking-embed"
+                                title="Book a discovery call"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
+                        <p class="booking-embed-fallback text-body-sm text-muted">
+                            Prefer a full-page view?
+                            <a href="#" id="booking-schedule-link" class="link-brand" target="_blank" rel="noopener noreferrer">Open Google booking</a>
+                        </p>
                     </div>
-                    <p class="privacy-note">Booking details are stored in Google Calendar and a confirmation is sent via Gmail. We do not sell personal data. See <a href="#privacy" class="link-brand">privacy notice</a> below.</p>
+                    <p class="privacy-note">Bookings use <strong>Google Calendar</strong> appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See <a href="#privacy" class="link-brand">privacy notice</a> below.</p>
                 </div>
                 <p class="contact-secondary text-body-sm">
                     Prefer LinkedIn?
@@ -408,9 +376,9 @@
     <div id="site-footer"></div>
 </div>
 
-<script src="js/site-config.js?v=20260805a"></script>
+<script src="js/site-config.js?v=20260813b"></script>
 <script src="js/includes.js?v=20260805a"></script>
-<script src="js/site.js?v=20260630p"></script>
+<script src="js/site.js?v=20260813b"></script>
 <script>
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
 </script>

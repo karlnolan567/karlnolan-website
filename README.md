@@ -101,7 +101,7 @@ See [`scripts/go-live-domain-ssl.sh`](scripts/go-live-domain-ssl.sh) for the ful
 
 Edit the `SITE` object in [`js/site-config.js`](js/site-config.js) for contact email, LinkedIn URL, canonical URL, and form links.
 
-Discovery call bookings use an n8n workflow with **Google Calendar** and **Gmail** (see [`n8n/SETUP.txt`](n8n/SETUP.txt) → Discovery Call Booking). Configure `bookingUrl` and `bookingSuccessUrl` in [`js/site-config.js`](js/site-config.js).
+Discovery call bookings use a <strong>Google Calendar</strong> appointment schedule embedded on the home page. Configure `bookingScheduleUrl` / `BOOKING_URL` in [`js/site-config.js`](js/site-config.js) / `.env`.
 
 Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead-intake/SETUP.txt`.
 

@@ -5,10 +5,42 @@ function bookingHref() {
   return '#discovery-call';
 }
 
+function bookingScheduleHref() {
+  if (typeof SITE !== 'undefined' && SITE.bookingScheduleUrl) {
+    return SITE.bookingScheduleUrl;
+  }
+  return bookingHref();
+}
+
+function bookingEmbedHref() {
+  if (typeof SITE !== 'undefined' && SITE.bookingEmbedUrl) {
+    return SITE.bookingEmbedUrl;
+  }
+  var schedule = bookingScheduleHref();
+  if (!schedule || schedule.charAt(0) === '#') return '';
+  return schedule.indexOf('?') >= 0 ? schedule + '&gv=true' : schedule + '?gv=true';
+}
+
 function configureBookingLinks() {
+  var href = bookingHref();
+  if (document.body && document.body.getAttribute('data-page') === 'home') {
+    href = '#discovery-call';
+  }
   document.querySelectorAll('[data-booking-link]').forEach(function (el) {
-    el.href = bookingHref();
+    el.href = href;
   });
+  var scheduleHref = bookingScheduleHref();
+  var scheduleLink = document.getElementById('booking-schedule-link');
+  if (scheduleLink && scheduleHref) {
+    scheduleLink.href = scheduleHref;
+  }
+}
+
+function initBookingEmbed() {
+  var iframe = document.getElementById('discovery-booking-embed');
+  if (!iframe) return;
+  var src = bookingEmbedHref();
+  if (src) iframe.src = src;
 }
 
 function getHeaderScrollOffset() {
@@ -85,82 +117,12 @@ function scheduleHashScroll(behavior) {
   }, { once: true });
 }
 
-function isBookingReturn() {
-  return new URLSearchParams(window.location.search).get('call-booked') === '1';
-}
-
-function handleBookingReturn() {
-  if (!isBookingReturn()) return;
-
-  const ctaBlock = document.getElementById('discovery-call-cta');
-  const successBlock = document.getElementById('discovery-call-success');
-  if (ctaBlock) ctaBlock.hidden = true;
-  if (successBlock) successBlock.hidden = false;
-}
-
-function initBookingReturn() {
-  if (!isBookingReturn()) return;
-
-  function scrollToBookingCard() {
-    const target = document.getElementById('discovery-call');
-    if (!target) return;
-    const offset = getHeaderScrollOffset();
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
-  }
-
-  function scrollUntilCardVisible() {
-    const target = document.getElementById('discovery-call');
-    if (!target) return;
-
-    let attempts = 0;
-    function tryScroll() {
-      scrollToBookingCard();
-      const offset = getHeaderScrollOffset();
-      const top = target.getBoundingClientRect().top;
-      const aligned = top >= offset - 24 && top <= offset + 48;
-      if (!aligned && attempts < 24) {
-        attempts += 1;
-        setTimeout(tryScroll, 100);
-      }
-    }
-
-    tryScroll();
-  }
-
-  function finalizeBookingReturn() {
-    handleBookingReturn();
-    void document.getElementById('discovery-call')?.offsetHeight;
-
-    function run() {
-      scrollUntilCardVisible();
-      history.replaceState(null, '', window.location.pathname + window.location.search + '#discovery-call');
-    }
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(run);
-    } else {
-      run();
-    }
-  }
-
-  function start() {
-    if (document.readyState === 'complete') {
-      finalizeBookingReturn();
-    } else {
-      window.addEventListener('load', finalizeBookingReturn, { once: true });
-    }
-  }
-
-  start();
-}
-
 function initHashNavigation() {
   function onIncludesLoaded() {
     configureBookingLinks();
+    initBookingEmbed();
     syncHeaderScrollOffset();
-    initBookingReturn();
-    if (window.location.hash && !isBookingReturn()) {
+    if (window.location.hash) {
       scheduleHashScroll('auto');
     }
   }
@@ -173,20 +135,15 @@ function initHashNavigation() {
 
   if (document.readyState !== 'loading') {
     configureBookingLinks();
-    if (isBookingReturn()) {
-      handleBookingReturn();
-    }
+    initBookingEmbed();
   } else {
     document.addEventListener('DOMContentLoaded', function () {
       configureBookingLinks();
-      if (isBookingReturn()) {
-        handleBookingReturn();
-      }
+      initBookingEmbed();
     });
   }
 
   window.addEventListener('hashchange', function () {
-    if (isBookingReturn()) return;
     syncHeaderScrollOffset();
     scrollUntilHashAligned('smooth');
   });

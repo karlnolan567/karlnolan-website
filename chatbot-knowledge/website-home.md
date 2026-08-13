@@ -82,10 +82,7 @@ We do not lock a fixed build price before system access when connectors, workpla
 
 1. **Paid project scoping** — €900 (1 day): dig into the process, check what’s feasible, write a build quote shaped by the integration. Complex Microsoft/Google workplace or multi-system work may need longer — flagged before you commit. Fee credited toward the build if you go ahead within 30 days.
 
-2. **Priced to the integration** — Build effort depends on how deep we connect into your tools. Simple wiring stays lean; complex estate or compliance work runs longer. Scoping produces a clear quote; we do not publish a one-size build price.
-   - Behind the scenes — smallest useful slice; API / sheet / SharePoint or Drive; autonomous and scheduled jobs when work can run unattended.
-   - Workplace front door — same automation with Teams or Google Chat where work already happens.
-   - Native estate tools — Microsoft or Google’s own tools when licence or compliance requires it, or a richer custom build when that isn’t needed.
+2. **Priced to the integration** — Build effort depends on how deep we connect into your tools. If we only connect a couple of tools, the build stays small. If we have to work deep inside your Microsoft/Google systems — or meet strict compliance rules — it takes longer. Scoping produces a clear quote; we do not publish a one-size build price. Full detail on what shapes the quote (behind the scenes / workplace front door / native tools): [paid scoping](scoping.html).
 
 3. **Build + thin retainer** — Optional monthly support from €250/mo. Human validation until confidence is proven — then expand. See [client results](case-studies.html).
 

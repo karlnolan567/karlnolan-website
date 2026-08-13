@@ -19,7 +19,7 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260808a',
+    partialVersion: '20260813b',
     assessmentUrl: '${ASSESSMENT_URL}',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -42,12 +42,11 @@ const SITE = {
         ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
         : '${CHAT_WARM_CACHE_URL}',
     chatGreeting: 'Hi — I\'m Ask BCAI (Bespoke Core AI Engineering). I can answer questions about Bespoke AI and this website. What would you like to know?',
+    bookingScheduleUrl: '${BOOKING_URL}',
+    bookingEmbedUrl: '${BOOKING_URL}?gv=true',
     bookingUrl: isLocalPreview
-        ? 'http://localhost:5678/webhook/booking'
-        : '${BOOKING_URL}',
-    bookingSuccessUrl: isLocalPreview
-        ? 'http://localhost:8080/index.html?call-booked=1'
-        : '${BOOKING_SUCCESS_URL}',
+        ? 'index.html#discovery-call'
+        : '${CANONICAL_URL}#discovery-call',
     googleDriveKnowledgeFolderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',
     gaMeasurementId: 'G-YBVQT5NFWE',
 };
