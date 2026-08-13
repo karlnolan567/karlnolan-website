@@ -16,9 +16,9 @@ We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric,
 
 27+ years delivering software · human-in-the-loop until you trust it
 
-Free discovery call → paid project scoping → a build quote sized to the integration → optional light monthly support.
+Free discovery call → map the workflow and agree improvements → your sign-off and a build quote → implement and deliver → optional light monthly support.
 
-[Book a Discovery Call](#) · [Paid scoping](scoping.html)
+[Book a Discovery Call](#discovery-call) · [See example pilots](#where-to-start)
 
 Cohorts opening · Sep–Dec 2026
 
@@ -32,7 +32,7 @@ Cohorts opening · Sep–Dec 2026
 
 Principal Consultant — 27+ years delivering software. Straight talk on what's worth automating, then hands-on build until it works in production.
 
-We don't guess. A 1-day [paid scoping](scoping.html) (€900) proves feasibility before you commit to a build.
+We don’t guess. On a discovery call we decide what’s worth automating — and only quote a build when the workflow and improvements are clear.
 
 [More about Karl](about.html)
 
@@ -62,7 +62,7 @@ Extract and file invoices, forms, and packs so finance and compliance stop re-ke
 - **Embeddable AI search & analysis** — Search and insight tools in new or existing client web pages.
 - **Connected workflow automation** — Complex workflows with client-owned API keys — hosted in your environment or as a turnkey service.
 
-Ready to price a build? [Paid project scoping](scoping.html) · Also available: [Agentic Impact Workshop](agentic-impact-workshop.html) · advisory at the day rate.
+Ready to talk through a build? [Book a discovery call](#discovery-call) · Also available: [Agentic Impact Workshop](agentic-impact-workshop.html) · advisory at the day rate.
 
 // Why Bespoke AI
 
@@ -71,28 +71,28 @@ Ready to price a build? [Paid project scoping](scoping.html) · Also available: 
 **vs DIY / ChatGPT — Staff on public AI tools puts data at risk**  
 We build governed agents with your own enterprise API keys, grounded in your workplace content — human review until you trust the outputs.
 
-**vs hype AI agencies — Demos are easy. Production is the job.**  
+**vs hype AI agencies — We build for production, not demos.**  
 27+ years of software delivery — not prompt theatre. Your workflow has to survive real connectors, policy, and day-two operations.
 
 // Our Process
 
 ## How Engagements Work
 
-We do not lock a fixed build price before system access when connectors, workplace policy, or data shape are unknown. Full package detail: [paid scoping](scoping.html).
+Most work follows a simple path: discovery, agree the plan, then build. Extra paid scoping is only if we both decide the systems need a deeper look first.
 
-1. **Paid project scoping** — €900 (1 day): dig into the process, check what’s feasible, write a build quote shaped by the integration. Complex Microsoft/Google workplace or multi-system work may need longer — flagged before you commit. Fee credited toward the build if you go ahead within 30 days.
+1. **Discovery call** — A free 30-minute chat to confirm fit, name the bottleneck, and decide whether automation is worth it — or not.
 
-2. **Priced to the integration** — Build effort depends on how deep we connect into your tools. If we only connect a couple of tools, the build stays small. If we have to work deep inside your Microsoft/Google systems — or meet strict compliance rules — it takes longer. Scoping produces a clear quote; we do not publish a one-size build price. Full detail on what shapes the quote (behind the scenes / workplace front door / native tools): [paid scoping](scoping.html).
+2. **Define the workflow and get sign-off** — Map how the work runs today, agree the improvements, and get your sign-off. Then you get a clear build quote — we don’t publish a one-size price.
 
-3. **Build + thin retainer** — Optional monthly support from €250/mo. Human validation until confidence is proven — then expand. See [client results](case-studies.html).
+3. **Implement and deliver** — We build with human review until you trust it. Optional light monthly support from €250/mo after go-live. See [client results](case-studies.html).
 
-[image: Workflow automation approach: find the bottleneck, automate with human validation, scale when confident.]
+[image: How engagements work: discovery call, define the workflow and get sign-off, then implement and deliver.]
 
 // Fixed-Scope Pilots
 
 ## Where to Start
 
-Example fixed-scope playbooks — useful after project scoping when the path is clear. Bring your own bottleneck on a discovery call; we still do paid project scoping before locking a custom Microsoft/Google or multi-system build.
+Example fixed-scope playbooks — useful when the path is clear. Bring your own bottleneck on a discovery call; we agree the plan and quote before locking a custom Microsoft/Google or multi-system build.
 
 Regulated Supply Chain
 
@@ -163,19 +163,17 @@ Mid-size distributor · ~120 POs/week · shared order inbox · PDF/Word attachme
 
 ## Book a Discovery Call
 
-A free 30-minute qualification chat — not the paid project scoping step. We confirm fit, then propose scoping if a build makes sense. Confidentiality agreement before you share anything sensitive.
+A free 30-minute chat to confirm fit and talk through the workflow. If a build makes sense, we map the process, agree improvements, get your sign-off, and quote the work. Confidentiality agreement before you share anything sensitive.
 
 - No pitch deck — an honest conversation about your pain points
 - If AI isn't the right fix, we'll tell you straight
 - No production access or sensitive data required upfront
-- Next paid step (when it makes sense): [project scoping](scoping.html) — €900 for one day. Complex workplace or multi-system scoping may take longer; we’ll say so before you commit. Credited toward the build if you proceed within 30 days
-- Then we quote the build from what the integration actually needs
-- After go-live: light monthly maintenance from €250/mo (monitoring and limited support)
+- If it’s a fit: define the workflow → agree improvements → sign-off → build quote → implement and deliver
 
-Pick an available slot — times are shown in GMT+1. You'll receive a calendar invite by email.
+Pick an available slot. You'll receive a calendar invite by email from Google Calendar.
 
-[Book a Discovery Call](#)
+[Book a Discovery Call](#discovery-call)
 
-Booking details are stored in Google Calendar and a confirmation is sent via Gmail. We do not sell personal data. See [privacy notice](#privacy) below.
+Bookings use Google Calendar appointment scheduling. We do not sell personal data. See [privacy notice](#privacy) below.
 
 Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)
