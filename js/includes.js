@@ -10,7 +10,9 @@
   const isAbout = page === 'about';
   const isAiEngineering = page === 'ai-engineering';
   const isCaseStudies = page === 'case-studies';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies;
+  const isPoSalesOrder = page === 'po-sales-order';
+  const isSmartInbox = page === 'smart-inbox';
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox;
   const indexPrefix = isOffHome ? 'index.html' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -31,6 +33,8 @@ function bookingHref() {
     if (section === 'about') return SITE.aboutUrl || 'about.html';
     if (section === 'ai-engineering') return SITE.aiEngineeringUrl || 'ai-engineering.html';
     if (section === 'case-studies') return SITE.caseStudiesUrl || 'case-studies.html';
+    if (section === 'po-sales-order') return SITE.poSalesOrderUrl || 'po-sales-order.html';
+    if (section === 'smart-inbox') return SITE.smartInboxUrl || 'smart-inbox.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -182,6 +186,16 @@ function bookingHref() {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
+
+      if (section === 'po-sales-order' && isPoSalesOrder) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
+
+      if (section === 'smart-inbox' && isSmartInbox) {
+        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
+        link.setAttribute('aria-current', 'page');
+      }
     });
 
     const logoLink = document.getElementById('site-logo-link');
@@ -198,7 +212,7 @@ function bookingHref() {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
     } else if (isTraining) {
       ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox) {
       ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };

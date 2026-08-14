@@ -23,7 +23,7 @@ const SITE = {
         group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260813g',
+    partialVersion: '20260814b',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -31,8 +31,10 @@ const SITE = {
     aboutUrl: 'about.html',
     aiEngineeringUrl: 'ai-engineering.html',
     caseStudiesUrl: 'case-studies.html',
+    poSalesOrderUrl: 'po-sales-order.html',
+    smartInboxUrl: 'smart-inbox.html',
     trainingUrl: 'training.html',
-    navOrder: ['offer', 'engagement', 'where-to-start', 'ai-engineering', 'about'],
+    navOrder: ['offer', 'engagement', 'where-to-start', 'po-sales-order', 'ai-engineering', 'about'],
     // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
     chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
     chatWebhookUrl: isLocalPreview

@@ -20,6 +20,8 @@ PAGES = [
     ("workshop-1.html", "workshop-1-foundations.md", "Workshop 1 — AI Foundations"),
     ("workshop-2.html", "workshop-2-engineering.md", "Workshop 2 — AI Engineering"),
     ("workshop-3.html", "workshop-3-automation.md", "Workshop 3 — Agentic Workflow Automation"),
+    ("po-sales-order.html", "po-sales-order.md", "PO → Sales Order Pilot"),
+    ("smart-inbox.html", "smart-inbox.md", "Smart Inbox Pilot"),
 ]
 
 SKIP_CLASSES = {

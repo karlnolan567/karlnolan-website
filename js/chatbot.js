@@ -108,6 +108,12 @@
     if (hash && labels[hash]) {
       return labels[hash];
     }
+    if (url.indexOf('po-sales-order.html') !== -1) {
+      return 'PO → sales order pilot';
+    }
+    if (url.indexOf('smart-inbox.html') !== -1) {
+      return 'Smart inbox pilot';
+    }
     if (url.indexOf('linkedin.com/in/karl-nolan') !== -1) {
       return 'LinkedIn';
     }

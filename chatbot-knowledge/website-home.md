@@ -18,7 +18,9 @@ We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric,
 
 Free discovery call → map the workflow and agree improvements → your sign-off and a build quote → implement and deliver → optional light monthly support.
 
-[Book a Discovery Call](#discovery-call) · [See example pilots](#where-to-start)
+[Book a Discovery Call](#discovery-call) · [PO → sales order pilot](po-sales-order.html)
+
+Other playbooks: [supplier verification & inbox triage](#where-to-start)
 
 Cohorts opening · Sep–Dec 2026
 
@@ -92,7 +94,27 @@ Most work follows a simple path: discovery, agree the plan, then build. Extra pa
 
 ## Where to Start
 
-Example fixed-scope playbooks — useful when the path is clear. Bring your own bottleneck on a discovery call; we agree the plan and quote before locking a custom Microsoft/Google or multi-system build.
+Example fixed-scope playbooks — useful when the path is clear. The [PO → sales order](po-sales-order.html) and [smart inbox](smart-inbox.html) pilots are priced offers (typical from €8,000 + VAT). For other bottlenecks we agree the plan and quote on a discovery call.
+
+Sales Operations
+
+### PO → Sales Order
+
+- **Who it's for:** Sales ops and order-desk leads at ~80+ POs/week re-keying purchase orders from a shared inbox into the ERP when buyers use nicknames, aliases, and messy line items.
+- **What you get:** Email intake (PDF/Word attachments), AI extraction, alias/SKU/price matching against live catalogs, exception flags, side-by-side approver console, and writeback only after human approval — typically live in 2–3 weeks. Typical pilots from €8,000 + VAT.
+- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval — optional auto-approve only for fully matched orders.
+
+[Fixed pilot from €8,000](po-sales-order.html) · [Case study](case-studies.html#case-study-po-so)
+
+Customer Operations
+
+### Smart Inbox Triage
+
+- **Who it's for:** Support and ops leads at ~250+ emails/week when urgent messages get lost in a flooded shared mailbox and every reply is written from scratch.
+- **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email — typically live in 2 weeks. Typical pilots from €8,000 + VAT.
+- **Typical outcome:** Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.
+
+[Fixed pilot from €8,000](smart-inbox.html) · [Case study](case-studies.html#case-study-inbox)
 
 Regulated Supply Chain
 
@@ -103,26 +125,6 @@ Regulated Supply Chain
 - **Typical outcome:** Manual research and re-keying per supplier cut from hours to minutes; every output human-reviewed until you sign off on full automation.
 
 [See case study](case-studies.html#case-study-supplier)
-
-Customer Operations
-
-### Smart Inbox Triage
-
-- **Who it's for:** Support and ops leads when urgent messages get lost in a flooded inbox and every reply is written from scratch.
-- **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email.
-- **Typical outcome:** Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.
-
-[See case study](case-studies.html#case-study-inbox)
-
-Sales Operations
-
-### PO → Sales Order
-
-- **Who it's for:** Sales ops and order-desk leads re-keying purchase orders from email into the ERP when buyers use nicknames, aliases, and messy line items.
-- **What you get:** Multi-channel PO intake (email with PDF/Word attachments), AI extraction, AI-assisted matching of customer, SKU, and pricing against your live catalogs (including aliases and nicknames), exception flags for price/SKU/duplicates, side-by-side approver console, and clean writeback only after human approval.
-- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval — optional auto-approve only for fully matched orders.
-
-[See case study](case-studies.html#case-study-po-so)
 
 Client results → [Case studies](case-studies.html) · Need something deeper? [AI Engineering & Custom Pipelines](ai-engineering.html)
 
