@@ -33,7 +33,7 @@
 }
 
 # HTTP: keep webhook POST endpoints reachable without TLS redirect (Retell/n8n).
-# Apex → www so Google never indexes a duplicate host.
+# Apex → www in one hop (avoid http→https apex then a second hop).
 :80 {
 	import common_n8n
 	handle /webhooks/* {
@@ -41,6 +41,10 @@
 	}
 	@apex host bespoke-ai.ie
 	handle @apex {
+		redir https://www.bespoke-ai.ie{uri} permanent
+	}
+	@www host www.bespoke-ai.ie
+	handle @www {
 		redir https://www.bespoke-ai.ie{uri} permanent
 	}
 	handle {
@@ -74,16 +78,11 @@ www.bespoke-ai.ie {
 	import access_log
 	tls karlnolan@bespoke-ai.ie
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	# Path redirects before imported handle routes / reverse_proxy.
+	redir /index.html / permanent
+	redir /workshop.html /workshop-3.html permanent
 	import common_n8n
 	import ai_ivr
-	# Prefer / over /index.html (clears GSC "alternative canonical").
-	handle /index.html {
-		redir / permanent
-	}
-	# Prefer real 301 over meta-refresh on workshop.html.
-	handle /workshop.html {
-		redir /workshop-3.html permanent
-	}
 	handle {
 		reverse_proxy site:8080
 	}
