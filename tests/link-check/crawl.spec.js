@@ -4,6 +4,7 @@ const {
   listHtmlPages,
   normalizeUrl,
   isSameOrigin,
+  shouldSkipCheckUrl,
   checkUrl,
 } = require('./helpers');
 
@@ -59,6 +60,7 @@ test('all page links and layout assets resolve', async ({ page }) => {
 
   const failures = [];
   for (const [url, fromSet] of referrers) {
+    if (shouldSkipCheckUrl(url)) continue;
     const outbound = !isSameOrigin(url, ORIGIN);
     const result = await checkUrl(url, { isOutbound: outbound });
     if (!result.ok) {

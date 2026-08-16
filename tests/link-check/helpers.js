@@ -42,6 +42,16 @@ function isSameOrigin(url, origin) {
   }
 }
 
+/** Optional local overrides — 404 is expected when the file is absent. */
+function shouldSkipCheckUrl(url) {
+  try {
+    const { pathname } = new URL(url);
+    return pathname.endsWith('/site-config.local.js') || pathname === '/site-config.local.js';
+  } catch {
+    return false;
+  }
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -111,6 +121,7 @@ module.exports = {
   shouldSkipHref,
   normalizeUrl,
   isSameOrigin,
+  shouldSkipCheckUrl,
   isAntiBotReachable,
   checkUrl,
 };

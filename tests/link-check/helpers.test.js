@@ -84,3 +84,18 @@ describe('isAntiBotReachable', () => {
     assert.equal(isAntiBotReachable('https://example.com/', 404), false);
   });
 });
+
+describe('shouldSkipCheckUrl', () => {
+  const { shouldSkipCheckUrl } = require('./helpers');
+
+  it('skips optional local site-config override', () => {
+    assert.equal(
+      shouldSkipCheckUrl('http://127.0.0.1:8765/js/site-config.local.js?v=1'),
+      true
+    );
+    assert.equal(
+      shouldSkipCheckUrl('http://127.0.0.1:8765/js/site-config.js'),
+      false
+    );
+  });
+});
