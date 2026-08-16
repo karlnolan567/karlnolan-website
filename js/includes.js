@@ -13,7 +13,7 @@
   const isPoSalesOrder = page === 'po-sales-order';
   const isSmartInbox = page === 'smart-inbox';
   const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox;
-  const indexPrefix = isOffHome ? 'index.html' : '';
+  const indexPrefix = isOffHome ? '/' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
 
@@ -200,7 +200,7 @@ function bookingHref() {
 
     const logoLink = document.getElementById('site-logo-link');
     if (logoLink) {
-      logoLink.href = isOffHome ? 'index.html' : '#';
+      logoLink.href = isOffHome ? '/' : '#';
     }
 
     let ctaConfig;
@@ -213,7 +213,7 @@ function bookingHref() {
     } else if (isTraining) {
       ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
     } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox) {
-      ctaConfig = { href: (indexPrefix || 'index.html') + '#discovery-call', text: 'Get in Touch' };
+      ctaConfig = { href: '/#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };
     }

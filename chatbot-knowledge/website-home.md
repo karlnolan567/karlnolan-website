@@ -1,6 +1,6 @@
 ---
 title: Bespoke AI — Home Page
-source: https://www.bespoke-ai.ie/index.html
+source: https://www.bespoke-ai.ie/
 scope: website-knowledge
 ---
 

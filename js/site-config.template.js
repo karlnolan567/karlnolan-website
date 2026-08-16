@@ -19,7 +19,7 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260816b',
+    partialVersion: '20260816c',
     assessmentUrl: '${ASSESSMENT_URL}',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -47,7 +47,7 @@ const SITE = {
     bookingScheduleUrl: '${BOOKING_URL}',
     bookingEmbedUrl: '${BOOKING_URL}?gv=true',
     bookingUrl: isLocalPreview
-        ? 'index.html#discovery-call'
+        ? '/#discovery-call'
         : '${CANONICAL_URL}#discovery-call',
     googleDriveKnowledgeFolderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',
     gaMeasurementId: 'G-YBVQT5NFWE',

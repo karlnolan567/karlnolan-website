@@ -23,7 +23,7 @@ const SITE = {
         group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260816b',
+    partialVersion: '20260816c',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -51,7 +51,7 @@ const SITE = {
         'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UKPIrCb8p6jWtnEqzB2RUlMEF8nMcT4fkRaG9LA0je9CCptn8WCIaq_LRsQNTNYFjYaTIApYL?gv=true',
     // Site CTAs scroll to the home embed; full Google page is bookingScheduleUrl.
     bookingUrl: isLocalPreview
-        ? 'index.html#discovery-call'
+        ? '/#discovery-call'
         : 'https://www.bespoke-ai.ie/#discovery-call',
     googleDriveKnowledgeFolderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',
     gaMeasurementId: 'G-YBVQT5NFWE',
