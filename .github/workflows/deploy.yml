@@ -20,4 +20,5 @@ jobs:
             cd /opt/web_site
             git pull origin main
             docker compose up -d --build
+            docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile
             docker compose ps
