@@ -20,5 +20,10 @@ jobs:
             cd /opt/web_site
             git pull origin main
             docker compose up -d --build
-            docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile
+            # Recreate edge proxy so volume-mounted Caddyfile is always applied
+            # (caddy reload can no-op if admin API state is stale).
+            docker compose up -d --force-recreate --no-deps caddy
             docker compose ps
+            # Smoke: apex and /index.html must 301/308 to www canonical URLs
+            curl -sI -o /dev/null -w "apex:%{http_code}:%{redirect_url}\n" https://bespoke-ai.ie/ || true
+            curl -sI -o /dev/null -w "index:%{http_code}:%{redirect_url}\n" https://www.bespoke-ai.ie/index.html || true

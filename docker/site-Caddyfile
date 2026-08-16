@@ -1,4 +1,6 @@
 :8080 {
+	redir /index.html / permanent
+	redir /workshop.html /workshop-3.html permanent
 	root * /srv
 	file_server
 	encode gzip
