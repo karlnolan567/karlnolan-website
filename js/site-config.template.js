@@ -19,7 +19,7 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260814b',
+    partialVersion: '20260816b',
     assessmentUrl: '${ASSESSMENT_URL}',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -34,7 +34,7 @@ const SITE = {
         individual: '',
         group: '',
     },
-    navOrder: ['offer', 'engagement', 'where-to-start', 'po-sales-order', 'ai-engineering', 'about'],
+    navOrder: ['offer', 'engagement', 'where-to-start', 'ai-engineering', 'about'],
     // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
     chatEmbedUrl: '${CHAT_EMBED_URL}',
     chatWebhookUrl: isLocalPreview

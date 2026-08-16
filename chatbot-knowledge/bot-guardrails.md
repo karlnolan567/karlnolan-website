@@ -50,7 +50,7 @@ Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, 
 | --- | --- | --- |
 | Process / how we work | How we work | [How we work](https://www.bespoke-ai.ie/#engagement) |
 | About Karl / company | About | [About](https://www.bespoke-ai.ie/#about) |
-| Pilots / where to start | Where to start | [Where to start](https://www.bespoke-ai.ie/#where-to-start) |
+| Playbooks / where to start | Where to start | [Where to start](https://www.bespoke-ai.ie/#where-to-start) |
 | PO → sales order pilot | PO → sales order pilot | [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) |
 | Smart inbox pilot | Smart inbox pilot | [Smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html) |
 | AI engineering | Engineering | [Engineering](https://www.bespoke-ai.ie/#ai-engineering) |
