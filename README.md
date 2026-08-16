@@ -15,6 +15,19 @@ Open http://127.0.0.1:8765/
 
 Use a local HTTP server (not `file://`) so shared header/footer partials load correctly.
 
+## Tests
+
+Link crawl (static server + header/footer partials) and Docker smoke:
+
+```bash
+npm ci
+npx playwright install chromium   # CI / first time; local macOS uses system Chrome
+npm test                          # unit + Playwright crawl (includes outbound with retries)
+npm run test:docker-smoke         # requires Docker Desktop; build/run site image; GET every *.html
+```
+
+On push to `main`, GitHub Actions runs both checks and only then SSHs to the VPS to deploy. Outbound hosts that block bots (LinkedIn 999, Google Forms 401/403) count as reachable.
+
 ### Chat widget (GenAI embed)
 
 The site loads the GenAI Cloud Run assistant in an iframe when `SITE.chatEmbedUrl` is set (see [`js/site-config.js`](js/site-config.js) / `CHAT_EMBED_URL` in [`.env.example`](.env.example)). Clear that value to fall back to the n8n Ask BCAI widget.

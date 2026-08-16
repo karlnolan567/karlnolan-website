@@ -1,0 +1,12 @@
+{
+  "name": "bespoke-ai-website",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:unit && playwright test",
+    "test:unit": "node --test tests/link-check/helpers.test.js",
+    "test:docker-smoke": "node tests/link-check/docker-smoke.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

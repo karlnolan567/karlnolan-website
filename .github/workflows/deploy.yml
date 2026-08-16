@@ -6,7 +6,31 @@ on:
   workflow_dispatch:
 
 jobs:
+  link-crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+
+  docker-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:docker-smoke
+
   deploy:
+    needs: [link-crawl, docker-smoke]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy over SSH

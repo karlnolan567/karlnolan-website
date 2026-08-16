@@ -19,3 +19,8 @@ docs/*
 # Caddy access logs (runtime)
 docker/logs/*
 !docker/logs/.gitkeep
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
