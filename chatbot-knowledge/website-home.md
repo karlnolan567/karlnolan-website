@@ -8,7 +8,7 @@ scope: website-knowledge
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
-# We build custom solutions right inside your existing software—using standard automation, with targeted AI only when necessary. We turn a 30-minute manual task into a quick 2-second approval.
+# We build custom solutions right inside your existing software, using standard automation, with targeted AI only when necessary. We turn a 30-minute manual task into a quick 2-second approval.
 
 Save time and money, and also reduce errors - without losing control of data or delivery.
 
