@@ -84,11 +84,11 @@ Most work follows a simple path: discovery, agree the plan, then build. Extra pa
 
 1. **Discovery call** — A free 30-minute chat to confirm fit, name the bottleneck, and decide whether automation is worth it — or not.
 
-2. **Define the workflow and get sign-off** — Map how the work runs today, agree the improvements, and get your sign-off. Then you get a clear build quote — we don’t publish a one-size price.
+2. **Map the process, improve it, then automate** — We map the existing process, improve it, then automate.
 
 3. **Implement and deliver** — We build with human review until you trust it. Optional light monthly support from €250/mo after go-live. See [client results](case-studies.html).
 
-[image: How engagements work: discovery call, define the workflow and get sign-off, then implement and deliver.]
+[image: How engagements work: discovery call, map the process and improve it, then implement and deliver.]
 
 // Fixed-Scope Pilots
 
@@ -170,7 +170,7 @@ A free 30-minute chat to confirm fit and talk through the workflow. If a build m
 - No pitch deck — an honest conversation about your pain points
 - If AI isn't the right fix, we'll tell you straight
 - No production access or sensitive data required upfront
-- If it’s a fit: define the workflow → agree improvements → sign-off → build quote → implement and deliver
+- If it’s a fit: map the process → improve it → automate → implement and deliver
 
 Pick an available slot. You'll receive a calendar invite by email from Google Calendar.
 
