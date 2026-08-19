@@ -1,0 +1,128 @@
+Fundamentals of AI — Booking Setup
+==================================
+
+Two paths:
+
+  INDIVIDUAL  →  Web App wizard (details → Stripe Checkout) + capacity sheet
+  GROUP       →  Google Form enquiry (you agree date/time with the client)
+
+Do NOT use create-fundamentals-forms.gs for individuals anymore — use this flow.
+
+
+OPTION A — Apps Script (recommended)
+------------------------------------
+
+1. Open https://script.google.com → New project
+   Name it: Fundamentals Booking
+
+2. Replace Code.gs with the contents of:
+   lead-intake/fundamentals-booking.gs
+
+3. File → New → HTML file
+   Name must be exactly: IndividualBooking
+   Paste contents of: lead-intake/IndividualBooking.html
+
+4. Code.gs already points at the shared workbook:
+   Spreadsheet ID 1ZDS2nBLfHIh_3HTncYpq6paplElVAJX56Gx02MBW7es
+   ("Trainings Details and Bookings 2026")
+
+5. Run setupFundamentalsBooking (select from dropdown → Run)
+   Authorize when prompted. This seeds TrainingDetails + Bookings on that
+   shared sheet and creates the group form.
+
+   If the sheet tabs are already filled and you only need to bind
+   the script: run bindExistingSpreadsheetOnly instead, then create
+   the group form once (or paste an existing group form URL into
+   Script properties as FUNDAMENTALS_GROUP_FORM_URL).
+
+6. Project Settings → Script properties — add:
+   STRIPE_SECRET_KEY = sk_test_… (then sk_live_… when ready)
+   Optional: STRIPE_CURRENCY = eur
+
+7. If Bookings already existed before Stripe, run ensureBookingsPaymentColumns
+   once (adds payment_status, stripe_session_id, amount_eur).
+
+8. Open the Execution log — note:
+   - Spreadsheet URL (should be the shared workbook)
+   - Group form URL
+
+9. Deploy → New deployment → Type: Web app
+   - Description: Fundamentals individual booking
+   - Execute as: Me
+   - Who has access: Anyone
+   → Deploy → copy the Web app URL
+
+10. Paste into js/site-config.js:
+
+   fundamentalsFormUrls: {
+       individual: 'https://script.google.com/macros/s/XXXX/exec',
+       group:      'https://docs.google.com/forms/d/e/YYYY/viewform',
+   },
+
+11. training.html CTAs pick these up automatically.
+
+
+Managing courses (Sheet tab: TrainingDetails)
+---------------------------------------------
+
+Shared workbook for all training. Rename the file as you like — the script
+binds by spreadsheet ID and does not rename it.
+
+Columns (header names matter; order can vary):
+
+  course_id      Unique id (e.g. FUND-2026-0914-HALF)
+  name           Display name
+  date           Session date
+  place          Venue
+  total_places   Hard cap (e.g. 12)
+  booked_count   Filled automatically after successful Stripe payment
+  active         TRUE/FALSE — set FALSE to hide without deleting
+  sku            Half-day / full-day label (drives €125 / €210 pricing)
+  type           Training line — this Web App only shows type = Fundamentals
+
+A course appears for booking only if:
+  type = Fundamentals  (case-insensitive)
+  AND active = TRUE
+  AND date >= today
+  AND booked_count < total_places
+
+Sample September / October rows are created when you run setupFundamentalsBooking —
+edit or delete them. Optional manual paste files (if seeding before Apps Script):
+
+  lead-intake/courses-seed.tsv   → paste into A1 on a tab named TrainingDetails
+  lead-intake/bookings-header.tsv → paste into A1 on a tab named Bookings
+
+Bookings land on the Bookings tab (includes payment_status, stripe_session_id,
+amount_eur). Group form responses also go to the same spreadsheet
+(Forms creates its own response sheet/tab).
+
+
+Group form
+----------
+
+Stays free-form: preferred dates, headcount 6–12, Gemini readiness, venue.
+No public course picker — you negotiate the date by email. Payment for groups
+is still arranged after enquiry.
+
+
+Payment (individual wizard)
+---------------------------
+
+1. Step 1 — details + GDPR
+2. Step 2 — order summary → Stripe Checkout Session
+3. On success redirect, seats are reserved and a Bookings row is written
+   (payment_status=paid). Stripe emails the receipt.
+
+Prices (inc. VAT as listed): Half-day €125 / seat, Full-day €210 / seat.
+No Stripe Payment Links required — Checkout uses price_data.
+
+Test with sk_test_… then switch Script property to sk_live_… and redeploy.
+
+
+WARNING
+-------
+
+Re-running setupFundamentalsBooking on the shared workbook rebuilds
+TrainingDetails/Bookings from sample data and creates a NEW group form.
+Prefer editing the existing TrainingDetails sheet for new dates, or use
+bindExistingSpreadsheetOnly when sheets are already correct.

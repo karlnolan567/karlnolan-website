@@ -1,0 +1,4 @@
+course_id	name	date	place	total_places	booked_count	active	sku	type
+FUND-2026-0914-HALF	Fundamentals of AI — Half-day	2026-09-14	Limerick Chamber Reading Room	12	0	TRUE	Half-day — €125 / seat (Modules 1–2)	Fundamentals
+FUND-2026-0914-FULL	Fundamentals of AI — Full-day	2026-09-14	Limerick Chamber Reading Room	12	0	TRUE	Full-day — €210 / seat (Modules 1–4)	Fundamentals
+FUND-2026-1005-HALF	Fundamentals of AI — Half-day	2026-10-05	Limerick Chamber Reading Room	12	0	TRUE	Half-day — €125 / seat (Modules 1–2)	Fundamentals

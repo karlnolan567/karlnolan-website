@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-black: #0f1a2b;
+      --color-dark: #152238;
+      --color-slate: #1f3049;
+      --color-neon-blue: #3b82f6;
+      --color-neon-teal: #06b6d4;
+      --color-neon-green: #10b981;
+      --color-text: #e8edf3;
+      --color-text-muted: #b8c5d3;
+      --color-text-dim: #94a8bc;
+      --color-text-faint: #7d93a8;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background-color: var(--color-black);
+      color: var(--color-text);
+      line-height: 1.5;
+      padding: 2rem 1rem 3rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::selection, ::selection {
+      background-color: var(--color-neon-blue);
+      color: #fff;
+    }
+    .wrap { max-width: 44rem; margin: 0 auto; }
+    .card {
+      background: var(--color-dark);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+    .card-head {
+      padding: 1.75rem 1.75rem 1.35rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(600px 180px at 0% 0%, rgba(59, 130, 246, 0.18), transparent 60%),
+        radial-gradient(500px 160px at 100% 0%, rgba(6, 182, 212, 0.12), transparent 55%),
+        var(--color-dark);
+    }
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-neon-teal);
+    }
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--color-text);
+    }
+    .lead {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      max-width: 36rem;
+    }
+    .steps {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.15rem;
+    }
+    .step-pill {
+      flex: 1;
+      padding: 0.55rem 0.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 26, 43, 0.45);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      text-align: center;
+    }
+    .step-pill.active {
+      color: var(--color-text);
+      border-color: rgba(6, 182, 212, 0.45);
+      background: rgba(6, 182, 212, 0.12);
+    }
+    .step-pill.done {
+      color: var(--color-neon-green);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    .card-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .section-label {
+      margin: 0 0 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+    }
+    .field { min-width: 0; display: flex; flex-direction: column; gap: 0.375rem; }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .optional {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: normal;
+      color: var(--color-text-faint);
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.625rem 0.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(15, 26, 43, 0.6);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    input::placeholder, textarea::placeholder { color: var(--color-text-faint); }
+    input:hover, select:hover, textarea:hover { border-color: rgba(255, 255, 255, 0.2); }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: rgba(16, 185, 129, 0.5);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%2394a8bc' stroke-width='1.5' d='M1.2 1.5L6 6.1l4.8-4.6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      background-color: rgba(15, 26, 43, 0.6);
+      padding-right: 2.25rem;
+    }
+    select option { background: var(--color-dark); color: var(--color-text); }
+    textarea { min-height: 4rem; resize: vertical; }
+    .course-hint {
+      margin: 0.15rem 0 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text);
+      line-height: 1.45;
+      min-height: 1.25em;
+    }
+    .course-hint:not(:empty) {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--color-neon-teal);
+    }
+    .divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 1.35rem 0;
+    }
+    .check {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--color-text-dim);
+      line-height: 1.45;
+      cursor: pointer;
+    }
+    .check input {
+      width: auto;
+      margin-top: 0.2rem;
+      accent-color: var(--color-neon-teal);
+    }
+    .actions {
+      margin-top: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0.65rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 1rem 2rem;
+      border: 0;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(to right, var(--color-neon-blue), var(--color-neon-teal));
+      box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.15);
+      cursor: pointer;
+      transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 20px 25px -5px rgba(6, 182, 212, 0.2);
+      transform: translateY(-2px);
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: none;
+      transform: none;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--color-text-muted);
+      box-shadow: none;
+      font-weight: 700;
+    }
+    .btn-secondary:hover {
+      filter: none;
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--color-text);
+      transform: none;
+      box-shadow: none;
+    }
+    .summary {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      background: rgba(15, 26, 43, 0.45);
+      padding: 1rem 1.1rem;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+    .summary-row span:last-child { color: var(--color-text); text-align: right; }
+    .summary-row.total {
+      margin-top: 0.35rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 700;
+      color: var(--color-text);
+      font-size: 1rem;
+    }
+    .summary-row.total span:last-child { color: var(--color-neon-teal); }
+    .msg {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+    }
+    .msg.err {
+      background: rgba(248, 113, 113, 0.12);
+      color: #fca5a5;
+      border-color: rgba(248, 113, 113, 0.25);
+    }
+    .msg.ok {
+      background: rgba(16, 185, 129, 0.12);
+      color: #6ee7b7;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+    .empty, #loading, #confirming {
+      padding: 1.25rem 1.75rem 1.75rem;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+    .success-panel {
+      padding: 1.5rem 1.75rem 1.75rem;
+    }
+    .success-panel h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      color: #6ee7b7;
+    }
+    .success-panel > p {
+      margin: 0 0 1.25rem;
+      color: var(--color-text-muted);
+    }
+    .success-panel .summary {
+      margin-bottom: 1.25rem;
+    }
+    .success-note {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    a.btn {
+      text-decoration: none;
+      margin-top: 0.75rem;
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 640px) {
+      body { padding: 1rem 0.75rem 2rem; }
+      .card-head, .card-body, .success-panel { padding-left: 1.15rem; padding-right: 1.15rem; }
+      .grid, .actions-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="card-head">
+        <p class="eyebrow">Bespoke AI · Training</p>
+        <h1>Book individual seat(s)</h1>
+        <p class="lead">Choose a Fundamentals of AI date, then pay securely with Stripe.</p>
+        <div class="steps" id="step-indicator">
+          <div class="step-pill active" id="pill-1">1 · Details</div>
+          <div class="step-pill" id="pill-2">2 · Payment</div>
+          <div class="step-pill" id="pill-3">3 · Confirmed</div>
+        </div>
+      </div>
+
+      <div id="loading">Loading available courses…</div>
+      <div id="confirming" class="hidden">Confirming your payment…</div>
+      <div id="empty" class="empty hidden">No open courses with seats right now. Check back soon, or enquire about a private group.</div>
+
+      <div id="success-panel" class="success-panel hidden">
+        <h2>Payment successful</h2>
+        <p id="success-text">Your place is booked. Download your paid invoice below.</p>
+        <div class="summary" id="success-summary"></div>
+        <div class="actions" id="receipt-actions" style="margin-top:1rem;">
+          <button class="btn" id="pdf-btn" type="button">Download paid invoice (PDF)</button>
+          <a id="receipt-link" class="btn btn-secondary hidden" href="#" target="_blank" rel="noopener">View Stripe receipt</a>
+        </div>
+        <p class="success-note">Questions? Contact info@bespoke-ai.ie.</p>
+      </div>
+
+      <form id="booking-form" class="card-body hidden">
+        <div id="step-1">
+          <p class="section-label">Course</p>
+          <div class="grid">
+            <div class="field full">
+              <label for="courseId">Training course</label>
+              <select id="courseId" name="courseId" required>
+                <option value="">Select a course…</option>
+              </select>
+              <p id="course-hint" class="course-hint"></p>
+            </div>
+            <div class="field" id="seats-field">
+              <label for="seats">Number of seats</label>
+              <input id="seats" name="seats" type="number" min="1" value="1" required>
+            </div>
+            <div class="field hidden" id="attendee-field">
+              <label for="attendeeNames">Other attendee names</label>
+              <textarea id="attendeeNames" name="attendeeNames" placeholder="One name per line"></textarea>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <p class="section-label">Your details</p>
+          <div class="grid">
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="company">Company <span class="optional">(optional)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <p class="section-label">Gemini readiness</p>
+          <div class="grid">
+            <div class="field">
+              <label for="geminiAccess">Gemini access</label>
+              <select id="geminiAccess" name="geminiAccess" required>
+                <option value="">Select…</option>
+                <option>Free Gemini</option>
+                <option>Google Workspace Business / Enterprise (or equivalent)</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="geminiExperience">Gemini experience</label>
+              <select id="geminiExperience" name="geminiExperience" required>
+                <option value="">Select…</option>
+                <option>Never used Gemini</option>
+                <option>Tried a few times</option>
+                <option>Use regularly</option>
+                <option>Power user</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <p class="section-label">Anything else</p>
+          <div class="grid">
+            <div class="field">
+              <label for="hearAbout">How did you hear about us? <span class="optional">(optional)</span></label>
+              <select id="hearAbout" name="hearAbout">
+                <option value="">Select…</option>
+                <option>LinkedIn</option>
+                <option>Limerick Chamber / Skillnet</option>
+                <option>Google search</option>
+                <option>Referral</option>
+                <option>Main website</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="notes">Notes <span class="optional">(optional)</span></label>
+              <textarea id="notes" name="notes"></textarea>
+            </div>
+            <div class="field full">
+              <label class="check">
+                <input id="consent" type="checkbox" required>
+                <span>I understand this requests seats on the selected date and I agree to be contacted about this booking (GDPR).</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="continue-btn" type="button" disabled>Continue to payment</button>
+          </div>
+        </div>
+
+        <div id="step-2" class="hidden">
+          <p class="section-label">Order summary</p>
+          <div class="summary" id="order-summary"></div>
+          <div class="actions">
+            <div class="actions-row">
+              <button class="btn btn-secondary" id="back-btn" type="button">Back</button>
+              <button class="btn" id="pay-btn" type="button">Pay with Stripe</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="msg" class="msg hidden" role="status"></div>
+  </div>
+
+  <script>
+    /*__RETURN_PARAMS__*/
+    var coursesById = {};
+    var draft = null;
+    var lastSessionId = '';
+
+    function qs(name) {
+      var fromInject = window.__RETURN__ && window.__RETURN__[name === 'session_id' ? 'sessionId' : name];
+      if (fromInject) return fromInject;
+      var params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function showMsg(text, ok) {
+      var el = document.getElementById('msg');
+      el.textContent = text;
+      el.className = 'msg ' + (ok ? 'ok' : 'err');
+      el.classList.remove('hidden');
+    }
+
+    function hideMsg() {
+      document.getElementById('msg').classList.add('hidden');
+    }
+
+    function euro(n) {
+      return '€' + Number(n).toLocaleString('en-IE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function maskPaymentRef_(id) {
+      var s = String(id || '');
+      if (s.length <= 15) return s;
+      return s.substring(0, 5) + '....' + s.substring(s.length - 10);
+    }
+
+    function courseLabel(c) {
+      // Pad single-digit days so "Mon 05 Oct" and "Mon 14 Sep" align in the native <select>
+      var date = String(c.dateLabel || '').replace(/^(\w{3}) (\d) /, '$1 0$2 ');
+      return date + '  —  ' + c.name;
+    }
+
+    function setStep(step) {
+      document.getElementById('step-1').classList.toggle('hidden', step !== 1);
+      document.getElementById('step-2').classList.toggle('hidden', step !== 2);
+      document.getElementById('pill-1').className = 'step-pill' + (step === 1 ? ' active' : (step > 1 ? ' done' : ''));
+      document.getElementById('pill-2').className = 'step-pill' + (step === 2 ? ' active' : (step > 2 ? ' done' : ''));
+      document.getElementById('pill-3').className = 'step-pill' + (step === 3 ? ' active' : '');
+    }
+
+    function onCourseChange() {
+      var id = document.getElementById('courseId').value;
+      var hint = document.getElementById('course-hint');
+      var seats = document.getElementById('seats');
+      if (!id || !coursesById[id]) {
+        hint.textContent = '';
+        seats.removeAttribute('max');
+        syncAttendeeField();
+        return;
+      }
+      var c = coursesById[id];
+      hint.textContent = c.place + ' · ' + c.remaining + ' of ' + c.totalPlaces + ' seats left';
+      seats.max = c.remaining;
+      if (Number(seats.value) > c.remaining) seats.value = c.remaining;
+      syncAttendeeField();
+    }
+
+    function syncAttendeeField() {
+      var seats = Number(document.getElementById('seats').value) || 1;
+      var attendeeField = document.getElementById('attendee-field');
+      var seatsField = document.getElementById('seats-field');
+      var attendeeInput = document.getElementById('attendeeNames');
+      if (seats <= 1) {
+        attendeeField.classList.add('hidden');
+        seatsField.classList.add('full');
+        attendeeInput.value = '';
+      } else {
+        attendeeField.classList.remove('hidden');
+        seatsField.classList.remove('full');
+      }
+    }
+
+    function syncContinueEnabled() {
+      document.getElementById('continue-btn').disabled = !document.getElementById('consent').checked;
+    }
+
+    function collectDraft() {
+      var courseId = document.getElementById('courseId').value;
+      if (!courseId || !coursesById[courseId]) {
+        showMsg('Please select a course.', false);
+        return null;
+      }
+      var seats = Number(document.getElementById('seats').value) || 0;
+      var remaining = coursesById[courseId].remaining;
+      if (seats < 1 || seats > remaining) {
+        showMsg('Seats must be between 1 and ' + remaining + '.', false);
+        return null;
+      }
+      var fullName = document.getElementById('fullName').value.trim();
+      var email = document.getElementById('email').value.trim();
+      if (!fullName || !email) {
+        showMsg('Name and email are required.', false);
+        return null;
+      }
+      var geminiAccess = document.getElementById('geminiAccess').value;
+      var geminiExperience = document.getElementById('geminiExperience').value;
+      if (!geminiAccess || !geminiExperience) {
+        showMsg('Please answer the Gemini questions.', false);
+        return null;
+      }
+      if (!document.getElementById('consent').checked) {
+        showMsg('Please confirm GDPR consent.', false);
+        return null;
+      }
+      var course = coursesById[courseId];
+      return {
+        courseId: courseId,
+        seats: seats,
+        fullName: fullName,
+        email: email,
+        phone: document.getElementById('phone').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        geminiAccess: geminiAccess,
+        geminiExperience: geminiExperience,
+        attendeeNames: document.getElementById('attendeeNames').value.trim(),
+        hearAbout: document.getElementById('hearAbout').value,
+        notes: document.getElementById('notes').value.trim(),
+        unitPriceEur: course.unitPriceEur || 0
+      };
+    }
+
+    function renderSummary(d) {
+      var c = coursesById[d.courseId];
+      var total = d.unitPriceEur * d.seats;
+      document.getElementById('order-summary').innerHTML =
+        '<div class="summary-row"><span>Course</span><span>' + c.name + '</span></div>' +
+        '<div class="summary-row"><span>Date</span><span>' + c.dateLabel + '</span></div>' +
+        '<div class="summary-row"><span>Venue</span><span>' + c.place + '</span></div>' +
+        '<div class="summary-row"><span>Seats</span><span>' + d.seats + ' × ' + euro(d.unitPriceEur) + '</span></div>' +
+        '<div class="summary-row"><span>Total</span><span>' + euro(total) + '</span></div>' +
+        '<div class="summary-row"><span>Booked for</span><span>' + d.fullName + '</span></div>';
+    }
+
+    function renderCourses(courses) {
+      document.getElementById('loading').classList.add('hidden');
+      if (!courses || !courses.length) {
+        document.getElementById('empty').classList.remove('hidden');
+        return;
+      }
+      document.getElementById('booking-form').classList.remove('hidden');
+      var select = document.getElementById('courseId');
+      select.innerHTML = '<option value="">Select a course…</option>';
+      courses.forEach(function (c) {
+        coursesById[c.courseId] = c;
+        var opt = document.createElement('option');
+        opt.value = c.courseId;
+        opt.textContent = courseLabel(c);
+        select.appendChild(opt);
+      });
+      onCourseChange();
+    }
+
+    function showSuccess(res) {
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('confirming').classList.add('hidden');
+      document.getElementById('booking-form').classList.add('hidden');
+      document.getElementById('empty').classList.add('hidden');
+      document.getElementById('msg').classList.add('hidden');
+      document.getElementById('success-panel').classList.remove('hidden');
+      document.getElementById('success-text').textContent =
+        (res && res.message) || 'Your place is booked. Download your paid invoice below.';
+      setStep(3);
+
+      if (res && res.sessionId) lastSessionId = res.sessionId;
+
+      var b = (res && res.booking) || {};
+      var rows = '';
+      if (b.courseName) rows += '<div class="summary-row"><span>Course</span><span>' + b.courseName + '</span></div>';
+      if (b.dateLabel) rows += '<div class="summary-row"><span>Date</span><span>' + b.dateLabel + '</span></div>';
+      if (b.place) rows += '<div class="summary-row"><span>Venue</span><span>' + b.place + '</span></div>';
+      if (b.seats) rows += '<div class="summary-row"><span>Seats</span><span>' + b.seats + '</span></div>';
+      if (b.fullName) rows += '<div class="summary-row"><span>Name</span><span>' + b.fullName + '</span></div>';
+      if (b.email) rows += '<div class="summary-row"><span>Email</span><span>' + b.email + '</span></div>';
+      if (b.amountEur != null && b.amountEur !== '') {
+        rows += '<div class="summary-row"><span>Paid</span><span>' + euro(b.amountEur) + '</span></div>';
+      }
+      if (lastSessionId) {
+        rows += '<div class="summary-row"><span>Payment reference</span><span>' +
+          maskPaymentRef_(lastSessionId) + '</span></div>';
+      }
+      document.getElementById('success-summary').innerHTML = rows;
+
+      var receiptLink = document.getElementById('receipt-link');
+      if (res && res.receiptUrl) {
+        receiptLink.href = res.receiptUrl;
+        receiptLink.classList.remove('hidden');
+      } else {
+        receiptLink.href = '#';
+        receiptLink.classList.add('hidden');
+      }
+
+      var pdfBtn = document.getElementById('pdf-btn');
+      pdfBtn.disabled = !lastSessionId;
+      pdfBtn.textContent = 'Download paid invoice (PDF)';
+    }
+
+    function downloadReceiptPdf() {
+      if (!lastSessionId) {
+        showMsg('Missing payment session — refresh from your Stripe return link.', false);
+        return;
+      }
+      var btn = document.getElementById('pdf-btn');
+      btn.disabled = true;
+      btn.textContent = 'Preparing PDF…';
+      google.script.run
+        .withSuccessHandler(function (res) {
+          btn.disabled = false;
+          btn.textContent = 'Download paid invoice (PDF)';
+          if (!res || !res.ok || !res.base64) {
+            showMsg((res && res.error) || 'Could not generate PDF.', false);
+            return;
+          }
+          var a = document.createElement('a');
+          a.href = 'data:application/pdf;base64,' + res.base64;
+          a.download = res.filename || 'Bespoke-AI-receipt.pdf';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        })
+        .withFailureHandler(function (err) {
+          btn.disabled = false;
+          btn.textContent = 'Download paid invoice (PDF)';
+          showMsg(err.message || String(err), false);
+        })
+        .getBookingReceiptPdf(lastSessionId);
+    }
+
+    function handleStripeReturn(paid, sessionId, cancelled) {
+      if (paid === '1' && sessionId) {
+        lastSessionId = sessionId;
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('confirming').classList.remove('hidden');
+        document.getElementById('step-indicator').classList.remove('hidden');
+        setStep(2);
+
+        google.script.run
+          .withSuccessHandler(function (res) {
+            document.getElementById('confirming').classList.add('hidden');
+            if (res && res.ok) {
+              showSuccess(res);
+            } else {
+              document.getElementById('booking-form').classList.remove('hidden');
+              setStep(1);
+              showMsg((res && res.error) || 'Could not confirm booking.', false);
+              google.script.run.withSuccessHandler(renderCourses).listAvailableCourses();
+            }
+          })
+          .withFailureHandler(function (err) {
+            document.getElementById('confirming').classList.add('hidden');
+            document.getElementById('booking-form').classList.remove('hidden');
+            setStep(1);
+            showMsg(err.message || String(err), false);
+            google.script.run.withSuccessHandler(renderCourses).listAvailableCourses();
+          })
+          .confirmPaidBooking(sessionId);
+        return;
+      }
+
+      if (cancelled === '1') {
+        showMsg('Payment cancelled — you can review details and try again.', false);
+        setStep(2);
+      }
+      google.script.run
+        .withSuccessHandler(function (courses) {
+          renderCourses(courses);
+          if (cancelled === '1') setStep(1);
+        })
+        .withFailureHandler(function (err) {
+          document.getElementById('loading').textContent = 'Could not load courses: ' + err.message;
+        })
+        .listAvailableCourses();
+    }
+
+    document.getElementById('courseId').addEventListener('change', onCourseChange);
+    document.getElementById('seats').addEventListener('input', syncAttendeeField);
+    document.getElementById('seats').addEventListener('change', syncAttendeeField);
+    document.getElementById('consent').addEventListener('change', syncContinueEnabled);
+    document.getElementById('pdf-btn').addEventListener('click', downloadReceiptPdf);
+    syncAttendeeField();
+    syncContinueEnabled();
+
+    document.getElementById('continue-btn').addEventListener('click', function () {
+      hideMsg();
+      draft = collectDraft();
+      if (!draft) return;
+      if (!draft.unitPriceEur) {
+        showMsg('Could not determine price for this course.', false);
+        return;
+      }
+      renderSummary(draft);
+      setStep(2);
+    });
+
+    document.getElementById('back-btn').addEventListener('click', function () {
+      hideMsg();
+      setStep(1);
+    });
+
+    document.getElementById('pay-btn').addEventListener('click', function () {
+      hideMsg();
+      if (!draft) {
+        setStep(1);
+        showMsg('Please complete your details first.', false);
+        return;
+      }
+      var btn = document.getElementById('pay-btn');
+      btn.disabled = true;
+      btn.textContent = 'Redirecting to Stripe…';
+
+      google.script.run
+        .withSuccessHandler(function (res) {
+          if (res && res.ok && res.checkoutUrl) {
+            window.top.location.href = res.checkoutUrl;
+            return;
+          }
+          btn.disabled = false;
+          btn.textContent = 'Pay with Stripe';
+          showMsg((res && res.error) || 'Could not start payment.', false);
+        })
+        .withFailureHandler(function (err) {
+          btn.disabled = false;
+          btn.textContent = 'Pay with Stripe';
+          showMsg(err.message || String(err), false);
+        })
+        .createCheckoutSession(draft);
+    });
+
+    // Prefer server-injected return params; fall back to google.script.url / location
+    (function boot() {
+      var paid = qs('paid');
+      var sessionId = qs('session_id');
+      var cancelled = qs('cancelled');
+      if (paid || sessionId || cancelled) {
+        handleStripeReturn(paid, sessionId, cancelled);
+        return;
+      }
+      if (typeof google !== 'undefined' && google.script && google.script.url && google.script.url.getLocation) {
+        google.script.url.getLocation(function (loc) {
+          var p = (loc && loc.parameter) || {};
+          handleStripeReturn(p.paid || '', p.session_id || '', p.cancelled || '');
+        });
+        return;
+      }
+      handleStripeReturn('', '', '');
+    })();
+  </script>
+</body>
+</html>
