@@ -8,9 +8,9 @@ scope: website-knowledge
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
-# Eliminate manual bottlenecks with governed AI workflows — in the cloud, in your Microsoft or Google workplace, or on your web pages.
+# We build custom solutions right inside your existing software—using standard automation, with targeted AI only when necessary. We turn a 30-minute manual task into a quick 2-second approval.
 
-For ops and IT leaders, and founders who need to cut admin work, save time and money — without losing control of data or delivery.
+Save time and money, and also reduce errors - without losing control of data or delivery.
 
 We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric, and build governed automation where the work needs to run. Autonomous and scheduled processes run on a cadence you choose. Straight talk: we'll tell you what's worth automating, and what isn't.
 
