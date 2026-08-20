@@ -1850,6 +1850,18 @@ section[id] {
   flex-direction: column;
 }
 
+a.pattern-more-card {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.pattern-more-card__cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-weight: 600;
+}
+
 .card--flat {
   padding: 1rem;
   border-radius: var(--radius-xl);

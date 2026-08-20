@@ -40,7 +40,7 @@ We don’t guess. On a discovery call we decide what’s worth automating — an
 
 // What We Build
 
-## Primary offer
+## What We Can Build
 
 Patterns first — then where they land in your Microsoft or Google workplace, on your web pages, or as connected automation behind the scenes.
 
@@ -55,7 +55,8 @@ Classify, route, and draft safe replies for IT or ops queues — fewer hours los
 **Document pipeline — End manual data entry**  
 Extract and file invoices, forms, and packs so finance and compliance stop re-keying.
 
-[More patterns & examples](what-we-automate.html)
+**More patterns — Inbox, invoices, suppliers, and more**  
+Browse the full set of automation examples — then pick a bottleneck on a discovery call. [See all patterns](what-we-automate.html)
 
 ### Your workplace & platforms
 
