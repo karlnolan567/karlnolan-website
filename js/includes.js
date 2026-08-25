@@ -122,15 +122,11 @@ function bookingHref() {
   }
 
   function startChatWidget() {
+    if (!SITE.chatEmbedUrl) {
+      return;
+    }
     const version = encodeURIComponent(SITE.partialVersion || '1');
-    if (SITE.chatEmbedUrl) {
-      loadScript('js/chat-embed.js?v=' + version);
-      return;
-    }
-    if (!SITE.chatWebhookUrl || SITE.chatWebhookUrl.indexOf('REPLACE_WITH_ID') !== -1) {
-      return;
-    }
-    loadScript('js/chatbot.js?v=' + version);
+    loadScript('js/chat-embed.js?v=' + version);
   }
 
   function initChatbot() {

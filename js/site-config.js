@@ -23,7 +23,7 @@ const SITE = {
         group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260820c',
+    partialVersion: '20260825b',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -35,15 +35,8 @@ const SITE = {
     smartInboxUrl: 'smart-inbox.html',
     trainingUrl: 'training.html',
     navOrder: ['offer', 'engagement', 'where-to-start', 'ai-engineering', 'about'],
-    // GenAI iframe embed — when set, replaces the n8n Ask BCAI widget.
+    // GCP GenAI assistant iframe (Ask BCAI).
     chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
-    chatWebhookUrl: isLocalPreview
-        ? 'http://localhost:5678/webhook/bcai-website-chat/chat'
-        : 'https://www.bespoke-ai.ie/webhook/bcai-website-chat/chat',
-    chatWarmCacheUrl: isLocalPreview
-        ? 'http://localhost:5678/webhook/bcai-warm-knowledge'
-        : 'https://www.bespoke-ai.ie/webhook/bcai-warm-knowledge',
-    chatGreeting: 'Hi — I\'m Ask BCAI (Bespoke Core AI Engineering). I can answer questions about Bespoke AI and this website. What would you like to know?',
     // Google Calendar appointment schedule (site booking UI).
     bookingScheduleUrl:
         'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UKPIrCb8p6jWtnEqzB2RUlMEF8nMcT4fkRaG9LA0je9CCptn8WCIaq_LRsQNTNYFjYaTIApYL',
@@ -53,6 +46,5 @@ const SITE = {
     bookingUrl: isLocalPreview
         ? '/#discovery-call'
         : 'https://www.bespoke-ai.ie/#discovery-call',
-    googleDriveKnowledgeFolderId: '1TtHiEjxrG20SCaAK4G-EuzRJY7TcKQA2',
     gaMeasurementId: 'G-YBVQT5NFWE',
 };
