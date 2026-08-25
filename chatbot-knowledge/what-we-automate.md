@@ -18,7 +18,7 @@ Everyday language, not jargon. The examples below are common starting points —
 
 ## Example Pilot Playbooks
 
-A few patterns that map to our [client case studies](case-studies.html) and the [Where to Start](index.html#where-to-start) playbooks — suggestions only. Priced starting points: [PO → sales order](po-sales-order.html) and [smart inbox](smart-inbox.html) (typical from €8,000 + VAT). Every other engagement is scoped to what you actually need.
+A few patterns that map to our [client case studies](https://www.bespoke-ai.ie/case-studies.html) and the [Playbooks](https://www.bespoke-ai.ie/#where-to-start) playbooks — suggestions only. Priced starting points: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) (typical from €8,000 + VAT). Every other engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 

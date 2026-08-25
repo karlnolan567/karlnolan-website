@@ -2,8 +2,7 @@
 
 Static portfolio site for **Bespoke AI** (Bespoke Core AI Engineering Limited, Limerick, Ireland).
 
-Live site: [https://www.bespoke-ai.ie/](https://www.bespoke-ai.ie/)  
-n8n editor: [http://135.181.39.41:5678/](http://135.181.39.41:5678/) (SSH/basic auth; not on public HTTPS yet)
+Live site: [https://www.bespoke-ai.ie/](https://www.bespoke-ai.ie/)
 
 ## Local preview
 
@@ -28,9 +27,9 @@ npm run test:docker-smoke         # requires Docker Desktop; build/run site imag
 
 On push to `main`, GitHub Actions runs both checks and only then SSHs to the VPS to deploy. Outbound hosts that block bots (LinkedIn 999, Google Forms 401/403) count as reachable.
 
-### Chat widget (GenAI embed)
+### Chat widget (GCP GenAI)
 
-The site loads the GenAI Cloud Run assistant in an iframe when `SITE.chatEmbedUrl` is set (see [`js/site-config.js`](js/site-config.js) / `CHAT_EMBED_URL` in [`.env.example`](.env.example)). Clear that value to fall back to the n8n Ask BCAI widget.
+The site loads the Google Cloud assistant in an iframe (`SITE.chatEmbedUrl` / `CHAT_EMBED_URL`).
 
 Optional local override: `cp js/site-config.local.js.example js/site-config.local.js` (gitignored) to point localhost at a different embed URL without editing the committed config.
 
@@ -52,7 +51,7 @@ The `docs/` folder is for local working files only (business case, CV drafts, ou
 
 ## Deploy (Docker — VPS `135.181.39.41`)
 
-The site runs in Docker: Caddy edge proxy + static site container. Production URLs are set via `.env` (see [`.env.example`](.env.example)); the entrypoint renders [`js/site-config.js`](js/site-config.js) from [`js/site-config.template.js`](js/site-config.template.js) at container start. n8n runs separately at `/opt/n8n` on the same host; Caddy proxies `/webhook/*` to it.
+The site runs in Docker: Caddy edge proxy + static site container. Production URLs are set via `.env` (see [`.env.example`](.env.example)); the entrypoint renders [`js/site-config.js`](js/site-config.js) from [`js/site-config.template.js`](js/site-config.template.js) at container start. Chat and discovery booking run on Google Cloud (GenAI embed + Calendar appointments). This site does not call n8n.
 
 ### First-time setup on VPS
 
@@ -88,11 +87,11 @@ To change webhook or canonical URLs without rebuilding, edit `.env` and run `doc
 - [ ] Home page loads at `https://www.bespoke-ai.ie/`
 - [ ] Header/footer partials render
 - [ ] Workshop and sub-pages work
-- [ ] Chat widget and booking webhooks respond
+- [ ] Chat widget and discovery-call booking (Google Calendar embed) work
 
 ### DNS cutover (when domain is ready)
 
-Run the interactive go-live wizard from the repo root (domain registration, DNS, Let's Encrypt, `.env`, Caddy, HTML tags, n8n, deploy, and smoke tests):
+Run the interactive go-live wizard from the repo root (domain registration, DNS, Let's Encrypt, `.env`, Caddy, HTML tags, deploy, and smoke tests):
 
 ```bash
 ./scripts/go-live-domain-ssl.sh
@@ -120,29 +119,15 @@ Lead intake setup (Google Form, Apps Script, outreach email snippets): see `lead
 
 Profile photo: `images/Karl Nolan.jpeg`
 
-## Ask BCAI chatbot
+## Ask BCAI (GCP)
 
-The **Ask BCAI** widget calls an n8n workflow (see [`n8n/SETUP.txt`](n8n/SETUP.txt)). Knowledge comes from markdown files in a Google Drive folder — not from the live site HTML.
+The live chat widget is the Google Cloud GenAI embed. Update that assistant’s knowledge in GCP.
 
-### Local n8n (development)
-
-Workflow development and testing use the Docker stack in `~/src/n8n-test-project` (see also [`n8n/LOCAL-DEV.txt`](n8n/LOCAL-DEV.txt)).
-
-| | |
-|---|---|
-| **URL** | http://localhost:5678 |
-| **Email** | karlnolan@bespoke-ai.ie |
-| **Password** | `@Passw0rd@` |
-
-Import or sync the workflow from [`n8n/bcai-website-chatbot.workflow.json`](n8n/bcai-website-chatbot.workflow.json). When happy, export from local n8n and promote to production (delete old prod workflow → clean import — see `n8n/SETUP.txt`).
-
-When site content changes, regenerate and re-upload to Drive:
+[`chatbot-knowledge/`](chatbot-knowledge/) is a local markdown export of public pages (no hidden training/workshops). Regenerate with:
 
 ```bash
 python3 scripts/html_to_knowledge_md.py
 ```
 
-Then upload everything in [`chatbot-knowledge/`](chatbot-knowledge/) to the Drive folder (`SITE.googleDriveKnowledgeFolderId` in [`js/site-config.js`](js/site-config.js)).
-
-Prefer **short summary files** in Drive (not full page copies) — the whole folder is injected into the LLM prompt and affects response speed.
+Existing hand-tuned files are kept; pass `--force` to overwrite them from HTML. Use those files as source copy when updating the GCP agent.
 

@@ -195,7 +195,6 @@ TOTAL_STAGES=11
 TOTAL_MINUTES=50
 
 VPS_IP="${VPS_IP:-135.181.39.41}"
-N8N_ENV_PATH="${N8N_ENV_PATH:-/opt/n8n/.env}"
 HTML_FILES=(
   index.html workshops.html workshop.html workshop-1.html workshop-2.html workshop-3.html
   what-we-automate.html workshop-one-pager.html
@@ -255,8 +254,6 @@ say "Production URLs for the static site container (rendered into js/site-config
 BASE_URL="https://${DOMAIN}"
 write_env CANONICAL_URL "${BASE_URL}/"
 write_env ASSESSMENT_URL "${BASE_URL}/assessment"
-write_env CHAT_WEBHOOK_URL "${BASE_URL}/webhook/bcai-website-chat/chat"
-write_env CHAT_WARM_CACHE_URL "${BASE_URL}/webhook/bcai-warm-knowledge"
 write_env BOOKING_URL "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UKPIrCb8p6jWtnEqzB2RUlMEF8nMcT4fkRaG9LA0je9CCptn8WCIaq_LRsQNTNYFjYaTIApYL"
 note "Committed .env is gitignored — you'll copy this file to the VPS in the deploy stage."
 
@@ -350,32 +347,17 @@ else
   warn "Skipped HTML updates — search repo for ${VPS_IP} and update before go-live."
 fi
 
-# ── 8. n8n production env ──────────────────────────────────────────────────
-stage "n8n — production webhook base URL" 5
-say "n8n on the VPS (/opt/n8n) must know the public HTTPS webhook URL."
-note "These lines belong in ${N8N_ENV_PATH} on the server (not the web_site .env)."
-cat <<N8NENV
+# ── 8. n8n (not used by this website) ──────────────────────────────────────
+stage "n8n — not required for this site" 2
+say "Chat is the GCP GenAI embed. Discovery calls book via Google Calendar appointments."
+note "If n8n still runs on the VPS for other products, leave it. Deactivate leftover BCAI Website Chatbot and Discovery Call Booking workflows so they do not keep webhooks."
+pause "Leftover BCAI n8n chat/booking workflows deactivated (or n8n is already unused)?"
 
-# Add or update in ${N8N_ENV_PATH}:
-N8N_PUBLIC_HOST=${DOMAIN}
-N8N_PROTOCOL=https
-WEBHOOK_URL=${BASE_URL}/
-N8N_EDITOR_BASE_URL=https://${DOMAIN}:5678/
-
-N8NENV
-step "SSH to the VPS and edit ${N8N_ENV_PATH}, or paste the block above."
-step "Then:  cd /opt/n8n && docker compose up -d"
-pause "n8n .env updated on the VPS (or you'll do it before smoke test)?"
-
-# ── 9. n8n workflows — CORS + redirects ────────────────────────────────────
-stage "n8n — workflow URLs (manual in editor)" 8
-say "Workflow JSON in git still references the IP — update live workflows in n8n after deploy."
-open_url "http://${VPS_IP}:5678"
-step "BCAI Website Chatbot → Chat Trigger → Allowed Origins: add https://${DOMAIN}"
-step "Discovery Call Booking (n8n) — optional: deactivate if unused; the live site books via Google Calendar appointments, not /webhook/booking"
-step "Re-activate chatbot workflow after saving CORS."
-note "n8n booking workflow JSON in git is left in place; the website no longer links to it."
-pause "Workflow URLs updated in n8n (or scheduled right after deploy)?"
+# ── 9. Confirm Google Calendar booking ─────────────────────────────────────
+stage "Discovery booking — Google Calendar" 2
+say "The home page embeds the Google Calendar appointment schedule (BOOKING_URL / bookingEmbedUrl)."
+step "Open https://${DOMAIN}/#discovery-call after deploy and confirm the Calendar iframe loads."
+pause "Calendar booking is the live path (no /webhook/booking)?"
 
 # ── 10. Deploy to VPS ──────────────────────────────────────────────────────
 stage "Deploy — push config to the VPS" 5
