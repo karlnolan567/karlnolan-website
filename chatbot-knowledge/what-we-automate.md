@@ -54,9 +54,9 @@ A few patterns that map to our [client case studies](https://www.bespoke-ai.ie/c
 
 ## How a Bespoke AI Workflow Runs
 
-Any channel in → governed AI → human approve → any channel out. We wire the inputs and outputs your team already uses — schedulers, Copilot, chat, voice, documents, and the tools you deliver into.
+Any channel in → governed AI → human approve → any channel out. We wire the inputs and outputs your team already uses — email, schedulers, Copilot, chat, voice, SharePoint / OneDrive, Dynamics 365, and the tools you deliver into.
 
-[image: Architecture diagram: inputs from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.]
+[image: Architecture diagram: inputs from email, schedulers, Copilot, chat apps, phone, and SharePoint or OneDrive file changes flow into a hub with API/MCP connectors including Dynamics 365, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, Microsoft Office, and Dynamics 365.]
 
 Every workflow includes a human review gate before anything is delivered — then scale when your team is confident.
 

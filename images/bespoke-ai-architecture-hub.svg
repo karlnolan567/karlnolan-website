@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="arch-title arch-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="arch-title arch-desc">
   <title id="arch-title">How a Bespoke AI workflow runs</title>
-  <desc id="arch-desc">Inputs and triggers from schedulers, Copilot, chat apps, phone, and documents flow into a hub with API/MCP connectors, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, and Microsoft Office.</desc>
+  <desc id="arch-desc">Inputs and triggers from email, schedulers, Copilot, chat apps, phone, and SharePoint or OneDrive file changes flow into a hub with API/MCP connectors including Dynamics 365, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, Microsoft Office, and Dynamics 365.</desc>
 
   <defs>
     <style type="text/css"><![CDATA[
@@ -30,12 +30,15 @@
     <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6"/>
     </marker>
+    <marker id="arrowhead-start" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto-start-reverse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6"/>
+    </marker>
     <marker id="arrowhead-teal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="#06b6d4"/>
     </marker>
   </defs>
 
-  <rect class="bg" width="1200" height="600" rx="16"/>
+  <rect class="bg" width="1200" height="630" rx="16"/>
 
   <!-- Header -->
   <text class="heading" x="600" y="42" text-anchor="middle">How a Bespoke AI workflow runs</text>
@@ -44,18 +47,28 @@
   <!-- ========== INPUTS / TRIGGERS ========== -->
   <text class="col-label" x="40" y="108" letter-spacing="0.05em">INPUTS / TRIGGERS</text>
   <g transform="translate(24, 120)">
-    <!-- Scheduled -->
+    <!-- Email -->
     <rect class="chip" width="214" height="56" rx="8"/>
     <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
-    <g transform="translate(20, 20)" class="icon-stroke">
-      <rect x="1" y="2" width="14" height="12" rx="1"/>
-      <path d="M4 1v2M12 1v2M1 6h14"/>
+    <rect x="18" y="20" width="16" height="12" rx="1" class="icon-stroke"/>
+    <path d="M18 22l8 6 8-6" class="icon-stroke"/>
+    <text class="item" x="56" y="28">Email</text>
+    <text class="item-sm" x="56" y="44">Inbox &amp; attachments</text>
+
+    <!-- Scheduled -->
+    <g transform="translate(0, 68)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <g transform="translate(20, 20)" class="icon-stroke">
+        <rect x="1" y="2" width="14" height="12" rx="1"/>
+        <path d="M4 1v2M12 1v2M1 6h14"/>
+      </g>
+      <text class="item" x="56" y="28">Scheduled tasks</text>
+      <text class="item-sm" x="56" y="44">Events &amp; triggers</text>
     </g>
-    <text class="item" x="56" y="28">Scheduled tasks</text>
-    <text class="item-sm" x="56" y="44">Events &amp; triggers</text>
 
     <!-- Copilot -->
-    <g transform="translate(0, 68)">
+    <g transform="translate(0, 136)">
       <rect class="chip" width="214" height="56" rx="8"/>
       <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
       <circle cx="28" cy="28" r="6" class="icon-stroke-blue"/>
@@ -65,7 +78,7 @@
     </g>
 
     <!-- Chat apps -->
-    <g transform="translate(0, 136)">
+    <g transform="translate(0, 204)">
       <rect class="chip" width="214" height="56" rx="8"/>
       <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
       <path d="M10 18h12a2 2 0 012 2v6a2 2 0 01-2 2h-6l-4 3v-3h-2a2 2 0 01-2-2v-6a2 2 0 012-2z" class="icon-stroke" transform="translate(8,4)"/>
@@ -74,7 +87,7 @@
     </g>
 
     <!-- Phone / SMS -->
-    <g transform="translate(0, 204)">
+    <g transform="translate(0, 272)">
       <rect class="chip" width="214" height="56" rx="8"/>
       <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
       <rect x="22" y="18" width="12" height="20" rx="2" class="icon-stroke"/>
@@ -83,14 +96,13 @@
       <text class="item-sm" x="56" y="44">Voice &amp; text data</text>
     </g>
 
-    <!-- PDF / Image -->
-    <g transform="translate(0, 272)">
+    <!-- SharePoint / OneDrive -->
+    <g transform="translate(0, 340)">
       <rect class="chip" width="214" height="56" rx="8"/>
       <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
-      <path d="M20 18h10l4 4v14H20V18z" class="icon-stroke"/>
-      <path d="M30 18v4h4" class="icon-stroke"/>
-      <text class="item" x="56" y="28">PDF / image</text>
-      <text class="item-sm" x="56" y="44">Documents &amp; media</text>
+      <path d="M18 24l3-4h7l3 4h7v12H18V24z" class="icon-stroke"/>
+      <text class="item" x="56" y="28" font-size="12">SharePoint / OneDrive</text>
+      <text class="item-sm" x="56" y="44">Files added or changed</text>
     </g>
   </g>
 
@@ -100,12 +112,13 @@
   <line class="arrow" x1="246" y1="284" x2="264" y2="284"/>
   <line class="arrow" x1="246" y1="352" x2="264" y2="352"/>
   <line class="arrow" x1="246" y1="420" x2="264" y2="420"/>
-  <line class="arrow" x1="264" y1="148" x2="264" y2="420"/>
+  <line class="arrow" x1="246" y1="488" x2="264" y2="488"/>
+  <line class="arrow" x1="264" y1="148" x2="264" y2="488"/>
   <line class="arrow" x1="264" y1="320" x2="286" y2="320" marker-end="url(#arrowhead)"/>
 
   <!-- ========== HUB ========== -->
   <text class="col-label" x="300" y="108">WORKFLOW HUB</text>
-  <rect class="panel-hub" x="288" y="120" width="500" height="400" rx="14"/>
+  <rect class="panel-hub" x="288" y="120" width="500" height="420" rx="14"/>
 
   <!-- API / MCP -->
   <g transform="translate(308, 221)">
@@ -114,12 +127,12 @@
     <circle cx="90" cy="72" r="20" fill="#1f3049" stroke="#3b82f6" stroke-width="2"/>
     <text class="box-title" x="90" y="76" text-anchor="middle" font-size="11">API</text>
     <text class="box-title" x="90" y="112" text-anchor="middle">API / MCP</text>
-    <text class="item-sm" x="90" y="136" text-anchor="middle">CRM, DB, tools, context</text>
-    <text class="item-sm" x="90" y="154" text-anchor="middle">Service defs &amp; metadata</text>
+    <text class="item-sm" x="90" y="136" text-anchor="middle">Dynamics 365, CRM, DB</text>
+    <text class="item-sm" x="90" y="154" text-anchor="middle">tools, context, metadata</text>
   </g>
 
   <!-- Arrow API/MCP to LLM -->
-  <line class="arrow" x1="500" y1="320" x2="528" y2="320" marker-end="url(#arrowhead)"/>
+  <line class="arrow" x1="500" y1="320" x2="528" y2="320" marker-start="url(#arrowhead-start)" marker-end="url(#arrowhead)"/>
 
   <!-- LLM workflow -->
   <g transform="translate(536, 140)">
@@ -157,15 +170,16 @@
   </g>
 
   <!-- Arrow LLM Analysis to RAG -->
-  <line class="arrow" x1="651" y1="396" x2="651" y2="420" marker-end="url(#arrowhead)"/>
+  <line class="arrow" x1="651" y1="396" x2="651" y2="420" marker-start="url(#arrowhead-start)" marker-end="url(#arrowhead)"/>
 
   <!-- Knowledge -->
-  <g transform="translate(536, 430)">
-    <text class="mono" x="0" y="12">RESOURCES / RAG</text>
-    <rect class="step" y="24" width="100" height="36" rx="6"/>
-    <text class="item" x="50" y="46" text-anchor="middle" font-size="12">Vector DB</text>
-    <rect class="step" x="112" y="24" width="118" height="36" rx="6"/>
-    <text class="item" x="171" y="46" text-anchor="middle" font-size="12">Knowledge base</text>
+  <g transform="translate(536, 428)">
+    <rect class="step" width="72" height="36" rx="6"/>
+    <text class="item" x="36" y="22" text-anchor="middle" font-size="12">Vector DB</text>
+    <rect class="step" x="80" width="40" height="36" rx="6"/>
+    <text class="item" x="100" y="22" text-anchor="middle" font-size="12">DB</text>
+    <rect class="step" x="128" width="120" height="36" rx="6"/>
+    <text class="item" x="188" y="22" text-anchor="middle" font-size="12">Knowledge base</text>
   </g>
 
   <!-- Hub -> review -->
@@ -174,7 +188,7 @@
   <!-- ========== HUMAN REVIEW (vertical gate) ========== -->
   <text class="col-label" x="820" y="108">REVIEW</text>
   <g transform="translate(812, 120)">
-    <rect class="panel-review" width="100" height="400" rx="12"/>
+    <rect class="panel-review" width="100" height="420" rx="12"/>
     <circle cx="50" cy="36" r="16" fill="#06b6d4"/>
     <path d="M43 36l5 5 10-11" fill="none" stroke="#0f1a2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     <text class="box-title" x="50" y="230" text-anchor="middle" transform="rotate(-90 50 230)">Human review / approve</text>
@@ -188,7 +202,8 @@
   <line class="arrow-teal" x1="912" y1="284" x2="968" y2="284" marker-end="url(#arrowhead-teal)"/>
   <line class="arrow-teal" x1="912" y1="352" x2="968" y2="352" marker-end="url(#arrowhead-teal)"/>
   <line class="arrow-teal" x1="912" y1="420" x2="968" y2="420" marker-end="url(#arrowhead-teal)"/>
-  <text class="arrow-label" x="940" y="500" text-anchor="middle">Approve &amp; deliver</text>
+  <line class="arrow-teal" x1="912" y1="488" x2="968" y2="488" marker-end="url(#arrowhead-teal)"/>
+  <text class="arrow-label" x="940" y="555" text-anchor="middle">Approve &amp; deliver</text>
 
   <!-- ========== OUTPUTS ========== -->
   <text class="col-label" x="980" y="108">OUTPUTS</text>
@@ -233,8 +248,17 @@
       <text class="item" x="56" y="28">Microsoft Office</text>
       <text class="item-sm" x="56" y="44">Word, Excel, PPT</text>
     </g>
+
+    <g transform="translate(0, 340)">
+      <rect class="chip" width="214" height="56" rx="8"/>
+      <rect class="icon-bg" x="12" y="12" width="32" height="32" rx="6"/>
+      <rect x="18" y="18" width="16" height="16" rx="1" class="icon-stroke"/>
+      <path d="M18 24h16M18 30h16M24 18v16" class="icon-stroke"/>
+      <text class="item" x="56" y="28">Dynamics 365</text>
+      <text class="item-sm" x="56" y="44">Records &amp; writeback</text>
+    </g>
   </g>
 
   <!-- Footer note -->
-  <text class="item-sm" x="600" y="560" text-anchor="middle">Channels shown are examples - we wire the ones your team already uses</text>
+  <text class="item-sm" x="600" y="595" text-anchor="middle">Channels shown are examples - we wire the ones your team already uses</text>
 </svg>
