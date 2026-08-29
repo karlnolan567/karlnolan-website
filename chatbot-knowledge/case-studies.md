@@ -62,7 +62,9 @@ Voice intake
 
 An operations lead describing how work runs today — phone conversation, not a web form.
 
-The call is captured and reviewed; a written brief is produced before anyone acts on it. Nothing goes out from the call unreviewed.
+- **Challenge:** How the work actually ran lived in someone’s head or in a call that was never written down. A long form did not get filled, and there was no reviewed record before someone acted on what they heard.
+- **Approach:** A structured phone conversation walks through how work runs today, the bottlenecks, and the systems in use. The call is captured; a written brief is drafted from it; a person reviews the brief before anyone acts on it.
+- **Outcome:** The team starts from a reviewed brief instead of memory of the call. Nothing goes out from the call unreviewed.
 
 Knowledge-in-chat
 
@@ -70,7 +72,9 @@ Knowledge-in-chat
 
 Employees in Teams asking about HR, policy, procedure, and FAQs.
 
-Answers are grounded in the organisation’s library. The agent does not invent policy or FAQ answers off-library.
+- **Challenge:** Staff hunted the library or pinged a colleague for policy and FAQ. Answers drifted; people quoted an old handbook or guessed.
+- **Approach:** Staff ask in Teams. Answers come only from the organisation’s library, with a link to the source document. If it is not in a document the employee can open, the agent refuses rather than inventing policy or FAQ.
+- **Outcome:** Staff get a grounded answer instead of hunting SharePoint. Off-library policy is not invented.
 
 Meeting notes
 
@@ -78,22 +82,28 @@ Meeting notes
 
 A Teams organizer after a call — channel and notes file, not a recording dump.
 
-The transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
+- **Challenge:** After the call, the record lived in the recording or in someone’s notes. There was no written summary and action list in the channel before people treated it as the record.
+- **Approach:** The transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
+- **Outcome:** The team works from a checked summary in Teams. Unreviewed notes are not the record.
 
 Property searching
 
 ## Property searching
 
-A property listings site — visitors searching homes, not a workplace inbox.
+A property listings site — visitors searching homes.
 
-Visitors describe what they want in plain language and get matching listings from the site’s catalog. The search does not invent properties that are not in the catalog.
+- **Challenge:** Visitors had to translate what they wanted into filters. Matching listings were easy to miss, and invented or off-catalog results would not be trusted.
+- **Approach:** Visitors describe what they want in plain language and get matching listings from the site’s catalog. The search does not invent properties that are not in the catalog.
+- **Outcome:** Visitors get real listings from the catalog. Off-catalog properties are not invented.
 
 Appointment reminders
 
 ## Clinic appointment reminders
 
-A clinic or practice — calendar and patient phone, not a workplace inbox.
+A clinic or practice — calendar and patient phone.
 
-Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.
+- **Challenge:** Upcoming appointments needed a reminder, and inbound replies mixed confirmations, cancellations, and people who still needed the desk. Booking changes were easy to treat as done when they were not.
+- **Approach:** Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.
+- **Outcome:** The desk sees who still needs a person. Unchecked replies are not treated as booking changes.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)

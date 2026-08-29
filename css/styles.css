@@ -1725,17 +1725,27 @@ section[id] {
   flex-grow: 1;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   #case-studies .grid-3 {
     align-items: stretch;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    column-gap: 1.5rem;
+    row-gap: 0;
   }
 
   #case-studies .case-study-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 6;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  #case-studies .case-study-dl {
+    display: contents;
+  }
+
+  #case-studies .case-study-dl > div + div {
+    margin-top: 0.75rem;
   }
 }
 

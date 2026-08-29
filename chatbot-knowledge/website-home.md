@@ -123,12 +123,12 @@ EEA manufacturer and wholesaler licences checked against the official register, 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier)
 [### Voice discovery intake
 
-A structured phone conversation captured, reviewed, and turned into a written brief before anyone acts on it.
+An operations lead describes how work runs today on a phone call. A written brief is reviewed before anyone acts on it.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-voice)
 [### Workplace knowledge in chat
 
-Staff ask HR, policy, and FAQ questions in Teams and get answers grounded in the company library.
+Staff ask HR, policy, and FAQ questions in Teams. Answers come from the company library; the agent does not invent policy off-library.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-knowledge)
 [### Meeting notes in Teams
