@@ -1728,29 +1728,14 @@ section[id] {
 @media (min-width: 1024px) {
   #case-studies .grid-3 {
     align-items: stretch;
-    /* 9 tracks: shared 8 content rows + optional media under a card */
-    grid-template-rows: repeat(9, auto);
-    column-gap: 2rem;
-    row-gap: 0.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
   #case-studies .case-study-card {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 8;
-    height: auto;
-  }
-
-  #case-studies .case-study-card--with-shot {
-    grid-row: span 9;
-  }
-
-  #case-studies .case-study-dl {
-    display: contents;
-  }
-
-  #case-studies .case-study-dl > div {
-    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 }
 

@@ -16,15 +16,15 @@
       html[data-includes-pending] .page-content{visibility:hidden}
       .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
     </style>
-    <title>Case Studies | Bespoke AI Engineering</title>
-    <meta name="description" content="Client results under NDA: supplier verification, support inbox triage, and PO-to-sales-order automation — governed workflows with human review.">
+    <title>Client results | Bespoke AI Engineering</title>
+    <meta name="description" content="Governed workflows with a human gate: purchase orders into the ERP, quality diagnostics, supplier licence checks, Outlook inbox triage, property searching, and related production systems.">
     <link rel="canonical" href="https://www.bespoke-ai.ie/case-studies.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Case Studies | Bespoke AI Engineering">
-    <meta property="og:description" content="Production deployments under confidentiality — pattern map across document pipeline, sales-order intake, and request triage.">
+    <meta property="og:title" content="Client results | Bespoke AI Engineering">
+    <meta property="og:description" content="Governed workflows with a human gate — sales-order intake, quality diagnostics, document and compliance, inbox triage, voice intake, knowledge-in-chat, meeting notes, and property searching.">
     <meta property="og:url" content="https://www.bespoke-ai.ie/case-studies.html">
     <meta property="og:image" content="https://www.bespoke-ai.ie/images/og-card.png">
-    <link rel="stylesheet" href="css/styles.css?v=20260820a">
+    <link rel="stylesheet" href="css/styles.css?v=20260829b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -47,12 +47,12 @@
 
     <section class="section--compact section--pb-tight" aria-labelledby="cases-heading">
         <div class="container-md stack-lg text-center">
-            <span class="text-mono-label text-mono-label--blue">// Client Results</span>
+            <span class="text-mono-label text-mono-label--blue">// Client results</span>
             <h1 id="cases-heading" class="heading-hero">
-                Case <span class="text-gradient">Studies</span>
+                Client <span class="text-gradient">results</span>
             </h1>
             <p class="text-lead container-sm" style="margin-left:auto;margin-right:auto">
-                Production deployments under confidentiality agreements — specifics we can share on the page; client names and reference calls available under NDA.
+                Governed workflows with a human gate.
             </p>
         </div>
     </section>
@@ -60,110 +60,91 @@
     <section id="case-studies" class="section section--border-top section--alt-light">
         <div class="container">
             <p class="text-body-sm" style="margin-bottom:1.5rem;text-align:center">
-                Pattern map: <strong>document pipeline</strong> (supplier verification) · <strong>sales-order intake</strong> (<a href="po-sales-order.html" class="link-brand">PO → SO pilot</a>) · <strong>request triage</strong> (<a href="smart-inbox.html" class="link-brand">smart inbox pilot</a>) · knowledge-in-chat examples on discovery.
-                Each study maps to a <a href="/#where-to-start" class="link-brand">Where to Start</a> playbook.
+                sales-order intake · quality diagnostics · inbox triage · document / compliance · voice intake · knowledge-in-chat · meeting notes · property searching · appointment reminders
             </p>
 
             <div class="grid-3">
-                <article id="case-study-supplier" class="glass-panel glass-panel-hover card case-study-card case-study-card--with-shot">
-                    <span class="card-tag card-tag--green">Audit-Ready Automation</span>
-                    <h2 class="card-title">Supplier Verification for Regulated Supply Chains</h2>
-                    <p class="case-study-context">Mid-size EU compliance platform · ~200 supplier onboardings/year · ~30% of packs arrive as scanned PDFs or fax</p>
+                <article id="case-study-po-so" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Sales order intake</span>
+                    <h2 class="card-title">Purchase orders into the ERP</h2>
+                    <p class="case-study-context">Order desk — shared mailbox, ERP writeback.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Quality staff verified every supplier by hand — website research, then re-typing certification forms and signed attestations from PDFs and faxes into a spreadsheet before records entered the compliance system. A single supplier took 45 minutes on average. During onboarding spikes, records queued for days. External auditors had asked how unaudited data could enter the system.</dd></div>
-                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: automated website collection where public data exists; document pipeline with confidence scoring — extractions below 85% routed to a human review queue, never into the compliance system; structured hand-off to the client's existing spreadsheet and compliance tool; audit log on every intake (source, fields, reviewer, timestamp, action). Client wanted faster auto-approval at week one — we held 100% human review until they'd processed 50+ records and signed off accuracy themselves.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~80 suppliers): median handling time 45 min → 7 min; zero records entered without review; 12% of extractions flagged low-confidence, 3 corrected before approval. Client signed off partial automation at week 10.</dd></div>
-                        <div><dt>Client</dt><dd class="case-study-quote">"We stopped re-typing pdf certificates. The review queue is the part our auditors actually cared about — every field has a source." — Head of Supplier Quality, EU regulated supply chain platform</dd></div>
+                        <div><dt>Challenge</dt><dd>Staff re-typed inbound purchase orders into the ERP. There was no reliable review gate before rows hit the ledger.</dd></div>
+                        <div><dt>Approach</dt><dd>Intake from the order mailbox; extract the PO; match customer, SKU, and price to live catalogs; flag gaps and mismatches; side-by-side approver console; writeback only after Approve.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The desk resolves exceptions instead of re-keying. Unapproved rows do not reach the ledger.</dd></div>
                     </dl>
-                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
-                    <figure class="case-study-shot case-study-shot--in-card">
-                        <a
-                            href="images/supplier-verification-console.jpg"
-                            class="case-study-shot__link"
-                            data-lightbox
-                            aria-label="Open full-size supplier verification console screenshot"
-                        >
-                            <img
-                                src="images/supplier-verification-console-thumb.jpg"
-                                alt="Supplier verification console: source certificate pack beside extracted compliance fields, with low-confidence and missing-field flags before approve to the compliance system."
-                                width="1360"
-                                height="906"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                            <span class="case-study-shot__hint" aria-hidden="true">Click to enlarge</span>
-                        </a>
-                        <figcaption class="case-study-shot__caption">Supplier verification console — click to view full size.</figcaption>
-                    </figure>
                 </article>
 
-                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card case-study-card--with-shot">
-                    <span class="card-tag card-tag--teal">Smart Inbox Automation</span>
-                    <h2 class="card-title">Customer Support Triage &amp; Draft Replies</h2>
-                    <p class="case-study-context">B2B SaaS provider · ~400 support emails/week · Team of 4 on a shared Microsoft 365 mailbox</p>
+                <article id="case-study-quality" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--green">Quality diagnostics</span>
+                    <h2 class="card-title">Quality diagnostics and reports</h2>
+                    <p class="case-study-context">Quality / compliance at a pharmaceutical manufacturer or GDP site — diagnostic dashboard, not a public website.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Urgent and frustrated messages sat in the same queue as routine enquiries — no reliable way to prioritise. Critical issues sometimes waited 24+ hours. Agents averaged 12 minutes drafting each reply from scratch, and tone varied widely across the team.</dd></div>
-                        <div><dt>Approach</dt><dd>One scoped workflow, live in 2 weeks: intake from the existing shared mailbox; urgency and sentiment scoring on every message; AI-drafted replies saved to each agent's drafts folder — never sent automatically. Angry or critical messages trigger instant Slack alerts with a link to the thread. Client asked for auto-send on low-risk replies at week two — we kept human approval on every outbound message until they'd reviewed 100+ drafts.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 60 days (~1,600 emails): median time to flag urgent messages 4 min (was 24+ hrs); routine enquiries drafted within 2 hrs of arrival; 85% of drafts sent with minor edits only; zero messages sent without human approval.</dd></div>
-                        <div><dt>Client</dt><dd class="case-study-quote">"Urgent tickets surface in Slack before we've even opened Outlook. The team edits drafts instead of staring at blank replies." — Support Operations Lead, B2B SaaS platform</dd></div>
+                        <div><dt>Challenge</dt><dd>Staff assembled the quality picture from workbooks and wrote the site narrative by hand. Scores, exceptions, and the written report drifted from each other.</dd></div>
+                        <div><dt>Approach</dt><dd>Structured intake into a scored set of quality signals; AI interprets the already-computed results into a draft executive report; a reviewer checks the dashboard and the narrative before it is treated as the quality pack.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The team reviews a scored picture and a draft report instead of assembling the story from scratch. Unreviewed narrative does not become the pack.</dd></div>
                     </dl>
-                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
-                    <figure class="case-study-shot case-study-shot--in-card">
-                        <a
-                            href="images/support-faq-bot.jpg"
-                            class="case-study-shot__link"
-                            data-lightbox
-                            aria-label="Open full-size support FAQ bot screenshot"
-                        >
-                            <img
-                                src="images/support-faq-bot-thumb.jpg"
-                                alt="ACME Support FAQ bot in chat: topic menu after /help, with browse topics and escalate actions."
-                                width="905"
-                                height="960"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                            <span class="case-study-shot__hint" aria-hidden="true">Click to enlarge</span>
-                        </a>
-                        <figcaption class="case-study-shot__caption">Support FAQ bot in chat — click to view full size.</figcaption>
-                    </figure>
                 </article>
 
-                <article id="case-study-po-so" class="glass-panel glass-panel-hover card case-study-card case-study-card--with-shot">
-                    <span class="card-tag card-tag--blue">Sales Order Automation</span>
-                    <h2 class="card-title">Purchase Order to Sales Order</h2>
-                    <p class="case-study-context">Mid-size distributor · ~120 POs/week · shared order inbox · PDF/Word attachments</p>
+                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Inbox triage</span>
+                    <h2 class="card-title">Outlook inbox triage</h2>
+                    <p class="case-study-context">A mailbox owner in Microsoft 365 — personal or role inbox.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Order desk staff re-typed every inbound purchase order into the ERP by hand. Buyers used regional shorthand and nicknames ("MEC", "2.5mm T&amp;E") that did not match master SKUs, so wrong products and prices slipped through. Price mismatches and duplicate PO numbers were caught late — or not at all. There was no reliable review gate before rows hit the system of record.</dd></div>
-                        <div><dt>Approach</dt><dd>One scoped workflow, live in 3 weeks: intake from the shared order mailbox (PDF/Word attachments); AI extraction of PO number, buyer, ship-to, line items, quantities, and prices — with explicit gaps when the document is unclear, never silent guessing; AI-assisted resolution of customer, SKU, and pricing against live master catalogs (alias and nickname matching included); discrepancy flags (price mismatch, unknown SKU, duplicate PO, missing ship-to); side-by-side approver console with the original document next to the digital draft; Correct applies verified master prices to known SKUs only; clarification emails drafted in-console and never auto-sent. Intake channels notify only — an Approver must click Approve before writeback. Client wanted auto-approve at launch — we held 100% human gate until they'd processed 100+ orders and signed off.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">First 90 days (~1,400 POs): median handling time 18 min → 4 min for clean matches; 14% routed to Needs Review (price/SKU exceptions), all resolved before sync; zero unapproved rows written to the ledger; client enabled optional auto-approve for 100% matched POs at week 11.</dd></div>
-                        <div><dt>Client</dt><dd class="case-study-quote">"We stopped typing POs into the ERP and started resolving exceptions. Alias matching alone paid for the project — 'MEC' finally lands on the right customer every time." — Sales Operations Lead, mid-size distribution group</dd></div>
+                        <div><dt>Challenge</dt><dd>Everything landed in Inbox. Leadership and high-importance sat next to bulk mail. There was no reliable morning view of what still needed a person.</dd></div>
+                        <div><dt>Approach</dt><dd>New mail is filed into a folder tree (customers, internal, potential spam, everything else). Leadership and high-importance trigger an urgent notice. A morning summary lists what is still waiting in Inbox. Mail is not deleted; bulk is set aside for review.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Inbox is a queue of what still needs a person. Filing and flags happen first; the owner is not sorting the whole mailbox by hand.</dd></div>
                     </dl>
-                    <p class="case-study-reference text-muted">Reference call available under NDA</p>
-                    <figure class="case-study-shot case-study-shot--in-card">
-                        <a
-                            href="images/po-so-approver-console.jpg"
-                            class="case-study-shot__link"
-                            data-lightbox
-                            aria-label="Open full-size approver console screenshot"
-                        >
-                            <img
-                                src="images/po-so-approver-console-thumb.jpg"
-                                alt="Approver console for purchase-order to sales-order automation: original PO beside the draft, with AI flags for price mismatch and unknown SKU before ERP writeback."
-                                width="1360"
-                                height="680"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                            <span class="case-study-shot__hint" aria-hidden="true">Click to enlarge</span>
-                        </a>
-                        <figcaption class="case-study-shot__caption">Approver console — click to view full size.</figcaption>
-                    </figure>
+                </article>
+
+                <article id="case-study-supplier" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--green">Document / compliance</span>
+                    <h2 class="card-title">Supplier licence verification</h2>
+                    <p class="case-study-context">Quality / compliance team at an EU wholesaler or manufacturer — supplier register, not a public website scrape as the source of truth.</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Staff checked supplier licences by hunting official registers and re-typing addresses and scope into a spreadsheet. Drift after the first check was easy to miss.</dd></div>
+                        <div><dt>Approach</dt><dd>Pull MIA/WDA records from the official EEA register; present address and scope for a human confirm; alert when the register later drifts from the confirmed baseline. Nothing becomes the compliance record without that confirm.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The team confirms a structured record instead of re-typing the register. Later changes surface as alerts, not silent drift.</dd></div>
+                    </dl>
+                </article>
+
+                <article id="case-study-voice" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Voice intake</span>
+                    <h2 class="card-title">Voice discovery intake</h2>
+                    <p class="case-study-context">An operations lead describing how work runs today — phone conversation, not a web form.</p>
+                    <p class="text-body-sm">The call is captured and reviewed; a written brief is produced before anyone acts on it. Nothing goes out from the call unreviewed.</p>
+                </article>
+
+                <article id="case-study-knowledge" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Knowledge-in-chat</span>
+                    <h2 class="card-title">Workplace knowledge in chat</h2>
+                    <p class="case-study-context">Employees in Teams asking about HR, policy, procedure, and FAQs.</p>
+                    <p class="text-body-sm">Answers are grounded in the organisation’s library. The agent does not invent policy or FAQ answers off-library.</p>
+                </article>
+
+                <article id="case-study-meeting" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--green">Meeting notes</span>
+                    <h2 class="card-title">Meeting notes in Teams</h2>
+                    <p class="case-study-context">A Teams organizer after a call — channel and notes file, not a recording dump.</p>
+                    <p class="text-body-sm">The transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.</p>
+                </article>
+
+                <article id="case-study-property-search" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Property searching</span>
+                    <h2 class="card-title">Property searching</h2>
+                    <p class="case-study-context">A property listings site — visitors searching homes, not a workplace inbox.</p>
+                    <p class="text-body-sm">Visitors describe what they want in plain language and get matching listings from the site’s catalog. The search does not invent properties that are not in the catalog.</p>
+                </article>
+
+                <article id="case-study-clinic" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Appointment reminders</span>
+                    <h2 class="card-title">Clinic appointment reminders</h2>
+                    <p class="case-study-context">A clinic or practice — calendar and patient phone, not a workplace inbox.</p>
+                    <p class="text-body-sm">Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.</p>
                 </article>
             </div>
 
             <div class="cta-row" style="margin-top:2rem;justify-content:center;">
-                <a href="po-sales-order.html" class="btn btn-secondary">PO → sales order pilot</a>
                 <a href="/#discovery-call" class="btn btn-primary btn-primary--lg">Book a Discovery Call</a>
             </div>
         </div>
@@ -174,7 +155,7 @@
     <div id="site-footer"></div>
 </div>
 
-<script src="js/site-config.js?v=20260814b"></script>
+<script src="js/site-config.js?v=20260829c"></script>
 <script src="js/includes.js?v=20260814b"></script>
 <script src="js/site.js?v=20260809a"></script>
 </body>

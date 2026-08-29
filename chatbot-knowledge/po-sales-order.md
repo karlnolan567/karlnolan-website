@@ -8,13 +8,16 @@ scope: website-knowledge
 
 > Synced from `po-sales-order.html` for the website chatbot knowledge base.
 
+// Sales Operations
+
 # Same order desk. More POs through.
 
 A fixed-scope pilot for sales ops and order-desk leads: inbound purchase orders from email into the ERP, with a human gate. Typical pilots from **€8,000 + VAT**.
 
 Orders that sat in the queue can clear the same day — if the demand is there. We do not promise extra revenue.
 
-[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call) · [See the case study](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
+[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
+[Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 
 // Fit
 
@@ -22,18 +25,28 @@ Orders that sat in the queue can clear the same day — if the demand is there. 
 
 Built for a mid-size distributor order desk. We say no when the work is a chatbot demo or a day-one auto-post to the ledger.
 
-### A fit — Sales ops / order-desk lead
+A fit
+
+### Sales ops / order-desk lead
 
 - About **80+ POs per week** (or equivalent order-desk load)
+
 - A shared order inbox with PDF or Word attachments
+
 - Staff re-keying into an ERP; buyers use nicknames, aliases, messy line items
+
 - Someone who will approve before a row hits the ledger
 
-### Not a fit — We will turn this down
+Not a fit
+
+### We will turn this down
 
 - Startups wanting a shiny chatbot or AI wrapper
+
 - Anyone who wants auto-write to the ERP on day one
+
 - Low volume — under ~80 POs/week, or no shared order inbox
+
 - No human approver role, or no live customer/SKU/price catalog to match against
 
 // The Fence
@@ -45,17 +58,25 @@ One intake channel, one ERP writeback path, typically live in 2–3 weeks. Feasi
 ### Included
 
 - Email intake with PDF/Word attachments
+
 - AI extraction of PO number, buyer, ship-to, lines, quantities, prices — explicit gaps when the document is unclear
+
 - Alias and nickname matching against live customer, SKU, and price catalogs
+
 - Exception flags: price mismatch, unknown SKU, duplicate PO, missing ship-to
+
 - Side-by-side approver console; writeback only after Approve
+
 - Human gate until you sign off — optional auto-approve later, only for 100% matched POs
 
 ### Out of scope
 
 - Extra mailboxes, EDI, customer portals, or a second ERP
+
 - Multi-entity / multi-company catalogs
+
 - A chat UI, voice bot, or generic assistant
+
 - Auto-posting to the ledger at launch
 
 Messier than this fence? We will say so on the discovery call and quote a custom build — this page is not a day-rate scoping product.
@@ -66,11 +87,16 @@ Messier than this fence? We will say so on the discovery call and quote a custom
 
 The published result is faster, safer order entry — not a guaranteed euro of extra sales. Revenue only follows if delayed POs were sitting in the queue while buyers were still waiting.
 
-### Case study — Mid-size distributor · ~120 POs/week
+Client results
 
-First 90 days (~1,400 POs): median handling time 18 min → 4 min for clean matches; 14% routed to Needs Review; zero unapproved rows written to the ledger.
+### Purchase orders into the ERP
 
-[Full case study](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
+The desk resolves exceptions instead of re-keying. Unapproved rows do not reach the ledger.
+
+[Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
+
+[[image: Approver console for purchase-order to sales-order automation: original PO beside the draft, with AI flags for price mismatch and unknown SKU before ERP writeback.]](https://www.bespoke-ai.ie/images/po-so-approver-console.jpg)
+Approver console — original PO beside the draft. Nothing hits the ERP until Approve.
 
 // Price
 
@@ -79,7 +105,10 @@ First 90 days (~1,400 POs): median handling time 18 min → 4 min for clean matc
 Fixed after a free 30-minute discovery call — once we confirm volume, inbox, ERP path, and the approver role. Quote may sit higher when catalogs or writeback are heavier; we will not pretend a one-size sticker covers every ERP.
 
 - No separate €900 scoping day on this path — feasibility is inside the pilot
+
 - Human review until you trust it; optional light support after go-live
+
 - Confidentiality agreement before you share anything sensitive
 
-[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call) · [Other playbooks](https://www.bespoke-ai.ie/#where-to-start)
+[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
+[Other playbooks](https://www.bespoke-ai.ie/#where-to-start)

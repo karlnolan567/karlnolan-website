@@ -1,48 +1,99 @@
 ---
-title: Case Studies
+title: Client results
 source: https://www.bespoke-ai.ie/case-studies.html
 scope: website-knowledge
 ---
 
-# Case Studies
+# Client results
 
 > Synced from `case-studies.html` for the website chatbot knowledge base.
 
-Production deployments under confidentiality agreements — specifics we can share on the page; client names and reference calls available under NDA.
+// Client results
 
-Pattern map: **document pipeline** (supplier verification) · **sales-order intake** ([PO → SO pilot](https://www.bespoke-ai.ie/po-sales-order.html)) · **request triage** ([smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html)) · knowledge-in-chat examples on discovery. Each study maps to a [Playbooks](https://www.bespoke-ai.ie/#where-to-start) playbook.
+# Client results
 
-## Supplier Verification for Regulated Supply Chains
+Governed workflows with a human gate.
 
-Mid-size EU compliance platform · ~200 supplier onboardings/year · ~30% of packs arrive as scanned PDFs or fax
+sales-order intake · quality diagnostics · inbox triage · document / compliance · voice intake · knowledge-in-chat · meeting notes · property searching · appointment reminders
 
-- **Challenge:** Quality staff verified every supplier by hand — website research, then re-typing certification forms and signed attestations from PDFs and faxes into a spreadsheet before records entered the compliance system. A single supplier took 45 minutes on average. During onboarding spikes, records queued for days. External auditors had asked how unaudited data could enter the system.
-- **Approach:** One scoped workflow, live in 3 weeks: automated website collection where public data exists; document pipeline with confidence scoring — extractions below 85% routed to a human review queue, never into the compliance system; structured hand-off to the client's existing spreadsheet and compliance tool; audit log on every intake (source, fields, reviewer, timestamp, action). Client wanted faster auto-approval at week one — we held 100% human review until they'd processed 50+ records and signed off accuracy themselves.
-- **Outcome:** First 90 days (~80 suppliers): median handling time 45 min → 7 min; zero records entered without review; 12% of extractions flagged low-confidence, 3 corrected before approval. Client signed off partial automation at week 10.
-- **Client:** "We stopped re-typing pdf certificates. The review queue is the part our auditors actually cared about — every field has a source." — Head of Supplier Quality, EU regulated supply chain platform
+Sales order intake
 
-Reference call available under NDA.
+## Purchase orders into the ERP
 
-## Customer Support Triage & Draft Replies
+Order desk — shared mailbox, ERP writeback.
 
-B2B SaaS provider · ~400 support emails/week · Team of 4 on a shared Microsoft 365 mailbox
+- **Challenge:** Staff re-typed inbound purchase orders into the ERP. There was no reliable review gate before rows hit the ledger.
+- **Approach:** Intake from the order mailbox; extract the PO; match customer, SKU, and price to live catalogs; flag gaps and mismatches; side-by-side approver console; writeback only after Approve.
+- **Outcome:** The desk resolves exceptions instead of re-keying. Unapproved rows do not reach the ledger.
 
-- **Challenge:** Urgent and frustrated messages sat in the same queue as routine enquiries — no reliable way to prioritise. Critical issues sometimes waited 24+ hours. Agents averaged 12 minutes drafting each reply from scratch, and tone varied widely across the team.
-- **Approach:** One scoped workflow, live in 2 weeks: intake from the existing shared mailbox; urgency and sentiment scoring on every message; AI-drafted replies saved to each agent's drafts folder — never sent automatically. Angry or critical messages trigger instant Slack alerts with a link to the thread. Client asked for auto-send on low-risk replies at week two — we kept human approval on every outbound message until they'd reviewed 100+ drafts.
-- **Outcome:** First 60 days (~1,600 emails): median time to flag urgent messages 4 min (was 24+ hrs); routine enquiries drafted within 2 hrs of arrival; 85% of drafts sent with minor edits only; zero messages sent without human approval.
-- **Client:** "Urgent tickets surface in Slack before we've even opened Outlook. The team edits drafts instead of staring at blank replies." — Support Operations Lead, B2B SaaS platform
+Quality diagnostics
 
-Reference call available under NDA. Maps to the [smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html) (typical from €8,000 + VAT).
+## Quality diagnostics and reports
 
-## Purchase Order to Sales Order
+Quality / compliance at a pharmaceutical manufacturer or GDP site — diagnostic dashboard, not a public website.
 
-Mid-size distributor · ~120 POs/week · shared order inbox · PDF/Word attachments
+- **Challenge:** Staff assembled the quality picture from workbooks and wrote the site narrative by hand. Scores, exceptions, and the written report drifted from each other.
+- **Approach:** Structured intake into a scored set of quality signals; AI interprets the already-computed results into a draft executive report; a reviewer checks the dashboard and the narrative before it is treated as the quality pack.
+- **Outcome:** The team reviews a scored picture and a draft report instead of assembling the story from scratch. Unreviewed narrative does not become the pack.
 
-- **Challenge:** Order desk staff re-typed every inbound purchase order into the ERP by hand. Buyers used regional shorthand and nicknames ("MEC", "2.5mm T&E") that did not match master SKUs, so wrong products and prices slipped through. Price mismatches and duplicate PO numbers were caught late — or not at all. There was no reliable review gate before rows hit the system of record.
-- **Approach:** One scoped workflow, live in 3 weeks: intake from the shared order mailbox (PDF/Word attachments); AI extraction of PO number, buyer, ship-to, line items, quantities, and prices — with explicit gaps when the document is unclear, never silent guessing; AI-assisted resolution of customer, SKU, and pricing against live master catalogs (alias and nickname matching included); discrepancy flags (price mismatch, unknown SKU, duplicate PO, missing ship-to); side-by-side approver console with the original document next to the digital draft; Correct applies verified master prices to known SKUs only; clarification emails drafted in-console and never auto-sent. Intake channels notify only — an Approver must click Approve before writeback. Client wanted auto-approve at launch — we held 100% human gate until they'd processed 100+ orders and signed off.
-- **Outcome:** First 90 days (~1,400 POs): median handling time 18 min → 4 min for clean matches; 14% routed to Needs Review (price/SKU exceptions), all resolved before sync; zero unapproved rows written to the ledger; client enabled optional auto-approve for 100% matched POs at week 11.
-- **Client:** "We stopped typing POs into the ERP and started resolving exceptions. Alias matching alone paid for the project — 'MEC' finally lands on the right customer every time." — Sales Operations Lead, mid-size distribution group
+Inbox triage
 
-Reference call available under NDA. Maps to the [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) (typical from €8,000 + VAT).
+## Outlook inbox triage
 
-[PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) · [Book a call](https://www.bespoke-ai.ie/#discovery-call)
+A mailbox owner in Microsoft 365 — personal or role inbox.
+
+- **Challenge:** Everything landed in Inbox. Leadership and high-importance sat next to bulk mail. There was no reliable morning view of what still needed a person.
+- **Approach:** New mail is filed into a folder tree (customers, internal, potential spam, everything else). Leadership and high-importance trigger an urgent notice. A morning summary lists what is still waiting in Inbox. Mail is not deleted; bulk is set aside for review.
+- **Outcome:** Inbox is a queue of what still needs a person. Filing and flags happen first; the owner is not sorting the whole mailbox by hand.
+
+Document / compliance
+
+## Supplier licence verification
+
+Quality / compliance team at an EU wholesaler or manufacturer — supplier register, not a public website scrape as the source of truth.
+
+- **Challenge:** Staff checked supplier licences by hunting official registers and re-typing addresses and scope into a spreadsheet. Drift after the first check was easy to miss.
+- **Approach:** Pull MIA/WDA records from the official EEA register; present address and scope for a human confirm; alert when the register later drifts from the confirmed baseline. Nothing becomes the compliance record without that confirm.
+- **Outcome:** The team confirms a structured record instead of re-typing the register. Later changes surface as alerts, not silent drift.
+
+Voice intake
+
+## Voice discovery intake
+
+An operations lead describing how work runs today — phone conversation, not a web form.
+
+The call is captured and reviewed; a written brief is produced before anyone acts on it. Nothing goes out from the call unreviewed.
+
+Knowledge-in-chat
+
+## Workplace knowledge in chat
+
+Employees in Teams asking about HR, policy, procedure, and FAQs.
+
+Answers are grounded in the organisation’s library. The agent does not invent policy or FAQ answers off-library.
+
+Meeting notes
+
+## Meeting notes in Teams
+
+A Teams organizer after a call — channel and notes file, not a recording dump.
+
+The transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
+
+Property searching
+
+## Property searching
+
+A property listings site — visitors searching homes, not a workplace inbox.
+
+Visitors describe what they want in plain language and get matching listings from the site’s catalog. The search does not invent properties that are not in the catalog.
+
+Appointment reminders
+
+## Clinic appointment reminders
+
+A clinic or practice — calendar and patient phone, not a workplace inbox.
+
+Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.
+
+[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)

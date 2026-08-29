@@ -25,7 +25,7 @@ SITE = "https://www.bespoke-ai.ie"
 PAGES = [
     ("index.html", "website-home.md", "Bespoke AI — Home Page"),
     ("what-we-automate.html", "what-we-automate.md", "What We Automate"),
-    ("case-studies.html", "case-studies.md", "Case Studies"),
+    ("case-studies.html", "case-studies.md", "Client results"),
     ("po-sales-order.html", "po-sales-order.md", "PO → Sales Order Pilot"),
     ("smart-inbox.html", "smart-inbox.md", "Smart Inbox Pilot"),
 ]
@@ -233,7 +233,7 @@ Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, 
 | PO → sales order pilot | PO → sales order pilot | [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) |
 | Smart inbox pilot | Smart inbox pilot | [Smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html) |
 | AI engineering | Engineering | [Engineering](https://www.bespoke-ai.ie/ai-engineering.html) |
-| Case studies / client results | Case studies | [Case studies](https://www.bespoke-ai.ie/case-studies.html) |
+| Case studies / client results | Client results | [Client results](https://www.bespoke-ai.ie/case-studies.html) |
 | What we automate | What we automate | [What we automate](https://www.bespoke-ai.ie/what-we-automate.html) |
 | Book a discovery call | Book a call | [Book a call](https://www.bespoke-ai.ie/#discovery-call) |
 | Privacy notice | Privacy notice | [Privacy notice](https://www.bespoke-ai.ie/#privacy) |

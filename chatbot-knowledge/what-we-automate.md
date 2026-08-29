@@ -6,7 +6,7 @@ scope: website-knowledge
 
 # What We Automate
 
-> Auto-generated from `what-we-automate.html` for the website chatbot knowledge base.
+> Synced from `what-we-automate.html` for the website chatbot knowledge base.
 
 // Automation Pilots
 
@@ -18,7 +18,7 @@ Everyday language, not jargon. The examples below are common starting points —
 
 ## Example Pilot Playbooks
 
-A few patterns that map to our [client case studies](https://www.bespoke-ai.ie/case-studies.html) and the [Playbooks](https://www.bespoke-ai.ie/#where-to-start) playbooks — suggestions only. Priced starting points: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) (typical from €8,000 + VAT). Every other engagement is scoped to what you actually need.
+A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html) and the [Where to Start](https://www.bespoke-ai.ie/#where-to-start) playbooks — suggestions only. Priced starting points: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) (typical from €8,000 + VAT). Every other engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 
@@ -56,7 +56,7 @@ A few patterns that map to our [client case studies](https://www.bespoke-ai.ie/c
 
 Any channel in → governed AI → human approve → any channel out. We wire the inputs and outputs your team already uses — email, schedulers, Copilot, chat, voice, SharePoint / OneDrive, Dynamics 365, and the tools you deliver into.
 
-[image: Architecture diagram: inputs from email, schedulers, Copilot, chat apps, phone, and SharePoint or OneDrive file changes flow into a hub with API/MCP connectors including Dynamics 365, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, Microsoft Office, and Dynamics 365.]
+[image: Architecture diagram: inputs and triggers from email, schedulers, Copilot, chat apps, phone, and SharePoint or OneDrive file changes flow into a hub with API/MCP connectors including Dynamics 365, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, Microsoft Office, and Dynamics 365.]
 
 Every workflow includes a human review gate before anything is delivered — then scale when your team is confident.
 
@@ -188,6 +188,6 @@ Here are other patterns teams often automate. Your bottleneck may look different
 
 On a free 30-minute discovery call, we'll find one bottleneck worth a fixed-scope pilot — no production access or sensitive data required upfront.
 
-[Book a Discovery Call](#)
+[Book a Discovery Call](https://www.bespoke-ai.ie/what-we-automate.html#)
 
-[← Back to main site](index.html)
+[← Back to main site](https://www.bespoke-ai.ie/)
