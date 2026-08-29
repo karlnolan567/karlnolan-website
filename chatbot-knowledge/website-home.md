@@ -33,7 +33,7 @@ Other playbooks: [supplier verification & inbox triage](https://www.bespoke-ai.i
 
 Principal Consultant — 27+ years delivering software. Straight talk on what's worth automating, then hands-on build until it works in production.
 
-We don’t guess. On a discovery call we decide what’s worth automating — and only quote a build when the workflow and improvements are clear.
+No BS and we don’t guess. On a discovery call we decide what’s worth automating — and only quote a build when the workflow and improvements are clear.
 
 [More about Karl](https://www.bespoke-ai.ie/about.html)
 
