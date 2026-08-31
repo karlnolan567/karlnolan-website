@@ -50,7 +50,7 @@ Document / compliance
 
 ## Supplier licence verification
 
-Quality / compliance team at an EU wholesaler or manufacturer — supplier register, not a public website scrape as the source of truth.
+Quality / compliance at an EU manufacturer — their supplier register is the list to check. Licence facts come from the official EEA register, not staff searching the internet or company website.
 
 - **Challenge:** Staff checked supplier licences by hunting official registers and re-typing addresses and scope into a spreadsheet. Drift after the first check was easy to miss.
 - **Approach:** Pull MIA/WDA records from the official EEA register; present address and scope for a human confirm; alert when the register later drifts from the confirmed baseline. Nothing becomes the compliance record without that confirm.
@@ -58,13 +58,13 @@ Quality / compliance team at an EU wholesaler or manufacturer — supplier regis
 
 Voice intake
 
-## Voice discovery intake
+## Customer voice intake
 
-An operations lead describing how work runs today — phone conversation, not a web form.
+A customer describing a problem or issue — AI phone agent, not a web form.
 
-- **Challenge:** How the work actually ran lived in someone’s head or in a call that was never written down. A long form did not get filled, and there was no reviewed record before someone acted on what they heard.
-- **Approach:** A structured phone conversation walks through how work runs today, the bottlenecks, and the systems in use. The call is captured; a written brief is drafted from it; a person reviews the brief before anyone acts on it.
-- **Outcome:** The team starts from a reviewed brief instead of memory of the call. Nothing goes out from the call unreviewed.
+- **Challenge:** Callers waited for a human agent or left a voicemail. Staff reconstructed the issue from memory or a recording. There was no reviewed summary before someone picked up the work.
+- **Approach:** The AI phone agent verifies date of birth, email, and phone number, then the customer describes the problem. The agent grills the customer about the problem from a predefined FAQ list. A written summary is drafted from the call and sent to support staff. A person reviews it before it is treated as the record.
+- **Outcome:** Support starts from a reviewed summary instead of replaying the call. Unreviewed intake does not become the ticket.
 
 Knowledge-in-chat
 
@@ -83,7 +83,7 @@ Meeting notes
 A Teams organizer after a call — channel and notes file, not a recording dump.
 
 - **Challenge:** After the call, the record lived in the recording or in someone’s notes. There was no written summary and action list in the channel before people treated it as the record.
-- **Approach:** The transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
+- **Approach:** The meeting transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
 - **Outcome:** The team works from a checked summary in Teams. Unreviewed notes are not the record.
 
 Property searching

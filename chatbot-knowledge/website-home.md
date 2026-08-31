@@ -121,9 +121,9 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-inbox)
 EEA manufacturer and wholesaler licences checked against the official register, with a confirm step before they become the record.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier)
-[### Voice discovery intake
+[### Customer voice intake
 
-An operations lead describes how work runs today on a phone call. A written brief is reviewed before anyone acts on it.
+An AI phone agent verifies the caller, then grills the issue against a predefined FAQ list. A written summary goes to support for review.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-voice)
 [### Workplace knowledge in chat
