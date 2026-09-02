@@ -12,7 +12,8 @@
   const isCaseStudies = page === 'case-studies';
   const isPoSalesOrder = page === 'po-sales-order';
   const isSmartInbox = page === 'smart-inbox';
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox;
+  const isDemos = page === 'demos' || page.indexOf('prototype') === 0;
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos;
   const indexPrefix = isOffHome ? '/' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -130,6 +131,9 @@ function bookingHref() {
   }
 
   function initChatbot() {
+    if (isDemos) {
+      return;
+    }
     if (!isLocalPreviewHost()) {
       startChatWidget();
       return;
@@ -208,7 +212,7 @@ function bookingHref() {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
     } else if (isTraining) {
       ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos) {
       ctaConfig = { href: '/#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };

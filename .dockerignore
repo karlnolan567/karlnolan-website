@@ -7,4 +7,5 @@ chatbot-knowledge/
 scripts/
 *.md
 .env
+prototype-demo-hub.html
 .DS_Store

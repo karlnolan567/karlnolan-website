@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+      body{margin:0;background-color:#0f1a2b;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
+      img{max-width:100%;height:auto;display:block}
+      a{color:inherit;text-decoration:none}
+      .site-header .nav{display:none}
+      .mobile-menu{display:none}
+      .mobile-menu--open{display:block}
+      .mobile-menu-btn{display:block}
+      @media(min-width:1280px){.site-header .nav{display:flex}.mobile-menu-btn{display:none}.mobile-menu{display:none!important}}
+      .hidden{display:none!important}
+      html[data-includes-pending] .page-content{visibility:hidden}
+      .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
+    </style>
+    <title>Demos | Bespoke AI</title>
+    <link rel="stylesheet" href="css/styles.css?v=20260829b">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20260710j">
+    <style>
+      .proto-state {
+        position: sticky;
+        top: var(--header-height);
+        z-index: 40;
+        margin: 0;
+        padding: 0.65rem 1rem;
+        background: rgba(15, 26, 43, 0.92);
+        border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--color-neon-green);
+        text-align: center;
+      }
+      .proto-main { padding-bottom: 4rem; }
+      .proto-gate {
+        min-height: calc(100vh - var(--header-height) - 8rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+      }
+      .proto-gate .glass-panel { max-width: 28rem; width: 100%; padding: 2rem; }
+      .proto-gate label { display: block; margin: 1.25rem 0 0.4rem; font-size: 0.8rem; color: var(--color-text-muted); }
+      .proto-gate input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-slate);
+        background: var(--color-dark);
+        color: #fff;
+        font: inherit;
+      }
+      .proto-aside {
+        margin-top: 2rem;
+        text-align: center;
+      }
+      .proto-row {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem 1rem;
+        align-items: start;
+        padding: 1.15rem 1.25rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .proto-row:last-child { border-bottom: none; }
+      .proto-row__body { min-width: 0; }
+      .proto-row__name { margin: 0 0 0.25rem; font-size: 1rem; font-weight: 700; color: #fff; }
+      .proto-row__desc { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.45; }
+      .proto-row__actions {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+      .proto-row__actions .btn {
+        width: 100%;
+        flex-shrink: 1;
+      }
+      .proto-urls { display: flex; flex-direction: column; gap: 0.65rem; }
+      .proto-url {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+      }
+      .proto-url code {
+        min-width: 0;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--color-text-dim);
+        overflow-wrap: anywhere;
+      }
+      @media (min-width: 800px) {
+        .proto-row {
+          grid-template-columns: auto 1fr minmax(11rem, auto);
+          align-items: center;
+        }
+        .proto-row__actions {
+          grid-column: 3;
+          align-items: end;
+        }
+        .proto-row__actions .btn { width: auto; }
+      }
+      .arch-card { justify-content: flex-start; }
+      .arch-card .text-body-sm { flex: 0 0 auto; }
+      .arch-card .btn { margin-top: auto; }
+      .arch-stills { margin: 0.25rem 0 0.5rem; }
+      .arch-stills .case-study-shot--in-card { margin: 0; }
+      .arch-stills .case-study-shot--in-card img {
+        width: 100%;
+        max-height: none;
+      }
+      .arch-stills--portrait .case-study-shot--in-card img {
+        width: auto;
+        max-width: 16rem;
+        max-height: 22rem;
+        margin-inline: auto;
+      }
+    </style>
+</head>
+<body data-page="demos">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="bg-effects" aria-hidden="true"></div>
+<div class="page-shell page-content">
+    <div id="site-header"></div>
+    <p id="proto-state" class="proto-state" role="status" hidden>Prototype</p>
+    <main id="main-content" class="proto-main"></main>
+    <div id="site-footer"></div>
+</div>
+
+<script src="js/site-config.js?v=20260829c"></script>
+<script src="js/includes.js?v=20260902a"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var ARCH = [
+    { name: 'Nexus PQS', blurb: 'Pharma quality diagnostics: 12-signal dashboard, intake workbooks, and executive reports.', tone: 'green', icon: 'fa-chart-line', href: 'https://pqs-nexus.fly.dev/', stills: ['images/nexus-pqs-console.png'], stillAlt: 'Nexus PQS Signal Status: S1–S12 scores, trend bands, and history for the selected period.' },
+    { name: 'Purchase Order → Sales Order', blurb: 'Approver console: inbound purchase orders matched to the ERP. Writeback only after Approve.', tone: 'blue', icon: 'fa-file-invoice', href: 'https://erp-web-dejjr5hfaq-ew.a.run.app/', stills: ['images/po-so-console.png'], stillAlt: 'Approver console: inbound PO beside the sales-order draft. Nothing hits the ERP until Approve.' },
+    { name: 'Supplier License checks', blurb: 'Search the licence catalogue, confirm scope, and get alerted when a licence changes.', tone: 'green', icon: 'fa-certificate', href: 'https://bona-fidea.fly.dev/', stills: ['images/bona-fidea-console.png'], stillAlt: 'Bona Fidea supplier list with a licence-change review: previous vs current scope of authorisation.' },
+    { name: 'Inbox triage', blurb: 'Outlook mailbox with the filing agent installed. New mail is filed; Inbox is what still needs a person.', tone: 'teal', icon: 'fa-inbox', href: 'https://outlook.cloud.microsoft/mail/?realm=bespokeaieng.onmicrosoft.com&login_hint=KarlNolan%40bespokeaieng.onmicrosoft.com', stills: ['images/inbox-triage-folders.png'], stillAlt: 'Outlook folder tree after filing: Inbox, Clients, and Internal. Inbox is what still needs a person.', stillShape: 'portrait' },
+    { name: 'Invoice extraction', blurb: 'Document in, reviewed fields out — ready for the record.', tone: 'blue', icon: 'fa-receipt', href: 'https://copilotstudio.microsoft.com/environments/Default-9ac3754e-d48a-4a5d-94a5-bc534cb274b8/bots/0c26971f-93c0-4078-b7fa-dfb26b9ed83d/overview', stills: ['images/invoice-extraction.png'], stillAlt: 'Invoice information extraction assistant: upload a document and review the extracted fields.' },
+    { name: 'Property search', blurb: 'Conversational search over Limerick sale and to-let listings.', tone: 'blue', icon: 'fa-house', href: 'https://www.bespoke-ai.ie/demos/daft-property/', stills: ['images/daft-property-search.png'], stillAlt: 'Property search: Find your way home — search Limerick in plain English.' },
+    { name: 'Voice AI bots', blurb: 'Different types of voice agents you can converse with.', tone: 'teal', icon: 'fa-headphones', goto: 'voice', stills: ['images/voice-ai-bots.jpg'], stillAlt: 'Voice AI bots call-sheet: six agents you can launch in the browser.' }
+  ];
+
+  var BOTS = [
+    { id: 'brainstorm', name: 'Bespoke AI Brainstorming Agent', icon: 'fa-lightbulb', tone: 'green',
+      blurb: 'Identifies customer pain points on a voice call, then produces a report you can email to the client.' },
+    { id: 'payment', name: 'Payment Reminder', icon: 'fa-file-invoice-dollar', tone: 'green',
+      blurb: 'Chases an overdue invoice in plain language, agrees a date, and leaves a note for accounts. No payment is taken on the call.' },
+    { id: 'health', name: 'ACME Healthcare Appointment', icon: 'fa-stethoscope', tone: 'teal',
+      blurb: 'Books or moves a clinic slot. Asks for name, reason, and a preferred time. A person reviews before anything hits the diary.' },
+    { id: 'auto', name: 'ACME Auto Service Appointment Booking', icon: 'fa-car', tone: 'blue',
+      blurb: 'Garage service desk: vehicle, job type, and the next open bay. Confirms back to the caller in the same conversation.' },
+    { id: 'router', name: 'ACME Multi-Department Router', icon: 'fa-sitemap', tone: 'blue',
+      blurb: 'Front door for a company switchboard. Finds out why they called and routes to billing, ops, or support.' },
+    { id: 'support', name: 'AI Support Call', icon: 'fa-headset', tone: 'teal',
+      blurb: 'FAQ-grounded support in the browser. After hang-up, a short summary is ready for staff review.',
+      urls: [
+        { id: 'support-azure', label: 'Azure demo page', host: 'sagent-dev-nup1x5.azurewebsites.net/api/demo' },
+        { id: 'support-retell', label: 'Retell web call', host: 'agent.retellai.com/preview/…' }
+      ]
+    }
+  ];
+
+  var page = 'gate';
+  var lastLaunch = 'none';
+  var HUB_CODE = 'wexford';
+  var UNLOCK_KEY = 'demoHubUnlocked';
+
+  function isUnlocked() {
+    try { return sessionStorage.getItem(UNLOCK_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function unlock() {
+    try { sessionStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c];
+    });
+  }
+
+  function setPage(next) {
+    page = next;
+    var url = new URL(location.href);
+    url.searchParams.set('page', page);
+    history.replaceState({}, '', url);
+    paint();
+  }
+
+  function launchBtn(id, extraClass, label) {
+    return '<button type="button" class="btn btn-primary ' + (extraClass || '') + '" data-launch="' + esc(id) + '">' +
+      '<i class="fa-solid fa-headphones" aria-hidden="true"></i> ' + esc(label || 'Launch in browser') + '</button>';
+  }
+
+  function launchBlock(bot) {
+    if (bot.urls && bot.urls.length) {
+      return '<div class="proto-urls">' + bot.urls.map(function (u) {
+        return '<div class="proto-url">' +
+          launchBtn(u.id, 'btn-sm', u.label) +
+          '<code>' + esc(u.host) + '</code>' +
+        '</div>';
+      }).join('') + '</div>';
+    }
+    return launchBtn(bot.id, 'btn-sm');
+  }
+
+  function renderGate() {
+    return '<section class="proto-gate">' +
+      '<form id="gate-form" class="glass-panel stack">' +
+        '<span class="text-mono-label text-mono-label--green">// Demo Hub</span>' +
+        '<h1 class="heading-card">Demos</h1>' +
+        '<p class="text-body-sm">Working systems you can walk through. Enter the access code to continue.</p>' +
+        '<div>' +
+          '<label for="access-code">Access code</label>' +
+          '<input id="access-code" name="access-code" type="password" autocomplete="off" spellcheck="false" required>' +
+        '</div>' +
+        '<button type="submit" class="btn btn-primary btn-primary--block">Enter</button>' +
+        '<p id="gate-error" class="text-body-sm" style="color:#f87171" hidden>Incorrect access code.</p>' +
+      '</form>' +
+    '</section>';
+  }
+
+  function stillsBlock(a) {
+    if (!a.stills || !a.stills.length) return '';
+    var alt = a.stillAlt || a.name;
+    var shape = a.stillShape === 'portrait' ? ' arch-stills--portrait' : '';
+    return '<div class="arch-stills' + shape + '">' + a.stills.map(function (src) {
+      return '<figure class="case-study-shot case-study-shot--in-card">' +
+        '<a href="' + esc(src) + '" class="case-study-shot__link" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot">' +
+          '<img src="' + esc(src) + '" alt="' + esc(alt) + '">' +
+          '<span class="case-study-shot__hint" aria-hidden="true">Click to enlarge</span>' +
+        '</a></figure>';
+    }).join('') + '</div>';
+  }
+
+  function renderHub() {
+    var cards = ARCH.map(function (a) {
+      return '<article class="glass-panel offering-card arch-card">' +
+        '<div class="card-lead">' +
+          '<div class="offering-icon offering-icon--' + a.tone + '" aria-hidden="true"><i class="fa-solid ' + a.icon + '"></i></div>' +
+          '<h3 class="heading-card">' + esc(a.name) + '</h3>' +
+        '</div>' +
+        '<p class="text-body-sm">' + esc(a.blurb) + '</p>' +
+        stillsBlock(a) +
+        (a.goto
+          ? '<button type="button" class="btn btn-primary" data-goto="' + esc(a.goto) + '">Open Solution</button>'
+          : a.href
+            ? '<a class="btn btn-primary" href="' + esc(a.href) + '" target="_blank" rel="noopener noreferrer">Open Solution</a>'
+            : '<button type="button" class="btn btn-primary" data-arch="' + esc(a.name) + '">Open Solution</button>') +
+      '</article>';
+    }).join('');
+
+    return '<section class="section--compact section--pb-tight">' +
+        '<div class="container-md stack-lg text-center">' +
+          '<span class="text-mono-label text-mono-label--green">// Demo Hub</span>' +
+          '<h1 class="heading-hero">Demos</h1>' +
+          '<p class="text-lead container-sm" style="margin-left:auto;margin-right:auto">Working systems you can walk through.</p>' +
+        '</div>' +
+      '</section>' +
+      '<section class="section section--border-top section--alt-light">' +
+        '<div class="container">' +
+          '<div class="grid-2">' + cards + '</div>' +
+        '</div>' +
+      '</section>';
+  }
+
+  function renderVoice() {
+    var rows = BOTS.map(function (b) {
+      return '<div class="proto-row">' +
+        '<div class="offering-icon offering-icon--' + b.tone + '" aria-hidden="true"><i class="fa-solid ' + b.icon + '"></i></div>' +
+        '<div class="proto-row__body">' +
+          '<p class="proto-row__name">' + esc(b.name) + '</p>' +
+          '<p class="proto-row__desc">' + esc(b.blurb) + '</p>' +
+        '</div>' +
+        '<div class="proto-row__actions">' + launchBlock(b) + '</div>' +
+      '</div>';
+    }).join('');
+
+    return '<section class="section--compact section--pb-tight">' +
+        '<div class="container-md stack text-center">' +
+          '<p><a href="#hub" data-goto="hub" class="link-brand">← Demos</a></p>' +
+          '<span class="text-mono-label text-mono-label--teal">// Aside</span>' +
+          '<h1 class="heading-hero">Voice AI bots</h1>' +
+          '<p class="text-body-sm">Launch an agent on this PC. Prototype Launch does not call Retell yet.</p>' +
+        '</div>' +
+      '</section>' +
+      '<section class="section section--border-top">' +
+        '<div class="container-md">' +
+          '<div class="glass-panel">' + rows + '</div>' +
+        '</div>' +
+      '</section>';
+  }
+
+  function paintState() {
+    var el = document.getElementById('proto-state');
+    el.textContent =
+      'Prototype · page: ' + page + ' · last launch: ' + lastLaunch +
+      ' · stands in for /demos/' + (page === 'voice' ? 'voice.html' : page === 'hub' ? '' : ' (gate)');
+    el.hidden = new URLSearchParams(location.search).get('debug') !== '1';
+  }
+
+  function paint() {
+    var html = page === 'hub' ? renderHub() : page === 'voice' ? renderVoice() : renderGate();
+    document.getElementById('main-content').innerHTML = html;
+    paintState();
+    var form = document.getElementById('gate-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var code = document.getElementById('access-code').value.trim();
+        var err = document.getElementById('gate-error');
+        if (code.toLowerCase() !== HUB_CODE) {
+          err.hidden = false;
+          return;
+        }
+        unlock();
+        setPage('hub');
+      });
+    }
+  }
+
+  document.getElementById('main-content').addEventListener('click', function (e) {
+    var go = e.target.closest('[data-goto]');
+    if (go) {
+      e.preventDefault();
+      setPage(go.getAttribute('data-goto'));
+      return;
+    }
+    var launch = e.target.closest('[data-launch]');
+    if (launch) {
+      lastLaunch = launch.getAttribute('data-launch');
+      paintState();
+    }
+  });
+
+  var q = new URLSearchParams(location.search).get('page');
+  if (!isUnlocked() || q === 'gate') page = 'gate';
+  else if (q === 'voice') page = 'voice';
+  else page = 'hub';
+  paint();
+})();
+</script>
+</body>
+</html>

@@ -7,6 +7,9 @@ node_modules/
 # Local-only GenAI chat embed URL + key (see js/site-config.local.js.example)
 js/site-config.local.js
 
+# Local throwaway hub (live copy is demos/index.html)
+prototype-demo-hub.html
+
 # TLS certs (generated on VPS)
 docker/ssl/
 
