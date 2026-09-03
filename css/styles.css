@@ -3050,11 +3050,20 @@ a.pattern-more-card {
   display: none !important;
 }
 
+.chat-embed__chrome {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.5rem;
+  background: #0f1a2b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .chat-embed__close {
-  position: absolute;
-  top: 0.55rem;
-  right: 0.55rem;
-  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3094,7 +3103,7 @@ a.pattern-more-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.25rem 1.25rem 1.5rem;
+  padding: 1.25rem 1.25rem 1.5rem;
   color: var(--color-text-muted);
   font-size: 0.875rem;
   line-height: 1.625;

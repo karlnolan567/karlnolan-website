@@ -35,9 +35,11 @@
       '<span class="chat-embed__badge" hidden aria-hidden="true">1</span>' +
     '</button>' +
     '<section id="bcai-chat-embed-panel" class="chat-embed__panel" hidden aria-label="Bespoke AI Assistant">' +
-      '<button type="button" class="chat-embed__close" aria-label="Close chat">' +
-        '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' +
-      '</button>' +
+      '<div class="chat-embed__chrome">' +
+        '<button type="button" class="chat-embed__close" aria-label="Close chat">' +
+          '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' +
+        '</button>' +
+      '</div>' +
       '<div class="chat-embed__gate" hidden>' +
         '<p>Messages you send are processed by Google Cloud in europe-west1 (Belgium) to generate a reply. Do not paste sensitive personal data.</p>' +
         '<p><a href="privacy.html" class="link-brand">Privacy notice</a></p>' +

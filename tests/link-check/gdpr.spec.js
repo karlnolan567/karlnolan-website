@@ -58,3 +58,28 @@ test('chat iframe stays empty until Continue', async ({ page }) => {
   await expect(frame).toHaveAttribute('src', /run\.app/);
   await expect(frame).not.toHaveAttribute('hidden', '');
 });
+
+test('close button stays above the chat iframe after Continue', async ({
+  page,
+}) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.waitForFunction(
+    () => !document.documentElement.hasAttribute('data-includes-pending')
+  );
+  await page.locator('.chat-embed__toggle').click();
+  await page.locator('.chat-embed__gate-continue').click();
+
+  const close = page.locator('.chat-embed__close');
+  const frame = page.locator('.chat-embed__frame');
+  await expect(close).toBeVisible();
+  await expect(frame).toBeVisible();
+
+  const closeBox = await close.boundingBox();
+  const frameBox = await frame.boundingBox();
+  expect(closeBox).toBeTruthy();
+  expect(frameBox).toBeTruthy();
+  expect(closeBox.y + closeBox.height).toBeLessThanOrEqual(frameBox.y + 1);
+
+  await close.click();
+  await expect(page.locator('#bcai-chat-embed-panel')).toBeHidden();
+});
