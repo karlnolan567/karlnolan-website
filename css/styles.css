@@ -1250,6 +1250,10 @@ section[id] {
   .grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  #automation-core .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .about-grid {

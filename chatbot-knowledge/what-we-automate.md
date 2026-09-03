@@ -18,7 +18,7 @@ Everyday language, not jargon. The examples below are common starting points —
 
 ## Example Pilot Playbooks
 
-A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html) and the [Where to Start](https://www.bespoke-ai.ie/#where-to-start) playbooks — suggestions only. Priced starting points: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) (typical from €8,000 + VAT). Every other engagement is scoped to what you actually need.
+A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html) and the [Where to Start](https://www.bespoke-ai.ie/#where-to-start) playbooks — suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 
@@ -49,6 +49,16 @@ A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-s
 - **Exception queue:** Missing or low-confidence data routes to human review — never straight into the compliance system.
 
 - **Audit trail:** Every intake logs source, fields, reviewer, timestamp, and action.
+
+### AI Voice Assistance
+
+- **Support intake:** Callers describe the issue; the agent verifies identity, works from your FAQ, and drafts a written summary for staff. Unreviewed intake does not become the ticket.
+
+- **Appointment booking:** Books or moves a clinic, garage, or similar slot — name, reason, preferred time — with a person reviewing before anything hits the diary.
+
+- **Payment reminders:** Chases an overdue invoice in plain language, agrees a date, and leaves a note for accounts. No payment is taken on the call.
+
+- **Switchboard routing:** Front door for a company line: finds out why they called and routes to billing, ops, or support.
 
 // Architecture
 
