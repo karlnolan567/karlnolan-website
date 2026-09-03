@@ -23,7 +23,7 @@ const SITE = {
         group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20260829c',
+    partialVersion: '20260903a',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -46,5 +46,4 @@ const SITE = {
     bookingUrl: isLocalPreview
         ? '/#discovery-call'
         : 'https://www.bespoke-ai.ie/#discovery-call',
-    gaMeasurementId: 'G-YBVQT5NFWE',
 };

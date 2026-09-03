@@ -19,8 +19,8 @@
   --bubble-bg: #4170c4;
   --bubble-panel: #1a2230;
   --danger: #c62828;
-  --font-sans: "Nunito Sans", "Segoe UI", sans-serif;
-  --font-display: "Nunito Sans", "Segoe UI", sans-serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: system-ui, -apple-system, "Segoe UI", sans-serif;
   --shadow-soft: 0 12px 32px rgba(28, 36, 48, 0.1);
   --radius: 10px;
 }

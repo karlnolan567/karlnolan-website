@@ -63,6 +63,7 @@ describe('listHtmlPages', () => {
     assert.ok(pages.includes('po-sales-order.html'));
     assert.ok(pages.includes('index.html'));
     assert.ok(pages.includes('smart-inbox.html'));
+    assert.ok(pages.includes('privacy.html'));
   });
 });
 

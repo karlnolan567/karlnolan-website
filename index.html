@@ -35,11 +35,9 @@
     <meta name="twitter:title" content="Bespoke AI Engineering | Agents &amp; Automation">
     <meta name="twitter:description" content="Workplace agents for Microsoft and Google — plus embeddable AI search and analysis on client web pages.">
     <meta name="twitter:image" content="https://www.bespoke-ai.ie/images/og-card.png">
-    <link rel="stylesheet" href="css/styles.css?v=20260829b">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260903a">
+    <link rel="stylesheet" href="css/fonts.css?v=20260903a">
+    <link rel="stylesheet" href="css/font-awesome.min.css?v=20260903a">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20260710j">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20260710j">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20260710j">
@@ -54,7 +52,9 @@
         "areaServed": "Worldwide",
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": "3 Heather Grove, Glencairin, Dooradoyle",
             "addressLocality": "Limerick",
+            "postalCode": "V94 N5RC",
             "addressCountry": "IE"
         },
         "founder": {
@@ -414,10 +414,14 @@
                             <p class="text-body-sm text-muted contact-card-intro">Pick an available slot below. You’ll receive a calendar invite by email from Google Calendar.</p>
                         </div>
                         <div class="booking-embed">
+                            <div id="booking-embed-consent" class="booking-embed__consent">
+                                <p>Loading the calendar connects you to Google to pick a time. Google will send the invite email.</p>
+                                <button type="button" id="load-booking-calendar" class="btn btn-primary">Load Google Calendar</button>
+                            </div>
                             <iframe
                                 id="discovery-booking-embed"
                                 title="Book a discovery call"
-                                loading="lazy"
+                                hidden
                                 referrerpolicy="no-referrer-when-downgrade"
                             ></iframe>
                         </div>
@@ -426,7 +430,7 @@
                             <a href="#" id="booking-schedule-link" class="link-brand" target="_blank" rel="noopener noreferrer">Open Google booking</a>
                         </p>
                     </div>
-                    <p class="privacy-note">Bookings use <strong>Google Calendar</strong> appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See <a href="#privacy" class="link-brand">privacy notice</a> below.</p>
+                    <p class="privacy-note">Bookings use <strong>Google Calendar</strong> appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See <a href="privacy.html" class="link-brand">privacy notice</a>.</p>
                 </div>
                 <p class="contact-secondary text-body-sm">
                     Prefer LinkedIn?
@@ -441,9 +445,10 @@
     <div id="site-footer"></div>
 </div>
 
-<script src="js/site-config.js?v=20260829c"></script>
-<script src="js/includes.js?v=20260814b"></script>
-<script src="js/site.js?v=20260813b"></script>
+<script src="js/site-config.js?v=20260903a"></script>
+<script src="js/privacy-controls.js?v=20260903a"></script>
+<script src="js/includes.js?v=20260903a"></script>
+<script src="js/site.js?v=20260903a"></script>
 <script>
     document.getElementById('contact-linkedin-link').href = SITE.linkedIn;
 </script>

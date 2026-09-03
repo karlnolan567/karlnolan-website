@@ -8,12 +8,13 @@
   const isWorkflowAssessment = page === 'workflow-assessment';
   const isScoping = page === 'scoping';
   const isAbout = page === 'about';
+  const isPrivacy = page === 'privacy';
   const isAiEngineering = page === 'ai-engineering';
   const isCaseStudies = page === 'case-studies';
   const isPoSalesOrder = page === 'po-sales-order';
   const isSmartInbox = page === 'smart-inbox';
   const isDemos = page === 'demos' || page.indexOf('prototype') === 0;
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos;
+  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isPrivacy || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos;
   const indexPrefix = isOffHome ? '/' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -92,24 +93,6 @@ function bookingHref() {
 
   function isLocalPreviewHost() {
     return /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
-  }
-
-  function initGoogleAnalytics() {
-    var id = SITE.gaMeasurementId;
-    if (!id || isLocalPreviewHost()) {
-      return;
-    }
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', id);
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
-    document.head.appendChild(script);
   }
 
   function loadScript(src, onDone) {
@@ -212,7 +195,7 @@ function bookingHref() {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
     } else if (isTraining) {
       ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos) {
+    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isPrivacy || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos) {
       ctaConfig = { href: '/#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };
@@ -245,7 +228,6 @@ function bookingHref() {
       configureNav();
       configurePrivacy();
       configureWorkshopVisibility();
-      initGoogleAnalytics();
       initChatbot();
       document.documentElement.removeAttribute('data-includes-pending');
       document.dispatchEvent(new Event('includes-loaded'));

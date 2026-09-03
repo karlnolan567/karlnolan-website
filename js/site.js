@@ -38,9 +38,18 @@ function configureBookingLinks() {
 
 function initBookingEmbed() {
   var iframe = document.getElementById('discovery-booking-embed');
-  if (!iframe) return;
+  var button = document.getElementById('load-booking-calendar');
+  if (!iframe || !button) return;
   var src = bookingEmbedHref();
-  if (src) iframe.src = src;
+  if (!src) return;
+  button.addEventListener('click', function () {
+    if (typeof PrivacyControls === 'undefined' || !PrivacyControls.loadBookingEmbed(iframe, src)) {
+      return;
+    }
+    iframe.removeAttribute('hidden');
+    var placeholder = document.getElementById('booking-embed-consent');
+    if (placeholder) placeholder.hidden = true;
+  });
 }
 
 function getHeaderScrollOffset() {
@@ -60,10 +69,6 @@ function syncHeaderScrollOffset() {
 function scrollToHash(behavior) {
   const hash = window.location.hash;
   if (!hash || hash === '#') return false;
-  if (hash === '#privacy') {
-    const privacy = document.getElementById('privacy');
-    if (privacy && 'open' in privacy) privacy.open = true;
-  }
   const target = document.querySelector(hash);
   if (!target) return false;
   const offset = syncHeaderScrollOffset();
@@ -117,7 +122,19 @@ function scheduleHashScroll(behavior) {
   }, { once: true });
 }
 
+function redirectIfPrivacyHash() {
+  if (typeof PrivacyControls === 'undefined') return false;
+  var privacyUrl = PrivacyControls.privacyPageUrlFromHash(window.location.hash);
+  if (!privacyUrl) return false;
+  window.location.replace(privacyUrl);
+  return true;
+}
+
 function initHashNavigation() {
+  if (redirectIfPrivacyHash()) {
+    return;
+  }
+
   function onIncludesLoaded() {
     configureBookingLinks();
     initBookingEmbed();
@@ -144,6 +161,9 @@ function initHashNavigation() {
   }
 
   window.addEventListener('hashchange', function () {
+    if (redirectIfPrivacyHash()) {
+      return;
+    }
     syncHeaderScrollOffset();
     scrollUntilHashAligned('smooth');
   });

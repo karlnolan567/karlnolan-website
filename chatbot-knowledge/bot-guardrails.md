@@ -60,7 +60,7 @@ Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, 
 | Case studies / client results | Client results | [Client results](https://www.bespoke-ai.ie/case-studies.html) |
 | What we automate | What we automate | [What we automate](https://www.bespoke-ai.ie/what-we-automate.html) |
 | Book a discovery call | Book a call | [Book a call](https://www.bespoke-ai.ie/#discovery-call) |
-| Privacy notice | Privacy notice | [Privacy notice](https://www.bespoke-ai.ie/#privacy) |
+| Privacy notice | Privacy notice | [Privacy notice](https://www.bespoke-ai.ie/privacy.html) |
 
 **Never paste raw URLs** like `https://www.bespoke-ai.ie/#discovery-call` in replies — always use the markdown link with the short label from the table above.
 
@@ -70,4 +70,4 @@ Questions about **process** or **how you work** → [How we work](https://www.be
 
 - Discovery call: [Book a call](https://www.bespoke-ai.ie/#discovery-call)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)
-- Company: Bespoke Core AI Engineering Limited, Limerick, Ireland
+- Company: Bespoke Core AI Engineering Limited, 3 Heather Grove, Glencairin, Dooradoyle, Limerick, V94 N5RC, Ireland (CRO 820893)

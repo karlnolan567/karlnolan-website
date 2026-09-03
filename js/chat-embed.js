@@ -8,6 +8,7 @@
   var isOpen = false;
   var frameLoaded = false;
   var nudgeDismissed = false;
+  var controls = typeof PrivacyControls !== 'undefined' ? PrivacyControls : null;
 
   try {
     nudgeDismissed = sessionStorage.getItem(NUDGE_KEY) === '1';
@@ -37,7 +38,15 @@
       '<button type="button" class="chat-embed__close" aria-label="Close chat">' +
         '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' +
       '</button>' +
-      '<iframe class="chat-embed__frame" title="Bespoke AI Assistant" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="clipboard-write"></iframe>' +
+      '<div class="chat-embed__gate" hidden>' +
+        '<p>Messages you send are processed by Google Cloud in europe-west1 (Belgium) to generate a reply. Do not paste sensitive personal data.</p>' +
+        '<p><a href="privacy.html" class="link-brand">Privacy notice</a></p>' +
+        '<div class="chat-embed__gate-actions">' +
+          '<button type="button" class="chat-embed__gate-continue btn btn-primary">Continue</button>' +
+          '<button type="button" class="chat-embed__gate-cancel btn btn-secondary">Cancel</button>' +
+        '</div>' +
+      '</div>' +
+      '<iframe class="chat-embed__frame" title="Bespoke AI Assistant" hidden loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="clipboard-write"></iframe>' +
     '</section>';
 
   document.body.appendChild(root);
@@ -49,7 +58,22 @@
   var badgeEl = root.querySelector('.chat-embed__badge');
   var panel = root.querySelector('.chat-embed__panel');
   var closeBtn = root.querySelector('.chat-embed__close');
+  var gateEl = root.querySelector('.chat-embed__gate');
+  var continueBtn = root.querySelector('.chat-embed__gate-continue');
+  var cancelBtn = root.querySelector('.chat-embed__gate-cancel');
   var frame = root.querySelector('.chat-embed__frame');
+
+  function chatStorage() {
+    try {
+      return window.localStorage;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function hasCloudConsent() {
+    return controls ? controls.shouldLoadChatFrame(chatStorage()) : false;
+  }
 
   function persistNudgeDismissed() {
     nudgeDismissed = true;
@@ -66,8 +90,14 @@
     badgeEl.hidden = !showNudge;
   }
 
+  function syncGate() {
+    var consented = hasCloudConsent();
+    gateEl.hidden = !isOpen || consented;
+    frame.hidden = !isOpen || !consented;
+  }
+
   function ensureFrameSrc() {
-    if (frameLoaded) {
+    if (frameLoaded || !hasCloudConsent()) {
       return;
     }
     frame.src = embedUrl;
@@ -80,9 +110,12 @@
     toggleBtn.setAttribute('aria-expanded', String(open));
     toggleBtn.setAttribute('aria-label', open ? 'Close chat' : 'Open chat');
     if (open) {
-      ensureFrameSrc();
       persistNudgeDismissed();
+      if (hasCloudConsent()) {
+        ensureFrameSrc();
+      }
     }
+    syncGate();
     syncNudgeVisibility();
   }
 
@@ -106,6 +139,18 @@
   dismissBtn.addEventListener('click', dismissNudge);
 
   closeBtn.addEventListener('click', function () {
+    setOpen(false);
+  });
+
+  continueBtn.addEventListener('click', function () {
+    if (controls) {
+      controls.persistChatConsent(chatStorage());
+    }
+    ensureFrameSrc();
+    syncGate();
+  });
+
+  cancelBtn.addEventListener('click', function () {
     setOpen(false);
   });
 

@@ -235,6 +235,6 @@ Pick an available slot below. You’ll receive a calendar invite by email from G
 
 Prefer a full-page view? [Open Google booking](https://www.bespoke-ai.ie/#)
 
-Bookings use **Google Calendar** appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See [privacy notice](https://www.bespoke-ai.ie/#privacy) below.
+Bookings use **Google Calendar** appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See the [privacy notice](https://www.bespoke-ai.ie/privacy.html).
 
 Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)

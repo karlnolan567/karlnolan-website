@@ -2282,6 +2282,24 @@ a.pattern-more-card {
   background: #fff;
 }
 
+.booking-embed iframe[hidden] {
+  display: none !important;
+}
+
+.booking-embed__consent {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  color: #152238;
+}
+
+.booking-embed__consent p {
+  margin: 0 0 1.25rem;
+  color: #1f3049;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
 .booking-embed-fallback {
   margin: 0;
   text-align: center;
@@ -2681,87 +2699,22 @@ a.pattern-more-card {
   color: var(--color-neon-teal);
 }
 
-.footer-privacy {
-  max-width: 48rem;
-  margin: 2rem auto 0;
-  padding: 0;
+.footer-privacy-link {
+  margin: 2rem 0 0;
   text-align: center;
-  color: var(--color-text-faint);
-  font-size: 0.8125rem;
-  line-height: 1.65;
-  background: rgba(31, 48, 73, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
-  scroll-margin-top: var(--header-height);
 }
 
-.footer-privacy__summary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.25rem;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
-
-.footer-privacy__summary::-webkit-details-marker {
-  display: none;
-}
-
-.footer-privacy__summary:hover .footer-privacy__label {
-  color: var(--color-text-dim);
-}
-
-.footer-privacy__chevron {
-  font-size: 0.625rem;
-  color: var(--color-text-faint);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.footer-privacy[open] .footer-privacy__chevron {
-  transform: rotate(180deg);
-}
-
-.footer-privacy__body {
-  padding: 0 1.25rem 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: left;
-}
-
-.footer-privacy__body p {
-  margin: 0 0 0.875rem;
-  color: var(--color-text-faint);
-}
-
-.footer-privacy__body p:last-child {
-  margin-bottom: 0;
-}
-
-.footer-privacy__body strong {
-  color: var(--color-text-dim);
-  font-weight: 600;
-}
-
-.footer-privacy__body a.link-brand {
-  color: var(--color-text-dim);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.footer-privacy__body a.link-brand:hover {
-  color: var(--color-text-muted);
-}
-
-.footer-privacy__label {
+.footer-privacy-link a {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--color-text-faint);
-  margin: 0;
-  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-privacy-link a:hover {
+  color: var(--color-text-dim);
 }
 
 .footer-bottom {
@@ -3130,6 +3083,72 @@ a.pattern-more-card {
   height: 100%;
   border: 0;
   background: #f3f4f6;
+}
+
+.chat-embed__frame[hidden] {
+  display: none !important;
+}
+
+.chat-embed__gate {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.25rem 1.25rem 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+.chat-embed__gate[hidden] {
+  display: none !important;
+}
+
+.chat-embed__gate p {
+  margin: 0 0 0.75rem;
+}
+
+.chat-embed__gate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.privacy-doc {
+  margin-top: 2rem;
+}
+
+.privacy-doc h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2rem 0 0.75rem;
+}
+
+.privacy-doc h2:first-child {
+  margin-top: 0;
+}
+
+.privacy-doc p,
+.privacy-doc li {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0 0 0.875rem;
+}
+
+.privacy-doc address {
+  font-style: normal;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0 0 0.875rem;
+}
+
+.privacy-doc strong {
+  color: var(--color-text);
+  font-weight: 600;
 }
 
 @media (max-width: 479px) {
