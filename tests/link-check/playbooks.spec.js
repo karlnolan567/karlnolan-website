@@ -55,6 +55,7 @@ test('where-to-start includes open-source stock ERP playbook', async ({
     })
   );
   expect(boxes[3].y).toBeGreaterThan(boxes[0].y + boxes[0].height / 2);
+  expect(boxes[3].y - (boxes[0].y + boxes[0].height)).toBeGreaterThan(16);
   expect(Math.abs(boxes[3].x - boxes[0].x)).toBeLessThan(24);
 });
 

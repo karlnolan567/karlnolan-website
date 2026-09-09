@@ -1626,6 +1626,10 @@ section[id] {
     height: auto;
   }
 
+  #where-to-start .playbook-card:nth-child(n + 4) {
+    margin-top: 1.25rem;
+  }
+
   #where-to-start .playbook-dl {
     display: contents;
   }
