@@ -32,6 +32,14 @@ test('where-to-start includes open-source stock ERP playbook', async ({
   await expect(footer).toHaveText(/Book a discovery call/);
   await expect(footer).toHaveAttribute('href', '#discovery-call');
   await expect(page.locator('#discovery-call')).toHaveCount(1);
+  await expect(footer).toHaveClass(/link-brand/);
+  await expect(footer.locator('i.fa-solid.fa-arrow-right')).toHaveCount(1);
+
+  const cardText = await last.innerText();
+  expect(await footer.innerText()).not.toMatch(/Client results/i);
+  expect(cardText).not.toMatch(/typically live/i);
+  expect(cardText).not.toMatch(/Odoo|ERPNext|Dolibarr/i);
+  expect(cardText).not.toMatch(/€\s*\d/);
 
   const titles = await cards.locator('.card-title').allTextContents();
   expect(titles.slice(0, 3)).toEqual([
@@ -62,5 +70,5 @@ test('home chatbot knowledge includes the stock ERP playbook', () => {
   expect(md).toContain(OUTCOME);
   expect(md).toContain('https://www.bespoke-ai.ie/#discovery-call');
   expect(md).not.toMatch(/Odoo|ERPNext|Dolibarr/i);
-  expect(md).not.toMatch(/€\d/);
+  expect(md).not.toMatch(/€\s*\d/);
 });
