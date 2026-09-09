@@ -36,7 +36,7 @@ test('where-to-start includes open-source stock ERP playbook', async ({
   await expect(footer.locator('i.fa-solid.fa-arrow-right')).toHaveCount(1);
 
   const cardText = await last.innerText();
-  expect(await footer.innerText()).not.toMatch(/Client results/i);
+  expect(cardText).not.toMatch(/Client results/i);
   expect(cardText).not.toMatch(/typically live/i);
   expect(cardText).not.toMatch(/Odoo|ERPNext|Dolibarr/i);
   expect(cardText).not.toMatch(/€\s*\d/);
