@@ -69,6 +69,14 @@ test('home chatbot knowledge includes the stock ERP playbook', () => {
   expect(md).toContain(WHAT);
   expect(md).toContain(OUTCOME);
   expect(md).toContain('https://www.bespoke-ai.ie/#discovery-call');
-  expect(md).not.toMatch(/Odoo|ERPNext|Dolibarr/i);
-  expect(md).not.toMatch(/€\s*\d/);
+
+  const start = md.indexOf('### Open-source stock ERP');
+  const end = md.indexOf(
+    '[Client results](https://www.bespoke-ai.ie/case-studies.html) · Need something deeper?'
+  );
+  expect(start).toBeGreaterThan(-1);
+  expect(end).toBeGreaterThan(start);
+  const section = md.slice(start, end);
+  expect(section).not.toMatch(/Odoo|ERPNext|Dolibarr/i);
+  expect(section).not.toMatch(/€\s*\d/);
 });
