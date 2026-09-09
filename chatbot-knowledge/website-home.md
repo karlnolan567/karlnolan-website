@@ -215,6 +215,16 @@ Regulated Supply Chain
 
 [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier)
 
+Inventory Operations
+
+### Open-source stock ERP
+
+- **Who it's for:** Owners and ops leads still running sales and inventory on spreadsheets, paper, or manual tracking. Not a fit if a working ERP is already in place.
+- **What you get:** We install and configure an affordable open-source ERP, migrate your current stock and sales records, and train the team to run it day to day. The system is chosen on the discovery call; quote after we see how you work today.
+- **Typical outcome:** Spreadsheets, paper, and manual sales/inventory tracking replaced by one live stock system the team can run themselves.
+
+[Book a discovery call](https://www.bespoke-ai.ie/#discovery-call)
+
 [Client results](https://www.bespoke-ai.ie/case-studies.html) · Need something deeper? [AI Engineering & Custom Pipelines](https://www.bespoke-ai.ie/ai-engineering.html)
 
 // Get in Touch
