@@ -134,7 +134,7 @@
         </div>
         <h3>No search yet</h3>
         <p class="muted">
-          Tap a starter or type in the search bar above — results show up here like a Daft results list.
+          Tap a starter or type in the search bar above, results show up here like a Daft results list.
         </p>
         <div class="listings-empty__prompts">
           ${starters
@@ -195,8 +195,8 @@
       keepChatOpen: true,
       notice:
         mode === "rent"
-          ? "Switched to rentals — starting a new search."
-          : "Switched to for sale — starting a new search.",
+          ? "Switched to rentals, starting a new search."
+          : "Switched to for sale, starting a new search.",
     });
   }
 
@@ -590,7 +590,7 @@
       if (!text || busy) return;
       void submitPrompt(text, { useChat: false });
     });
-    // Native type=search clear (X) fires "search" with an empty value — treat as Start again.
+    // Native type=search clear (X) fires "search" with an empty value, treat as Start again.
     heroSearchInput.addEventListener("search", () => {
       if (busy || heroSearchInput.value.trim() !== "") return;
       void resetSession({ keepChatOpen: false });

@@ -64,6 +64,22 @@ try {
       failures.push(`${rel} → HTTP ${res.status}`);
     }
   }
+
+  const assets = [
+    'fonts/InterVariable.woff2',
+    'fonts/JetBrainsMono-Variable.woff2',
+    'webfonts/fa-solid-900.woff2',
+    'webfonts/fa-brands-400.woff2',
+    'webfonts/fa-regular-400.woff2',
+  ];
+  for (const rel of assets) {
+    const res = await fetch(`http://127.0.0.1:${PORT}/${rel}`, {
+      redirect: 'follow',
+    });
+    if (!res.ok) {
+      failures.push(`${rel} → HTTP ${res.status}`);
+    }
+  }
 } finally {
   cleanup();
 }

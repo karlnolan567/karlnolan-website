@@ -9,6 +9,8 @@ COPY workshop-one-pager.pdf ./
 COPY robots.txt ./
 COPY sitemap.xml ./
 COPY css/ css/
+COPY fonts/ fonts/
+COPY webfonts/ webfonts/
 COPY js/ js/
 COPY partials/ partials/
 COPY images/ images/

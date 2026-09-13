@@ -265,7 +265,7 @@ input {
   box-shadow: 0 0 0 2px rgba(65, 112, 196, 0.22);
 }
 
-/* App shell — Daft marketplace layout */
+/* App shell, Daft marketplace layout */
 .app {
   min-height: 100vh;
   width: 100%;
@@ -996,7 +996,7 @@ input {
   }
 }
 
-/* Floating chat — Daft green accents on dark panel */
+/* Floating chat, Daft green accents on dark panel */
 .chat-embed {
   position: fixed;
   right: 1rem;

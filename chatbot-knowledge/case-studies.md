@@ -20,7 +20,7 @@ Sales order intake
 
 ## Purchase orders into the ERP
 
-Order desk — shared mailbox, ERP writeback.
+Order desk, shared mailbox, ERP writeback.
 
 - **Challenge:** Staff re-typed inbound purchase orders into the ERP. There was no reliable review gate before rows hit the ledger.
 - **Approach:** Intake from the order mailbox; extract the PO; match customer, SKU, and price to live catalogs; flag gaps and mismatches; side-by-side approver console; writeback only after Approve.
@@ -30,7 +30,7 @@ Quality diagnostics
 
 ## Quality diagnostics and reports
 
-Quality / compliance at a pharmaceutical manufacturer or GDP site — diagnostic dashboard, not a public website.
+Quality / compliance at a pharmaceutical manufacturer or GDP site, diagnostic dashboard, not a public website.
 
 - **Challenge:** Staff assembled the quality picture from workbooks and wrote the site narrative by hand. Scores, exceptions, and the written report drifted from each other.
 - **Approach:** Structured intake into a scored set of quality signals; AI interprets the already-computed results into a draft executive report; a reviewer checks the dashboard and the narrative before it is treated as the quality pack.
@@ -40,7 +40,7 @@ Inbox triage
 
 ## Outlook inbox triage
 
-A mailbox owner in Microsoft 365 — personal or role inbox.
+A mailbox owner in Microsoft 365, personal or role inbox.
 
 - **Challenge:** Everything landed in Inbox. Leadership and high-importance sat next to bulk mail. There was no reliable morning view of what still needed a person.
 - **Approach:** New mail is filed into a folder tree (customers, internal, potential spam, everything else). Leadership and high-importance trigger an urgent notice. A morning summary lists what is still waiting in Inbox. Mail is not deleted; bulk is set aside for review.
@@ -50,7 +50,7 @@ Document / compliance
 
 ## Supplier licence verification
 
-Quality / compliance at an EU manufacturer — their supplier register is the list to check. Licence facts come from the official EEA register, not staff searching the internet or company website.
+Quality / compliance at an EU manufacturer, their supplier register is the list to check. Licence facts come from the official EEA register, not staff searching the internet or company website.
 
 - **Challenge:** Staff checked supplier licences by hunting official registers and re-typing addresses and scope into a spreadsheet. Drift after the first check was easy to miss.
 - **Approach:** Pull MIA/WDA records from the official EEA register; present address and scope for a human confirm; alert when the register later drifts from the confirmed baseline. Nothing becomes the compliance record without that confirm.
@@ -60,7 +60,7 @@ Voice intake
 
 ## Customer voice intake
 
-A customer describing a problem or issue — AI phone agent, not a web form.
+A customer describing a problem or issue, AI phone agent, not a web form.
 
 - **Challenge:** Callers waited for a human agent or left a voicemail. Staff reconstructed the issue from memory or a recording. There was no reviewed summary before someone picked up the work.
 - **Approach:** The AI phone agent verifies date of birth, email, and phone number, then the customer describes the problem. The agent grills the customer about the problem from a predefined FAQ list. A written summary is drafted from the call and sent to support staff. A person reviews it before it is treated as the record.
@@ -80,7 +80,7 @@ Meeting notes
 
 ## Meeting notes in Teams
 
-A Teams organizer after a call — channel and notes file, not a recording dump.
+A Teams organizer after a call, channel and notes file, not a recording dump.
 
 - **Challenge:** After the call, the record lived in the recording or in someone’s notes. There was no written summary and action list in the channel before people treated it as the record.
 - **Approach:** The meeting transcript is turned into a written summary and action items in the channel, with a link to the notes. A person checks them before they are treated as the record. The recording itself is not sent for analysis.
@@ -90,7 +90,7 @@ Property searching
 
 ## Property searching
 
-A property listings site — visitors searching homes.
+A property listings site, visitors searching homes.
 
 - **Challenge:** Visitors had to translate what they wanted into filters. Matching listings were easy to miss, and invented or off-catalog results would not be trusted.
 - **Approach:** Visitors describe what they want in plain language and get matching listings from the site’s catalog. The search does not invent properties that are not in the catalog.
@@ -100,7 +100,7 @@ Appointment reminders
 
 ## Clinic appointment reminders
 
-A clinic or practice — calendar and patient phone.
+A clinic or practice, calendar and patient phone.
 
 - **Challenge:** Upcoming appointments needed a reminder, and inbound replies mixed confirmations, cancellations, and people who still needed the desk. Booking changes were easy to treat as done when they were not.
 - **Approach:** Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.

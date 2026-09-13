@@ -43,6 +43,12 @@ describe('analytics and CDN contracts', () => {
     assert.ok(fs.existsSync(path.join(ROOT, 'webfonts/fa-solid-900.woff2')));
     assert.ok(fs.existsSync(path.join(ROOT, 'webfonts/fa-brands-400.woff2')));
   });
+
+  it('Docker image copies self-hosted fonts and icon webfonts', () => {
+    const dockerfile = read('Dockerfile');
+    assert.match(dockerfile, /^COPY fonts\/ fonts\/$/m);
+    assert.match(dockerfile, /^COPY webfonts\/ webfonts\/$/m);
+  });
 });
 
 describe('privacy page and footer', () => {

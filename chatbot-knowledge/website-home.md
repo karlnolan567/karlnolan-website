@@ -1,29 +1,27 @@
 ---
-title: Bespoke AI — Home Page
+title: Bespoke AI home page
 source: https://www.bespoke-ai.ie/
 scope: website-knowledge
 ---
 
-# Bespoke AI — Home Page
+# Bespoke AI home page
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
-# We build custom workflows integrated into your existing solution - using standard automation, with targeted AI only when necessary.
+# Building software you can trust.
 
-                    We turn a 30-minute manual task into a quick 2-second approval.
+                    Targeted AI only where it makes sense.
 
 Save time and money, and also reduce errors - without losing control of data or delivery.
 
-We pick one high-friction bottleneck, tie it to a cost, margin, or hours metric, and build governed automation where the work needs to run. Autonomous and scheduled processes run on a cadence you choose. Straight talk: we'll tell you what's worth automating, and what isn't.
+We pick one defined problem, tie it to a cost, margin, or hours metric, and take it from design through test, with automated tests in the build. Straight talk on what is worth building, and what is not.
 
-27+ years delivering software · human-in-the-loop until you trust it
+27+ years delivering software · tested before you run it
 
-Free discovery call → map the workflow and agree improvements → your sign-off and a build quote → implement and deliver → optional light monthly support.
+Free discovery call → design → your sign-off and a build quote → implement and test → handover. Optional light monthly support.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#)
-[PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html)
-
-Other playbooks: [supplier verification & inbox triage](https://www.bespoke-ai.ie/#where-to-start)
+[Engineering: design through test](https://www.bespoke-ai.ie/ai-engineering.html)
 
 [image: Karl Nolan]
 
@@ -31,9 +29,9 @@ Other playbooks: [supplier verification & inbox triage](https://www.bespoke-ai.i
 
 ## Karl Nolan
 
-Principal Consultant — 27+ years delivering software. Straight talk on what's worth automating, then hands-on build until it works in production.
+Principal Consultant, 27+ years delivering software. Architecture informs design; then hands-on implementation and test until it works in production.
 
-No BS and we don’t guess. On a discovery call we decide what’s worth automating — and only quote a build when the workflow and improvements are clear.
+No BS and we don’t guess. On a discovery call we decide what’s worth building, and only quote when the problem and approach are clear.
 
 [More about Karl](https://www.bespoke-ai.ie/about.html)
 
@@ -41,65 +39,33 @@ No BS and we don’t guess. On a discovery call we decide what’s worth automat
 
 ## What We Can Build
 
-Patterns first — then where they land in your Microsoft or Google workplace, on your web pages, or as connected automation behind the scenes.
+Three kinds of Builds, then Microsoft, Google, your web pages, or your APIs.
 
-// Patterns
+New systems
 
-### What we automate
+### Designed and built for a defined problem
 
-Knowledge-in-chat
+Apps, APIs, and portals from architecture through implementation and test. Example: [Quality diagnostics and reports](https://www.bespoke-ai.ie/case-studies.html#case-study-quality): scored signals; AI drafts the executive report; a person reviews it before it is the pack.
 
-### Stop the “where is this document?” interruptions
+Governed workflow automation
 
-Grounded answers from HR policies, handbooks, or support FAQs in Teams or Chat — so staff stop hunting SharePoint and customers wait less.
+### A typical kind of Build
 
-Request triage
+Example Builds: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html), [inbox triage](https://www.bespoke-ai.ie/smart-inbox.html), and [supplier verification](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier). Human review until you trust the outputs.
 
-### Clear your operations backlog faster
+Connecting what you already run
 
-Classify, route, and draft safe replies for IT or ops queues — fewer hours lost to inbox sorting.
+### Into your existing systems
 
-Document pipeline
+Wire a new capability into the stack you already have. Example: [Property searching](https://www.bespoke-ai.ie/case-studies.html#case-study-property-search): visitors ask in plain language against the site’s catalog.
 
-### End manual data entry
-
-Extract and file invoices, forms, and packs so finance and compliance stop re-keying.
-
-[More patterns
-
-### Inbox, invoices, suppliers, and more
-
-Browse the full set of automation examples — then pick a bottleneck on a discovery call.
-
-See all patterns](https://www.bespoke-ai.ie/what-we-automate.html)
-
-// Where it runs
-
-### Your workplace & platforms
-
-### Microsoft 365 / Azure agents
-
-Teams, Copilot Studio / Power Automate, SharePoint grounding, or connected automation in your workplace.
-
-### Google Workspace / GCP agents
-
-Google Chat, Agent Builder, Drive grounding, or connected automation on your domain.
-
-### Embeddable AI search & analysis
-
-Search and insight tools in new or existing client web pages.
-
-### Connected workflow automation
-
-Complex workflows with client-owned API keys — hosted in your environment or as a turnkey service.
-
-Ready to talk through a build? [Book a discovery call](https://www.bespoke-ai.ie/#discovery-call) · Also available: [Agentic Impact Workshop](https://www.bespoke-ai.ie/agentic-impact-workshop.html) · advisory at the day rate.
+Ready to talk through a build? [Book a discovery call](https://www.bespoke-ai.ie/#discovery-call) · Advisory at the day rate.
 
 // Client results
 
 ## Client results
 
-Systems in production use — governed workflows with a human in the loop. Each item opens the write-up.
+Systems in production use: governed workflows with a human in the loop. Each item opens the write-up.
 
 [### Purchase orders into the ERP
 
@@ -151,47 +117,47 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-clinic
 
 ## Why not DIY or an AI agency?
 
-Two common paths that look cheaper until governance, delivery, or both fall over.
+Two common paths that look cheaper until delivery, governance, or both fall over.
 
-vs DIY / ChatGPT
+Versus DIY / ChatGPT
 
 ### We use tenant AI models that do not share your company data
 
-Governed agents on your tenant’s models, grounded in your workplace content — human review until you trust the outputs.
+When AI earns a place in a Build, it runs on your tenant’s models, grounded in your workplace content, human review until you trust the outputs.
 
-vs hype AI agencies
+Versus hype AI agencies
 
 ### We build for production, not demos.
 
-27+ years of software delivery — not prompt theatre. Your workflow has to survive real connectors, policy, and day-two operations.
+27+ years of software delivery, architecture, implementation, and test. Not prompt theatre. The system has to survive real connectors, policy, and day-two operations.
 
 // Our Process
 
 ## How Engagements Work
 
-Most work follows a simple path: discovery, agree the plan, then build. Extra paid scoping is only if we both decide the systems need a deeper look first.
+Most work follows a simple path: discovery, design, then implementation and test. Extra paid scoping is only if we both decide the systems need a deeper look first. See [paid scoping](https://www.bespoke-ai.ie/scoping.html).
 
-- 1  Discovery call A free 30-minute chat to confirm fit, name the bottleneck, and decide whether automation is worth it — or not.
+- 1  Discovery call A free 30-minute chat to confirm fit, name the problem, and decide whether it is worth building, or not.
 
-- 2  Map the process, improve it, then automate We map the existing process, improve it, then automate.
+- 2  Design Architecture: lock the problem and the approach, system shape and fit with what you already run. For an automation Build, we map and improve the workflow. Enough to quote.
 
-- 3  Implement and deliver We build with human review until you trust it. Optional light monthly support from **€250/mo** after go-live. See [client results](https://www.bespoke-ai.ie/case-studies.html).
+- 3  Implementation and test We build against that design and prove it before you run it. Automation Builds keep a human in the loop until you trust the outputs. Optional light monthly support from **€250/mo** after go-live. See [client results](https://www.bespoke-ai.ie/case-studies.html).
 
-[image: How engagements work: discovery call, map the process and improve it, then implement and deliver.]
+[image: How engagements work: discovery call, architectural design, then implementation and test.]
 
 // Fixed-Scope Pilots
 
 ## Where to Start
 
-Example fixed-scope playbooks — useful when the path is clear. The [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) pilots are priced offers (typical from €8,000 + VAT). For other bottlenecks we agree the plan and quote on a discovery call.
+Example fixed-scope playbooks, useful when the path is clear. The [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) pilots are priced offers. For other bottlenecks we agree the plan and quote on a discovery call.
 
 Sales Operations
 
 ### PO → Sales Order
 
 - **Who it's for:** Sales ops and order-desk leads at ~80+ POs/week re-keying purchase orders from a shared inbox into the ERP when buyers use nicknames, aliases, and messy line items.
-- **What you get:** Email intake (PDF/Word attachments), AI extraction, alias/SKU/price matching against live catalogs, exception flags, side-by-side approver console, and writeback only after human approval — typically live in 2–3 weeks. Typical pilots from €8,000 + VAT.
-- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval — optional auto-approve only for fully matched orders.
+- **What you get:** Email intake (PDF/Word attachments), AI extraction, alias/SKU/price matching against live catalogs, exception flags, side-by-side approver console, and writeback only after human approval, typically live in 2–3 weeks.
+- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval, optional auto-approve only for fully matched orders.
 
 [Fixed pilot from €8,000](https://www.bespoke-ai.ie/po-sales-order.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 
@@ -200,7 +166,7 @@ Customer Operations
 ### Smart Inbox Triage
 
 - **Who it's for:** Support and ops leads at ~250+ emails/week when urgent messages get lost in a flooded shared mailbox and every reply is written from scratch.
-- **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email — typically live in 2 weeks. Typical pilots from €8,000 + VAT.
+- **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email, typically live in 2 weeks.
 - **Typical outcome:** Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.
 
 [Fixed pilot from €8,000](https://www.bespoke-ai.ie/smart-inbox.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html)
@@ -209,8 +175,8 @@ Regulated Supply Chain
 
 ### Supplier Verification
 
-- **Who it's for:** Quality, compliance, and procurement leads verifying suppliers when websites have no simple data feeds — and when onboarding packs arrive as scanned PDFs or faxes.
-- **What you get:** Automated website and document collection, AI field extraction from certification forms and compliance PDFs, structured logging to your spreadsheet or system, human review queue, and audit-ready records — typically live in 2–4 weeks.
+- **Who it's for:** Quality, compliance, and procurement leads verifying suppliers when websites have no simple data feeds, and when onboarding packs arrive as scanned PDFs or faxes.
+- **What you get:** Automated website and document collection, AI field extraction from certification forms and compliance PDFs, structured logging to your spreadsheet or system, human review queue, and audit-ready records, typically live in 2–4 weeks.
 - **Typical outcome:** Manual research and re-keying per supplier cut from hours to minutes; every output human-reviewed until you sign off on full automation.
 
 [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier)
@@ -225,26 +191,30 @@ Inventory Operations
 
 [Book a discovery call](https://www.bespoke-ai.ie/#discovery-call)
 
-[Client results](https://www.bespoke-ai.ie/case-studies.html) · Need something deeper? [AI Engineering & Custom Pipelines](https://www.bespoke-ai.ie/ai-engineering.html)
+[Client results](https://www.bespoke-ai.ie/case-studies.html) · How we deliver a Build: [Engineering](https://www.bespoke-ai.ie/ai-engineering.html)
 
 // Get in Touch
 
 ## Book a Discovery Call
 
-A free 30-minute chat to confirm fit and talk through the workflow. If a build makes sense, we map the process, agree improvements, get your sign-off, and quote the work. Confidentiality agreement before you share anything sensitive.
+A free 30-minute chat to confirm fit and talk through the problem. If a build makes sense, we design the approach, get your sign-off, and quote the work. Confidentiality agreement before you share anything sensitive.
 
-- No pitch deck — an honest conversation about your pain points
+- No pitch deck, an honest conversation about your pain points
 
-- If AI isn’t the right fix, we’ll tell you straight
+- If it isn’t worth building, we’ll tell you straight
 
 - No production access or sensitive data required upfront
 
-- If it’s a fit: map the process → improve it → automate → implement and deliver
+- If it’s a fit: design → your sign-off and a build quote → implement and test → handover
 
 Pick an available slot below. You’ll receive a calendar invite by email from Google Calendar.
 
+Loading the calendar connects you to Google to pick a time. Google will send the invite email.
+
+Load Google Calendar
+
 Prefer a full-page view? [Open Google booking](https://www.bespoke-ai.ie/#)
 
-Bookings use **Google Calendar** appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See the [privacy notice](https://www.bespoke-ai.ie/privacy.html).
+Bookings use **Google Calendar** appointment scheduling. Google sends the calendar invite and confirmation email. We do not sell personal data. See [privacy notice](https://www.bespoke-ai.ie/privacy.html).
 
 Prefer LinkedIn? [Connect with Karl Nolan](https://www.linkedin.com/in/karl-nolan-bespoke-ai/)

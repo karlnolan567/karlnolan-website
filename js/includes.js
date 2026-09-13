@@ -48,14 +48,22 @@ function bookingHref() {
       document.querySelectorAll('[data-nav="workshops"]').forEach(function (link) {
         link.classList.remove('hidden');
       });
-      if (announce) announce.classList.remove('hidden');
+      if (announce) {
+        announce.classList.remove('hidden');
+        announce.removeAttribute('hidden');
+        announce.removeAttribute('aria-hidden');
+      }
       return;
     }
 
     document.querySelectorAll('[data-nav="workshops"]').forEach(function (link) {
       link.classList.add('hidden');
     });
-    if (announce) announce.classList.add('hidden');
+    if (announce) {
+      announce.classList.add('hidden');
+      announce.setAttribute('hidden', '');
+      announce.setAttribute('aria-hidden', 'true');
+    }
   }
 
   function reorderNavLinks(container) {
@@ -188,13 +196,13 @@ function bookingHref() {
 
     let ctaConfig;
     if (isAgenticWorkshop) {
-      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Workshop%20application%20%E2%80%94%20Cohort%201', text: 'Apply for a Seat' };
+      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Workshop%20application%20%3A%20%20Cohort%201', text: 'Apply for a Seat' };
     } else if (isWorkshopDetail) {
       ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
     } else if (isWorkshopsHub) {
       ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
     } else if (isTraining) {
-      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20—%20enquiry', text: 'Enquire about training' };
+      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20-%20enquiry', text: 'Enquire about training' };
     } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isPrivacy || isAiEngineering || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos) {
       ctaConfig = { href: '/#discovery-call', text: 'Get in Touch' };
     } else {

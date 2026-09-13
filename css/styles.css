@@ -226,7 +226,7 @@ html[data-includes-pending] .page-content {
    Layout
    ========================================================================== */
 
-/* Static background — no blur filters or animations (GPU-friendly on Mac) */
+/* Static background, no blur filters or animations (GPU-friendly on Mac) */
 .bg-effects {
   position: fixed;
   inset: 0;
@@ -1687,7 +1687,7 @@ section[id] {
   font-size: 0.75rem;
 }
 
-/* Supporting UI shot — compact in-card thumb; lightbox opens full size */
+/* Supporting UI shot, compact in-card thumb; lightbox opens full size */
 .case-study-shot {
   max-width: 36rem;
   /* Reset UA figure margins (1em 40px) that throw thumbs off-center */

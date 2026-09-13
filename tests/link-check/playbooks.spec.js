@@ -73,7 +73,7 @@ test('home chatbot knowledge includes the stock ERP playbook', () => {
 
   const start = md.indexOf('### Open-source stock ERP');
   const end = md.indexOf(
-    '[Client results](https://www.bespoke-ai.ie/case-studies.html) · Need something deeper?'
+    '[Client results](https://www.bespoke-ai.ie/case-studies.html) · How we deliver a Build:'
   );
   expect(start).toBeGreaterThan(-1);
   expect(end).toBeGreaterThan(start);
