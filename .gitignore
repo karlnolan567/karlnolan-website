@@ -9,6 +9,7 @@ js/site-config.local.js
 
 # Local throwaway hub (live copy is demos/index.html)
 prototype-demo-hub.html
+prototype-pay-when-satisfied.html
 
 # TLS certs (generated on VPS)
 docker/ssl/
@@ -19,6 +20,8 @@ docs/*
 !docs/agents/**
 !docs/superpowers/
 !docs/superpowers/**
+!docs/wayfinder/
+!docs/wayfinder/**
 # Caddy access logs (runtime)
 docker/logs/*
 !docker/logs/.gitkeep

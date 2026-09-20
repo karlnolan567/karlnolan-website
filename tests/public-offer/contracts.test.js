@@ -102,12 +102,70 @@ describe('public-offer repositioning', () => {
   it('does not offer training or workshops in chatbot guardrails', () => {
     const bot = read('chatbot-knowledge/bot-guardrails.md');
     assert.match(bot, /does not offer[\s\*]+training or workshop/i);
+    assert.match(bot, /core public offer is \*\*software development\*\*/i);
     assert.doesNotMatch(bot, /open when announced/i);
   });
 
   it('keeps workshop flag off and drops the scoping workshop CTA', () => {
     assert.match(read('js/site-config.js'), /showWorkshop:\s*false/);
     assert.doesNotMatch(read('scoping.html'), /agentic-impact-workshop/);
+  });
+
+  it('puts the pay-when-satisfied sentence on home, Engineering, and playbooks', () => {
+    const sentence = /You don't pay until you're 100% satisfied with the solution\./;
+    const home = read('index.html');
+    const hero = home.slice(
+      home.indexOf('section--hero'),
+      home.indexOf('id="workshop-announce"')
+    );
+    assert.match(hero, sentence);
+    assert.match(hero, /\/\/ 100% satisfaction/);
+    assert.match(hero, /cost, margin, or hours/);
+    assert.match(hero, /tested before you run it/);
+    assert.match(hero, /Optional support, quoted case by case/);
+    assert.match(read('ai-engineering.html'), sentence);
+    assert.match(read('po-sales-order.html'), sentence);
+    assert.match(read('smart-inbox.html'), sentence);
+    assert.doesNotMatch(read('about.html'), sentence);
+    assert.doesNotMatch(read('partials/header.html'), sentence);
+    assert.doesNotMatch(read('scoping.html'), sentence);
+  });
+
+  it('strips public euro floors and paid scoping from the live offer', () => {
+    const home = read('index.html');
+    assert.doesNotMatch(home, /€250\/mo/);
+    assert.doesNotMatch(home, /€8,000/);
+    assert.doesNotMatch(home, /paid scoping/i);
+    assert.doesNotMatch(home, /scoping\.html/);
+    assert.doesNotMatch(read('ai-engineering.html'), /paid scoping/i);
+    assert.doesNotMatch(read('ai-engineering.html'), /scoping\.html/);
+    for (const rel of ['po-sales-order.html', 'smart-inbox.html']) {
+      const page = read(rel);
+      assert.doesNotMatch(page, /€8,000/, rel);
+      assert.doesNotMatch(page, /€900/, rel);
+    }
+    for (const rel of [
+      'chatbot-knowledge/website-home.md',
+      'chatbot-knowledge/po-sales-order.md',
+      'chatbot-knowledge/smart-inbox.md',
+    ]) {
+      const md = read(rel);
+      assert.doesNotMatch(md, /scoping\.html/, rel);
+      assert.doesNotMatch(md, /€8,000/, rel);
+      assert.doesNotMatch(md, /€250\/mo/, rel);
+      assert.doesNotMatch(md, /€900/, rel);
+    }
+  });
+
+  it('lets Ask BCAI quote pay-when-satisfied without inventing prices or CSAT', () => {
+    const bot = read('chatbot-knowledge/bot-guardrails.md');
+    assert.match(bot, /You don't pay until you're 100% satisfied with the solution\./);
+    assert.match(bot, /priced per job/i);
+    assert.doesNotMatch(bot, /€8,000/);
+    assert.doesNotMatch(bot, /€900/);
+    assert.doesNotMatch(bot, /€250\/mo/);
+    assert.doesNotMatch(bot, /from €250/);
+    assert.doesNotMatch(bot, /do\s+\*\*not\*\* invent a top-end price, a euro ROI, extra-revenue guarantees, or a CSAT promise/);
   });
 
   it('does not use em dashes in visitor-facing site files', () => {
@@ -132,7 +190,7 @@ function listHtml(dir) {
   const abs = dir ? path.join(ROOT, dir) : ROOT;
   return fs
     .readdirSync(abs)
-    .filter((name) => name.endsWith('.html'))
+    .filter((name) => name.endsWith('.html') && !name.startsWith('prototype-'))
     .map((name) => (dir ? path.join(dir, name) : name));
 }
 

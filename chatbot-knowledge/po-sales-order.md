@@ -12,7 +12,9 @@ scope: website-knowledge
 
 # Same order desk. More POs through.
 
-A fixed-scope pilot for sales ops and order-desk leads: inbound purchase orders from email into the ERP, with a human gate. Typical pilots from **€8,000 + VAT**.
+A fixed-scope Build for sales ops and order-desk leads: inbound purchase orders from email into the ERP, with a human gate. Priced on the discovery call.
+
+You don't pay until you're 100% satisfied with the solution.
 
 Orders that sat in the queue can clear the same day, if the demand is there. We do not promise extra revenue.
 
@@ -100,13 +102,13 @@ Approver console, original PO beside the draft. Nothing hits the ERP until Appro
 
 // Price
 
-## Typical pilots from €8,000 + VAT
+## Priced on the discovery call
 
-Fixed after a free 30-minute discovery call, once we confirm volume, inbox, ERP path, and the approver role. Quote may sit higher when catalogs or writeback are heavier; we will not pretend a one-size sticker covers every ERP.
+Quote after a free 30-minute discovery call, once we confirm volume, inbox, ERP path, and the approver role. You don't pay until you're 100% satisfied with the solution.
 
-- No separate €900 scoping day on this path, feasibility is inside the pilot
+- Feasibility is free, inside discovery and design
 
-- Human review until you trust it; optional light support after go-live
+- Human review until you trust it; optional support after go-live, quoted case by case
 
 - Confidentiality agreement before you share anything sensitive
 

@@ -1064,6 +1064,25 @@ section[id] {
   letter-spacing: 0.08em;
 }
 
+.hero-claim-card {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.hero-claim-card .card-title {
+  margin: 0.35rem 0 0;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+@media (min-width: 640px) {
+  .hero-claim-card .card-title {
+    font-size: 1.65rem;
+  }
+}
+
 .blockquote {
   max-width: 36rem;
   margin: 0 auto;

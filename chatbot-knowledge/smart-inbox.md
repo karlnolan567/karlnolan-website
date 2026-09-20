@@ -12,7 +12,9 @@ scope: website-knowledge
 
 # Same support team. Urgent tickets first.
 
-A fixed-scope pilot for support and ops leads: triage a shared inbox, draft replies, alert on the angry threads. Nothing sends without a human. Typical pilots from **€8,000 + VAT**.
+A fixed-scope Build for support and ops leads: triage a shared inbox, draft replies, alert on the angry threads. Nothing sends without a human. Priced on the discovery call.
+
+You don't pay until you're 100% satisfied with the solution.
 
 Messages that sat overnight can get a same-day draft, if the volume is already in the queue. We do not promise extra revenue or a CSAT score.
 
@@ -95,13 +97,13 @@ This pilot is draft-and-approve on a shared support mailbox. Shipped inbox work 
 
 // Price
 
-## Typical pilots from €8,000 + VAT
+## Priced on the discovery call
 
-Fixed after a free 30-minute discovery call, once we confirm volume, mailbox, alert channel, and the approver role. Quote may sit higher when the mailbox is a nest of shared inboxes or a ticketing rebuild; we will not pretend a one-size sticker covers every stack.
+Quote after a free 30-minute discovery call, once we confirm volume, mailbox, alert channel, and the approver role. You don't pay until you're 100% satisfied with the solution.
 
-- No separate €900 scoping day on this path, feasibility is inside the pilot
+- Feasibility is free, inside discovery and design
 
-- Human review until you trust it; optional light support after go-live
+- Human review until you trust it; optional support after go-live, quoted case by case
 
 - Confidentiality agreement before you share anything sensitive
 

@@ -14,11 +14,14 @@ scope: website-knowledge
 
 Save time and money, and also reduce errors - without losing control of data or delivery.
 
+// 100% satisfaction
+You don't pay until you're 100% satisfied with the solution.
+
 We pick one defined problem, tie it to a cost, margin, or hours metric, and take it from design through test, with automated tests in the build. Straight talk on what is worth building, and what is not.
 
 27+ years delivering software · tested before you run it
 
-Free discovery call → design → your sign-off and a build quote → implement and test → handover. Optional light monthly support.
+Free discovery call → design → a build quote → implement and test → handover. Optional support, quoted case by case.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#)
 [Engineering: design through test](https://www.bespoke-ai.ie/ai-engineering.html)
@@ -135,13 +138,13 @@ Versus hype AI agencies
 
 ## How Engagements Work
 
-Most work follows a simple path: discovery, design, then implementation and test. Extra paid scoping is only if we both decide the systems need a deeper look first. See [paid scoping](https://www.bespoke-ai.ie/scoping.html).
+Most work follows a simple path: discovery, design, then implementation and test. Optional support after go-live is quoted case by case.
 
 - 1  Discovery call A free 30-minute chat to confirm fit, name the problem, and decide whether it is worth building, or not.
 
 - 2  Design Architecture: lock the problem and the approach, system shape and fit with what you already run. For an automation Build, we map and improve the workflow. Enough to quote.
 
-- 3  Implementation and test We build against that design and prove it before you run it. Automation Builds keep a human in the loop until you trust the outputs. Optional light monthly support from **€250/mo** after go-live. See [client results](https://www.bespoke-ai.ie/case-studies.html).
+- 3  Implementation and test We build against that design and prove it before you run it. Automation Builds keep a human in the loop until you trust the outputs. Optional support after go-live is quoted case by case. See [client results](https://www.bespoke-ai.ie/case-studies.html).
 
 [image: How engagements work: discovery call, architectural design, then implementation and test.]
 
@@ -149,7 +152,7 @@ Most work follows a simple path: discovery, design, then implementation and test
 
 ## Where to Start
 
-Example fixed-scope playbooks, useful when the path is clear. The [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) pilots are priced offers. For other bottlenecks we agree the plan and quote on a discovery call.
+Example fixed-scope playbooks, useful when the path is clear. The [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) playbooks are quoted on a discovery call, like other Builds.
 
 Sales Operations
 
@@ -159,7 +162,7 @@ Sales Operations
 - **What you get:** Email intake (PDF/Word attachments), AI extraction, alias/SKU/price matching against live catalogs, exception flags, side-by-side approver console, and writeback only after human approval, typically live in 2–3 weeks.
 - **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval, optional auto-approve only for fully matched orders.
 
-[Fixed pilot from €8,000](https://www.bespoke-ai.ie/po-sales-order.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
+[See the playbook](https://www.bespoke-ai.ie/po-sales-order.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 
 Customer Operations
 
@@ -169,7 +172,7 @@ Customer Operations
 - **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email, typically live in 2 weeks.
 - **Typical outcome:** Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.
 
-[Fixed pilot from €8,000](https://www.bespoke-ai.ie/smart-inbox.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html)
+[See the playbook](https://www.bespoke-ai.ie/smart-inbox.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html)
 
 Regulated Supply Chain
 
@@ -197,7 +200,7 @@ Inventory Operations
 
 ## Book a Discovery Call
 
-A free 30-minute chat to confirm fit and talk through the problem. If a build makes sense, we design the approach, get your sign-off, and quote the work. Confidentiality agreement before you share anything sensitive.
+A free 30-minute chat to confirm fit and talk through the problem. If a build makes sense, we design the approach and quote the work. You don't pay until you're 100% satisfied with the solution. Confidentiality agreement before you share anything sensitive.
 
 - No pitch deck, an honest conversation about your pain points
 
@@ -205,7 +208,7 @@ A free 30-minute chat to confirm fit and talk through the problem. If a build ma
 
 - No production access or sensitive data required upfront
 
-- If it’s a fit: design → your sign-off and a build quote → implement and test → handover
+- If it’s a fit: design → a build quote → implement and test → handover
 
 Pick an available slot below. You’ll receive a calendar invite by email from Google Calendar.
 
