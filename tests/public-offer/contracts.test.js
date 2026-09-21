@@ -99,6 +99,18 @@ describe('public-offer repositioning', () => {
     }
   });
 
+  it('does not submit noindex URLs in the sitemap', () => {
+    const sitemap = read('sitemap.xml');
+    const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    assert.ok(locs.length > 0, 'sitemap should list public URLs');
+    for (const loc of locs) {
+      const pathname = new URL(loc).pathname;
+      const rel = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '');
+      const html = read(rel);
+      assert.doesNotMatch(html, /noindex/i, loc);
+    }
+  });
+
   it('does not offer training or workshops in chatbot guardrails', () => {
     const bot = read('chatbot-knowledge/bot-guardrails.md');
     assert.match(bot, /does not offer[\s\*]+training or workshop/i);
