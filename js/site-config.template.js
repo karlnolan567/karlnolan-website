@@ -19,7 +19,7 @@ const SITE = {
         automation: 'https://docs.google.com/forms/d/e/1FAIpQLSfiq9GHiqYih0mAi3BoxI8cZA9P643JNAviMdsPb2cN5BiPEA/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20261004d',
+    partialVersion: '20261004h',
     assessmentUrl: '${ASSESSMENT_URL}',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -33,7 +33,7 @@ const SITE = {
         individual: '',
         group: '',
     },
-    navOrder: ['engagement', 'client-results', 'about'],
+    navOrder: ['about', 'client-results', 'engagement'],
     // GCP GenAI assistant iframe (Ask BCAI).
     chatEmbedUrl: '${CHAT_EMBED_URL}',
     bookingScheduleUrl: '${BOOKING_URL}',

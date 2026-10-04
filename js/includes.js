@@ -31,7 +31,6 @@ function bookingHref() {
     if (section === 'training') return SITE.trainingUrl || 'training.html';
     if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
     if (section === 'scoping') return SITE.scopingUrl || 'scoping.html';
-    if (section === 'about') return SITE.aboutUrl || 'about.html';
     if (section === 'case-studies') return SITE.caseStudiesUrl || 'case-studies.html';
     if (section === 'po-sales-order') return SITE.poSalesOrderUrl || 'po-sales-order.html';
     if (section === 'smart-inbox') return SITE.smartInboxUrl || 'smart-inbox.html';

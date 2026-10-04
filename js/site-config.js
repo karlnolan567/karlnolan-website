@@ -23,7 +23,7 @@ const SITE = {
         group:      'https://docs.google.com/forms/d/e/1FAIpQLSe2MZfDalqTe-4bUuyMv2bDXTIFKGJDwlCWz0cj01q55GAK6w/viewform',
     },
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
-    partialVersion: '20261004d',
+    partialVersion: '20261004h',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
     workflowAssessmentUrl: 'workflow-assessment.html',
     whatWeAutomateUrl: 'what-we-automate.html',
@@ -33,7 +33,7 @@ const SITE = {
     poSalesOrderUrl: 'po-sales-order.html',
     smartInboxUrl: 'smart-inbox.html',
     trainingUrl: 'training.html',
-    navOrder: ['engagement', 'client-results', 'about'],
+    navOrder: ['about', 'client-results', 'engagement'],
     // GCP GenAI assistant iframe (Ask BCAI).
     chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',
     // Google Calendar appointment schedule (site booking UI).
