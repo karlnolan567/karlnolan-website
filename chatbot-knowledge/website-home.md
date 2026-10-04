@@ -8,22 +8,19 @@ scope: website-knowledge
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
+Bespoke AI. Doing one automation at a time.
+
 # Building software you can trust
 by automating one workflow at a time.
-
-We design, build, and test until it runs in production. Targeted AI only where it earns its place - and you don't pay until you're satisfied.
 
 // Senior architecture
 27+ years of enterprise software delivery, built right into your existing stack.
 
 We pick one defined problem, tie it to a cost, margin, or hours metric, and take it from design through test, with automated tests in the build. Straight talk on what is worth building, and what is not.
 
-27+ years delivering software · tested before you run it
-
 Free discovery call → design → a build quote → implement and test → handover. Optional support, quoted case by case.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#)
-[Engineering: design through test](https://www.bespoke-ai.ie/ai-engineering.html)
 
 [image: Karl Nolan]
 
@@ -36,32 +33,6 @@ Principal Consultant, 27+ years delivering software. Architecture informs design
 No BS and we don’t guess. On a discovery call we decide what’s worth building, and only quote when the problem and approach are clear.
 
 [More about Karl](https://www.bespoke-ai.ie/about.html)
-
-// Offer
-
-## What We Can Build
-
-Three kinds of Builds, then Microsoft, Google, your web pages, or your APIs.
-
-New systems
-
-### Designed and built for a defined problem
-
-Apps, APIs, and portals from architecture through implementation and test. Example: [Quality diagnostics and reports](https://www.bespoke-ai.ie/case-studies.html#case-study-quality): scored signals; AI drafts the executive report; a person reviews it before it is the pack.
-
-Governed workflow automation
-
-### A typical kind of Build
-
-Example Builds: [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html), [inbox triage](https://www.bespoke-ai.ie/smart-inbox.html), and [supplier verification](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier). Human review until you trust the outputs.
-
-Connecting what you already run
-
-### Into your existing systems
-
-Wire a new capability into the stack you already have. Example: [Property searching](https://www.bespoke-ai.ie/case-studies.html#case-study-property-search): visitors ask in plain language against the site’s catalog.
-
-Ready to talk through a build? [Book a discovery call](https://www.bespoke-ai.ie/#discovery-call) · Advisory at the day rate.
 
 // Client results
 

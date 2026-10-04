@@ -640,7 +640,7 @@ section[id] {
   /* Size brand column by the title; wrap tagline so it cannot collide with nav */
   .site-header .footer-brand__text {
     width: fit-content;
-    max-width: 11.5rem;
+    max-width: 16rem;
   }
 
   .site-header .footer-brand__title {
@@ -1057,11 +1057,6 @@ section[id] {
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-.hero-proof {
-  margin: 0;
-  letter-spacing: 0.08em;
 }
 
 .hero-claim-card {

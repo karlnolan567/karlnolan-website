@@ -13,15 +13,15 @@ describe('public-offer repositioning', () => {
   it('uses the locked tagline in header and footer', () => {
     const header = read('partials/header.html');
     const footer = read('partials/footer.html');
-    assert.match(header, /Software from design to test/);
-    assert.match(footer, /Software from design to test/);
+    assert.match(header, /Doing one automation at a time/);
+    assert.match(footer, /Doing one automation at a time/);
     assert.doesNotMatch(header, /AI Workflow Automation/);
     assert.doesNotMatch(footer, /AI Training/);
   });
 
-  it('sets the home title and meta to software from design to test', () => {
+  it('sets the home title and meta to the tagline', () => {
     const home = read('index.html');
-    assert.match(home, /<title>Bespoke AI \| Software from design to test<\/title>/);
+    assert.match(home, /<title>Bespoke AI \| Doing one automation at a time<\/title>/);
     assert.match(
       home,
       /Defined-problem software from design through test: a new system or a governed workflow\. Straight talk on what's worth building\./
@@ -37,41 +37,41 @@ describe('public-offer repositioning', () => {
     );
     assert.match(hero, /Building software you can trust/);
     assert.match(hero, /by automating one workflow at a time/);
-    assert.match(hero, /We design, build, and test until it runs in production/);
-    assert.match(hero, /Targeted AI only where it earns its place/);
+    assert.doesNotMatch(hero, /Automate workflows with AI, when needed/);
+    assert.doesNotMatch(hero, /you don't pay until you're satisfied/);
     assert.doesNotMatch(hero, /Save time and money/);
     assert.match(hero, /automated tests in the build/);
-    assert.match(hero, /tested before you run it/);
-    assert.match(hero, /ai-engineering\.html/);
+    assert.doesNotMatch(hero, /tested before you run it/);
+    assert.doesNotMatch(hero, /ai-engineering\.html/);
     assert.doesNotMatch(hero, /po-sales-order\.html/);
     assert.doesNotMatch(hero, /30-minute manual task/);
   });
 
-  it('catalogs three kinds of Builds and does not name Nexus', () => {
+  it('does not publish a What We Can Build catalog', () => {
     const home = read('index.html');
-    const offer = home.slice(
-      home.indexOf('id="offer"'),
-      home.indexOf('id="client-results"')
-    );
-    assert.match(offer, /New systems/);
-    assert.match(offer, /Quality diagnostics and reports/);
-    assert.match(offer, /Governed workflow automation/);
-    assert.match(offer, /Connecting what you already run/);
-    assert.match(offer, /Property searching/);
-    assert.doesNotMatch(offer, /what-we-automate\.html/);
-    assert.doesNotMatch(offer, /agentic-impact-workshop/);
+    assert.doesNotMatch(home, /What We Can Build/);
+    assert.doesNotMatch(home, /id="offer"/);
     assert.doesNotMatch(home, /Nexus/);
+    assert.match(home, /id="client-results"/);
+    assert.doesNotMatch(read('partials/header.html'), /What We Can Build/);
+    assert.doesNotMatch(read('partials/footer.html'), /What We Can Build/);
+    assert.doesNotMatch(read('chatbot-knowledge/bot-guardrails.md'), /#offer/);
+    assert.doesNotMatch(read('chatbot-knowledge/website-home.md'), /What We Can Build/);
   });
 
-  it('retargets Engineering to Design, Implementation, and Test', () => {
-    const page = read('ai-engineering.html');
-    assert.match(page, /<title>Bespoke AI \| Engineering<\/title>/);
-    assert.match(page, />Design</);
-    assert.match(page, />Implementation</);
-    assert.match(page, />Test</);
-    assert.doesNotMatch(page, /Custom Pipelines/);
-    assert.doesNotMatch(page, /when a playbook is not enough/i);
-    assert.doesNotMatch(page, /Nexus/);
+  it('does not publish an Engineering page', () => {
+    assert.equal(fs.existsSync(path.join(ROOT, 'ai-engineering.html')), false);
+    for (const rel of [
+      'partials/header.html',
+      'partials/footer.html',
+      'about.html',
+      'index.html',
+      'sitemap.xml',
+      'chatbot-knowledge/bot-guardrails.md',
+      'js/site-config.js',
+    ]) {
+      assert.doesNotMatch(read(rel), /ai-engineering/, rel);
+    }
   });
 
   it('puts architecture in About core focus, not as a named Nexus product', () => {
@@ -81,7 +81,7 @@ describe('public-offer repositioning', () => {
     assert.match(about, /Governed automation/);
     assert.doesNotMatch(about, /Autonomous coding workflows/);
     assert.doesNotMatch(about, /Nexus/);
-    assert.match(about, /ai-engineering\.html/);
+    assert.doesNotMatch(about, /ai-engineering\.html/);
     assert.doesNotMatch(about, />AI Engineering</);
   });
 
@@ -127,7 +127,7 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(read('scoping.html'), /agentic-impact-workshop/);
   });
 
-  it('puts the pay-when-satisfied sentence on home, Engineering, and playbooks', () => {
+  it('puts the pay-when-satisfied sentence on home and playbooks', () => {
     const sentence = /You don't pay until you're 100% satisfied with the solution\./;
     const home = read('index.html');
     const hero = home.slice(
@@ -139,9 +139,8 @@ describe('public-offer repositioning', () => {
     assert.match(hero, /27\+ years of enterprise software delivery, built right into your existing stack\./);
     assert.doesNotMatch(hero, /\/\/ 100% satisfaction/);
     assert.match(hero, /cost, margin, or hours/);
-    assert.match(hero, /tested before you run it/);
+    assert.doesNotMatch(hero, /tested before you run it/);
     assert.match(hero, /Optional support, quoted case by case/);
-    assert.match(read('ai-engineering.html'), sentence);
     assert.match(read('po-sales-order.html'), sentence);
     assert.match(read('smart-inbox.html'), sentence);
     assert.doesNotMatch(read('about.html'), sentence);
@@ -155,8 +154,6 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(home, /€8,000/);
     assert.doesNotMatch(home, /paid scoping/i);
     assert.doesNotMatch(home, /scoping\.html/);
-    assert.doesNotMatch(read('ai-engineering.html'), /paid scoping/i);
-    assert.doesNotMatch(read('ai-engineering.html'), /scoping\.html/);
     for (const rel of ['po-sales-order.html', 'smart-inbox.html']) {
       const page = read(rel);
       assert.doesNotMatch(page, /€8,000/, rel);
