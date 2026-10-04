@@ -18,7 +18,7 @@ Everyday language, not jargon. The examples below are common starting points, pi
 
 ## Example Pilot Playbooks
 
-A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html) and the [Where to Start](https://www.bespoke-ai.ie/#where-to-start) playbooks, suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
+A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html), suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 

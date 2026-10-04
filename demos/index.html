@@ -112,6 +112,11 @@
       .arch-card { justify-content: flex-start; }
       .arch-card .text-body-sm { flex: 0 0 auto; }
       .arch-card .btn { margin-top: auto; }
+      .arch-card .btn[aria-disabled="true"] {
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.75;
+      }
       .arch-stills { margin: 0.25rem 0 1.25rem; }
       .arch-stills .case-study-shot--in-card { margin: 0; }
       .arch-stills .case-study-shot--in-card img {
@@ -148,7 +153,10 @@
     { name: 'Purchase Order → Sales Order', blurb: 'Approver console: inbound purchase orders matched to the ERP. Writeback only after Approve.', tone: 'blue', icon: 'fa-file-invoice', href: 'https://erp-web-dejjr5hfaq-ew.a.run.app/', stills: ['images/po-so-console.png'], stillAlt: 'Approver console: inbound PO beside the sales-order draft. Nothing hits the ERP until Approve.' },
     { name: 'Supplier License checks', blurb: 'Search the licence catalogue, confirm scope, and get alerted when a licence changes.', tone: 'green', icon: 'fa-certificate', href: 'https://bona-fidea.fly.dev/', stills: ['images/bona-fidea-console.png'], stillAlt: 'Bona Fidea supplier list with a licence-change review: previous vs current scope of authorisation.' },
     { name: 'Inbox triage', blurb: 'Outlook mailbox with the filing agent installed. New mail is filed; Inbox is what still needs a person.', tone: 'teal', icon: 'fa-inbox', href: 'https://outlook.cloud.microsoft/mail/?realm=bespokeaieng.onmicrosoft.com&login_hint=KarlNolan%40bespokeaieng.onmicrosoft.com', stills: ['images/inbox-triage-folders.png'], stillAlt: 'Outlook folder tree after filing: Inbox, Clients, and Internal. Inbox is what still needs a person.', stillShape: 'portrait' },
+    { name: 'Smart Inbox Triage', blurb: 'Personal mailbox: urgency and sentiment on the message, draft replies that never send. Not a folder-filing agent.', tone: 'teal', icon: 'fa-tags', tbd: true },
+    { name: 'Outlook AI Compose', blurb: 'Outlook add-in: summarise the open item, draft a reply, or polish text already in the compose box. It never sends.', tone: 'blue', icon: 'fa-pen-to-square', tbd: true },
     { name: 'Invoice extraction', blurb: 'Document in, reviewed fields out, ready for the record.', tone: 'blue', icon: 'fa-receipt', href: 'https://copilotstudio.microsoft.com/environments/Default-9ac3754e-d48a-4a5d-94a5-bc534cb274b8/bots/0c26971f-93c0-4078-b7fa-dfb26b9ed83d/overview', stills: ['images/invoice-extraction.png'], stillAlt: 'Invoice information extraction assistant: upload a document and review the extracted fields.' },
+    { name: 'Call Helper', blurb: 'On-laptop Overlay for a live Call. Speech stays on the device; a Cue appears only when you click. It never joins the Call.', tone: 'teal', icon: 'fa-layer-group', stills: ['images/call-helper-overlay.png'], stillAlt: 'Call Helper Overlay: Questions to ask is selected and a Cue is showing.' },
     { name: 'Property search', blurb: 'Conversational search over Limerick sale and to-let listings.', tone: 'blue', icon: 'fa-house', href: 'https://www.bespoke-ai.ie/demos/daft-property/', stills: ['images/daft-property-search.png'], stillAlt: 'Property search: Find your way home, search Limerick in plain English.' },
     { name: 'Voice AI bots', blurb: 'Different types of voice agents you can converse with.', tone: 'teal', icon: 'fa-headphones', goto: 'voice', stills: ['images/voice-ai-bots.jpg'], stillAlt: 'Voice AI bots call-sheet: six agents you can launch in the browser.' }
   ];
@@ -246,6 +254,19 @@
     }).join('') + '</div>';
   }
 
+  function archAction(a) {
+    if (a.goto) {
+      return '<button type="button" class="btn btn-primary" data-goto="' + esc(a.goto) + '">Open Solution</button>';
+    }
+    if (a.tbd) {
+      return '<span class="btn btn-secondary" aria-disabled="true">TBD</span>';
+    }
+    if (a.href) {
+      return '<a class="btn btn-primary" href="' + esc(a.href) + '" target="_blank" rel="noopener noreferrer">Open Solution</a>';
+    }
+    return '';
+  }
+
   function renderHub() {
     var cards = ARCH.map(function (a) {
       return '<article class="glass-panel offering-card arch-card">' +
@@ -255,11 +276,7 @@
         '</div>' +
         '<p class="text-body-sm">' + esc(a.blurb) + '</p>' +
         stillsBlock(a) +
-        (a.goto
-          ? '<button type="button" class="btn btn-primary" data-goto="' + esc(a.goto) + '">Open Solution</button>'
-          : a.href
-            ? '<a class="btn btn-primary" href="' + esc(a.href) + '" target="_blank" rel="noopener noreferrer">Open Solution</a>'
-            : '<button type="button" class="btn btn-primary" data-arch="' + esc(a.name) + '">Open Solution</button>') +
+        archAction(a) +
       '</article>';
     }).join('');
 

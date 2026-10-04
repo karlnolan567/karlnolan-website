@@ -108,4 +108,4 @@ Quote after a free 30-minute discovery call, once we confirm volume, mailbox, al
 - Confidentiality agreement before you share anything sensitive
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-[Other playbooks](https://www.bespoke-ai.ie/#where-to-start)
+[Client results](https://www.bespoke-ai.ie/case-studies.html)

@@ -36,6 +36,10 @@ describe('public-offer repositioning', () => {
       home.indexOf('id="workshop-announce"')
     );
     assert.match(hero, /Building software you can trust/);
+    assert.match(hero, /by automating one workflow at a time/);
+    assert.match(hero, /We design, build, and test until it runs in production/);
+    assert.match(hero, /Targeted AI only where it earns its place/);
+    assert.doesNotMatch(hero, /Save time and money/);
     assert.match(hero, /automated tests in the build/);
     assert.match(hero, /tested before you run it/);
     assert.match(hero, /ai-engineering\.html/);
@@ -130,8 +134,10 @@ describe('public-offer repositioning', () => {
       home.indexOf('section--hero'),
       home.indexOf('id="workshop-announce"')
     );
-    assert.match(hero, sentence);
-    assert.match(hero, /\/\/ 100% satisfaction/);
+    assert.match(home, sentence);
+    assert.match(hero, /\/\/ Senior architecture/);
+    assert.match(hero, /27\+ years of enterprise software delivery, built right into your existing stack\./);
+    assert.doesNotMatch(hero, /\/\/ 100% satisfaction/);
     assert.match(hero, /cost, margin, or hours/);
     assert.match(hero, /tested before you run it/);
     assert.match(hero, /Optional support, quoted case by case/);

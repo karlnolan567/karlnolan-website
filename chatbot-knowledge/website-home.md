@@ -8,14 +8,13 @@ scope: website-knowledge
 
 > Synced from `index.html` for the website chatbot knowledge base.
 
-# Building software you can trust.
+# Building software you can trust
+by automating one workflow at a time.
 
-                    Targeted AI only where it makes sense.
+We design, build, and test until it runs in production. Targeted AI only where it earns its place - and you don't pay until you're satisfied.
 
-Save time and money, and also reduce errors - without losing control of data or delivery.
-
-// 100% satisfaction
-You don't pay until you're 100% satisfied with the solution.
+// Senior architecture
+27+ years of enterprise software delivery, built right into your existing stack.
 
 We pick one defined problem, tie it to a cost, margin, or hours metric, and take it from design through test, with automated tests in the build. Straight talk on what is worth building, and what is not.
 
@@ -80,9 +79,9 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 Site quality signals scored from the intake record; AI drafts the narrative; a person reviews before it becomes the pack.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-quality)
-[### Outlook inbox triage
+[### Support email triage
 
-New mail filed into a folder tree; leadership and high-importance flagged; morning view of what is still waiting.
+Shared support mail labelled for urgency; the agent determines the tone, such as upset or angry, and urgent mail sends a Teams message; an FAQ draft is saved for a person to send; spam, gaps, and conflicts wait for review.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-inbox)
 [### Supplier licence verification
@@ -100,6 +99,11 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-voice)
 Staff ask HR, policy, and FAQ questions in Teams. Answers come from the company library; the agent does not invent policy off-library.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-knowledge)
+[### Company compliance agent
+
+Employees ask HR, holidays, the CRM, and compliance in one place. An orchestrator routes each question, and holiday booking goes to Workday.
+
+Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-company-compliance)
 [### Meeting notes in Teams
 
 After the call, a written summary and action items land in Teams for review.
@@ -115,6 +119,16 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-proper
 Upcoming appointments trigger a reminder SMS; inbound replies are classified so the desk sees who still needs a person.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-clinic)
+[### Invoice extraction
+
+Invoice files are read once into a structured record; a person checks the fields before they are treated as posted.
+
+Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-invoice)
+[### Call Helper
+
+On a live call, a laptop overlay shows a cue only when you click. Speech stays on the device, and it does not join the call.
+
+Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-call-helper)
 
 // Why Bespoke AI
 
@@ -147,54 +161,6 @@ Most work follows a simple path: discovery, design, then implementation and test
 - 3  Implementation and test We build against that design and prove it before you run it. Automation Builds keep a human in the loop until you trust the outputs. Optional support after go-live is quoted case by case. See [client results](https://www.bespoke-ai.ie/case-studies.html).
 
 [image: How engagements work: discovery call, architectural design, then implementation and test.]
-
-// Fixed-Scope Pilots
-
-## Where to Start
-
-Example fixed-scope playbooks, useful when the path is clear. The [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html) playbooks are quoted on a discovery call, like other Builds.
-
-Sales Operations
-
-### PO → Sales Order
-
-- **Who it's for:** Sales ops and order-desk leads at ~80+ POs/week re-keying purchase orders from a shared inbox into the ERP when buyers use nicknames, aliases, and messy line items.
-- **What you get:** Email intake (PDF/Word attachments), AI extraction, alias/SKU/price matching against live catalogs, exception flags, side-by-side approver console, and writeback only after human approval, typically live in 2–3 weeks.
-- **Typical outcome:** Order entry cut from hours of re-keying to minutes per PO; exceptions stay in review; nothing hits the ledger without approval, optional auto-approve only for fully matched orders.
-
-[See the playbook](https://www.bespoke-ai.ie/po-sales-order.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
-
-Customer Operations
-
-### Smart Inbox Triage
-
-- **Who it's for:** Support and ops leads at ~250+ emails/week when urgent messages get lost in a flooded shared mailbox and every reply is written from scratch.
-- **What you get:** Email intake, urgency and sentiment triage, AI-drafted replies saved to your drafts folder, and exception alerts via Slack, Microsoft Teams, or email, typically live in 2 weeks.
-- **Typical outcome:** Urgent messages flagged within minutes; routine enquiries drafted same day. Nothing sends without human approval.
-
-[See the playbook](https://www.bespoke-ai.ie/smart-inbox.html)  ·  [Client results](https://www.bespoke-ai.ie/case-studies.html)
-
-Regulated Supply Chain
-
-### Supplier Verification
-
-- **Who it's for:** Quality, compliance, and procurement leads verifying suppliers when websites have no simple data feeds, and when onboarding packs arrive as scanned PDFs or faxes.
-- **What you get:** Automated website and document collection, AI field extraction from certification forms and compliance PDFs, structured logging to your spreadsheet or system, human review queue, and audit-ready records, typically live in 2–4 weeks.
-- **Typical outcome:** Manual research and re-keying per supplier cut from hours to minutes; every output human-reviewed until you sign off on full automation.
-
-[Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-supplier)
-
-Inventory Operations
-
-### Open-source stock ERP
-
-- **Who it's for:** Owners and ops leads still running sales and inventory on spreadsheets, paper, or manual tracking. Not a fit if a working ERP is already in place.
-- **What you get:** We install and configure an affordable open-source ERP, migrate your current stock and sales records, and train the team to run it day to day. The system is chosen on the discovery call; quote after we see how you work today.
-- **Typical outcome:** Spreadsheets, paper, and manual sales/inventory tracking replaced by one live stock system the team can run themselves.
-
-[Book a discovery call](https://www.bespoke-ai.ie/#discovery-call)
-
-[Client results](https://www.bespoke-ai.ie/case-studies.html) · How we deliver a Build: [Engineering](https://www.bespoke-ai.ie/ai-engineering.html)
 
 // Get in Touch
 

@@ -34,7 +34,7 @@ const SITE = {
         individual: '',
         group: '',
     },
-    navOrder: ['offer', 'engagement', 'where-to-start', 'client-results', 'ai-engineering', 'about'],
+    navOrder: ['offer', 'engagement', 'client-results', 'ai-engineering', 'about'],
     // GCP GenAI assistant iframe (Ask BCAI).
     chatEmbedUrl: '${CHAT_EMBED_URL}',
     bookingScheduleUrl: '${BOOKING_URL}',

@@ -17,7 +17,7 @@
       .container-md,.container-sm,.container{padding-left:1rem;padding-right:1rem;box-sizing:border-box;width:100%}
     </style>
     <title>Client results | Bespoke AI Engineering</title>
-    <meta name="description" content="Governed workflows with a human gate: purchase orders into the ERP, quality diagnostics, supplier licence checks, Outlook inbox triage, property searching, and related production systems.">
+    <meta name="description" content="Governed workflows with a human gate: purchase orders into the ERP, quality diagnostics, supplier licence checks, support email triage, property searching, and related production systems.">
     <link rel="canonical" href="https://www.bespoke-ai.ie/case-studies.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Client results | Bespoke AI Engineering">
@@ -58,7 +58,7 @@
     <section id="case-studies" class="section section--border-top section--alt-light">
         <div class="container">
             <p class="text-body-sm" style="margin-bottom:1.5rem;text-align:center">
-                sales-order intake · quality diagnostics · inbox triage · document / compliance · voice intake · knowledge-in-chat · meeting notes · property searching · appointment reminders
+                sales-order intake · quality diagnostics · support email triage · document / compliance · voice intake · knowledge-in-chat · company compliance · meeting notes · property searching · appointment reminders · invoice extraction · call helper
             </p>
 
             <div class="grid-3">
@@ -85,13 +85,13 @@
                 </article>
 
                 <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
-                    <span class="card-tag card-tag--teal">Inbox triage</span>
-                    <h2 class="card-title">Outlook inbox triage</h2>
-                    <p class="case-study-context">A mailbox owner in Microsoft 365, personal or role inbox.</p>
+                    <span class="card-tag card-tag--teal">Support inbox</span>
+                    <h2 class="card-title">Support email triage</h2>
+                    <p class="case-study-context">Support desk, shared mailbox in Microsoft 365.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Everything landed in Inbox. Leadership and high-importance sat next to bulk mail. There was no reliable morning view of what still needed a person.</dd></div>
-                        <div><dt>Approach</dt><dd>New mail is filed into a folder tree (customers, internal, potential spam, everything else). Leadership and high-importance trigger an urgent notice. A morning summary lists what is still waiting in Inbox. Mail is not deleted; bulk is set aside for review.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Inbox is a queue of what still needs a person. Filing and flags happen first; the owner is not sorting the whole mailbox by hand.</dd></div>
+                        <div><dt>Challenge</dt><dd>Customer questions and junk landed in the same inbox. Staff wrote every reply by hand, with no mark for what was urgent or how the sender sounded.</dd></div>
+                        <div><dt>Approach</dt><dd>New mail is labelled Urgent or Routine. The agent determines the tone, for example upset or angry. Urgent mail also sends a separate Teams message so the support lead sees it straight away. When the support FAQ covers the question, a draft reply to the sender is saved for the support lead to send. Suspected spam, a question the FAQ does not answer, or a draft that conflicts with earlier mail from the same sender waits for the support lead. Mail is not deleted.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The support lead sends from a saved draft. Spam, FAQ gaps, and conflicting earlier mail wait for a person first.</dd></div>
                     </dl>
                 </article>
 
@@ -128,6 +128,17 @@
                     </dl>
                 </article>
 
+                <article id="case-study-company-compliance" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Company compliance</span>
+                    <h2 class="card-title">Company compliance agent</h2>
+                    <p class="case-study-context">Employees asking HR, holidays, customer records, and compliance in one place.</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>HR, leave, customer records, and compliance lived in different systems. Staff had to know where a question belonged, or it went to the wrong place.</dd></div>
+                        <div><dt>Approach</dt><dd>Employees ask in one place. An orchestrator decides the route. HR questions, holiday balances, and holiday booking go to Workday. Customer questions go to the CRM. Compliance questions go to the compliance source. The message is delivered to the system that owns that topic.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Staff ask once. Leave is booked in Workday, and customer and compliance questions reach the system that holds the answer.</dd></div>
+                    </dl>
+                </article>
+
                 <article id="case-study-meeting" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--green">Meeting notes</span>
                     <h2 class="card-title">Meeting notes in Teams</h2>
@@ -158,6 +169,28 @@
                         <div><dt>Challenge</dt><dd>Upcoming appointments needed a reminder, and inbound replies mixed confirmations, cancellations, and people who still needed the desk. Booking changes were easy to treat as done when they were not.</dd></div>
                         <div><dt>Approach</dt><dd>Upcoming appointments trigger a reminder SMS. Inbound replies are classified so the desk sees who confirmed, cancelled, or still needs a person. Nothing is treated as a booking change without a person checking it.</dd></div>
                         <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The desk sees who still needs a person. Unchecked replies are not treated as booking changes.</dd></div>
+                    </dl>
+                </article>
+
+                <article id="case-study-invoice" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Invoice extraction</span>
+                    <h2 class="card-title">Invoice extraction</h2>
+                    <p class="case-study-context">Finance or ops receiving invoice PDFs.</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Staff re-typed vendor, dates, amounts, and lines from invoice PDFs. A file that was not an invoice could still be treated as the record.</dd></div>
+                        <div><dt>Approach</dt><dd>The invoice file is read once into a structured record and a list row. A person checks the fields before they are treated as posted. If the file is not an invoice or cannot be read, the row is marked as a failure.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Finance reviews a structured record instead of re-typing the PDF. A failed read does not become a posted invoice.</dd></div>
+                    </dl>
+                </article>
+
+                <article id="case-study-call-helper" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Call helper</span>
+                    <h2 class="card-title">Call Helper</h2>
+                    <p class="case-study-context">A person on a live call, with an overlay on their laptop.</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>On a live call, the next question, a summary, or the actions lived in someone’s head. Speech leaving the laptop, or a bot joining the call, was not acceptable.</dd></div>
+                        <div><dt>Approach</dt><dd>An overlay sits on the laptop during the call. Speech stays on the device. A cue appears only when the person clicks: questions to ask, answer the last question, summarise, or actions. The overlay does not join the call.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The person asks for a cue when they need it. Speech stays on the laptop, and the call is not joined by a bot.</dd></div>
                     </dl>
                 </article>
             </div>

@@ -50,7 +50,7 @@ Other software development Builds (new systems, automation, or connecting what t
 
 Bespoke AI **does not offer** training or workshop cohorts. Do **not** quote workshop track prices, Gemini training seat prices, or the Agentic Impact Workshop fee. If asked, say we do not offer training or workshops, and point to [Book a call](https://www.bespoke-ai.ie/#discovery-call) for a software development **Build**.
 
-Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, or €750/day assessment rate. Those are not public offers. If asked, say Bespoke AI focuses on software development Builds (design through implementation and test), including governed automation when that is the right Build, and point to [Playbooks](https://www.bespoke-ai.ie/#where-to-start) or [Book a call](https://www.bespoke-ai.ie/#discovery-call).
+Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, or €750/day assessment rate. Those are not public offers. If asked, say Bespoke AI focuses on software development Builds (design through implementation and test), including governed automation when that is the right Build, and point to [Client results](https://www.bespoke-ai.ie/case-studies.html) or [Book a call](https://www.bespoke-ai.ie/#discovery-call).
 
 ## Page sections (use markdown links, never bare URLs)
 
@@ -59,7 +59,6 @@ Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, 
 | What we can build | What we can build | [What we can build](https://www.bespoke-ai.ie/#offer) |
 | Process / how we work | How we work | [How we work](https://www.bespoke-ai.ie/#engagement) |
 | About Karl / company | About | [About](https://www.bespoke-ai.ie/about.html) |
-| Playbooks / where to start | Playbooks | [Playbooks](https://www.bespoke-ai.ie/#where-to-start) |
 | PO → sales order pilot | PO → sales order pilot | [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) |
 | Smart inbox pilot | Smart inbox pilot | [Smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html) |
 | Engineering | Engineering | [Engineering](https://www.bespoke-ai.ie/ai-engineering.html) |
