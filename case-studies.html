@@ -58,10 +58,21 @@
     <section id="case-studies" class="section section--border-top section--alt-light">
         <div class="container">
             <p class="text-body-sm" style="margin-bottom:1.5rem;text-align:center">
-                sales-order intake · quality diagnostics · support email triage · document / compliance · voice intake · knowledge-in-chat · company compliance · meeting notes · property searching · appointment reminders · invoice extraction · call helper
+                support email triage · sales-order intake · quality diagnostics · document / compliance · voice intake · knowledge-in-chat · lettings · meeting notes · property searching · appointment reminders · invoice extraction · call helper
             </p>
 
             <div class="grid-3">
+                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--teal">Support inbox</span>
+                    <h2 class="card-title">Support email triage</h2>
+                    <p class="case-study-context">Support desk, shared mailbox in Microsoft 365.</p>
+                    <dl class="card-dl case-study-dl">
+                        <div><dt>Challenge</dt><dd>Customer questions and junk landed in the same inbox. Staff wrote every reply by hand, with no label/category for what was urgent or how the sender sounded.</dd></div>
+                        <div><dt>Approach</dt><dd>New mail is labelled Urgent or Routine. The agent determines the tone, for example upset or angry. Urgent mail also sends a separate Teams message so the support lead sees it straight away. When the support FAQ covers the question, a draft reply to the sender is saved for the support lead to send. Suspected spam, a question the FAQ does not answer, or a draft that conflicts with earlier mail from the same sender waits for the support lead. Mail is not deleted.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The support lead sends from a saved draft. FAQ gaps, and conflicting email thread wait for a person to review.</dd></div>
+                    </dl>
+                </article>
+
                 <article id="case-study-po-so" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--blue">Sales order intake</span>
                     <h2 class="card-title">Purchase orders into the ERP</h2>
@@ -81,17 +92,6 @@
                         <div><dt>Challenge</dt><dd>Staff assembled the quality picture from workbooks and wrote the site narrative by hand. Scores, exceptions, and the written report drifted from each other.</dd></div>
                         <div><dt>Approach</dt><dd>Structured intake into a scored set of quality signals; AI interprets the already-computed results into a draft executive report; a reviewer checks the dashboard and the narrative before it is treated as the quality pack.</dd></div>
                         <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The team reviews a scored picture and a draft report instead of assembling the story from scratch. Unreviewed narrative does not become the pack.</dd></div>
-                    </dl>
-                </article>
-
-                <article id="case-study-inbox" class="glass-panel glass-panel-hover card case-study-card">
-                    <span class="card-tag card-tag--teal">Support inbox</span>
-                    <h2 class="card-title">Support email triage</h2>
-                    <p class="case-study-context">Support desk, shared mailbox in Microsoft 365.</p>
-                    <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Customer questions and junk landed in the same inbox. Staff wrote every reply by hand, with no mark for what was urgent or how the sender sounded.</dd></div>
-                        <div><dt>Approach</dt><dd>New mail is labelled Urgent or Routine. The agent determines the tone, for example upset or angry. Urgent mail also sends a separate Teams message so the support lead sees it straight away. When the support FAQ covers the question, a draft reply to the sender is saved for the support lead to send. Suspected spam, a question the FAQ does not answer, or a draft that conflicts with earlier mail from the same sender waits for the support lead. Mail is not deleted.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The support lead sends from a saved draft. Spam, FAQ gaps, and conflicting earlier mail wait for a person first.</dd></div>
                     </dl>
                 </article>
 
@@ -120,22 +120,22 @@
                 <article id="case-study-knowledge" class="glass-panel glass-panel-hover card case-study-card">
                     <span class="card-tag card-tag--teal">Knowledge-in-chat</span>
                     <h2 class="card-title">Workplace knowledge in chat</h2>
-                    <p class="case-study-context">Employees in Teams asking about HR, policy, procedure, and FAQs.</p>
+                    <p class="case-study-context">Employees asking HR, policy, holidays, and compliance in one place.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>Staff hunted the library or pinged a colleague for policy and FAQ. Answers drifted; people quoted an old handbook or guessed.</dd></div>
-                        <div><dt>Approach</dt><dd>Staff ask in Teams. Answers come only from the organisation’s library, with a link to the source document. If it is not in a document the employee can open, the agent refuses rather than inventing policy or FAQ.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Staff get a grounded answer instead of hunting SharePoint. Off-library policy is not invented.</dd></div>
+                        <div><dt>Challenge</dt><dd>Policy, leave, customer records, and compliance lived in different places. Staff hunted the library, guessed, or had to know which system a question belonged to.</dd></div>
+                        <div><dt>Approach</dt><dd>Staff ask in one place. Policy and procedure answers come only from the organisation’s library, with a link to the source document. Holiday balances and booking go to Workday. Customer questions go to the CRM. Compliance questions go to the compliance source. If it is not in a document the employee can open, the agent refuses rather than inventing an answer.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Staff ask once. Leave is booked in Workday, and other questions reach the document or system that holds the answer. Off-library policy is not invented.</dd></div>
                     </dl>
                 </article>
 
-                <article id="case-study-company-compliance" class="glass-panel glass-panel-hover card case-study-card">
-                    <span class="card-tag card-tag--blue">Company compliance</span>
-                    <h2 class="card-title">Company compliance agent</h2>
-                    <p class="case-study-context">Employees asking HR, holidays, customer records, and compliance in one place.</p>
+                <article id="case-study-lettings" class="glass-panel glass-panel-hover card case-study-card">
+                    <span class="card-tag card-tag--blue">Lettings</span>
+                    <h2 class="card-title">Property enquiry desk</h2>
+                    <p class="case-study-context">A property desk, applicant chat and an ops board, not a listings search.</p>
                     <dl class="card-dl case-study-dl">
-                        <div><dt>Challenge</dt><dd>HR, leave, customer records, and compliance lived in different systems. Staff had to know where a question belonged, or it went to the wrong place.</dd></div>
-                        <div><dt>Approach</dt><dd>Employees ask in one place. An orchestrator decides the route. HR questions, holiday balances, and holiday booking go to Workday. Customer questions go to the CRM. Compliance questions go to the compliance source. The message is delivered to the system that owns that topic.</dd></div>
-                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">Staff ask once. Leave is booked in Workday, and customer and compliance questions reach the system that holds the answer.</dd></div>
+                        <div><dt>Challenge</dt><dd>Viewing requests and repair messages landed in the same inbox. Staff qualified buyers by hand, and a reply could go out before a viewing was actually booked.</dd></div>
+                        <div><dt>Approach</dt><dd>The applicant chats about the property. The agent asks for budget, how soon they want to move, and whether they have approval in principle or proof of funds. A qualified applicant is offered viewing times. A repair message becomes a maintenance ticket instead of a viewing. The reply stays a draft on the ops board until someone on the desk sends it.</dd></div>
+                        <div><dt class="outcome-label">Outcome</dt><dd class="outcome">The desk sends a draft and books a viewing for a qualified applicant. A repair is a ticket. An unqualified enquiry does not become a booking.</dd></div>
                     </dl>
                 </article>
 

@@ -40,6 +40,11 @@ No BS and we don’t guess. On a discovery call we decide what’s worth buildin
 
 Systems in production use: governed workflows with a human in the loop. Each item opens the write-up.
 
+[### Support email triage
+
+Shared support mail labelled for urgency; the agent determines the tone, such as upset or angry, and urgent mail sends a Teams message; an FAQ draft is saved for a person to send; spam, gaps, and conflicts wait for review.
+
+Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-inbox)
 [### Purchase orders into the ERP
 
 Inbound POs matched to live catalogs; nothing writes back until an approver signs off.
@@ -50,11 +55,6 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 Site quality signals scored from the intake record; AI drafts the narrative; a person reviews before it becomes the pack.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-quality)
-[### Support email triage
-
-Shared support mail labelled for urgency; the agent determines the tone, such as upset or angry, and urgent mail sends a Teams message; an FAQ draft is saved for a person to send; spam, gaps, and conflicts wait for review.
-
-Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-inbox)
 [### Supplier licence verification
 
 EEA manufacturer and wholesaler licences checked against the official register, with a confirm step before they become the record.
@@ -67,14 +67,14 @@ An AI phone agent verifies the caller, then grills the issue against a predefine
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-voice)
 [### Workplace knowledge in chat
 
-Staff ask HR, policy, and FAQ questions in Teams. Answers come from the company library; the agent does not invent policy off-library.
+Staff ask HR, policy, holidays, and compliance in one place. Policy answers come from the library; leave is booked in Workday.
 
 Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-knowledge)
-[### Company compliance agent
+[### Property enquiry desk
 
-Employees ask HR, holidays, the CRM, and compliance in one place. An orchestrator routes each question, and holiday booking goes to Workday.
+Applicants are qualified for a viewing. A repair becomes a ticket, and the reply stays a draft until the desk sends it.
 
-Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-company-compliance)
+Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-lettings)
 [### Meeting notes in Teams
 
 After the call, a written summary and action items land in Teams for review.

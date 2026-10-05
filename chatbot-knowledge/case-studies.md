@@ -14,7 +14,17 @@ scope: website-knowledge
 
 Governed workflows with a human gate.
 
-sales-order intake · quality diagnostics · support email triage · document / compliance · voice intake · knowledge-in-chat · company compliance · meeting notes · property searching · appointment reminders · invoice extraction · call helper
+support email triage · sales-order intake · quality diagnostics · document / compliance · voice intake · knowledge-in-chat · lettings · meeting notes · property searching · appointment reminders · invoice extraction · call helper
+
+Support inbox
+
+## Support email triage
+
+Support desk, shared mailbox in Microsoft 365.
+
+- **Challenge:** Customer questions and junk landed in the same inbox. Staff wrote every reply by hand, with no label/category for what was urgent or how the sender sounded.
+- **Approach:** New mail is labelled Urgent or Routine. The agent determines the tone, for example upset or angry. Urgent mail also sends a separate Teams message so the support lead sees it straight away. When the support FAQ covers the question, a draft reply to the sender is saved for the support lead to send. Suspected spam, a question the FAQ does not answer, or a draft that conflicts with earlier mail from the same sender waits for the support lead. Mail is not deleted.
+- **Outcome:** The support lead sends from a saved draft. FAQ gaps, and conflicting email thread wait for a person to review.
 
 Sales order intake
 
@@ -35,16 +45,6 @@ Quality / compliance at a pharmaceutical manufacturer or GDP site, diagnostic da
 - **Challenge:** Staff assembled the quality picture from workbooks and wrote the site narrative by hand. Scores, exceptions, and the written report drifted from each other.
 - **Approach:** Structured intake into a scored set of quality signals; AI interprets the already-computed results into a draft executive report; a reviewer checks the dashboard and the narrative before it is treated as the quality pack.
 - **Outcome:** The team reviews a scored picture and a draft report instead of assembling the story from scratch. Unreviewed narrative does not become the pack.
-
-Support inbox
-
-## Support email triage
-
-Support desk, shared mailbox in Microsoft 365.
-
-- **Challenge:** Customer questions and junk landed in the same inbox. Staff wrote every reply by hand, with no mark for what was urgent or how the sender sounded.
-- **Approach:** New mail is labelled Urgent or Routine. The agent determines the tone, for example upset or angry. Urgent mail also sends a separate Teams message so the support lead sees it straight away. When the support FAQ covers the question, a draft reply to the sender is saved for the support lead to send. Suspected spam, a question the FAQ does not answer, or a draft that conflicts with earlier mail from the same sender waits for the support lead. Mail is not deleted.
-- **Outcome:** The support lead sends from a saved draft. Spam, FAQ gaps, and conflicting earlier mail wait for a person first.
 
 Document / compliance
 
@@ -70,21 +70,21 @@ Knowledge-in-chat
 
 ## Workplace knowledge in chat
 
-Employees in Teams asking about HR, policy, procedure, and FAQs.
+Employees asking HR, policy, holidays, and compliance in one place.
 
-- **Challenge:** Staff hunted the library or pinged a colleague for policy and FAQ. Answers drifted; people quoted an old handbook or guessed.
-- **Approach:** Staff ask in Teams. Answers come only from the organisation’s library, with a link to the source document. If it is not in a document the employee can open, the agent refuses rather than inventing policy or FAQ.
-- **Outcome:** Staff get a grounded answer instead of hunting SharePoint. Off-library policy is not invented.
+- **Challenge:** Policy, leave, customer records, and compliance lived in different places. Staff hunted the library, guessed, or had to know which system a question belonged to.
+- **Approach:** Staff ask in one place. Policy and procedure answers come only from the organisation’s library, with a link to the source document. Holiday balances and booking go to Workday. Customer questions go to the CRM. Compliance questions go to the compliance source. If it is not in a document the employee can open, the agent refuses rather than inventing an answer.
+- **Outcome:** Staff ask once. Leave is booked in Workday, and other questions reach the document or system that holds the answer. Off-library policy is not invented.
 
-Company compliance
+Lettings
 
-## Company compliance agent
+## Property enquiry desk
 
-Employees asking HR, holidays, customer records, and compliance in one place.
+A property desk, applicant chat and an ops board, not a listings search.
 
-- **Challenge:** HR, leave, customer records, and compliance lived in different systems. Staff had to know where a question belonged, or it went to the wrong place.
-- **Approach:** Employees ask in one place. An orchestrator decides the route. HR questions, holiday balances, and holiday booking go to Workday. Customer questions go to the CRM. Compliance questions go to the compliance source. The message is delivered to the system that owns that topic.
-- **Outcome:** Staff ask once. Leave is booked in Workday, and customer and compliance questions reach the system that holds the answer.
+- **Challenge:** Viewing requests and repair messages landed in the same inbox. Staff qualified buyers by hand, and a reply could go out before a viewing was actually booked.
+- **Approach:** The applicant chats about the property. The agent asks for budget, how soon they want to move, and whether they have approval in principle or proof of funds. A qualified applicant is offered viewing times. A repair message becomes a maintenance ticket instead of a viewing. The reply stays a draft on the ops board until someone on the desk sends it.
+- **Outcome:** The desk sends a draft and books a viewing for a qualified applicant. A repair is a ticket. An unqualified enquiry does not become a booking.
 
 Meeting notes
 
