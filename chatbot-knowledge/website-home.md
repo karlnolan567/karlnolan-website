@@ -103,21 +103,21 @@ Read the write-up](https://www.bespoke-ai.ie/case-studies.html#case-study-call-h
 
 // Why Bespoke AI
 
-## Why not DIY or an AI agency?
+## Why not DIY?
 
-Two common paths that look cheaper until delivery, governance, or both fall over.
+A DIY agent looks cheaper until the work needs a design that holds up.
 
 Versus DIY / ChatGPT
 
-### We use tenant AI models that do not share your company data
+### We don’t use AI for the sake of it
 
-When AI earns a place in a Build, it runs on your tenant’s models, grounded in your workplace content, human review until you trust the outputs.
+If we can automate the work without an AI agent, we do. AI agents are a bad fit for some of the work. When AI earns a place in a Build, it runs on your tenant’s models, grounded in your workplace content, with a person reviewing until you trust the outputs.
 
-Versus hype AI agencies
+What DIY leaves out
 
-### We build for production, not demos.
+### Guardrails, security, and audit
 
-27+ years of software delivery, architecture, implementation, and test. Not prompt theatre. The system has to survive real connectors, policy, and day-two operations.
+DIY agents rarely include guardrails, security, auditing, or practical design. Without those, they leak PII and company and customer data. We build those in. The system has to survive real connectors, policy, and day-two operations.
 
 // Our Process
 
