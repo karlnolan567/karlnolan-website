@@ -74,11 +74,10 @@ describe('public-offer repositioning', () => {
     }
   });
 
-  it('puts architecture in About core focus, not as a named Nexus product', () => {
+  it('does not sell architecture as a named Nexus product on About', () => {
     const about = read('about.html');
-    assert.match(about, /Software development/);
-    assert.match(about, /<th scope="row">Architecture<\/th>/);
-    assert.match(about, /Governed automation/);
+    assert.doesNotMatch(about, /\/\/ Core focus/);
+    assert.doesNotMatch(about, /<th scope="row">Architecture<\/th>/);
     assert.doesNotMatch(about, /Autonomous coding workflows/);
     assert.doesNotMatch(about, /Nexus/);
     assert.doesNotMatch(about, /ai-engineering\.html/);
