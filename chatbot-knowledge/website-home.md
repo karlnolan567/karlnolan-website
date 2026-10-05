@@ -24,7 +24,7 @@ Free discovery call → design → a build quote → implement and test → hand
 
 [image: Karl Nolan]
 
-// Delivery, not demos
+// Someone you can trust
 
 ## Karl Nolan
 
