@@ -19,14 +19,20 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(footer, /AI Training/);
   });
 
-  it('sets the home title and meta to the tagline', () => {
+  it('sets the home title and meta to the tagline and Limerick', () => {
     const home = read('index.html');
-    assert.match(home, /<title>Bespoke AI \| Doing one automation at a time<\/title>/);
+    assert.match(home, /<title>Bespoke AI \| Doing one automation at a time in Limerick<\/title>/);
     assert.match(
       home,
-      /Defined-problem software from design through test: a new system or a governed workflow\. Straight talk on what's worth building\./
+      /Software and workflow automation in Dooradoyle, Limerick\. One defined problem from design through test\. Straight talk on what is worth building\./
     );
+    assert.match(home, /software and automation company in Limerick city\./);
+    assert.match(home, /"areaServed": "Worldwide"/);
+    assert.doesNotMatch(home, /Do you work with businesses in Limerick\?/);
+    assert.doesNotMatch(home, /Working in Limerick/);
+    assert.doesNotMatch(home, /Mid-West/);
     assert.doesNotMatch(home, /Agents &amp; Automation/);
+    assert.match(read('partials/footer.html'), /Dooradoyle, Limerick/);
   });
 
   it('leads the hero with design through test, not a playbook CTA', () => {

@@ -13,6 +13,8 @@ Bespoke AI. Doing one automation at a time.
 # Building software you can trust
 by automating one workflow at a time.
 
+Bespoke AI is Karl Nolan's software and automation company in Limerick city.
+
 // Senior architecture
 27+ years of enterprise software delivery, built right into your existing stack.
 
@@ -28,7 +30,7 @@ Free discovery call → design → a build quote → implement and test → hand
 
 ## Karl Nolan
 
-Principal Consultant, 27+ years delivering software. Architecture informs design; then hands-on implementation and test until it works in production.
+Principal Consultant in Limerick city. 27+ years delivering software. Architecture informs design; then hands-on implementation and test until it works in production.
 
 No BS and we don’t guess. On a discovery call we decide what’s worth building, and only quote when the problem and approach are clear.
 
