@@ -1059,6 +1059,20 @@ section[id] {
   margin-right: auto;
 }
 
+.hero-intro {
+  margin: 0 auto;
+  max-width: 42rem;
+  width: 100%;
+}
+
+.hero-intro__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  background: #0b1220;
+}
+
 .hero-claim-card {
   max-width: 36rem;
   margin: 0 auto;
