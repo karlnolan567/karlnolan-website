@@ -14,6 +14,7 @@ COPY webfonts/ webfonts/
 COPY js/ js/
 COPY partials/ partials/
 COPY images/ images/
+COPY videos/ videos/
 COPY demos/ demos/
 COPY docker/site-Caddyfile /etc/caddy/Caddyfile
 COPY docker/entrypoint.sh /entrypoint.sh
