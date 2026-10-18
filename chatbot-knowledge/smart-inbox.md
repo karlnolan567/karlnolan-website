@@ -8,20 +8,16 @@ scope: website-knowledge
 
 > Synced from `smart-inbox.html` for the website chatbot knowledge base.
 
-// Customer Operations
-
 # Same support team. Urgent tickets first.
 
 A fixed-scope Build for support and ops leads: triage a shared inbox, draft replies, alert on the angry threads. Nothing sends without a human. Priced on the discovery call.
 
-You don't pay until you're 100% satisfied with the solution.
+You sign off against test cases agreed up front, before the final invoice.
 
 Messages that sat overnight can get a same-day draft, if the volume is already in the queue. We do not promise extra revenue or a CSAT score.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-[Client results](https://www.bespoke-ai.ie/case-studies.html)
-
-// Fit
+[Example builds](https://www.bespoke-ai.ie/case-studies.html)
 
 ## Who this is for, and who it isn’t
 
@@ -51,8 +47,6 @@ Not a fit
 
 - No human approver, drafts must be reviewed before send
 
-// The Fence
-
 ## What’s in the fixed pilot
 
 One shared mailbox, drafts only, typically live in 2 weeks. Feasibility is included, no separate scoping fee on this path.
@@ -81,8 +75,6 @@ One shared mailbox, drafts only, typically live in 2 weeks. Feasibility is inclu
 
 Messier than this fence? We will say so on the discovery call and quote a custom build, this page is not a day-rate scoping product.
 
-// What We Measure
-
 ## Throughput you can see
 
 The published result is faster flagging and same-day drafts, not a guaranteed CSAT lift or euro of retained revenue. That only follows if urgent threads were dying in the queue.
@@ -91,15 +83,13 @@ Related
 
 ### Other production systems
 
-This pilot is draft-and-approve on a shared support mailbox. Shipped inbox work on the Client results page is Outlook filing and flags, a different pattern.
+This pilot is draft-and-approve on a shared support mailbox. Shipped inbox work on the Example builds page is Outlook filing and flags, a different pattern.
 
-[Client results](https://www.bespoke-ai.ie/case-studies.html)
-
-// Price
+[Example builds](https://www.bespoke-ai.ie/case-studies.html)
 
 ## Priced on the discovery call
 
-Quote after a free 30-minute discovery call, once we confirm volume, mailbox, alert channel, and the approver role. You don't pay until you're 100% satisfied with the solution.
+Quote after a free 30-minute discovery call, once we confirm volume, mailbox, alert channel, and the approver role. You sign off against test cases agreed up front, before the final invoice.
 
 - Feasibility is free, inside discovery and design
 
@@ -108,4 +98,4 @@ Quote after a free 30-minute discovery call, once we confirm volume, mailbox, al
 - Confidentiality agreement before you share anything sensitive
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-[Client results](https://www.bespoke-ai.ie/case-studies.html)
+[Example builds](https://www.bespoke-ai.ie/case-studies.html)

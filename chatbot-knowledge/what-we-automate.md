@@ -8,17 +8,13 @@ scope: website-knowledge
 
 > Synced from `what-we-automate.html` for the website chatbot knowledge base.
 
-// Automation Pilots
-
 # What We Can Automate for Your Business
 
 Everyday language, not jargon. The examples below are common starting points, pick a bottleneck on a discovery call (or bring your own) and we go live in 2–4 weeks, no enterprise procurement required.
 
-// Examples
-
 ## Example Pilot Playbooks
 
-A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-studies.html), suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
+A few patterns that map to our [Example builds](https://www.bespoke-ai.ie/case-studies.html), suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 
@@ -60,8 +56,6 @@ A few patterns that map to our [Client results](https://www.bespoke-ai.ie/case-s
 
 - **Switchboard routing:** Front door for a company line: finds out why they called and routes to billing, ops, or support.
 
-// Architecture
-
 ## How a Bespoke AI Workflow Runs
 
 Any channel in → governed AI → human approve → any channel out. We wire the inputs and outputs your team already uses, email, schedulers, Copilot, chat, voice, SharePoint / OneDrive, Dynamics 365, and the tools you deliver into.
@@ -69,8 +63,6 @@ Any channel in → governed AI → human approve → any channel out. We wire th
 [image: Architecture diagram: inputs and triggers from email, schedulers, Copilot, chat apps, phone, and SharePoint or OneDrive file changes flow into a hub with API/MCP connectors including Dynamics 365, LLM analysis, and human review, then deliver to Teams, email, Telegram, Google Workspace, Microsoft Office, and Dynamics 365.]
 
 Every workflow includes a human review gate before anything is delivered, then scale when your team is confident.
-
-// Built-In on Every Workflow
 
 ## Guardrails Before Anything Goes Live
 
@@ -99,8 +91,6 @@ Whether we automate documents, inboxes, or compliance data, the same safety laye
 - **Role-based access:** Who can view, edit, approve, or export, matched to your team structure.
 
 - **Retention & deletion:** How long data is kept and when it is purged, configured to your policy.
-
-// Also Possible
 
 ## The Number of Possibilities Is Endless
 

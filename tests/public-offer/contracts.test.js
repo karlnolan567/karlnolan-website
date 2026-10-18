@@ -9,6 +9,39 @@ function read(rel) {
   return fs.readFileSync(path.join(ROOT, rel), 'utf8');
 }
 
+const OLD_PAY_SENTENCE = /You don't pay until you're 100% satisfied with the solution\./;
+const SIGN_OFF_SENTENCE = /You sign off against test cases agreed up front, before the final invoice\./;
+
+/** The home hero section, from its opening tag to its closing tag. */
+function heroOf(home) {
+  const start = home.lastIndexOf('<section', home.indexOf('section--hero'));
+  const end = home.indexOf('</section>', start);
+  return home.slice(start, end);
+}
+
+/** A <section id="..."> block by id. */
+function sectionById(html, id) {
+  const idx = html.indexOf(`id="${id}"`);
+  if (idx === -1) return '';
+  const start = html.lastIndexOf('<section', idx);
+  const end = html.indexOf('</section>', idx);
+  return html.slice(start, end);
+}
+
+/** Visible text: drop scripts, styles, JSON-LD, and tags. */
+function visibleText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, ' ')
+    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<head[\s\S]*?<\/head>/g, ' ')
+    .replace(/<[^>]+>/g, ' ');
+}
+
+/** Root pages a search engine can index (not noindex, not prototypes). */
+function publicPages() {
+  return listHtml('').filter((rel) => !/noindex/i.test(read(rel)));
+}
+
 describe('public-offer repositioning', () => {
   it('uses the locked tagline in header and footer', () => {
     const header = read('partials/header.html');
@@ -19,38 +52,50 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(footer, /AI Training/);
   });
 
-  it('sets the home title and meta to the tagline and Limerick', () => {
+  it('sets the home title and meta to AI automation for Irish SMEs in Limerick', () => {
     const home = read('index.html');
-    assert.match(home, /<title>Bespoke AI \| Doing one automation at a time in Limerick<\/title>/);
-    assert.match(
-      home,
-      /Software and workflow automation in Dooradoyle, Limerick\. One defined problem from design through test\. Straight talk on what is worth building\./
-    );
-    assert.match(home, /software and automation company in Limerick city\./);
+    const title = home.match(/<title>([^<]+)<\/title>/)[1];
+    assert.match(title, /AI automation/, title);
+    assert.match(title, /Limerick/, title);
+    assert.doesNotMatch(title, /Doing one automation at a time/, title);
+    const desc = home.match(/<meta name="description" content="([^"]+)">/)[1];
+    assert.match(desc, /orders/i, desc);
+    assert.match(desc, /invoices/i, desc);
+    assert.match(desc, /dockets/i, desc);
+    assert.match(desc, /Limerick|Ireland/, desc);
     assert.match(home, /"areaServed": "Worldwide"/);
     assert.doesNotMatch(home, /Do you work with businesses in Limerick\?/);
     assert.doesNotMatch(home, /Working in Limerick/);
     assert.doesNotMatch(home, /Mid-West/);
     assert.doesNotMatch(home, /Agents &amp; Automation/);
-    assert.match(read('partials/footer.html'), /Dooradoyle, Limerick/);
+    assert.match(read('partials/footer.html'), /Limerick city/);
+    assert.doesNotMatch(read('index.html').replace(/"streetAddress".*/, ''), /Dooradoyle/);
+    assert.doesNotMatch(read('partials/footer.html'), /Dooradoyle/);
   });
 
-  it('leads the hero with design through test, not a playbook CTA', () => {
+  it('leads the hero with the buyer pain and one primary CTA', () => {
     const home = read('index.html');
-    const hero = home.slice(
-      home.indexOf('section--hero'),
-      home.indexOf('id="workshop-announce"')
+    const hero = heroOf(home);
+    const h1 = hero.match(/<h1[\s\S]*?<\/h1>/)[0];
+    assert.match(h1, /Stop re-keying orders, invoices and dockets\./);
+    assert.match(
+      hero,
+      /Fixed-scope automation pilots for Irish small and medium businesses in logistics, food, manufacturing and quality, with a person approving every step\. One workflow at a time\./
     );
-    assert.match(hero, /Building software you can trust/);
-    assert.match(hero, /by automating one workflow at a time/);
-    assert.doesNotMatch(hero, /Automate workflows with AI, when needed/);
-    assert.doesNotMatch(hero, /you don't pay until you're satisfied/);
+    assert.doesNotMatch(hero, /Building software you can trust/);
+    assert.doesNotMatch(hero, /workshop/i);
     assert.doesNotMatch(hero, /Save time and money/);
-    assert.match(hero, /automated tests in the build/);
-    assert.doesNotMatch(hero, /tested before you run it/);
     assert.doesNotMatch(hero, /ai-engineering\.html/);
-    assert.doesNotMatch(hero, /po-sales-order\.html/);
     assert.doesNotMatch(hero, /30-minute manual task/);
+    const primaries = [...hero.matchAll(/<a\b[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)];
+    assert.equal(primaries.length, 1, 'hero should have exactly one primary CTA');
+    assert.match(primaries[0][0], /data-booking-link/);
+    assert.match(primaries[0][1], /Book a Discovery Call/);
+    assert.ok(
+      home.indexOf('id="workshop-announce"') === -1 ||
+        home.indexOf('id="workshop-announce"') > home.indexOf('section--hero') + hero.length,
+      'workshop announce card must not sit in the hero'
+    );
   });
 
   it('does not publish a What We Can Build catalog', () => {
@@ -132,25 +177,40 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(read('scoping.html'), /agentic-impact-workshop/);
   });
 
-  it('puts the pay-when-satisfied sentence on home and playbooks', () => {
-    const sentence = /You don't pay until you're 100% satisfied with the solution\./;
-    const home = read('index.html');
-    const hero = home.slice(
-      home.indexOf('section--hero'),
-      home.indexOf('id="workshop-announce"')
-    );
-    assert.match(home, sentence);
-    assert.match(hero, /\/\/ Senior architecture/);
-    assert.match(hero, /27\+ years of enterprise software delivery, built right into your existing stack\./);
-    assert.doesNotMatch(hero, /\/\/ 100% satisfaction/);
-    assert.match(hero, /cost, margin, or hours/);
-    assert.doesNotMatch(hero, /tested before you run it/);
-    assert.match(hero, /Optional support, quoted case by case/);
-    assert.match(read('po-sales-order.html'), sentence);
-    assert.match(read('smart-inbox.html'), sentence);
-    assert.doesNotMatch(read('about.html'), sentence);
-    assert.doesNotMatch(read('partials/header.html'), sentence);
-    assert.doesNotMatch(read('scoping.html'), sentence);
+  it('replaces pay-when-satisfied with sign-off against agreed test cases', () => {
+    for (const rel of [
+      'index.html',
+      'po-sales-order.html',
+      'smart-inbox.html',
+      'about.html',
+      'partials/header.html',
+      'chatbot-knowledge/bot-guardrails.md',
+      'chatbot-knowledge/website-home.md',
+      'chatbot-knowledge/po-sales-order.md',
+      'chatbot-knowledge/smart-inbox.md',
+    ]) {
+      const text = read(rel);
+      assert.doesNotMatch(text, OLD_PAY_SENTENCE, rel);
+      assert.doesNotMatch(text, /100% satisfied/, rel);
+    }
+    for (const rel of [
+      'index.html',
+      'po-sales-order.html',
+      'smart-inbox.html',
+      'chatbot-knowledge/bot-guardrails.md',
+    ]) {
+      assert.match(read(rel), SIGN_OFF_SENTENCE, rel);
+    }
+    const hero = heroOf(read('index.html'));
+    assert.doesNotMatch(hero, /\/\/ Senior architecture/);
+  });
+
+  it('documents Sign-off in the CONTEXT glossary instead of Pay-when-satisfied', () => {
+    const ctx = read('CONTEXT.md');
+    assert.match(ctx, /\*\*Sign-off\*\*:/);
+    assert.match(ctx, /test cases agreed up front/);
+    assert.doesNotMatch(ctx, /\*\*Pay-when-satisfied\*\*:/);
+    assert.doesNotMatch(ctx, /100% satisfied/);
   });
 
   it('strips public euro floors and paid scoping from the live offer', () => {
@@ -177,10 +237,12 @@ describe('public-offer repositioning', () => {
     }
   });
 
-  it('lets Ask BCAI quote pay-when-satisfied without inventing prices or CSAT', () => {
+  it('lets Ask BCAI quote sign-off without inventing prices or CSAT', () => {
     const bot = read('chatbot-knowledge/bot-guardrails.md');
-    assert.match(bot, /You don't pay until you're 100% satisfied with the solution\./);
+    assert.match(bot, SIGN_OFF_SENTENCE);
+    assert.doesNotMatch(bot, OLD_PAY_SENTENCE);
     assert.match(bot, /priced per job/i);
+    assert.match(bot, /fixed price agreed before (any )?work starts/i);
     assert.doesNotMatch(bot, /€8,000/);
     assert.doesNotMatch(bot, /€900/);
     assert.doesNotMatch(bot, /€250\/mo/);
