@@ -12,7 +12,7 @@ Bespoke AI. Doing one automation at a time.
 
 # Stop re-keying orders, invoices and dockets.
 
-Fixed-scope automation pilots for Irish small and medium businesses in logistics, food, manufacturing and quality, with a person approving every step. One workflow at a time.
+When your CRM, ERP and older databases don't agree, we build reliable, auditable integrations that make them work and talk together.
 
 I'm Karl Nolan. Bespoke AI is my software and automation company in Limerick city. We pick the one manual process your team does by hand every day, automate it into the systems you already run, and test it before you rely on it.
 

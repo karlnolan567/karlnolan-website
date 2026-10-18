@@ -276,6 +276,20 @@ describe('styling: no AI-template tells', () => {
   });
 });
 
+describe('home: integrations line', () => {
+  const line = "When your CRM, ERP and older databases don't agree, we build reliable, auditable integrations that make them work and talk together.";
+  it('is the line under the headline, not a separate section', () => {
+    const home = read('index.html');
+    assert.equal(home.split(line).length - 1, 1);
+    assert.doesNotMatch(home, /id="integrations"/);
+  });
+  it('leads the chatbot knowledge under the headline', () => {
+    const md = read('chatbot-knowledge/website-home.md');
+    assert.ok(md.includes('# Stop re-keying orders, invoices and dockets.\n\n' + line));
+    assert.equal(md.split(line).length - 1, 1);
+  });
+});
+
 describe('home: pilot intro copy', () => {
   it('asks for one pain point, quick payback and fixing broken processes first', () => {
     const pilot = sectionById(read('index.html'), 'pilot');

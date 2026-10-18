@@ -80,8 +80,9 @@ describe('public-offer repositioning', () => {
     assert.match(h1, /Stop re-keying orders, invoices and dockets\./);
     assert.match(
       hero,
-      /Fixed-scope automation pilots for Irish small and medium businesses in logistics, food, manufacturing and quality, with a person approving every step\. One workflow at a time\./
+      /<p class="text-lead hero-lead">When your CRM, ERP and older databases don't agree, we build reliable, auditable integrations that make them work and talk together\.<\/p>/
     );
+    assert.doesNotMatch(hero, /Fixed-scope automation pilots for Irish small and medium businesses/);
     assert.doesNotMatch(hero, /Building software you can trust/);
     assert.doesNotMatch(hero, /workshop/i);
     assert.doesNotMatch(hero, /Save time and money/);
