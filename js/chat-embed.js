@@ -5,6 +5,10 @@
   }
 
   var NUDGE_KEY = 'bcai-chat-nudge-dismissed';
+  // Wait before showing the teaser so it never covers the hero on first read.
+  var NUDGE_DELAY_MS = 8000;
+  // On phones the teaser stays hidden; only the round icon shows.
+  var smallScreen = window.matchMedia && window.matchMedia('(max-width: 767px)');
   var isOpen = false;
   var frameLoaded = false;
   var nudgeDismissed = false;
@@ -166,9 +170,12 @@
 
   if (!nudgeDismissed) {
     window.setTimeout(function () {
+      if (smallScreen && smallScreen.matches) {
+        return;
+      }
       if (!nudgeDismissed && !isOpen) {
         nudgeEl.classList.add('chat-embed__nudge--visible');
       }
-    }, 400);
+    }, NUDGE_DELAY_MS);
   }
 })();

@@ -1,18 +1,16 @@
 ---
-title: Client results
+title: Example builds
 source: https://www.bespoke-ai.ie/case-studies.html
 scope: website-knowledge
 ---
 
-# Client results
+# Example builds
 
 > Synced from `case-studies.html` for the website chatbot knowledge base.
 
-// Client results
+# Example builds
 
-# Client results
-
-Governed workflows with a human gate.
+Working systems we have built, written up without names. A person approves before anything is saved.
 
 support email triage · sales-order intake · quality diagnostics · document / compliance · voice intake · knowledge-in-chat · lettings · meeting notes · property searching · appointment reminders · invoice extraction · call helper
 

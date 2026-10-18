@@ -8,20 +8,16 @@ scope: website-knowledge
 
 > Synced from `po-sales-order.html` for the website chatbot knowledge base.
 
-// Sales Operations
-
 # Same order desk. More POs through.
 
-A fixed-scope Build for sales ops and order-desk leads: inbound purchase orders from email into the ERP, with a human gate. Priced on the discovery call.
+A fixed-scope Build for sales ops and order-desk leads: inbound purchase orders from email into the ERP, with a person approving each order. Priced on the discovery call.
 
-You don't pay until you're 100% satisfied with the solution.
+You sign off against test cases agreed up front, before the final invoice.
 
 Orders that sat in the queue can clear the same day, if the demand is there. We do not promise extra revenue.
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-[Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
-
-// Fit
+[Example builds](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 
 ## Who this is for, and who it isn’t
 
@@ -50,8 +46,6 @@ Not a fit
 - Low volume, under ~80 POs/week, or no shared order inbox
 
 - No human approver role, or no live customer/SKU/price catalog to match against
-
-// The Fence
 
 ## What’s in the fixed pilot
 
@@ -83,28 +77,24 @@ One intake channel, one ERP writeback path, typically live in 2–3 weeks. Feasi
 
 Messier than this fence? We will say so on the discovery call and quote a custom build, this page is not a day-rate scoping product.
 
-// What We Measure
-
 ## Throughput you can see
 
 The published result is faster, safer order entry, not a guaranteed euro of extra sales. Revenue only follows if delayed POs were sitting in the queue while buyers were still waiting.
 
-Client results
+Example builds
 
 ### Purchase orders into the ERP
 
 The desk resolves exceptions instead of re-keying. Unapproved rows do not reach the ledger.
 
-[Client results](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
+[Example builds](https://www.bespoke-ai.ie/case-studies.html#case-study-po-so)
 
 [[image: Approver console for purchase-order to sales-order automation: original PO beside the draft, with AI flags for price mismatch and unknown SKU before ERP writeback.]](https://www.bespoke-ai.ie/images/po-so-approver-console.jpg)
 Approver console, original PO beside the draft. Nothing hits the ERP until Approve.
 
-// Price
-
 ## Priced on the discovery call
 
-Quote after a free 30-minute discovery call, once we confirm volume, inbox, ERP path, and the approver role. You don't pay until you're 100% satisfied with the solution.
+Quote after a free 30-minute discovery call, once we confirm volume, inbox, ERP path, and the approver role. You sign off against test cases agreed up front, before the final invoice.
 
 - Feasibility is free, inside discovery and design
 
@@ -113,4 +103,4 @@ Quote after a free 30-minute discovery call, once we confirm volume, inbox, ERP 
 - Confidentiality agreement before you share anything sensitive
 
 [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-[Client results](https://www.bespoke-ai.ie/case-studies.html)
+[Example builds](https://www.bespoke-ai.ie/case-studies.html)
