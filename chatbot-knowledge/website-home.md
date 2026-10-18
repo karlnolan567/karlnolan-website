@@ -90,7 +90,7 @@ Home-made AI tools rarely include guardrails, security or an audit trail, and th
 
 If the work can be automated without an AI agent, we do it that way. When AI does earn a place, it runs inside your own Microsoft 365 or Google Workspace, works from your own documents, and a person reviews its output until you trust it.
 
-## MSP Partners
+## Managed Service Provider (MSP) Partners
 
 Your clients are asking about AI. We build the automation layer on top of the stack you already sell and support, so purchase orders, invoices and order entry stop being typed in by hand.
 

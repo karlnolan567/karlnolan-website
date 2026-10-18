@@ -105,7 +105,7 @@ describe('home: Limerick Chamber and partner routes', () => {
     const titles = [...alt.matchAll(/<h3 class="card-title">([^<]+)<\/h3>/g)].map((m) => m[1]);
     assert.deepEqual(titles, ['Built by someone who has led software teams', 'Guardrails, security and an audit trail', "We don't use AI for the sake of it"]);
     const md = read('chatbot-knowledge/website-home.md');
-    const mdTitles = [...md.slice(md.indexOf('## Why not do it yourself?'), md.indexOf('## MSP Partners')).matchAll(/^### (.+)$/gm)].map((m) => m[1]);
+    const mdTitles = [...md.slice(md.indexOf('## Why not do it yourself?'), md.indexOf('## Managed Service Provider (MSP) Partners')).matchAll(/^### (.+)$/gm)].map((m) => m[1]);
     assert.deepEqual(mdTitles, titles);
     assert.match(read('chatbot-knowledge/website-home.md'), /### Built by someone who has led software teams/);
   });
@@ -113,7 +113,8 @@ describe('home: Limerick Chamber and partner routes', () => {
   it('has a section for IT and Dynamics 365 partners', () => {
     const partners = sectionById(home, 'partners');
     assert.ok(partners, 'expected <section id="partners">');
-    assert.match(partners, /MSP Partners/);
+    assert.match(partners, />Managed Service Provider \(MSP\) Partners<\/h2>/);
+    assert.match(read('chatbot-knowledge/website-home.md'), /^## Managed Service Provider \(MSP\) Partners$/m);
     assert.match(partners, /white-label/i);
     assert.match(partners, /<strong class="text-white">AI strategy:<\/strong>/);
     assert.match(read('chatbot-knowledge/website-home.md'), /\*\*AI strategy:\*\*/);
