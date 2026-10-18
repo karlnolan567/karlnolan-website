@@ -42,6 +42,19 @@ Pick one pain point: a manual process your team repeats every day, such as purch
 
 **Next step:** a free 30-minute discovery call. If it's a fit, we send a written scope and a fixed quote. [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
 
+## AI strategy for your business
+
+Not sure where AI fits? We help you define your AI strategy: where it will save time or money, where it won't, and which job to start with. It's based on how your systems and teams actually work, not on hype.
+
+### What you get
+
+- A review of your current processes, systems and data
+- A short list of AI opportunities, ranked by return and effort
+- The risks, data protection and security points to plan for
+- A clear first step you can act on
+
+**Start with:** a free 30-minute discovery call. [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
+
 ## Example builds
 
 Working systems we have built, written up without names. Each one keeps a person approving before anything is saved.

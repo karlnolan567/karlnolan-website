@@ -420,3 +420,28 @@ describe('no priced maintenance, support or retainer offers', () => {
     assert.match(read('index.html'), /Optional support, quoted case by case\./);
   });
 });
+
+describe('home: AI strategy section', () => {
+  const home = read('index.html');
+  const strategy = sectionById(home, 'ai-strategy');
+  it('sits directly after the pilot section', () => {
+    assert.ok(strategy, 'expected <section id="ai-strategy">');
+    const pilotEnd = home.indexOf('</section>', home.indexOf('id="pilot"'));
+    const next = home.indexOf('<section', pilotEnd);
+    assert.equal(next, home.indexOf('<section id="ai-strategy"'));
+  });
+  it('says we help companies define their AI strategy, in the we voice', () => {
+    assert.match(strategy, /define (your|their) AI strategy/i);
+    assert.match(strategy, /#discovery-call|data-booking-link/);
+    assert.doesNotMatch(visibleText(strategy), /\bI\b|\bmy\b/);
+    assert.doesNotMatch(strategy, /\u2014/);
+  });
+  it('is in the chatbot knowledge between the pilot and Example builds', () => {
+    const md = read('chatbot-knowledge/website-home.md');
+    const a = md.indexOf('## A fixed-scope pilot for one workflow');
+    const b = md.indexOf('## AI strategy');
+    const c = md.indexOf('## Example builds');
+    assert.ok(a >= 0 && b > a && c > b, 'AI strategy heading out of place');
+    assert.match(md, /define your AI strategy/i);
+  });
+});
