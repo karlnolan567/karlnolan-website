@@ -87,6 +87,8 @@ describe('home: Limerick Chamber and partner routes', () => {
   it('leads the Chamber strip with 10% off, not a free audit', () => {
     const strip = sectionById(home, 'chamber-offer');
     assert.ok(strip, 'expected <section id="chamber-offer">');
+    const firstSection = home.slice(home.indexOf('<main id="main-content">')).match(/<section[^>]*>/)[0];
+    assert.match(firstSection, /id="chamber-offer"/, 'Chamber strip should sit directly under the menu, above the hero');
     assert.match(strip, /Limerick Chamber members:<\/strong> 10% off your first pilot, until 31 January 2027\./);
     assert.doesNotMatch(strip, /audit/i);
     for (const rel of ['chatbot-knowledge/website-home.md', 'chatbot-knowledge/bot-guardrails.md']) {
@@ -289,7 +291,7 @@ describe('home: pilot intro copy', () => {
 describe('home: intro video', () => {
   it('sits in the hero, not the Karl Nolan section', () => {
     const home = read('index.html');
-    const hero = home.slice(home.indexOf('<section class="section--hero"'), home.indexOf('<section id="chamber-offer"'));
+    const hero = home.slice(home.indexOf('<section class="section--hero"'), home.indexOf('</section>', home.indexOf('<section class="section--hero"')));
     assert.match(hero, /class="hero-layout"/);
     assert.match(hero, /<video class="hero-intro__video"[^>]*preload="metadata"/);
     assert.match(hero, /<track kind="captions"/);

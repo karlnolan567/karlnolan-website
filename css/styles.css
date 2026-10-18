@@ -3364,3 +3364,23 @@ a:has(> .fa-arrow-right) {
     max-width: none;
   }
 }
+
+/* Chamber strip sits under the menu: keep it compact on phones so the hero CTA stays on the first screen */
+@media (max-width: 767px) {
+  .chamber-strip {
+    padding: 0.6rem 0;
+  }
+  .chamber-strip__inner {
+    gap: 0.2rem;
+  }
+  .chamber-strip__inner p,
+  .chamber-strip__inner a {
+    font-size: 0.875rem;
+  }
+  .section--hero {
+    padding-top: 1.5rem;
+  }
+  .hero-content {
+    gap: 1.4rem;
+  }
+}
