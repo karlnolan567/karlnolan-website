@@ -102,6 +102,7 @@ describe('home: Limerick Chamber and partner routes', () => {
     assert.equal((alt.match(/<article /g) || []).length, 3);
     assert.match(alt, /class="grid-3"/);
     assert.match(alt, /<h3 class="card-title">Built by someone who has led software teams<\/h3>/);
+    assert.match(alt, /27\+ years/);
     assert.match(alt, /managed teams of developers/);
     assert.match(alt, /bad code/);
     const titles = [...alt.matchAll(/<h3 class="card-title">([^<]+)<\/h3>/g)].map((m) => m[1]);
@@ -110,6 +111,7 @@ describe('home: Limerick Chamber and partner routes', () => {
     const mdTitles = [...md.slice(md.indexOf('## Why not do it yourself?'), md.indexOf('## Managed Service Provider (MSP) Partners')).matchAll(/^### (.+)$/gm)].map((m) => m[1]);
     assert.deepEqual(mdTitles, titles);
     assert.match(read('chatbot-knowledge/website-home.md'), /### Built by someone who has led software teams/);
+    assert.match(read('chatbot-knowledge/website-home.md'), /27\+ years developing, designing and architecting/);
   });
 
   it('has a section for IT and Dynamics 365 partners', () => {
@@ -291,14 +293,24 @@ describe('home: integrations line', () => {
 });
 
 describe('home: pilot intro copy', () => {
-  it('asks for one pain point, quick payback and fixing broken processes first', () => {
-    const pilot = sectionById(read('index.html'), 'pilot');
+  it('asks for one pain point, SME business cases and fixing broken processes first', () => {
+    const home = read('index.html');
+    const pilot = sectionById(home, 'pilot');
+    const md = read('chatbot-knowledge/website-home.md');
     assert.match(pilot, /Pick one pain point/);
-    assert.match(pilot, /pays back fastest/);
+    assert.match(pilot, /cuts costly mistakes/);
+    assert.match(pilot, /handle more volume/);
+    assert.match(pilot, /clear business case/);
     assert.match(pilot, /We don't automate a broken process/);
+    assert.doesNotMatch(pilot, /pays back fastest/);
+    assert.doesNotMatch(pilot, /real return/);
     assert.doesNotMatch(pilot, /I start with|I fix it first/);
     assert.doesNotMatch(pilot, /Pick the job your team re-keys every day/);
-    assert.match(read('chatbot-knowledge/website-home.md'), /We don't automate a broken process/);
+    assert.match(md, /cuts costly mistakes/);
+    assert.match(md, /handle more volume/);
+    assert.match(md, /clear business case/);
+    assert.match(md, /We don't automate a broken process/);
+    assert.doesNotMatch(md, /pays back fastest/);
   });
 });
 
@@ -432,7 +444,11 @@ describe('home: AI strategy section', () => {
   });
   it('says we help companies define their AI strategy, in the we voice', () => {
     assert.match(strategy, /define (your|their) AI strategy/i);
+    assert.match(strategy, /reduces risk and errors/);
+    assert.match(strategy, /without hiring/);
+    assert.match(strategy, /new capability/);
     assert.match(strategy, /#discovery-call|data-booking-link/);
+    assert.doesNotMatch(strategy, /save time or money/);
     assert.doesNotMatch(visibleText(strategy), /\bI\b|\bmy\b/);
     assert.doesNotMatch(strategy, /\u2014/);
   });
@@ -443,5 +459,21 @@ describe('home: AI strategy section', () => {
     const c = md.indexOf('## Example builds');
     assert.ok(a >= 0 && b > a && c > b, 'AI strategy heading out of place');
     assert.match(md, /define your AI strategy/i);
+    assert.match(md, /reduces risk and errors/);
+    assert.match(md, /without hiring/);
+    assert.match(md, /new capability/);
+    assert.doesNotMatch(md, /save time or money/);
+  });
+});
+
+describe('home: discovery call trust framing', () => {
+  it('asks whether automation is worth it, not where the hours go', () => {
+    const home = read('index.html');
+    const discovery = sectionById(home, 'discovery-call');
+    const md = read('chatbot-knowledge/website-home.md');
+    assert.match(discovery, /honest conversation about whether automation is worth it/);
+    assert.doesNotMatch(discovery, /where the hours go/);
+    assert.match(md, /honest conversation about whether automation is worth it/);
+    assert.doesNotMatch(md, /where the hours go/);
   });
 });

@@ -24,7 +24,7 @@ Free 30-minute call. If it isn't worth building, we'll tell you straight.
 
 ## A fixed-scope pilot for one workflow
 
-Pick one pain point: a manual process your team repeats every day, such as purchase orders keyed into the ERP, supplier invoices into the accounts package, or delivery dockets into a spreadsheet. We start with the job that pays back fastest, so you see a real return and build trust before going further. We don't automate a broken process. If it needs fixing, we fix it first, then automate it, test it on your real documents and hand it over.
+Pick one pain point: a manual process your team repeats every day, such as purchase orders keyed into the ERP, supplier invoices into the accounts package, or delivery dockets into a spreadsheet. We start with the job that cuts costly mistakes, lets your current team handle more volume, or unlocks something you could not offer before, so you see a clear business case and build trust before going further. We don't automate a broken process. If it needs fixing, we fix it first, then automate it, test it on your real documents and hand it over.
 
 ### What's included
 
@@ -44,7 +44,7 @@ Pick one pain point: a manual process your team repeats every day, such as purch
 
 ## AI strategy for your business
 
-Not sure where AI fits? We help you define your AI strategy: where it will save time or money, where it won't, and which job to start with. It's based on how your systems and teams actually work, not on hype.
+Not sure where AI fits? We help you define your AI strategy: where it reduces risk and errors, where it lets your team take on more work without hiring, where it unlocks a new capability, and where it won't help. It's based on how your systems and teams actually work, not on hype.
 
 ### What you get
 
@@ -93,7 +93,7 @@ A home-made AI agent looks cheaper until it has to work every day.
 
 ### Built by someone who has led software teams
 
-I have spent years developing, designing and architecting software systems, and I have managed teams of developers building enterprise software with clean designs. I know what bad code and bad design look like, so I don't build them into your business. What I hand over is clear, tested and easy to change later.
+I have spent 27+ years developing, designing and architecting software systems, and I have managed teams of developers building enterprise software with clean designs. I know what bad code and bad design look like, so I don't build them into your business. What I hand over is clear, tested and easy to change later.
 
 ### Guardrails, security and an audit trail
 
@@ -126,7 +126,7 @@ No BS and no guessing. On a discovery call I work out with you what is worth bui
 
 A free 30-minute call to confirm fit and talk through the problem. If a build makes sense, we design the approach and send a fixed quote. You sign off against test cases agreed up front, before the final invoice. Confidentiality agreement before you share anything sensitive.
 
-- No pitch deck, an honest conversation about where the hours go
+- No pitch deck, an honest conversation about whether automation is worth it
 - If it isn’t worth building, we’ll tell you straight
 - No production access or sensitive data required upfront
 - If it’s a fit: design, a fixed quote, build and test, then handover
