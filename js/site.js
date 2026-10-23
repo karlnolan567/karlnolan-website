@@ -72,8 +72,13 @@ function scrollToHash(behavior) {
   const target = document.querySelector(hash);
   if (!target) return false;
   const offset = syncHeaderScrollOffset();
-  target.style.scrollMarginTop = offset + 'px';
-  target.scrollIntoView({ block: 'start', behavior: behavior || 'auto' });
+  target.style.scrollMarginTop = (offset + 24) + 'px';
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  const smooth = behavior === 'smooth';
+  if (!smooth) root.style.scrollBehavior = 'auto';
+  target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+  if (!smooth) root.style.scrollBehavior = previous;
   return true;
 }
 
@@ -86,7 +91,7 @@ function scrollUntilHashAligned(behavior) {
 
   let attempts = 0;
   function tryScroll() {
-    scrollToHash(behavior || 'auto');
+    scrollToHash(attempts === 0 ? (behavior || 'auto') : 'auto');
     const offset = getHeaderScrollOffset();
     const top = target.getBoundingClientRect().top;
     const aligned = top >= offset - 8 && top <= offset + 32;

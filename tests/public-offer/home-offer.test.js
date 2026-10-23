@@ -166,8 +166,11 @@ describe('home: Example builds, not Client results', () => {
     }
   });
 
-  it('does not mention Nexus on home', () => {
-    assert.doesNotMatch(home, /Nexus/);
+  it('names Nexus only inside the client testimonial', () => {
+    const quote = sectionById(home, 'testimonials');
+    assert.match(quote, /Nexus/);
+    assert.match(quote, /Dr Kieran Fitzgerald/);
+    assert.doesNotMatch(home.replace(quote, ''), /Nexus/);
   });
 });
 
@@ -197,6 +200,7 @@ describe('one voice: "we" for the business, "I" only for Karl personally', () =>
       .replace(/I'm Karl Nolan\. Bespoke AI is my software and automation company in Limerick city\./g, '')
       .replace(/<article[^>]*>\s*<h3 class="card-title">Built by someone who has led software teams[\s\S]*?<\/article>/g, '')
       .replace(/### Built by someone who has led software teams[\s\S]*?(?=\n## )/g, '')
+      .replace(/<section id="testimonials"[\s\S]*?<\/section>/g, '')
       .replace(/<section id="about"[\s\S]*?<\/section>/g, '')
       .replace(/## Karl Nolan[\s\S]*?(?=\n## )/g, '')
       .replace(/backed by my AI and software development experience/g, '');

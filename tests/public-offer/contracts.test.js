@@ -103,7 +103,9 @@ describe('public-offer repositioning', () => {
     const home = read('index.html');
     assert.doesNotMatch(home, /What We Can Build/);
     assert.doesNotMatch(home, /id="offer"/);
-    assert.doesNotMatch(home, /Nexus/);
+    const homeWithoutQuote = home.replace(/<section id="testimonials"[\s\S]*?<\/section>/, '');
+    assert.doesNotMatch(homeWithoutQuote, /Nexus/);
+    assert.match(home, /id="testimonials"/);
     assert.match(home, /id="client-results"/);
     assert.doesNotMatch(read('partials/header.html'), /What We Can Build/);
     assert.doesNotMatch(read('partials/footer.html'), /What We Can Build/);
