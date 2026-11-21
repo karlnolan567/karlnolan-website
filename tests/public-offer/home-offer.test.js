@@ -1,5 +1,5 @@
 // Contracts for the buyer-led home page (site critique, 18 Oct 2026).
-// Encodes: pilot offer, Chamber strip, partner section, Example builds,
+// Encodes: pilot offer, partner section, Example builds,
 // one voice, no AI-template styling, readable contrast, and a chat bubble
 // that stays out of the hero on mobile.
 const { describe, it } = require('node:test');
@@ -84,15 +84,18 @@ describe('home: fixed-scope pilot offer', () => {
 describe('home: Limerick Chamber and partner routes', () => {
   const home = read('index.html');
 
-  it('leads the Chamber strip with 10% off, not a free audit', () => {
-    const strip = sectionById(home, 'chamber-offer');
-    assert.ok(strip, 'expected <section id="chamber-offer">');
+  it('does not publish the Limerick Chamber member discount', () => {
+    assert.equal(home.indexOf('id="chamber-offer"'), -1);
+    assert.doesNotMatch(home, /chamber-strip/);
+    assert.doesNotMatch(home, /Limerick Chamber members/);
+    assert.doesNotMatch(home, /10% off your first pilot/);
     const firstSection = home.slice(home.indexOf('<main id="main-content">')).match(/<section[^>]*>/)[0];
-    assert.match(firstSection, /id="chamber-offer"/, 'Chamber strip should sit directly under the menu, above the hero');
-    assert.match(strip, /Limerick Chamber members:<\/strong> 10% off your first pilot, until 31 January 2027\./);
-    assert.doesNotMatch(strip, /audit/i);
+    assert.match(firstSection, /section--hero/, 'hero should be the first section under the menu');
     for (const rel of ['chatbot-knowledge/website-home.md', 'chatbot-knowledge/bot-guardrails.md']) {
-      assert.doesNotMatch(read(rel), /free 30-minute AI automation audit/i, rel);
+      const text = read(rel);
+      assert.doesNotMatch(text, /10% off your first pilot/, rel);
+      assert.doesNotMatch(text, /Limerick Chamber members/i, rel);
+      assert.doesNotMatch(text, /free 30-minute AI automation audit/i, rel);
     }
   });
 

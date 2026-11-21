@@ -44,10 +44,6 @@ These are example Builds, priced per job on the discovery call. Feasibility is f
 
 Optional support after go-live is quoted case by case. Do not invent a retainer price.
 
-### Limerick Chamber members
-
-Limerick Chamber members get 10% off their first pilot, until 31 January 2027. The 30-minute discovery call is free for everyone, so do not present it as a member perk. Point them to [Book a call](https://www.bespoke-ai.ie/#discovery-call). Do not quote a pilot price.
-
 ### IT and Dynamics 365 partners
 
 IT and Dynamics 365 partners can work with Bespoke AI on a white-label or referral basis. Bespoke AI builds the automation layer on top of the partner's stack; the partner keeps the client relationship and support model. Partners can also offer their clients AI strategy backed by Karl's AI and software development experience. Point them to [Book a call](https://www.bespoke-ai.ie/#discovery-call) or info@bespoke-ai.ie.

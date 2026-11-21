@@ -3293,38 +3293,6 @@ a.pattern-more-card {
   margin-top: -1rem;
 }
 
-.chamber-strip {
-  border-top: 1px solid rgba(14, 116, 144, 0.45);
-  border-bottom: 1px solid rgba(14, 116, 144, 0.45);
-  background: rgba(14, 116, 144, 0.14);
-  padding: 1rem 0;
-}
-
-.chamber-strip__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  text-align: center;
-}
-
-.chamber-strip__inner p {
-  margin: 0;
-}
-
-@media (min-width: 768px) {
-  .chamber-strip__inner {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    gap: 1.5rem;
-  }
-
-  .chamber-strip__inner a {
-    white-space: nowrap;
-  }
-}
-
 .pilot-grid {
   display: grid;
   gap: 1rem;
@@ -3425,26 +3393,6 @@ a:has(> .fa-arrow-right) {
   .hero-layout .hero-intro {
     margin: 0;
     max-width: none;
-  }
-}
-
-/* Chamber strip sits under the menu: keep it compact on phones so the hero CTA stays on the first screen */
-@media (max-width: 767px) {
-  .chamber-strip {
-    padding: 0.6rem 0;
-  }
-  .chamber-strip__inner {
-    gap: 0.2rem;
-  }
-  .chamber-strip__inner p,
-  .chamber-strip__inner a {
-    font-size: 0.875rem;
-  }
-  .section--hero {
-    padding-top: 1.5rem;
-  }
-  .hero-content {
-    gap: 1.4rem;
   }
 }
 

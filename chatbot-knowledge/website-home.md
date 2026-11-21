@@ -20,8 +20,6 @@ I'm Karl Nolan. Bespoke AI is my software and automation company in Limerick cit
 
 Free 30-minute call. If it isn't worth building, we'll tell you straight.
 
-**Limerick Chamber members:** 10% off your first pilot, until 31 January 2027. [Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
-
 ## A fixed-scope pilot for one workflow
 
 Pick one pain point: a manual process your team repeats every day, such as purchase orders keyed into the ERP, supplier invoices into the accounts package, or delivery dockets into a spreadsheet. We start with the job that cuts costly mistakes, lets your current team handle more volume, or unlocks something you could not offer before, so you see a clear business case and build trust before going further. We don't automate a broken process. If it needs fixing, we fix it first, then automate it, test it on your real documents and hand it over.
