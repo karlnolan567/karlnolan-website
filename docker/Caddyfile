@@ -1,3 +1,10 @@
+# Named HTTPS sites would otherwise auto-redirect HTTP to the same host
+# (http://bespoke-ai.ie → https://bespoke-ai.ie), beating the :80 one-hop
+# apex → www rule. Keep ACME; only skip those implicit HTTP redirects.
+{
+	auto_https disable_redirects
+}
+
 (common_n8n) {
 	handle /webhook/* {
 		reverse_proxy n8n:5678
