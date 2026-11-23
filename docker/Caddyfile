@@ -87,7 +87,6 @@ www.bespoke-ai.ie {
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	# Path redirects before imported handle routes / reverse_proxy.
 	redir /index.html / permanent
-	redir /workshop.html /workshop-3.html permanent
 	import common_n8n
 	import ai_ivr
 	handle {

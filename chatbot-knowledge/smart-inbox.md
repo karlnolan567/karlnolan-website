@@ -1,12 +1,12 @@
 ---
 title: Smart Inbox Pilot
-source: https://www.bespoke-ai.ie/smart-inbox.html
+source: https://www.bespoke-ai.ie/case-studies.html
 scope: website-knowledge
 ---
 
 # Smart Inbox Pilot
 
-> Synced from `smart-inbox.html` for the website chatbot knowledge base.
+> Example build kept for the website chatbot knowledge base. The standalone page is no longer published.
 
 # Same support team. Urgent tickets first.
 

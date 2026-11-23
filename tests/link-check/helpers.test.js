@@ -57,13 +57,32 @@ describe('isSameOrigin', () => {
 });
 
 describe('listHtmlPages', () => {
-  it('includes po-sales-order.html at repo root', () => {
+  it('lists linked root pages and omits retired unlinked pages', () => {
     const root = path.resolve(__dirname, '../..');
     const pages = listHtmlPages(root);
-    assert.ok(pages.includes('po-sales-order.html'));
     assert.ok(pages.includes('index.html'));
-    assert.ok(pages.includes('smart-inbox.html'));
     assert.ok(pages.includes('privacy.html'));
+    assert.ok(pages.includes('about.html'));
+    assert.ok(pages.includes('case-studies.html'));
+    for (const retired of [
+      'training.html',
+      'workshops.html',
+      'workshop.html',
+      'workshop-1.html',
+      'workshop-2.html',
+      'workshop-3.html',
+      'agentic-impact-workshop.html',
+      'workshop-one-pager.html',
+      'scoping.html',
+      'what-we-automate.html',
+      'workflow-assessment.html',
+      'po-sales-order.html',
+      'smart-inbox.html',
+      'prototype-demo-hub.html',
+      'prototype-pay-when-satisfied.html',
+    ]) {
+      assert.equal(pages.includes(retired), false, retired);
+    }
   });
 });
 

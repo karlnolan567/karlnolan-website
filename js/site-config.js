@@ -12,7 +12,6 @@ const SITE = {
     canonicalUrl: 'https://www.bespoke-ai.ie/',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,
-    workshopHubUrl: 'agentic-impact-workshop.html',
     workshopApplicationFormUrls: {
         foundations: 'https://docs.google.com/forms/d/e/1FAIpQLSfxOWUF7taVGa3elYl28JZpebJwUcFnpKG42qyZaRLhYbymIg/viewform',
         engineering: 'https://docs.google.com/forms/d/e/1FAIpQLSfqQlawqCZfgIwJ653dPEME039aB303ZOzGn--tyxBqCZKJkQ/viewform',
@@ -25,14 +24,8 @@ const SITE = {
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
     partialVersion: '20261023b',
     assessmentUrl: 'https://www.bespoke-ai.ie/assessment',
-    workflowAssessmentUrl: 'workflow-assessment.html',
-    whatWeAutomateUrl: 'what-we-automate.html',
-    scopingUrl: 'scoping.html',
     aboutUrl: 'about.html',
     caseStudiesUrl: 'case-studies.html',
-    poSalesOrderUrl: 'po-sales-order.html',
-    smartInboxUrl: 'smart-inbox.html',
-    trainingUrl: 'training.html',
     navOrder: ['client-results', 'engagement', 'about', 'testimonials'],
     // GCP GenAI assistant iframe (Ask BCAI).
     chatEmbedUrl: 'https://genai-app-bespokeaiassistant-eu-793778137823.europe-west1.run.app/?key=9B4GmNgIo1df5jd519Eqgun3ObMSuvPW',

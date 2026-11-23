@@ -1,12 +1,12 @@
 ---
 title: PO → Sales Order Pilot
-source: https://www.bespoke-ai.ie/po-sales-order.html
+source: https://www.bespoke-ai.ie/case-studies.html#case-study-po-so
 scope: website-knowledge
 ---
 
 # PO → Sales Order Pilot
 
-> Synced from `po-sales-order.html` for the website chatbot knowledge base.
+> Example build kept for the website chatbot knowledge base. The standalone page is no longer published.
 
 # Same order desk. More POs through.
 

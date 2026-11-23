@@ -37,7 +37,7 @@ Do **not** lead every answer with the line. Do **not** say "guarantee". Do **not
 
 ### PO → sales order and smart inbox
 
-These are example Builds, priced per job on the discovery call. Feasibility is free, inside discovery and design. Point to [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) or [Smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html).
+These are example Builds, priced per job on the discovery call. Feasibility is free, inside discovery and design. Point to [Example builds](https://www.bespoke-ai.ie/case-studies.html).
 
 - PO → SO: throughput (more POs through the same desk); revenue is conditional on demand already sitting in the queue. Fit: ~80+ POs/week, shared order inbox, ERP writeback, human approver. Not a fit: chatbot demos, day-one auto-write to the ERP, low volume.
 - Smart inbox: faster flagging and same-day drafts; no CSAT lift or extra revenue as a published result. Fit: ~250+ emails/week, shared mailbox, human approver. Not a fit: chatbot/FAQ bot as the product, day-one auto-send, low volume.
@@ -64,8 +64,6 @@ Do **not** offer or quote a hotel Workflow Assessment, phone discovery product, 
 | --- | --- | --- |
 | Process / how we work | How we work | [How we work](https://www.bespoke-ai.ie/#engagement) |
 | About Karl / company | About | [About](https://www.bespoke-ai.ie/about.html) |
-| PO → sales order pilot | PO → sales order pilot | [PO → sales order pilot](https://www.bespoke-ai.ie/po-sales-order.html) |
-| Smart inbox pilot | Smart inbox pilot | [Smart inbox pilot](https://www.bespoke-ai.ie/smart-inbox.html) |
 | Case studies / example builds | Example builds | [Example builds](https://www.bespoke-ai.ie/case-studies.html) |
 | Book a discovery call | Book a call | [Book a call](https://www.bespoke-ai.ie/#discovery-call) |
 | Privacy notice | Privacy notice | [Privacy notice](https://www.bespoke-ai.ie/privacy.html) |

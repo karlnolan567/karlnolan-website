@@ -1,19 +1,10 @@
 (function () {
   const page = document.body.dataset.page || 'home';
-  const isWorkshopsHub = page === 'workshops';
-  const isWorkshopDetail = /^workshop-\d$/.test(page);
-  const isAgenticWorkshop = page === 'agentic-impact-workshop';
-  const isTraining = page === 'training';
-  const isWhatWeAutomate = page === 'what-we-automate';
-  const isWorkflowAssessment = page === 'workflow-assessment';
-  const isScoping = page === 'scoping';
   const isAbout = page === 'about';
   const isPrivacy = page === 'privacy';
   const isCaseStudies = page === 'case-studies';
-  const isPoSalesOrder = page === 'po-sales-order';
-  const isSmartInbox = page === 'smart-inbox';
   const isDemos = page === 'demos' || page.indexOf('prototype') === 0;
-  const isOffHome = isWorkshopsHub || isWorkshopDetail || isAgenticWorkshop || isTraining || isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isPrivacy || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos;
+  const isOffHome = isAbout || isPrivacy || isCaseStudies || isDemos;
   const indexPrefix = isOffHome ? '/' : '';
 
   document.documentElement.setAttribute('data-includes-pending', '');
@@ -26,14 +17,7 @@ function bookingHref() {
 }
 
   function navHref(section) {
-    if (section === 'workshops') return SITE.workshopHubUrl || 'workshops.html';
-    if (section === 'workshop') return 'agentic-impact-workshop.html';
-    if (section === 'training') return SITE.trainingUrl || 'training.html';
-    if (section === 'what-we-automate') return SITE.whatWeAutomateUrl || 'what-we-automate.html';
-    if (section === 'scoping') return SITE.scopingUrl || 'scoping.html';
     if (section === 'case-studies') return SITE.caseStudiesUrl || 'case-studies.html';
-    if (section === 'po-sales-order') return SITE.poSalesOrderUrl || 'po-sales-order.html';
-    if (section === 'smart-inbox') return SITE.smartInboxUrl || 'smart-inbox.html';
     const hash = '#' + section;
     return indexPrefix ? indexPrefix + hash : hash;
   }
@@ -135,47 +119,12 @@ function bookingHref() {
       const section = link.dataset.nav;
       link.href = navHref(section);
 
-      if (section === 'workshops' && isOffHome && isWorkshopsHub) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'workshop' && isAgenticWorkshop) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'training' && isTraining) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'what-we-automate' && isWhatWeAutomate) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'scoping' && isScoping) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
       if (section === 'about' && isAbout) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
 
       if (section === 'case-studies' && isCaseStudies) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'po-sales-order' && isPoSalesOrder) {
-        link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
-        link.setAttribute('aria-current', 'page');
-      }
-
-      if (section === 'smart-inbox' && isSmartInbox) {
         link.classList.add('nav-link--active', 'mobile-menu__link--active', 'active');
         link.setAttribute('aria-current', 'page');
       }
@@ -187,15 +136,7 @@ function bookingHref() {
     }
 
     let ctaConfig;
-    if (isAgenticWorkshop) {
-      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Workshop%20application%20%3A%20%20Cohort%201', text: 'Apply for a Seat' };
-    } else if (isWorkshopDetail) {
-      ctaConfig = { href: '#apply', text: 'Apply for a Seat' };
-    } else if (isWorkshopsHub) {
-      ctaConfig = { href: '#workshops-list', text: 'View Workshops' };
-    } else if (isTraining) {
-      ctaConfig = { href: 'mailto:info@bespoke-ai.ie?subject=Fundamentals%20of%20AI%20-%20enquiry', text: 'Enquire about training' };
-    } else if (isWhatWeAutomate || isWorkflowAssessment || isScoping || isAbout || isPrivacy || isCaseStudies || isPoSalesOrder || isSmartInbox || isDemos) {
+    if (isAbout || isPrivacy || isCaseStudies || isDemos) {
       ctaConfig = { href: '/#discovery-call', text: 'Get in Touch' };
     } else {
       ctaConfig = { href: '#discovery-call', text: 'Get in Touch' };

@@ -1,12 +1,12 @@
 ---
 title: What We Automate
-source: https://www.bespoke-ai.ie/what-we-automate.html
+source: https://www.bespoke-ai.ie/case-studies.html
 scope: website-knowledge
 ---
 
 # What We Automate
 
-> Synced from `what-we-automate.html` for the website chatbot knowledge base.
+> Pattern notes kept for the website chatbot knowledge base. The standalone page is no longer published.
 
 # What We Can Automate for Your Business
 
@@ -14,7 +14,7 @@ Everyday language, not jargon. The examples below are common starting points, pi
 
 ## Example Pilot Playbooks
 
-A few patterns that map to our [Example builds](https://www.bespoke-ai.ie/case-studies.html), suggestions only. Starting points include [PO → sales order](https://www.bespoke-ai.ie/po-sales-order.html) and [smart inbox](https://www.bespoke-ai.ie/smart-inbox.html). Every engagement is scoped to what you actually need.
+A few patterns that map to our [Example builds](https://www.bespoke-ai.ie/case-studies.html), suggestions only. Every engagement is scoped to what you actually need.
 
 ### Smart Inbox & Customer Issue Triage
 
@@ -188,6 +188,6 @@ Here are other patterns teams often automate. Your bottleneck may look different
 
 On a free 30-minute discovery call, we'll find one bottleneck worth a fixed-scope pilot, no production access or sensitive data required upfront.
 
-[Book a Discovery Call](https://www.bespoke-ai.ie/what-we-automate.html#)
+[Book a Discovery Call](https://www.bespoke-ai.ie/#discovery-call)
 
 [← Back to main site](https://www.bespoke-ai.ie/)

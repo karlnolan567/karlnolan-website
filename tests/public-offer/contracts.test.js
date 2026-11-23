@@ -138,7 +138,7 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(about, />AI Engineering</);
   });
 
-  it('noindexes training and workshop pages without deleting them', () => {
+  it('does not publish unlinked training, workshop, and retired offer pages', () => {
     const pages = [
       'training.html',
       'workshops.html',
@@ -148,11 +148,35 @@ describe('public-offer repositioning', () => {
       'workshop-3.html',
       'agentic-impact-workshop.html',
       'workshop-one-pager.html',
+      'scoping.html',
+      'what-we-automate.html',
+      'workflow-assessment.html',
+      'po-sales-order.html',
+      'smart-inbox.html',
+      'prototype-demo-hub.html',
+      'prototype-pay-when-satisfied.html',
     ];
     for (const rel of pages) {
-      const html = read(rel);
-      assert.match(html, /noindex/i, rel);
-      assert.doesNotMatch(html, /http-equiv="refresh"[^>]*url=\//i, rel);
+      assert.equal(fs.existsSync(path.join(ROOT, rel)), false, rel);
+    }
+    const linkedSurfaces = [
+      'sitemap.xml',
+      'index.html',
+      'partials/header.html',
+      'partials/footer.html',
+      'docker/Caddyfile',
+      'docker/site-Caddyfile',
+      'js/site-config.js',
+      'js/site-config.template.js',
+      'js/includes.js',
+      'chatbot-knowledge/bot-guardrails.md',
+      ...listDir('chatbot-knowledge', '.md'),
+    ];
+    for (const surface of linkedSurfaces) {
+      const text = read(surface);
+      for (const rel of pages) {
+        assert.equal(text.includes(rel), false, `${surface} still names ${rel}`);
+      }
     }
   });
 
@@ -175,16 +199,13 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(bot, /open when announced/i);
   });
 
-  it('keeps workshop flag off and drops the scoping workshop CTA', () => {
+  it('keeps the workshop announcement flag off', () => {
     assert.match(read('js/site-config.js'), /showWorkshop:\s*false/);
-    assert.doesNotMatch(read('scoping.html'), /agentic-impact-workshop/);
   });
 
   it('replaces pay-when-satisfied with sign-off against agreed test cases', () => {
     for (const rel of [
       'index.html',
-      'po-sales-order.html',
-      'smart-inbox.html',
       'about.html',
       'partials/header.html',
       'chatbot-knowledge/bot-guardrails.md',
@@ -198,9 +219,9 @@ describe('public-offer repositioning', () => {
     }
     for (const rel of [
       'index.html',
-      'po-sales-order.html',
-      'smart-inbox.html',
       'chatbot-knowledge/bot-guardrails.md',
+      'chatbot-knowledge/po-sales-order.md',
+      'chatbot-knowledge/smart-inbox.md',
     ]) {
       assert.match(read(rel), SIGN_OFF_SENTENCE, rel);
     }
@@ -222,11 +243,6 @@ describe('public-offer repositioning', () => {
     assert.doesNotMatch(home, /€8,000/);
     assert.doesNotMatch(home, /paid scoping/i);
     assert.doesNotMatch(home, /scoping\.html/);
-    for (const rel of ['po-sales-order.html', 'smart-inbox.html']) {
-      const page = read(rel);
-      assert.doesNotMatch(page, /€8,000/, rel);
-      assert.doesNotMatch(page, /€900/, rel);
-    }
     for (const rel of [
       'chatbot-knowledge/website-home.md',
       'chatbot-knowledge/po-sales-order.md',

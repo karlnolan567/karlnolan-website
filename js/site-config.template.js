@@ -12,7 +12,6 @@ const SITE = {
     canonicalUrl: '${CANONICAL_URL}',
     googleFormUrl: 'https://forms.gle/HCQSAhwR9JJpygxb9',
     showWorkshop: false,
-    workshopHubUrl: 'agentic-impact-workshop.html',
     workshopApplicationFormUrls: {
         foundations: 'https://docs.google.com/forms/d/e/1FAIpQLSfxOWUF7taVGa3elYl28JZpebJwUcFnpKG42qyZaRLhYbymIg/viewform',
         engineering: 'https://docs.google.com/forms/d/e/1FAIpQLSfqQlawqCZfgIwJ653dPEME039aB303ZOzGn--tyxBqCZKJkQ/viewform',
@@ -21,14 +20,8 @@ const SITE = {
     workshopOnePagerPdf: 'workshop-one-pager.pdf',
     partialVersion: '20261023b',
     assessmentUrl: '${ASSESSMENT_URL}',
-    workflowAssessmentUrl: 'workflow-assessment.html',
-    whatWeAutomateUrl: 'what-we-automate.html',
-    scopingUrl: 'scoping.html',
     aboutUrl: 'about.html',
     caseStudiesUrl: 'case-studies.html',
-    poSalesOrderUrl: 'po-sales-order.html',
-    smartInboxUrl: 'smart-inbox.html',
-    trainingUrl: 'training.html',
     fundamentalsFormUrls: {
         individual: '',
         group: '',
